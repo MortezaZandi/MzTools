@@ -1,4 +1,4 @@
-﻿namespace howto_point_segment_distance
+﻿namespace LoadAnimationControl
 {
     partial class Form1
     {
@@ -33,12 +33,11 @@
             // 
             // loadAnimationControl1
             // 
-            this.loadAnimationControl1.BallColor = System.Drawing.Color.Black;
-            this.loadAnimationControl1.BallCount = 5;
-            this.loadAnimationControl1.Location = new System.Drawing.Point(170, 136);
+            this.loadAnimationControl1.BallColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.loadAnimationControl1.BallCount = 3;
+            this.loadAnimationControl1.Location = new System.Drawing.Point(351, 140);
             this.loadAnimationControl1.Name = "loadAnimationControl1";
-            this.loadAnimationControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.loadAnimationControl1.Size = new System.Drawing.Size(115, 26);
+            this.loadAnimationControl1.Size = new System.Drawing.Size(75, 23);
             this.loadAnimationControl1.TabIndex = 0;
             this.loadAnimationControl1.Text = "loadAnimationControl1";
             // 
@@ -46,18 +45,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(424, 173);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.loadAnimationControl1);
             this.Name = "Form1";
-            this.Text = "howto_point_segment_distance";
+            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private LoadAnimationControl loadAnimationControl1;
+        private howto_point_segment_distance.LoadAnimationControl loadAnimationControl1;
     }
 }
 

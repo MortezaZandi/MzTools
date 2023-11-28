@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Drawing.Drawing2D;
-
-namespace howto_point_segment_distance
+namespace LoadAnimationControl
 {
     public partial class Form1 : Form
     {
@@ -17,7 +20,8 @@ namespace howto_point_segment_distance
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            loadAnimationControl1.Play();
+
+            this.loadAnimationControl1.Play();
         }
     }
 }
