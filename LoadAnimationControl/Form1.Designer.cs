@@ -28,15 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.loadAnimationControl4 = new howto_point_segment_distance.LoadAnimationControl();
+            this.loadAnimationControl3 = new howto_point_segment_distance.LoadAnimationControl();
+            this.loadAnimationControl2 = new howto_point_segment_distance.LoadAnimationControl();
             this.loadAnimationControl1 = new howto_point_segment_distance.LoadAnimationControl();
             this.SuspendLayout();
+            // 
+            // loadAnimationControl4
+            // 
+            this.loadAnimationControl4.BallColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.loadAnimationControl4.BallCount = 5;
+            this.loadAnimationControl4.Location = new System.Drawing.Point(312, 347);
+            this.loadAnimationControl4.Name = "loadAnimationControl4";
+            this.loadAnimationControl4.ShowDetails = true;
+            this.loadAnimationControl4.Size = new System.Drawing.Size(161, 23);
+            this.loadAnimationControl4.TabIndex = 3;
+            this.loadAnimationControl4.Text = "loadAnimationControl4";
+            // 
+            // loadAnimationControl3
+            // 
+            this.loadAnimationControl3.BallColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.loadAnimationControl3.BallCount = 5;
+            this.loadAnimationControl3.Location = new System.Drawing.Point(312, 252);
+            this.loadAnimationControl3.Name = "loadAnimationControl3";
+            this.loadAnimationControl3.ShowDetails = false;
+            this.loadAnimationControl3.Size = new System.Drawing.Size(161, 23);
+            this.loadAnimationControl3.TabIndex = 2;
+            this.loadAnimationControl3.Text = "loadAnimationControl3";
+            // 
+            // loadAnimationControl2
+            // 
+            this.loadAnimationControl2.BallColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.loadAnimationControl2.BallCount = 3;
+            this.loadAnimationControl2.Location = new System.Drawing.Point(351, 62);
+            this.loadAnimationControl2.Name = "loadAnimationControl2";
+            this.loadAnimationControl2.ShowDetails = false;
+            this.loadAnimationControl2.Size = new System.Drawing.Size(75, 23);
+            this.loadAnimationControl2.TabIndex = 1;
+            this.loadAnimationControl2.Text = "loadAnimationControl2";
             // 
             // loadAnimationControl1
             // 
             this.loadAnimationControl1.BallColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
             this.loadAnimationControl1.BallCount = 3;
-            this.loadAnimationControl1.Location = new System.Drawing.Point(351, 140);
+            this.loadAnimationControl1.Location = new System.Drawing.Point(351, 157);
             this.loadAnimationControl1.Name = "loadAnimationControl1";
+            this.loadAnimationControl1.ShowDetails = true;
             this.loadAnimationControl1.Size = new System.Drawing.Size(75, 23);
             this.loadAnimationControl1.TabIndex = 0;
             this.loadAnimationControl1.Text = "loadAnimationControl1";
@@ -45,7 +82,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.loadAnimationControl4);
+            this.Controls.Add(this.loadAnimationControl3);
+            this.Controls.Add(this.loadAnimationControl2);
             this.Controls.Add(this.loadAnimationControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -56,6 +97,9 @@
         #endregion
 
         private howto_point_segment_distance.LoadAnimationControl loadAnimationControl1;
+        private howto_point_segment_distance.LoadAnimationControl loadAnimationControl2;
+        private howto_point_segment_distance.LoadAnimationControl loadAnimationControl3;
+        private howto_point_segment_distance.LoadAnimationControl loadAnimationControl4;
     }
 }
 

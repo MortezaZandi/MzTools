@@ -22,6 +22,9 @@ namespace LoadAnimationControl
             base.OnShown(e);
 
             this.loadAnimationControl1.Play();
+            this.loadAnimationControl2.Play();
+            this.loadAnimationControl3.Play();
+            this.loadAnimationControl4.Play();
         }
     }
 }

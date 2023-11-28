@@ -11,11 +11,12 @@ namespace howto_point_segment_distance
 {
     public class LoadAnimationControl : GraphicControl
     {
-        private BallPressAnimationRectangle animation;
-        private bool leftIsBigger = true;
         private Timer tmrUpdate;
-        private Brush ballBrush = new SolidBrush(Color.FromArgb(8, 84, 161));
+        private bool showDetails;
+        private bool leftIsBigger = true;
+        private BallPressAnimationRectangle animation;
         private Color ballColor = Color.FromArgb(8, 84, 161);
+        private Brush ballBrush = new SolidBrush(Color.FromArgb(8, 84, 161));
 
         public LoadAnimationControl() : base()
         {
@@ -110,22 +111,37 @@ namespace howto_point_segment_distance
             }
         }
 
+        public bool ShowDetails
+        {
+            get { return this.showDetails; }
+            set
+            {
+                this.showDetails = value;
+                ApplyChanges();
+            }
+        }
+
         protected override void DrawGraphics(Graphics gr, Rectangle rectangle)
         {
             foreach (var ball in animation.CalculateBallRects())
             {
                 gr.FillEllipse(this.ballBrush, ball);
             }
+            if (ShowDetails)
+            {
+                foreach (var p in animation.TopLine.getPoints(animation.BallCount * 2))
+                {
+                    gr.FillEllipse(Brushes.Red, p.X - 2, p.Y - 2, 4, 4);
+                }
 
-            //foreach (var p in animation.TopLine.getPoints(animation.BallCount * 2))
-            //{
-            //    e.Graphics.FillEllipse(Brushes.Black, p.X - 1, p.Y - 1, 2, 2);
-            //}
+                foreach (var p in animation.BottomLine.getPoints(animation.BallCount * 2))
+                {
+                    gr.FillEllipse(Brushes.Red, p.X - 2, p.Y - 2, 4, 4);
+                }
 
-            //foreach (var p in animation.BottomLine.getPoints(animation.BallCount * 2))
-            //{
-            //    e.Graphics.FillEllipse(Brushes.Black, p.X - 1, p.Y - 1, 2, 2);
-            //}
+                gr.DrawLine(Pens.Black, this.animation.TopLine.Start, this.animation.TopLine.End);
+                gr.DrawLine(Pens.Black, this.animation.BottomLine.Start, this.animation.BottomLine.End);
+            }
 
             //e.Graphics.DrawRectangle(Pens.Red, animation.Bounds.X, animation.Bounds.Y, animation.Bounds.Width, animation.Bounds.Height);
         }
