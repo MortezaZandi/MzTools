@@ -7,13 +7,14 @@ namespace howto_point_segment_distance
     public abstract class GraphicControl : Control
     {
         private Bitmap _bmpBackBuffer;
-        private bool uiRefreshed;
+        private bool refreshed;
 
         public GraphicControl() : base()
         {
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.ResizeRedraw, true);
-            //this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.DoubleBuffered = true;
 
             AutoSize = false;
             Text = string.Empty;
@@ -27,7 +28,7 @@ namespace howto_point_segment_distance
 
         protected void RefreshUI()
         {
-            if (!uiRefreshed)
+            if (!refreshed)
             {
                 using (Graphics g = CreateGraphics())
                 {
@@ -49,7 +50,7 @@ namespace howto_point_segment_distance
             if (_bmpBackBuffer != null)
             {
                 e.Graphics.DrawImage(_bmpBackBuffer, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
-                uiRefreshed = true;
+                refreshed = true;
             }
         }
 
@@ -63,7 +64,7 @@ namespace howto_point_segment_distance
             using (Graphics gr = Graphics.FromImage(bmp))
             {
                 DrawGraphics(gr, new Rectangle(0, 0, this.Width, this.Height));
-                uiRefreshed = false;
+                refreshed = false;
             }
         }
 

@@ -17,6 +17,7 @@ namespace howto_point_segment_distance
         private BallPressAnimationRectangle animation;
         private Color ballColor = Color.FromArgb(8, 84, 161);
         private Brush ballBrush = new SolidBrush(Color.FromArgb(8, 84, 161));
+        private Brush[] fillBrushes;
 
         public LoadAnimationControl() : base()
         {
@@ -28,6 +29,14 @@ namespace howto_point_segment_distance
             };
 
             tmrUpdate.Tick += TmrUpdate_Tick;
+
+            var defaultBrushes = new List<Brush>();
+            defaultBrushes.Add(new SolidBrush(Color.FromArgb(230, 38, 31)));
+            defaultBrushes.Add(new SolidBrush(Color.FromArgb(247, 208, 56)));
+            defaultBrushes.Add(new SolidBrush(Color.FromArgb(73,218,154)));
+            defaultBrushes.Add(new SolidBrush(Color.FromArgb(67, 85, 219)));
+
+            fillBrushes = defaultBrushes.ToArray();
         }
 
         public int BallCount
@@ -123,9 +132,20 @@ namespace howto_point_segment_distance
 
         protected override void DrawGraphics(Graphics gr, Rectangle rectangle)
         {
+            int elementIndex = 0;
+
             foreach (var ball in animation.CalculateBallRects())
             {
-                gr.FillEllipse(this.ballBrush, ball);
+                var brush = ballBrush;
+                
+                if(elementIndex<fillBrushes.Length)
+                {
+                    brush = fillBrushes[elementIndex];
+                }
+                
+                gr.FillEllipse(brush, ball);
+
+                elementIndex++;
             }
             if (ShowDetails)
             {
