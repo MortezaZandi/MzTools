@@ -48,15 +48,16 @@
             this.sPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sPanel1.Location = new System.Drawing.Point(0, 0);
             this.sPanel1.Name = "sPanel1";
-            this.sPanel1.Size = new System.Drawing.Size(438, 292);
+            this.sPanel1.Size = new System.Drawing.Size(348, 236);
             this.sPanel1.TabIndex = 1;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(187, 144);
+            this.label4.Location = new System.Drawing.Point(132, 97);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(41, 21);
@@ -65,10 +66,11 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(152, 102);
+            this.label3.Location = new System.Drawing.Point(97, 66);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(123, 21);
@@ -77,10 +79,11 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(111, 63);
+            this.label2.Location = new System.Drawing.Point(56, 27);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(217, 30);
@@ -89,10 +92,12 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(12, 181);
+            this.label1.Location = new System.Drawing.Point(12, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(394, 1);
+            this.label1.Size = new System.Drawing.Size(304, 1);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
@@ -106,7 +111,7 @@
             this.pointyAnimationControl1.ElementColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(85)))), ((int)(((byte)(219)))));
             this.pointyAnimationControl1.ElementColor5 = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pointyAnimationControl1.ElementsCount = 3;
-            this.pointyAnimationControl1.Location = new System.Drawing.Point(170, 197);
+            this.pointyAnimationControl1.Location = new System.Drawing.Point(125, 141);
             this.pointyAnimationControl1.Name = "pointyAnimationControl1";
             this.pointyAnimationControl1.Size = new System.Drawing.Size(55, 32);
             this.pointyAnimationControl1.Speed = 35;
@@ -117,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(438, 292);
+            this.ClientSize = new System.Drawing.Size(348, 236);
             this.Controls.Add(this.sPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

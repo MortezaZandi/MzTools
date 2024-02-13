@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMF_IPC_Writer", "MMF_IPC_Writer\MMF_IPC_Writer.csproj", "{1CDABFA3-E513-4673-9405-3D6A9D8CD93C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMF_IPC_Reader", "MMF_IPC_Reader\MMF_IPC_Reader.csproj", "{E4E62938-F435-48BE-99B2-50AA67370DB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CDABFA3-E513-4673-9405-3D6A9D8CD93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDABFA3-E513-4673-9405-3D6A9D8CD93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDABFA3-E513-4673-9405-3D6A9D8CD93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDABFA3-E513-4673-9405-3D6A9D8CD93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E62938-F435-48BE-99B2-50AA67370DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E62938-F435-48BE-99B2-50AA67370DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E62938-F435-48BE-99B2-50AA67370DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E62938-F435-48BE-99B2-50AA67370DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6345D7C1-D784-4DE1-ACC2-A5EB0770AF6C}
+	EndGlobalSection
+EndGlobal
