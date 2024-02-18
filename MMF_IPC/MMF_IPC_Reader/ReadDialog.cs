@@ -11,54 +11,92 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MMF_IPC;
+using System.ServiceModel.Description;
 
 namespace MMF_IPC_Reader
 {
     public partial class ReadDialog : Form
     {
-        private MMF mmf;
+        private MLogger logg_action_a;
+        private MLogger logg_action_b;
+        private MLogger logg_action_c;
 
-        private EventWaitHandle activationSignal;
+        private int actionCount_a = 0;
+        private int actionCount_b = 0;
+        private int actionCount_c = 0;
 
         public ReadDialog()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
 
-            try
-            {
-                this.activationSignal = new EventWaitHandle(false, EventResetMode.ManualReset, "LogReaderActivated");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to create activation signal" + Environment.NewLine + ex.Message, "MMF-Reader", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            try
-            {
-                this.mmf = new MMF("Logs", 1024);
-                this.mmf.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to open memory log file" + Environment.NewLine + ex.Message, "MMF-Reader", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            textBox1.Text = mmf.Read();
+            this.logg_action_a = new MLogger("actiona");
+            this.logg_action_b = new MLogger("actionb");
+            this.logg_action_c = new MLogger("actionc");
+
+            this.logg_action_a.Open();
+            this.logg_action_b.Open();
+            this.logg_action_c.Open();
+
+            this.logg_action_a.OnNewLogAvailable += ActionALogs_OnNewLogAvailable;
+            this.logg_action_b.OnNewLogAvailable += ActionBLogs_OnNewLogAvailable;
+            this.logg_action_c.OnNewLogAvailable += ActionCLogs_OnNewLogAvailable;
         }
 
-        private void chkActivateReader_CheckedChanged(object sender, EventArgs e)
+
+        private void ActionALogs_OnNewLogAvailable(string log)
         {
-            if (chkActivateReader.Checked)
+            txtActionAStatus.Text = log;
+
+            if (log == "start")
             {
-                this.activationSignal.Set();
+                actionCount_a++;
+                txtActionAStatus.ForeColor = Color.Red;
             }
-            else
+            else if (log == "stop")
             {
-                this.activationSignal.Reset();
+                txtActionAStatus.ForeColor = Color.Green;
             }
+
+            txtActionACount.Text = actionCount_a.ToString("N0");
+        }
+
+        private void ActionBLogs_OnNewLogAvailable(string log)
+        {
+            txtActionBStatus.Text = log;
+
+            if (log == "start")
+            {
+                actionCount_b++;
+                txtActionBStatus.ForeColor = Color.Red;
+            }
+            else if (log == "stop")
+            {
+                txtActionBStatus.ForeColor = Color.Green;
+            }
+
+            txtActionBCount.Text = actionCount_b.ToString("N0");
+        }
+
+        private void ActionCLogs_OnNewLogAvailable(string log)
+        {
+            txtActionCStatus.Text = log;
+
+            if (log == "start")
+            {
+                actionCount_c++;
+                txtActionCStatus.ForeColor = Color.Red;
+            }
+            else if (log == "stop")
+            {
+                txtActionCStatus.ForeColor = Color.Green;
+            }
+
+            txtActionCCount.Text = actionCount_c.ToString("N0");
         }
     }
 }

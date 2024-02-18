@@ -28,75 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.btnActionA = new System.Windows.Forms.Button();
+            this.btnActionB = new System.Windows.Forms.Button();
+            this.btnActionC = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // panel1
+            // btnActionA
             // 
-            this.panel1.Controls.Add(this.btnSend);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 174);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(444, 50);
-            this.panel1.TabIndex = 0;
+            this.btnActionA.Location = new System.Drawing.Point(24, 12);
+            this.btnActionA.Name = "btnActionA";
+            this.btnActionA.Size = new System.Drawing.Size(154, 27);
+            this.btnActionA.TabIndex = 0;
+            this.btnActionA.Text = "Action A";
+            this.btnActionA.UseVisualStyleBackColor = true;
+            this.btnActionA.Click += new System.EventHandler(this.btnActionA_Click);
             // 
-            // btnSend
+            // btnActionB
             // 
-            this.btnSend.Location = new System.Drawing.Point(23, 13);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 1;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            this.btnActionB.Location = new System.Drawing.Point(24, 41);
+            this.btnActionB.Name = "btnActionB";
+            this.btnActionB.Size = new System.Drawing.Size(154, 27);
+            this.btnActionB.TabIndex = 1;
+            this.btnActionB.Text = "Action B";
+            this.btnActionB.UseVisualStyleBackColor = true;
+            this.btnActionB.Click += new System.EventHandler(this.btnActionB_Click);
             // 
-            // textBox1
+            // btnActionC
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(438, 155);
-            this.textBox1.TabIndex = 0;
+            this.btnActionC.Location = new System.Drawing.Point(24, 70);
+            this.btnActionC.Name = "btnActionC";
+            this.btnActionC.Size = new System.Drawing.Size(154, 27);
+            this.btnActionC.TabIndex = 2;
+            this.btnActionC.Text = "Action C";
+            this.btnActionC.UseVisualStyleBackColor = true;
+            this.btnActionC.Click += new System.EventHandler(this.btnActionC_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(444, 174);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Message";
-            // 
-            // Form1
+            // WriteDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 224);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(206, 117);
+            this.Controls.Add(this.btnActionC);
+            this.Controls.Add(this.btnActionB);
+            this.Controls.Add(this.btnActionA);
+            this.Name = "WriteDialog";
             this.Text = "Sender";
-            this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnActionA;
+        private System.Windows.Forms.Button btnActionB;
+        private System.Windows.Forms.Button btnActionC;
     }
 }
 

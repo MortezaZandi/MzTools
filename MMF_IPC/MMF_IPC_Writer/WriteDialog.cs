@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,33 +17,34 @@ namespace MMF_IPC
 {
     public partial class WriteDialog : Form
     {
-        private MMF mmf;
+        private readonly OLTDiag diag;
+
         public WriteDialog()
         {
             InitializeComponent();
-            mmf = new MMF("Logs", 10);
-            mmf.Create();
+
+            this.diag = new OLTDiag();
         }
 
-        private bool IsLogReaderAvailable()
+        private void btnActionA_Click(object sender, EventArgs e)
         {
-            EventWaitHandle ewh;
-            bool ev = EventWaitHandle.TryOpenExisting("LogReaderActivated", out ewh);
-            return ewh != null && ewh.WaitOne(1);
+            this.diag.OnActionAStart();
+            //Thread.Sleep(1000);
+            this.diag.OnActionAStop();
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
+        private void btnActionB_Click(object sender, EventArgs e)
         {
-            if (IsLogReaderAvailable())
-            {
-                var log = new Log(textBox1.Text);
+            this.diag.OnActionBStart();
+            //Thread.Sleep(500);
+            this.diag.OnActionBStop();
+        }
 
-                mmf.Write(XmlDataSerializer.SerializeToXMLString(log));
-            }
-            else
-            {
-                MessageBox.Show("Reader is not activated", "MMF-Writer", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        private void btnActionC_Click(object sender, EventArgs e)
+        {
+            this.diag.OnActionCStart();
+            //Thread.Sleep(250);
+            this.diag.OnActionCStop();
         }
     }
 }
