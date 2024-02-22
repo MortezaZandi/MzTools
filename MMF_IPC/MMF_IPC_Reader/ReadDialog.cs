@@ -12,91 +12,83 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MMF_IPC;
 using System.ServiceModel.Description;
+using System.Diagnostics.Eventing.Reader;
 
 namespace MMF_IPC_Reader
 {
     public partial class ReadDialog : Form
     {
-        private MLogger logg_action_a;
-        private MLogger logg_action_b;
-        private MLogger logg_action_c;
-
-        private int actionCount_a = 0;
-        private int actionCount_b = 0;
-        private int actionCount_c = 0;
+        private OLTDiag diag = new OLTDiag();
 
         public ReadDialog()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
 
+            diag.RegisterAction("a", true);
+            diag.RegisterAction("b", true);
+            diag.RegisterAction("c", true);
+            diag.RegisterStatus("LastAction", "-", true);
+            this.diag.RegisterStatus("OPT1", "NaN", true);
+
+            diag.OnReportAvailable += Diag_OnReportAvailable;
         }
 
-        private void btnRead_Click(object sender, EventArgs e)
+        private void Diag_OnReportAvailable(string reportText)
         {
-            this.logg_action_a = new MLogger("actiona");
-            this.logg_action_b = new MLogger("actionb");
-            this.logg_action_c = new MLogger("actionc");
+            var elements = reportText.Split(',');
 
-            this.logg_action_a.Open();
-            this.logg_action_b.Open();
-            this.logg_action_c.Open();
+            var reportType = elements[0];
 
-            this.logg_action_a.OnNewLogAvailable += ActionALogs_OnNewLogAvailable;
-            this.logg_action_b.OnNewLogAvailable += ActionBLogs_OnNewLogAvailable;
-            this.logg_action_c.OnNewLogAvailable += ActionCLogs_OnNewLogAvailable;
-        }
-
-
-        private void ActionALogs_OnNewLogAvailable(string log)
-        {
-            txtActionAStatus.Text = log;
-
-            if (log == "start")
+            switch (reportType)
             {
-                actionCount_a++;
-                txtActionAStatus.ForeColor = Color.Red;
+                case "Action":
+
+                    var actionName = elements[1];
+
+                    switch (actionName)
+                    {
+                        case "NM:a":
+                            lblActionA.Text = reportText;
+                            break;
+                        case "NM:b":
+                            lblActionB.Text = reportText;
+                            break;
+                        case "NM:c":
+                            lblActionC.Text = reportText;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+
+                case "Status":
+                    var details= elements[1].Split(':');
+                    switch (details[0])
+                    {
+                        case "LastAction":
+                            lblLastAction.Text = reportText;
+                            break;
+
+                        case "OPT1":
+                            if (details[1] == "ON")
+                            {
+                                this.BackColor = Color.Green;
+                            }
+                            else
+                            {
+                                this.BackColor = Color.WhiteSmoke;
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
+                    break;
+
+                default:
+                    break;
             }
-            else if (log == "stop")
-            {
-                txtActionAStatus.ForeColor = Color.Green;
-            }
-
-            txtActionACount.Text = actionCount_a.ToString("N0");
-        }
-
-        private void ActionBLogs_OnNewLogAvailable(string log)
-        {
-            txtActionBStatus.Text = log;
-
-            if (log == "start")
-            {
-                actionCount_b++;
-                txtActionBStatus.ForeColor = Color.Red;
-            }
-            else if (log == "stop")
-            {
-                txtActionBStatus.ForeColor = Color.Green;
-            }
-
-            txtActionBCount.Text = actionCount_b.ToString("N0");
-        }
-
-        private void ActionCLogs_OnNewLogAvailable(string log)
-        {
-            txtActionCStatus.Text = log;
-
-            if (log == "start")
-            {
-                actionCount_c++;
-                txtActionCStatus.ForeColor = Color.Red;
-            }
-            else if (log == "stop")
-            {
-                txtActionCStatus.ForeColor = Color.Green;
-            }
-
-            txtActionCCount.Text = actionCount_c.ToString("N0");
         }
     }
 }

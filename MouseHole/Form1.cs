@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 
 namespace MouseHole
 {
@@ -20,8 +21,12 @@ namespace MouseHole
         private GroupBox controlBox;
         private Label label1;
         private Panel panel1;
-        private TrackBar sizeBar;
-        private Label lblSize;
+        private Label label3;
+        private Label label2;
+        private NumericUpDown nmrSizeWidth;
+        private NumericUpDown nmrSizeHeight;
+        private RadioButton rdCircular;
+        private RadioButton rdRectangular;
         private Button btnStart;
 
         public Form1()
@@ -47,13 +52,18 @@ namespace MouseHole
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
             this.controlBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblSize = new System.Windows.Forms.Label();
+            this.rdCircular = new System.Windows.Forms.RadioButton();
+            this.rdRectangular = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nmrSizeWidth = new System.Windows.Forms.NumericUpDown();
+            this.nmrSizeHeight = new System.Windows.Forms.NumericUpDown();
             this.btnStart = new System.Windows.Forms.Button();
-            this.sizeBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.controlBox.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrSizeWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrSizeHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // tmrUpdate
@@ -68,53 +78,120 @@ namespace MouseHole
             this.controlBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlBox.Location = new System.Drawing.Point(0, 0);
             this.controlBox.Name = "controlBox";
-            this.controlBox.Size = new System.Drawing.Size(445, 171);
+            this.controlBox.Size = new System.Drawing.Size(444, 233);
             this.controlBox.TabIndex = 0;
             this.controlBox.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblSize);
+            this.panel1.Controls.Add(this.rdCircular);
+            this.panel1.Controls.Add(this.rdRectangular);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.nmrSizeWidth);
+            this.panel1.Controls.Add(this.nmrSizeHeight);
             this.panel1.Controls.Add(this.btnStart);
-            this.panel1.Controls.Add(this.sizeBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 77);
+            this.panel1.Location = new System.Drawing.Point(3, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(439, 91);
+            this.panel1.Size = new System.Drawing.Size(438, 185);
             this.panel1.TabIndex = 1;
             // 
-            // lblSize
+            // rdCircular
             // 
-            this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(18, 54);
-            this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(25, 13);
-            this.lblSize.TabIndex = 2;
-            this.lblSize.Text = "250";
+            this.rdCircular.AutoSize = true;
+            this.rdCircular.Checked = true;
+            this.rdCircular.Location = new System.Drawing.Point(9, 77);
+            this.rdCircular.Name = "rdCircular";
+            this.rdCircular.Size = new System.Drawing.Size(60, 17);
+            this.rdCircular.TabIndex = 1;
+            this.rdCircular.TabStop = true;
+            this.rdCircular.Text = "Circular";
+            this.rdCircular.UseVisualStyleBackColor = true;
+            // 
+            // rdRectangular
+            // 
+            this.rdRectangular.AutoSize = true;
+            this.rdRectangular.Location = new System.Drawing.Point(9, 100);
+            this.rdRectangular.Name = "rdRectangular";
+            this.rdRectangular.Size = new System.Drawing.Size(83, 17);
+            this.rdRectangular.TabIndex = 2;
+            this.rdRectangular.Text = "Rectangular";
+            this.rdRectangular.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Spot Height:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Spot Width";
+            // 
+            // nmrSizeWidth
+            // 
+            this.nmrSizeWidth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+            this.nmrSizeWidth.Location = new System.Drawing.Point(75, 15);
+            this.nmrSizeWidth.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nmrSizeWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrSizeWidth.Name = "nmrSizeWidth";
+            this.nmrSizeWidth.Size = new System.Drawing.Size(112, 20);
+            this.nmrSizeWidth.TabIndex = 5;
+            this.nmrSizeWidth.Value = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            // 
+            // nmrSizeHeight
+            // 
+            this.nmrSizeHeight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+            this.nmrSizeHeight.Location = new System.Drawing.Point(75, 41);
+            this.nmrSizeHeight.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nmrSizeHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrSizeHeight.Name = "nmrSizeHeight";
+            this.nmrSizeHeight.Size = new System.Drawing.Size(112, 20);
+            this.nmrSizeHeight.TabIndex = 3;
+            this.nmrSizeHeight.Value = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(337, 54);
+            this.btnStart.Location = new System.Drawing.Point(337, 143);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(93, 28);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // sizeBar
-            // 
-            this.sizeBar.LargeChange = 100;
-            this.sizeBar.Location = new System.Drawing.Point(9, 8);
-            this.sizeBar.Maximum = 1000;
-            this.sizeBar.Minimum = 50;
-            this.sizeBar.Name = "sizeBar";
-            this.sizeBar.Size = new System.Drawing.Size(421, 45);
-            this.sizeBar.SmallChange = 50;
-            this.sizeBar.TabIndex = 1;
-            this.sizeBar.TickFrequency = 50;
-            this.sizeBar.Value = 250;
-            this.sizeBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // label1
             // 
@@ -123,17 +200,16 @@ namespace MouseHole
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(3, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(439, 61);
+            this.label1.Size = new System.Drawing.Size(438, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Press Alt to switch on/off\r\nPress Ctrl to tiny lighter (%90)\r\nPress Shift to Clea" +
-    "r (%100)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Text = "Alt exit    |    Ctrl Dark View    |    Shift Clear View";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 171);
+            this.ClientSize = new System.Drawing.Size(444, 233);
             this.Controls.Add(this.controlBox);
             this.DoubleBuffered = true;
             this.Name = "Form1";
@@ -145,7 +221,8 @@ namespace MouseHole
             this.controlBox.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrSizeWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrSizeHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -159,8 +236,8 @@ namespace MouseHole
         {
             int x = MousePosition.X;
             int y = MousePosition.Y;
-            int h = sizeBar.Value;
-            int w = sizeBar.Value;
+            int h = (int)nmrSizeHeight.Value;
+            int w = (int)nmrSizeWidth.Value;
 
             bool inEditMode = controlBox.Visible == true;
             bool samePoint = lastDrawX == x && lastDrawY == y;
@@ -175,8 +252,31 @@ namespace MouseHole
                     g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
                     var bg = Color.Black;
+
                     g.Clear(bg);
-                    g.FillEllipse(Brushes.White, new RectangleF(x - w / 2, y - h / 2, w, h));
+
+                    var str = label1.Text;
+
+                    var sf = new StringFormat() { Alignment = StringAlignment.Center };
+
+                    var sz = g.MeasureString(str, this.Font);
+
+                    g.DrawString(str, this.Font, Brushes.Yellow, Screen.PrimaryScreen.WorkingArea.Width / 2, 1, sf);
+
+                    g.DrawLine(Pens.Yellow, 0, sz.Height + 5, Screen.PrimaryScreen.WorkingArea.Width, sz.Height + 5);
+
+                    if (rdRectangular.Checked)
+                    {
+                        g.FillRectangle(Brushes.White, new RectangleF(x - w / 2, y - h / 2, w, h));
+                    }
+                    else if (rdCircular.Checked)
+                    {
+                        g.FillEllipse(Brushes.White, new RectangleF(x - w / 2, y - h / 2, w, h));
+                    }
+                    else
+                    {
+                        throw new Exception("Shape type was not handled");
+                    }
                 }
 
                 this.TopMost = true;
@@ -240,9 +340,5 @@ namespace MouseHole
             controlBox.Hide();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            lblSize.Text = sizeBar.Value.ToString();
-        }
     }
 }
