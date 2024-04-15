@@ -37,6 +37,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmrCursorWatcher = new System.Windows.Forms.Timer(this.components);
             this.shortcutsMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +99,12 @@
             this.moveDownToolStripMenuItem.Text = "Move Down";
             this.moveDownToolStripMenuItem.Click += new System.EventHandler(this.ShortcutsToolStripMenuItem_Click);
             // 
+            // tmrCursorWatcher
+            // 
+            this.tmrCursorWatcher.Enabled = true;
+            this.tmrCursorWatcher.Interval = 1000;
+            this.tmrCursorWatcher.Tick += new System.EventHandler(this.tmrCursorWatcher_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +130,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem moveUpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveDownToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrCursorWatcher;
     }
 }
 

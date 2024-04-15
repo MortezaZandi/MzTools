@@ -15,6 +15,7 @@ namespace FastFolder
     {
         private ShortcutsContainer shortcutsContainer;
         private Button newButton;
+        private bool expanded;
 
         public Form1()
         {
@@ -42,6 +43,7 @@ namespace FastFolder
             ShowHideControls(false);
             this.BackColor = Color.Peru;
             this.ClientSize = new Size(this.ClientSize.Width, 2);
+            this.expanded = false;
         }
 
         private void Expand()
@@ -50,6 +52,7 @@ namespace FastFolder
             ResizeControls();
             this.BackColor = Color.Peru;
             this.ClientSize = this.ExpandedSize;
+            this.expanded = true;
         }
 
         private void ShowHideControls(bool show)
@@ -79,7 +82,7 @@ namespace FastFolder
 
             Colapse();
 
-            TopMost= true;
+            TopMost = true;
         }
 
 
@@ -230,7 +233,7 @@ namespace FastFolder
         {
             var btn = new Button()
             {
-                FlatStyle= FlatStyle.Flat,
+                FlatStyle = FlatStyle.Flat,
                 Text = item.Name,
                 Tag = item,
                 Font = DefaultShortcutControlFont,
@@ -243,7 +246,7 @@ namespace FastFolder
             btn.Click += (s, e) =>
             {
                 var b = (Button)s;
-                
+
                 OnShortcutClicked(b.Tag as Shortcut);
             };
 
@@ -334,6 +337,17 @@ namespace FastFolder
         private void flowLayoutPanel1_Click(object sender, EventArgs e)
         {
             Colapse();
+        }
+
+        private void tmrCursorWatcher_Tick(object sender, EventArgs e)
+        {
+            if (!this.ClientRectangle.Contains(this.PointToClient(Cursor.Position)))
+            {
+                if (this.expanded)
+                {
+                    Colapse();
+                }
+            }
         }
     }
 }
