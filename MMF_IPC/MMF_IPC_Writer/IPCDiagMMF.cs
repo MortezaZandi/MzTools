@@ -3,13 +3,13 @@ using System.IO;
 
 namespace MMF_IPC
 {
-    public class MMF
+    public class IPCDiagMMF
     {
         private MemoryMappedFile memoryMappedFile;
         private string memoryMappedFileName = "Logs";
         private long capacity = 1024 * 1024;
 
-        public MMF(string name, long capacity)
+        public IPCDiagMMF(string name, long capacity)
         {
             this.memoryMappedFileName = name;
             this.capacity = capacity;

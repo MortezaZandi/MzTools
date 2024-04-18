@@ -2,9 +2,9 @@
 
 namespace MMF_IPC
 {
-    public class MLogger
+    public class IPCDiagLogger
     {
-        private MMF mmf;
+        private IPCDiagMMF mmf;
         private EventWaitHandle writeDoneSignal;
         private EventWaitHandle logAvailableSignal;
         private string logName;
@@ -14,7 +14,7 @@ namespace MMF_IPC
 
         public event NewLogAvailableEventHandler OnNewLogAvailable;
 
-        public MLogger(string logName)
+        public IPCDiagLogger(string logName)
         {
             this.logName = logName;
             this.writeDoneSignal = new EventWaitHandle(false, EventResetMode.ManualReset, $"{this.logName}-WriteDone");
@@ -22,7 +22,7 @@ namespace MMF_IPC
 
         public void Create()
         {
-            mmf = new MMF(this.logName, 10);
+            mmf = new IPCDiagMMF(this.logName, 10);
 
             mmf.Create();
 
@@ -45,7 +45,7 @@ namespace MMF_IPC
                 throw new System.Exception($"Logger not available for {this.logName}");
             }
 
-            this.mmf = new MMF(this.logName, 10);
+            this.mmf = new IPCDiagMMF(this.logName, 10);
 
             this.mmf.Open();
 
@@ -59,7 +59,7 @@ namespace MMF_IPC
                         OnNewLogAvailable?.Invoke(ReadLastLog());
                     }
 
-                    Thread.Sleep(10);
+                    Thread.Sleep(100);
                 }
             });
 

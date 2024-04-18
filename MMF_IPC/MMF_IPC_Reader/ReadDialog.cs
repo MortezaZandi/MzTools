@@ -18,7 +18,7 @@ namespace MMF_IPC_Reader
 {
     public partial class ReadDialog : Form
     {
-        private OLTDiag diag = new OLTDiag();
+        private IPCDiag diag = new IPCDiag();
 
         public ReadDialog()
         {
@@ -44,17 +44,18 @@ namespace MMF_IPC_Reader
             {
                 case "Action":
 
-                    var actionName = elements[1];
+                    var action_details = elements[1].Split(':');
+                    var actionName = action_details[1];
 
                     switch (actionName)
                     {
-                        case "NM:a":
+                        case "a":
                             lblActionA.Text = reportText;
                             break;
-                        case "NM:b":
+                        case "b":
                             lblActionB.Text = reportText;
                             break;
-                        case "NM:c":
+                        case "c":
                             lblActionC.Text = reportText;
                             break;
                         default:
@@ -63,21 +64,28 @@ namespace MMF_IPC_Reader
                     break;
 
                 case "Status":
-                    var details= elements[1].Split(':');
-                    switch (details[0])
+                    var details = elements[1].Split(':');
+                    var statusName = details[1];
+                    details = elements[2].Split(':');
+                    var statusValue= details[1];
+                    
+                    switch (statusName)
                     {
                         case "LastAction":
                             lblLastAction.Text = reportText;
                             break;
 
                         case "OPT1":
-                            if (details[1] == "ON")
+
+                            lblOption1.Text = reportText;
+
+                            if (statusValue == "ON")
                             {
-                                this.BackColor = Color.Green;
+                                lblOption1.ForeColor = Color.Green;
                             }
                             else
                             {
-                                this.BackColor = Color.WhiteSmoke;
+                                lblOption1.ForeColor = Color.Red;
                             }
                             break;
 

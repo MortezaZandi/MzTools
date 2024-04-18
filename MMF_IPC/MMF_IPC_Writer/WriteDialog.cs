@@ -19,17 +19,19 @@ namespace MMF_IPC
 {
     public partial class WriteDialog : Form
     {
-        private readonly OLTDiag diag;
+        private readonly IPCDiag diag;
         public WriteDialog()
         {
             InitializeComponent();
 
-            this.diag = new OLTDiag();
+            this.diag = new IPCDiag();
             this.diag.RegisterAction("a", false);
             this.diag.RegisterAction("b", false);
             this.diag.RegisterAction("c", false);
             this.diag.RegisterStatus("LastAction", "NaN", false);
             this.diag.RegisterStatus("OPT1", "NaN", false);
+
+            this.diag.AutoReport = true;
         }
 
         private void btnActionA_Click(object sender, EventArgs e)
@@ -60,16 +62,32 @@ namespace MMF_IPC
             });
         }
 
-        private System.Windows.Forms.Timer tmrCPS = new System.Windows.Forms.Timer();
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            diag.SetStatus("OPT1", checkBox1.Checked ? "ON" : "OFF");
+        }
+
+        private void lnkOpenReader_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MMF_IPC_Reader.exe");
+            if (File.Exists(path))
+            {
+                Process.Start(path);
+            }
+            else
+            {
+                MessageBox.Show("Reader not found");
+            }
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             diag.DoReport();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            diag.SetStatus("OPT1", checkBox1.Checked ? "ON" : "OFF");
+            timer1.Enabled = checkBox2.Checked;
         }
     }
 }
