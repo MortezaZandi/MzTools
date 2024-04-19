@@ -219,7 +219,7 @@ namespace SideMenues
                 }
             }
 
-            if (!Directory.Exists(this.txtSelectedPath.Text))
+            if (!Directory.Exists(this.txtSelectedPath.Text) && !File.Exists(this.txtSelectedPath.Text))
             {
                 Error("Path not found");
 
