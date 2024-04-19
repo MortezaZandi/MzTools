@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -123,12 +124,19 @@ namespace SideMenues
             }
         }
 
+        private string SaveFilePath
+        {
+            get
+            {
+                return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data.dat");
+            }
+        }
 
         private void SaveData()
         {
             try
             {
-                XMLDataSerializer.Serialize(this.menueList, "Data.dat");
+                XMLDataSerializer.Serialize(this.menueList, SaveFilePath);
             }
             catch (Exception ex)
             {
@@ -140,7 +148,7 @@ namespace SideMenues
         {
             try
             {
-                this.menueList = XMLDataSerializer.Deserialize<MenueListInfo>("Data.dat");
+                this.menueList = XMLDataSerializer.Deserialize<MenueListInfo>(SaveFilePath);
             }
             catch (Exception ex)
             {
