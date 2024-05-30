@@ -67,7 +67,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Chocolate;
-            this.ClientSize = new System.Drawing.Size(355, 171);
+            this.ClientSize = new System.Drawing.Size(207, 10);
             this.ContextMenuStrip = this.FastFolderMenue;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -78,6 +78,7 @@
             this.Text = "Side Menue";
             this.TopMost = true;
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Click += new System.EventHandler(this.Form1_Click);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.FastFolderMenue.ResumeLayout(false);
             this.ResumeLayout(false);

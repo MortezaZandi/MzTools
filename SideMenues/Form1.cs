@@ -16,6 +16,7 @@ namespace SideMenues
     public partial class Form1 : Form
     {
         private MenueListInfo menueList;
+        private bool loadFinished;
 
         public Form1()
         {
@@ -24,6 +25,16 @@ namespace SideMenues
             this.moveItselfWithMouse();
 
             this.FastFolderMenue.ItemClicked += FastFolderMenue_ItemClicked;
+            this.LocationChanged += Form1_LocationChanged;
+        }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+            if (loadFinished)
+            {
+                menueList.Location = this.Location;
+                SaveData();
+            }
         }
 
         private void FastFolderMenue_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -49,6 +60,13 @@ namespace SideMenues
             LoadData();
 
             RefreshMenueItems();
+
+            if (this.menueList.Location != Point.Empty)
+            {
+                this.Location = this.menueList.Location;
+            }
+
+            loadFinished = true;
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,7 +142,7 @@ namespace SideMenues
             }
         }
 
-        private string SaveFilePath
+        private string DefaultSaveFilePath
         {
             get
             {
@@ -136,7 +154,7 @@ namespace SideMenues
         {
             try
             {
-                XMLDataSerializer.Serialize(this.menueList, SaveFilePath);
+                XMLDataSerializer.Serialize(this.menueList, DefaultSaveFilePath);
             }
             catch (Exception ex)
             {
@@ -148,7 +166,7 @@ namespace SideMenues
         {
             try
             {
-                this.menueList = XMLDataSerializer.Deserialize<MenueListInfo>(SaveFilePath);
+                this.menueList = XMLDataSerializer.Deserialize<MenueListInfo>(DefaultSaveFilePath);
             }
             catch (Exception ex)
             {
@@ -168,5 +186,32 @@ namespace SideMenues
                 FastFolderMenue.Show(PointToScreen(e.Location));
             }
         }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            //ToggleExpansion();
+
+        }
+
+        private void ToggleExpansion(bool? forceExpanded = null)
+        {
+            this.expanded = !this.expanded;
+
+            if (forceExpanded.HasValue)
+            {
+                this.expanded = forceExpanded.Value;
+            }
+
+            if (this.expanded)
+            {
+                this.Height = 200;
+            }
+            else
+            {
+                this.Height = 2;
+            }
+        }
+
+        bool expanded;
     }
 }

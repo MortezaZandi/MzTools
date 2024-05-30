@@ -28,6 +28,8 @@ namespace SideMenues
 
             return copy;
         }
+        
+        public Point Location { get; set; }
     }
 
     [Serializable]
