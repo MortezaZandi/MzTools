@@ -13,16 +13,26 @@ namespace WCFServer
 {
     public partial class Form1 : Form
     {
+        private readonly MZWCFService mZWCFService;
+
         public Form1()
         {
             InitializeComponent();
+            
+            this.mZWCFService = new MZWCFService();
+            this.mZWCFService.OnRequest += MZWCFService_OnRequest;
+        }
+
+        private void MZWCFService_OnRequest(string message)
+        {
+            listBox1.Items.Add(message);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                var serviceHost = new ServiceHost(new MZWCFService());
+                var serviceHost = new ServiceHost(this.mZWCFService);
                 serviceHost.Open();
 
                 MessageBox.Show("WCF Service has been started successfully.");

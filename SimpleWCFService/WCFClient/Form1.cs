@@ -27,16 +27,17 @@ namespace WCFClient
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/json");
-                request.AddParameter("application/json", "{\r\n    \"Name\": \"Morteza\"\r\n}", ParameterType.RequestBody);
+                var requestBodyJson = "{\r\n    \"Name\": \"" + textBox2.Text + "\"\r\n}";
+                request.AddParameter("application/json", requestBodyJson, ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
 
                 textBox1.Text = response.Content;
-
-                MessageBox.Show("Successfull");
+                textBox1.ForeColor = Color.Black;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                textBox1.Text = (ex.Message);
+                textBox1.ForeColor = Color.Red;
             }
         }
     }
