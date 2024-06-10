@@ -114,6 +114,7 @@
             this.ContextMenuStrip = this.shortcutsMenuStrip;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.Text = "Form1";
             this.shortcutsMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);

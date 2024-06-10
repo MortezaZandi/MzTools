@@ -348,6 +348,8 @@ namespace FastFolder
                     Colapse();
                 }
             }
+
+            this.TopMost = true;
         }
     }
 }
