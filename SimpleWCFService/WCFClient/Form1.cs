@@ -7,10 +7,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WCFServer;
 using WCFServer.Requests;
 
 namespace WCFClient
@@ -120,6 +122,5 @@ namespace WCFClient
                 }
             }
         }
-
     }
 }

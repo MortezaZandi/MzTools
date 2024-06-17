@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.ServiceModel;
@@ -18,7 +19,7 @@ namespace WCFServer
         public Form1()
         {
             InitializeComponent();
-            
+
             this.mZWCFService = new MZWCFService();
             this.mZWCFService.OnRequest += MZWCFService_OnRequest;
         }
@@ -41,6 +42,25 @@ namespace WCFServer
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private Process client;
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (client != null && !client.HasExited)
+            {
+                MessageBox.Show("Client already running.");
+                return;
+            }
+            
+            
+            var factory = new ChannelFactory<IMZWCFService>("http://ks40:2050/MZWCFService/");
+            factory.Credentials.UserName.UserName = "mz";
+            factory.Credentials.UserName.Password = "123";
+            var proxy = factory.CreateChannel();
+
+
+            client = Process.Start("WCFClient.exe");
         }
     }
 }
