@@ -68,6 +68,7 @@
     <Compile Include="WCFExtra\ServiceLoggingBehavior.cs" />
     <Compile Include="WCFExtra\LoggingOperationBehavior.cs" />
     <Compile Include="WCFExtra\LoggingOperationInvoker.cs" />
+    <Compile Include="WCFServiceManager.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
