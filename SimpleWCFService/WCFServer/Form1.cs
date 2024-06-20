@@ -53,13 +53,6 @@ namespace WCFServer
                 return;
             }
             
-            
-            var factory = new ChannelFactory<IMZWCFService>("http://ks40:2050/MZWCFService/");
-            factory.Credentials.UserName.UserName = "mz";
-            factory.Credentials.UserName.Password = "123";
-            var proxy = factory.CreateChannel();
-
-
             client = Process.Start("WCFClient.exe");
         }
     }
