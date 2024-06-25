@@ -37,7 +37,7 @@ namespace OLTMockServer.UI
                 vendor = value;
 
                 txtVendorID.DataBindings.Clear();
-                txtVendorID.DataBindings.Add(new Binding(nameof(RadTextBox.Text), vendor, nameof(Vendor.Code)));
+                txtVendorID.DataBindings.Add(new Binding(nameof(RadTextBox.Text), vendor, nameof(vendor.Code)));
 
                 txtVendorName.DataBindings.Clear();
                 txtVendorName.DataBindings.Add(new Binding(nameof(RadTextBox.Text), vendor, nameof(Vendor.Name)));

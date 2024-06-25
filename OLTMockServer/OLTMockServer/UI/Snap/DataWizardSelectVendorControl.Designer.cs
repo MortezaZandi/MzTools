@@ -33,13 +33,16 @@
             this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
-            this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnAddNewVendor = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.commandBarButton1 = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDelete = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDeleteAll = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarSeparator4 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.btnEditVendor = new Telerik.WinControls.UI.CommandBarButton();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).BeginInit();
@@ -61,7 +64,7 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomFiltering = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 69);
+            this.radGridView.Location = new System.Drawing.Point(0, 73);
             // 
             // 
             // 
@@ -81,7 +84,7 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(690, 271);
+            this.radGridView.Size = new System.Drawing.Size(690, 267);
             this.radGridView.TabIndex = 3;
             this.radGridView.ThemeName = "Windows7";
             // 
@@ -92,7 +95,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(690, 69);
+            this.radCommandBar1.Size = new System.Drawing.Size(690, 73);
             this.radCommandBar1.TabIndex = 4;
             this.radCommandBar1.Text = "radCommandBar1";
             // 
@@ -112,26 +115,10 @@
             this.commandBarSeparator2,
             this.btnDelete,
             this.commandBarSeparator3,
-            this.btnDeleteAll});
+            this.btnDeleteAll,
+            this.commandBarSeparator4,
+            this.btnEditVendor});
             this.commandBarStripElement1.Name = "commandBarStripElement1";
-            // 
-            // commandBarSeparator1
-            // 
-            this.commandBarSeparator1.DisplayName = "commandBarSeparator1";
-            this.commandBarSeparator1.Name = "commandBarSeparator1";
-            this.commandBarSeparator1.VisibleInOverflowMenu = false;
-            // 
-            // commandBarSeparator2
-            // 
-            this.commandBarSeparator2.DisplayName = "commandBarSeparator2";
-            this.commandBarSeparator2.Name = "commandBarSeparator2";
-            this.commandBarSeparator2.VisibleInOverflowMenu = false;
-            // 
-            // commandBarSeparator3
-            // 
-            this.commandBarSeparator3.DisplayName = "commandBarSeparator3";
-            this.commandBarSeparator3.Name = "commandBarSeparator3";
-            this.commandBarSeparator3.VisibleInOverflowMenu = false;
             // 
             // btnAddNewVendor
             // 
@@ -143,6 +130,12 @@
             this.btnAddNewVendor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddNewVendor.Click += new System.EventHandler(this.btnAddNewVendor_Click);
             // 
+            // commandBarSeparator1
+            // 
+            this.commandBarSeparator1.DisplayName = "commandBarSeparator1";
+            this.commandBarSeparator1.Name = "commandBarSeparator1";
+            this.commandBarSeparator1.VisibleInOverflowMenu = false;
+            // 
             // commandBarButton1
             // 
             this.commandBarButton1.DisplayName = "commandBarButton1";
@@ -152,6 +145,12 @@
             this.commandBarButton1.Text = "Import From OLT";
             this.commandBarButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // commandBarSeparator2
+            // 
+            this.commandBarSeparator2.DisplayName = "commandBarSeparator2";
+            this.commandBarSeparator2.Name = "commandBarSeparator2";
+            this.commandBarSeparator2.VisibleInOverflowMenu = false;
+            // 
             // btnDelete
             // 
             this.btnDelete.DisplayName = "commandBarButton2";
@@ -160,6 +159,13 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // commandBarSeparator3
+            // 
+            this.commandBarSeparator3.DisplayName = "commandBarSeparator3";
+            this.commandBarSeparator3.Name = "commandBarSeparator3";
+            this.commandBarSeparator3.VisibleInOverflowMenu = false;
             // 
             // btnDeleteAll
             // 
@@ -169,12 +175,30 @@
             this.btnDeleteAll.Name = "btnDeleteAll";
             this.btnDeleteAll.Text = "Delete All";
             this.btnDeleteAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // commandBarSeparator4
+            // 
+            this.commandBarSeparator4.DisplayName = "commandBarSeparator4";
+            this.commandBarSeparator4.Name = "commandBarSeparator4";
+            this.commandBarSeparator4.VisibleInOverflowMenu = false;
+            // 
+            // btnEditVendor
+            // 
+            this.btnEditVendor.DisplayName = "commandBarButton2";
+            this.btnEditVendor.DrawText = true;
+            this.btnEditVendor.Image = global::OLTMockServer.Properties.Resources.edit_blue_24px;
+            this.btnEditVendor.Name = "btnEditVendor";
+            this.btnEditVendor.Text = "Edit Vendor";
+            this.btnEditVendor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditVendor.Click += new System.EventHandler(this.btnEditVendor_Click);
             // 
             // DataWizardSelectVendorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Name = "DataWizardSelectVendorControl";
             this.Title = "Select Vendors";
+            ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
@@ -199,5 +223,7 @@
         private Telerik.WinControls.UI.CommandBarButton btnDelete;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator3;
         private Telerik.WinControls.UI.CommandBarButton btnDeleteAll;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator4;
+        private Telerik.WinControls.UI.CommandBarButton btnEditVendor;
     }
 }

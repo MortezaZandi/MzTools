@@ -17,6 +17,8 @@ namespace OLTMockServer.UI
     public partial class TestContainerControl : UserControl
     {
         private TestManager testManager;
+        public event EventHandler OnTestStatusChanged;
+
         public TestContainerControl(TestManager testManager)
         {
             InitializeComponent();
@@ -32,62 +34,53 @@ namespace OLTMockServer.UI
 
                 this.Invoke(m, new object[] { order, processingStep, orderActivity, exception });
             }
+            else if (processingStep == Definitions.OrderProcessingSteps.TestFinished)
+            {
+                OnTestStatusChanged?.Invoke(this, new EventArgs());
+            }
+            else if(processingStep == Definitions.OrderProcessingSteps.NewOrderCreated)
+            {
+                ResetDataSource();
+            }
             else
             {
-                bool processed = false;
                 foreach (var row in radGridView.Rows)
                 {
                     var rowOrder = row.DataBoundItem as Order;
 
-                    if (rowOrder == null)
-                    {
-                        ResetDataSource();
-
-                        var m = new Definitions.OrderProcessingFeedbackEventHandler(TestManager_OrderProcessingFeedback);
-
-                        this.Invoke(m, new object[] { order, processingStep, orderActivity });
-
-                        return;
-                    }
-
                     if (rowOrder.Code == order.Code)
                     {
-                        if (processed)
-                        {
-                            throw new ApplicationException($"More than one order found in the list with code '{order.Code}'");
-                        }
-
-                        processed = true;
-
                         switch (processingStep)
                         {
                             case Definitions.OrderProcessingSteps.OrderSelectedForProcessing:
                                 row.Cells[0].Style.BackColor = Color.Yellow;
                                 break;
 
-
                             case Definitions.OrderProcessingSteps.PerformingOrderAcivity:
                                 row.Cells[0].Style.BackColor = Color.Orange;
                                 break;
+
                             case Definitions.OrderProcessingSteps.OrderAcivityPerformed:
                                 row.Cells[0].Style.BackColor = Color.GreenYellow;
                                 break;
+
                             case Definitions.OrderProcessingSteps.OrderAcivityNotPerformed:
                                 row.Cells[0].Style.BackColor = Color.Pink;
                                 break;
-                            case Definitions.OrderProcessingSteps.NewOrderCreated:
-                                row.Cells[0].Style.BackColor = Color.LightGreen;
-                                row.Cells[0].Style.ForeColor = Color.Green;
 
+                            case Definitions.OrderProcessingSteps.NewOrderCreated:
+                                //Handled
                                 break;
+
                             case Definitions.OrderProcessingSteps.OrderProcessingError:
                                 row.Cells[0].Style.BackColor = Color.Pink;
                                 row.Cells[0].Style.ForeColor = Color.Red;
                                 break;
+
                             case Definitions.OrderProcessingSteps.TestFinished:
                                 row.Cells[0].Style.BackColor = Color.White;
-
                                 break;
+
                             case Definitions.OrderProcessingSteps.None:
                             default:
                                 break;

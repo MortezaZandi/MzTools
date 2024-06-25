@@ -86,7 +86,7 @@
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(110, 18);
             this.radLabel2.TabIndex = 32;
-            this.radLabel2.Text = "Vendor ID";
+            this.radLabel2.Text = "Vendor Code";
             this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.radLabel2.ThemeName = "Windows7";
             // 

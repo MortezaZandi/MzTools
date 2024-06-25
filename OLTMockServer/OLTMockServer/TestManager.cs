@@ -126,7 +126,7 @@ namespace OLTMockServer
 
                     foreach (var activity in nextOrder.Activities)
                     {
-                        if (!activity.IsDone)
+                        if (!activity.IsDone && activity.TryCount < 10)
                         {
                             OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.PerformingOrderAcivity, activity.ActivityType);
 

@@ -105,6 +105,12 @@ namespace OLTMockServer
             var orderControl = new UI.TestContainerControl(test);
             orderControl.Dock = DockStyle.Fill;
             newTabPage.Controls.Add(orderControl);
+            orderControl.OnTestStatusChanged += TestControl_OnTestStatusChanged;
+        }
+
+        private void TestControl_OnTestStatusChanged(object sender, EventArgs e)
+        {
+            UpdatePlayButtons();
         }
 
         private void btnCreateNewTest_Click(object sender, EventArgs e)

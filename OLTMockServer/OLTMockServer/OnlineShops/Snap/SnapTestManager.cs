@@ -104,18 +104,25 @@ namespace OLTMockServer
             dataDialog.ClientSize = new Size(700, 460);
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
-                selectedOrder.Vendor = orderControl.Order.Vendor;
-                selectedOrder.CreateDate = orderControl.Order.CreateDate;
-                selectedOrder.StatusDescription = orderControl.Order.StatusDescription;
-                selectedOrder.Customer = orderControl.Order.Customer;
-                selectedOrder.AckTime = orderControl.Order.AckTime;
-                selectedOrder.AcceptTime = orderControl.Order.AcceptTime;
-                selectedOrder.Code = orderControl.Order.Code;
-                selectedOrder.Items = orderControl.Order.Items;
-                selectedOrder.PickTime = orderControl.Order.PickTime;
-                selectedOrder.RejectTime = orderControl.Order.RejectTime;
-                selectedOrder.StatusCode = orderControl.Order.StatusCode;
-                selectedOrder.DeliveryMode = orderControl.Order.DeliveryMode;
+                var snapOrder = (SnapOrder)selectedOrder;
+                //selectedOrder.Vendor = orderControl.Order.Vendor;
+                //snapOrder.CreateDate = orderControl.Order.CreateDate;
+                //snapOrder.StatusDescription = orderControl.Order.StatusDescription;
+                //snapOrder.Customer = orderControl.Order.Customer;
+                //snapOrder.AckTime = orderControl.Order.AckTime;
+                //snapOrder.AcceptTime = orderControl.Order.AcceptTime;
+                //snapOrder.Code = orderControl.Order.Code;
+                //snapOrder.Items = orderControl.Order.Items;
+                //snapOrder.PickTime = orderControl.Order.PickTime;
+                //snapOrder.RejectTime = orderControl.Order.RejectTime;
+                //snapOrder.StatusCode = orderControl.Order.StatusCode;
+                //snapOrder.DeliveryMode = orderControl.Order.DeliveryMode;
+                //snapOrder.VendorCode= orderControl.Order.VendorCode;
+                //snapOrder.Vat= orderControl.Order.Vat;
+                //snapOrder.Tax= orderControl.Order.Tax;
+                //snapOrder.Price = orderControl.Order.Price;
+                //snapOrder.Comment = orderControl.Order.Comment;
+                Utils.SwapObjects(orderControl.Order, snapOrder, nameof(snapOrder.Items), nameof(snapOrder.Vendor), nameof(snapOrder.Customer), nameof(snapOrder.Activities));
 
                 //send order with edit status code
                 selectedOrder.AddActivity(Definitions.OrderActivityTypes.Edit, false);
@@ -129,6 +136,7 @@ namespace OLTMockServer
         protected override Vendor GetTargetVendorOfOrder(Order order)
         {
             var snapOrder = (SnapOrder)order;
+
             foreach (var vendor in TestProject.Vendors)
             {
                 if (vendor.Code == snapOrder.VendorCode)

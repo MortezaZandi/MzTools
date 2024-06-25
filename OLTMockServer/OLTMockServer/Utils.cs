@@ -65,5 +65,28 @@ namespace OLTMockServer
             RadMessageBox.ThemeName = "Windows7";
             return RadMessageBox.Show(null, message, "OLT-MockServer", MessageBoxButtons.YesNoCancel, RadMessageIcon.Question);
         }
+
+        public static TDest SwapObjects<TSource, TDest>(TSource source, TDest dest, params string[] skipProps)
+        {
+            var sourceProps = source.GetType().GetProperties();
+            var destProps = dest.GetType().GetProperties();
+
+            foreach (var pSource in sourceProps)
+            {
+                if (!skipProps.Contains(pSource.Name) && pSource.SetMethod != null)
+                {
+                    foreach (var pDest in destProps)
+                    {
+                        if (pDest.Name == pSource.Name && pDest.PropertyType == pSource.PropertyType)
+                        {
+                            pDest.SetValue(dest, pSource.GetValue(source, null));
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return dest;
+        }
     }
 }
