@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OLTMockServer.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace OLTMockServer
 {
     public class Definitions
     {
+        public delegate void OrderProcessingFeedbackEventHandler(Order order, OrderProcessingSteps processingStep, OrderActivityTypes orderActivity = OrderActivityTypes.None, Exception exception = null);
+
         public enum APINames
         {
             NewOrder,
@@ -49,5 +52,24 @@ namespace OLTMockServer
             RandomDecimal,
         }
 
+        public enum OrderActivityTypes
+        {
+            None = 0,
+            Send = 1,
+            Edit = 2,
+            Reject = 3,
+        }
+
+        public enum OrderProcessingSteps
+        {
+            None = 0,
+            PerformingOrderAcivity = 1,
+            OrderAcivityPerformed = 2,
+            OrderAcivityNotPerformed = 3,
+            NewOrderCreated = 4,
+            OrderSelectedForProcessing = 5,
+            OrderProcessingError = 6,
+            TestFinished = 7,
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace OLTMockServer
                     writer.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

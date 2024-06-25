@@ -24,5 +24,6 @@ namespace OLTMockServer.DataStructures
         public int MaxOrderCount { get; set; }
 
         public bool UseRandomDelay { get; set; }
+        public bool GenerateOrdersAutomatically { get; set; }
     }
 }

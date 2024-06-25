@@ -132,7 +132,8 @@
     <Compile Include="MockServers\MockServer.cs" />
     <Compile Include="DataStructures\MockServerServiceInfo.cs" />
     <Compile Include="MockServers\SnapMockServer.cs" />
-    <Compile Include="OrderFactory.cs" />
+    <Compile Include="DataStructures\OrderActivity.cs" />
+    <Compile Include="DataStructures\OrderFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="APIUtil.cs" />

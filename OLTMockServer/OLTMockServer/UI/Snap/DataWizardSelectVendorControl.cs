@@ -44,7 +44,7 @@ namespace OLTMockServer.UI
             radGridView.DataSource = null;
             radGridView.DataSource = vendors;
 
-            SetColWidth(nameof(Vendor.Id), 100);
+            SetColWidth(nameof(Vendor.Code), 100);
             SetColWidth(nameof(Vendor.Name), 150);
             SetColWidth(nameof(Vendor.BaseUrl), 200);
             SetColWidth(nameof(Vendor.IsActive), 50);

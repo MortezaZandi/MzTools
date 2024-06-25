@@ -32,7 +32,7 @@ namespace OLTMockServer
         private void Test()
         {
             var vendor = new Vendor() { Name = "Mihan-srv1001", BaseUrl = "http://ks40/mzwcfService/" };
-            var order = servers[0].CreateNewOrder(new OrderPattern());
+            var order = servers[0].CreateNewOrder(new OrderPattern(), true);
             servers[0].SendOrder(order, vendor);
         }
 

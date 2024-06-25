@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace OLTMockServer.DataStructures
             this.TestOptions = new TestOptions();
             this.OrderPattern = new OrderPattern();
             this.CreateDate = DateTime.Now;
+            TempFilePath = Path.GetTempFileName();
         }
 
         public Guid ID { get; set; }
@@ -40,6 +42,7 @@ namespace OLTMockServer.DataStructures
             }
         }
         public string SaveFilePath { get; set; }
+        public string TempFilePath { get; set; }
     }
 }
 

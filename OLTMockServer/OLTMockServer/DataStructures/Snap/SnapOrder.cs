@@ -40,5 +40,13 @@ namespace OLTMockServer.DataStructures.Snap
         public string OrderPaymentTypeCode { get; set; } //	> "ONLINE",
         public int VendorMaxPreparationTime { get; set; } //	> "15",
 
+        public override Order LightClone()
+        {
+            var clone = this.Clone() as SnapOrder;
+
+            clone.Activities.Clear();
+
+            return clone;
+        }
     }
 }

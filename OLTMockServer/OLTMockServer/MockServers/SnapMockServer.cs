@@ -96,6 +96,37 @@ namespace OLTMockServer.MockServers
                     ExpiresIn = 60,
                 };
         }
+
+        protected override void AddDefaultActivitiesToNewOrder(Order newOrder)
+        {
+            newOrder.AddActivity(Definitions.OrderActivityTypes.Send, false);
+        }
+
+        protected override object GetSendModel(Order order)
+        {
+            SnapOrder snapOrder = (SnapOrder)order;
+
+            //create real snap-order-model
+            var newOrderModel = snapOrder;
+
+            return newOrderModel;
+        }
+
+        protected override string GetActivityStatusCode(Definitions.OrderActivityTypes activityType)
+        {
+            switch (activityType)
+            {
+                case Definitions.OrderActivityTypes.Send:
+                    return "56";
+                case Definitions.OrderActivityTypes.Edit:
+                    return "54";
+                case Definitions.OrderActivityTypes.Reject:
+                    return "714";
+                case Definitions.OrderActivityTypes.None:
+                default:
+                    throw new ApplicationException($"No status code provided for activity '{activityType}' in {this.GetType().Name}.");
+            }
+        }
     }
 
 

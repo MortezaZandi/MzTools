@@ -75,7 +75,7 @@ namespace OLTMockServer
             var orderControl = new SnapOrderDetailsControl(null, this);
             var dataDialog = new DataDialog(orderControl);
             orderControl.ParentDialog = dataDialog;
-            orderControl.Order = (SnapOrder)this.Server.CreateNewOrder(this.TestProject.OrderPattern);
+            orderControl.Order = (SnapOrder)this.Server.CreateNewOrder(this.TestProject.OrderPattern, false);
 
             bool saveOrderGeneratorData = true;
             if (saveOrderGeneratorData)
@@ -100,7 +100,7 @@ namespace OLTMockServer
             var orderControl = new SnapOrderDetailsControl(null, this);
             var dataDialog = new DataDialog(orderControl);
             orderControl.ParentDialog = dataDialog;
-            orderControl.Order = (SnapOrder)selectedOrder.Clone();
+            orderControl.Order = (SnapOrder)selectedOrder.LightClone();
             dataDialog.ClientSize = new Size(700, 460);
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
@@ -118,12 +118,26 @@ namespace OLTMockServer
                 selectedOrder.DeliveryMode = orderControl.Order.DeliveryMode;
 
                 //send order with edit status code
-                //...
+                selectedOrder.AddActivity(Definitions.OrderActivityTypes.Edit, false);
 
                 return selectedOrder;
             }
 
             return null;
+        }
+
+        protected override Vendor GetTargetVendorOfOrder(Order order)
+        {
+            var snapOrder = (SnapOrder)order;
+            foreach (var vendor in TestProject.Vendors)
+            {
+                if (vendor.Code == snapOrder.VendorCode)
+                {
+                    return vendor;
+                }
+            }
+
+            throw new ApplicationException($"Vendor '{snapOrder.VendorCode}' not found in the list of vendors. Go to test options and define this vendor.");
         }
     }
 }

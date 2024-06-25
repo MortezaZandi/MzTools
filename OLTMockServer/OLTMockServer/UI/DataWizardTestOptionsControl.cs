@@ -42,12 +42,15 @@ namespace OLTMockServer.UI
 
                 txtDelay.DataBindings.Clear();
                 txtDelay.DataBindings.Add(new Binding(nameof(RadTextBox.Text), options, nameof(TestOptions.DelayBeforeSendNextOrder)));
-                
+
                 txtMaxOrderCount.DataBindings.Clear();
                 txtMaxOrderCount.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), options, nameof(TestOptions.MaxOrderCount)));
-                
+
                 chkUseRandomDelay.DataBindings.Clear();
                 chkUseRandomDelay.DataBindings.Add(new Binding(nameof(RadCheckBox.Checked), options, nameof(TestOptions.UseRandomDelay)));
+
+                chkAutoGenerateOrder.DataBindings.Clear();
+                chkAutoGenerateOrder.DataBindings.Add(new Binding(nameof(RadCheckBox.Checked), options, nameof(TestOptions.GenerateOrdersAutomatically)));
             }
         }
 
@@ -64,7 +67,25 @@ namespace OLTMockServer.UI
         {
             if (uIOperation.Id == finishOperation.Id)
             {
-                //if ok
+                if (string.IsNullOrEmpty(txtTestName.Text))
+                {
+                    //
+                }
+
+                int delayAmount = 0;
+                if (int.TryParse(txtDelay.Text, out delayAmount))
+                {
+                    if (delayAmount < 1)
+                    {
+                        Utils.ShowError("Sepecified delay amount is not valid.");
+                        return;
+                    }
+                }
+                else
+                {
+                    Utils.ShowError("Sepecified delay amount is not valid.");
+                }
+
                 wizard.OK();
             }
 
@@ -78,6 +99,11 @@ namespace OLTMockServer.UI
             {
                 wizard.Cancel();
             }
+        }
+
+        private void chkAutoGenerateOrder_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+            txtMaxOrderCount.Enabled = chkAutoGenerateOrder.Checked;
         }
     }
 }

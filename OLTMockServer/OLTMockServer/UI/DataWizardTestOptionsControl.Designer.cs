@@ -35,6 +35,8 @@
             this.txtTestName = new Telerik.WinControls.UI.RadTextBoxControl();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.txtMaxOrderCount = new Telerik.WinControls.UI.RadSpinEditor();
+            this.chkAutoGenerateOrder = new Telerik.WinControls.UI.RadCheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).BeginInit();
@@ -45,10 +47,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTestName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxOrderCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAutoGenerateOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // radPanel2
             // 
+            this.radPanel2.Controls.Add(this.chkAutoGenerateOrder);
             this.radPanel2.Controls.Add(this.txtMaxOrderCount);
             this.radPanel2.Controls.Add(this.radLabel3);
             this.radPanel2.Controls.Add(this.radLabel2);
@@ -64,7 +68,7 @@
             // 
             // chkUseRandomDelay
             // 
-            this.chkUseRandomDelay.Location = new System.Drawing.Point(35, 125);
+            this.chkUseRandomDelay.Location = new System.Drawing.Point(35, 168);
             this.chkUseRandomDelay.Name = "chkUseRandomDelay";
             this.chkUseRandomDelay.Size = new System.Drawing.Size(220, 16);
             this.chkUseRandomDelay.TabIndex = 0;
@@ -132,11 +136,22 @@
             this.txtMaxOrderCount.TabStop = false;
             this.txtMaxOrderCount.ThemeName = "Windows7";
             // 
+            // chkAutoGenerateOrder
+            // 
+            this.chkAutoGenerateOrder.Location = new System.Drawing.Point(35, 132);
+            this.chkAutoGenerateOrder.Name = "chkAutoGenerateOrder";
+            this.chkAutoGenerateOrder.Size = new System.Drawing.Size(215, 16);
+            this.chkAutoGenerateOrder.TabIndex = 6;
+            this.chkAutoGenerateOrder.Text = "Generate orders by using order pattern";
+            this.chkAutoGenerateOrder.ThemeName = "Windows7";
+            this.chkAutoGenerateOrder.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkAutoGenerateOrder_ToggleStateChanged);
+            // 
             // DataWizardTestOptionsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Name = "DataWizardTestOptionsControl";
             this.Title = "Select Options";
+            ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
@@ -148,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTestName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxOrderCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAutoGenerateOrder)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -161,5 +177,6 @@
         private Telerik.WinControls.UI.RadTextBoxControl txtDelay;
         private Telerik.WinControls.UI.RadSpinEditor txtMaxOrderCount;
         private Telerik.WinControls.UI.RadLabel radLabel3;
+        private Telerik.WinControls.UI.RadCheckBox chkAutoGenerateOrder;
     }
 }
