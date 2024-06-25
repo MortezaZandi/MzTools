@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideMenues", "SideMenues.csproj", "{63A7A824-32A1-4F4D-9CE8-AD384B5D8E55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideToolbars", "..\SideToolbars\SideToolbars.csproj", "{896A71DC-8A59-44A4-8E78-ED6AA5654148}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{63A7A824-32A1-4F4D-9CE8-AD384B5D8E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A7A824-32A1-4F4D-9CE8-AD384B5D8E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A7A824-32A1-4F4D-9CE8-AD384B5D8E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896A71DC-8A59-44A4-8E78-ED6AA5654148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896A71DC-8A59-44A4-8E78-ED6AA5654148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896A71DC-8A59-44A4-8E78-ED6AA5654148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896A71DC-8A59-44A4-8E78-ED6AA5654148}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

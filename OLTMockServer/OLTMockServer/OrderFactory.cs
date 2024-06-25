@@ -1,0 +1,318 @@
+﻿using OLTMockServer.DataStructures;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OLTMockServer
+{
+    public abstract class OrderFactory
+    {
+        protected readonly Random random;
+
+        public OrderFactory()
+        {
+            random = new Random();
+        }
+
+        public abstract Order CreateNewOrder(OrderPattern pattern);
+
+        protected object CreatePropertyValue(OrderPatternItem item, OrderPattern pattern, PropertyInfo orderProp, out bool isNew)
+        {
+            object value = null;
+            isNew = true;
+
+            switch (item.GenerateType)
+            {
+                case Definitions.PropertyValueGeneratorTypes.FixedValue:
+                    value = item.Value;
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.IntegerIncremental:
+                    int min0 = 0;
+                    int max0 = 1000000;
+                    if (item.MinValue != null)
+                    {
+                        min0 = int.Parse(item.MinValue.ToString());
+                    }
+
+                    if (item.MaxValue != null)
+                    {
+                        max0 = int.Parse(item.MaxValue.ToString());
+                    }
+
+                    if (pattern.lastInt > min0 && pattern.lastInt <= max0)
+                    {
+                        value = ++pattern.lastInt;
+                    }
+                    else
+                    {
+                        pattern.lastInt = min0;
+                        value = min0;
+                    }
+
+                    if (pattern.ints.Contains((int)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.ints.Add((int)value);
+                    }
+
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.DecimalIncremental:
+                    decimal min00 = 0;
+                    decimal max00 = 1000000;
+                    if (item.MinValue != null)
+                    {
+                        min00 = decimal.Parse(item.MinValue.ToString());
+                    }
+
+                    if (item.MaxValue != null)
+                    {
+                        max00 = decimal.Parse(item.MaxValue.ToString());
+                    }
+                    if (pattern.lastDecimal > min00 && pattern.lastInt <= max00)
+                    {
+                        value = ++pattern.lastDecimal;
+                    }
+                    else
+                    {
+                        pattern.lastDecimal = min00;
+                        value = min00;
+                    }
+
+                    if (pattern.decimals.Contains((decimal)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.decimals.Add((decimal)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.DateIncrementalMinute:
+
+                    if (pattern.lastDate == DateTime.MinValue)
+                    {
+                        pattern.lastDate = DateTime.Today;
+                    }
+
+                    pattern.lastDate = pattern.lastDate.AddMinutes(1);
+                    value = pattern.lastDate;
+
+                    if (pattern.dates.Contains((DateTime)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.dates.Add((DateTime)value);
+                    }
+
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.DateIncrementalHour:
+
+                    if (pattern.lastDate == DateTime.MinValue)
+                    {
+                        pattern.lastDate = DateTime.Today;
+                    }
+                    pattern.lastDate = pattern.lastDate.AddHours(1);
+                    value = pattern.lastDate;
+                    if (pattern.dates.Contains((DateTime)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.dates.Add((DateTime)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.DateIncrementalDay:
+
+                    if (pattern.lastDate == DateTime.MinValue)
+                    {
+                        pattern.lastDate = DateTime.Today;
+                    }
+                    pattern.lastDate = pattern.lastDate.AddDays(1);
+                    value = pattern.lastDate;
+                    if (pattern.dates.Contains((DateTime)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.dates.Add((DateTime)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.NowDate:
+                    value = DateTime.Now;
+                    if (pattern.dates.Contains((DateTime)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.dates.Add((DateTime)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.TodayDate:
+                    value = DateTime.Today;
+                    if (pattern.dates.Contains((DateTime)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.dates.Add((DateTime)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomDate:
+                    var rndMonth = random.Next(1, 12);
+                    var rndDay = random.Next(1, 29);
+                    var rndHour = random.Next(1, 23);
+                    var rndMinute = random.Next(1, 59);
+                    var rndSecond = random.Next(1, 59);
+                    value = new DateTime(DateTime.Now.Year, rndMonth, rndDay, rndHour, rndMinute, rndSecond);
+                    if (pattern.dates.Contains((DateTime)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.dates.Add((DateTime)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomStringName:
+                    var name1 = Utils.GenerateName();
+                    value = $"{name1.Item1} {name1.Item2}";
+
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomStringFName:
+                    var name2 = Utils.GenerateName();
+                    value = name2.Item1;
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomStringLName:
+                    var name3 = Utils.GenerateName();
+                    value = name3.Item2;
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomIntegerValue:
+                    int min = 0;
+                    int max = 1000000;
+                    if (item.MinValue != null)
+                    {
+                        min = int.Parse(item.MinValue.ToString());
+                    }
+
+                    if (item.MaxValue != null)
+                    {
+                        max = int.Parse(item.MaxValue.ToString());
+                    }
+                    value = random.Next(min, max);
+
+                    if (pattern.ints.Contains((int)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.ints.Add((int)value);
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomStringCode:
+                    value = Utils.GenerateCode(10);
+                    if (pattern.codes.Contains(value.ToString()))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.codes.Add(value.ToString());
+                    }
+
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomStringCode8:
+                    value = Utils.GenerateCode(8);
+                    if (pattern.codes8.Contains(value.ToString()))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.codes8.Add(value.ToString());
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomStringCode6:
+                    value = Utils.GenerateCode(6);
+                    if (pattern.codes6.Contains(value.ToString()))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.codes6.Add(value.ToString());
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomFixedList:
+                    if (item.Value != null)
+                    {
+                        var list = item.Value.Split(',');
+                        var index = random.Next(0, list.Length - 1);
+                        value = list[index];
+                    }
+                    break;
+
+                case Definitions.PropertyValueGeneratorTypes.RandomDecimal:
+                    decimal min2 = 0;
+                    decimal max2 = 1000000;
+                    if (item.MinValue != null)
+                    {
+                        min2 = decimal.Parse(item.MinValue.ToString());
+                    }
+
+                    if (item.MaxValue != null)
+                    {
+                        max2 = decimal.Parse(item.MaxValue.ToString());
+                    }
+
+                    int number = random.Next((int)min2, (int)max2);
+                    double points = number / Math.Pow(10, Math.Floor(Math.Log10(number)) + 1);
+                    value = decimal.Parse((number + (decimal)points).ToString());
+
+                    if (pattern.decimals.Contains((decimal)value))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.decimals.Add((decimal)value);
+                    }
+
+                    break;
+                default:
+                    throw new ApplicationException($"Gen type '{item.GenerateType}' was not handled in {this.GetType().Name}.");
+            }
+
+            return value;
+        }
+
+    }
+}

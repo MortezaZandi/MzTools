@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA222423-FB2B-42BF-BE56-7B178AA30BF6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OLTMockServer</RootNamespace>
+    <AssemblyName>OLTMockServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Telerik.WinControls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Office2010Black, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Telerik.WinControls.Themes.Office2010Black.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Telerik.WinControls.Themes.VisualStudio2012Dark.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Windows7, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Telerik.WinControls.Themes.Windows7.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Develope\Build-MainPLU\Common\lib\TelerikCommon.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppManager.cs" />
+    <Compile Include="DataStructures\Customer.cs" />
+    <Compile Include="DataStructures\Digi\DigiOrder.cs" />
+    <Compile Include="DataStructures\Item.cs" />
+    <Compile Include="DataStructures\Order.cs" />
+    <Compile Include="DataStructures\OrderPattern.cs" />
+    <Compile Include="DataStructures\OrderPatternItem.cs" />
+    <Compile Include="DataStructures\Snap\ApiModels\AcceptModel.cs" />
+    <Compile Include="DataStructures\Snap\ApiModels\RejectModel.cs" />
+    <Compile Include="DataStructures\Snap\ApiModels\TokenModel.cs" />
+    <Compile Include="DataStructures\Snap\SnapItem.cs" />
+    <Compile Include="DataStructures\Snap\SnapOrder.cs" />
+    <Compile Include="DataStructures\Snap\SnapTestProject.cs" />
+    <Compile Include="DataStructures\TestOptions.cs" />
+    <Compile Include="DataStructures\TestProject.cs" />
+    <Compile Include="DataStructures\UIOperation.cs" />
+    <Compile Include="DataStructures\Vendor.cs" />
+    <Compile Include="Definitions.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="MainDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainDialog.Designer.cs">
+      <DependentUpon>MainDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MockServers\DigiMockServer.cs" />
+    <Compile Include="MockServers\MockServer.cs" />
+    <Compile Include="DataStructures\MockServerServiceInfo.cs" />
+    <Compile Include="MockServers\SnapMockServer.cs" />
+    <Compile Include="OrderFactory.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="APIUtil.cs" />
+    <Compile Include="OnlineShops\Snap\SnapOrderFactory.cs" />
+    <Compile Include="OnlineShops\Snap\SnapTestManager.cs" />
+    <Compile Include="UI\ItemSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ItemSelectControl.Designer.cs">
+      <DependentUpon>ItemSelectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IUIFactory.cs" />
+    <Compile Include="DataStructures\PropertyItem.cs" />
+    <Compile Include="UI\PropertyListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PropertyListControl.Designer.cs">
+      <DependentUpon>PropertyListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Snap\CustomerDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\CustomerDetailsControl.Designer.cs">
+      <DependentUpon>CustomerDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DataDialog.Designer.cs">
+      <DependentUpon>DataDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataWizardBaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DataWizardBaseControl.Designer.cs">
+      <DependentUpon>DataWizardBaseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataWizardDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DataWizardDialog.Designer.cs">
+      <DependentUpon>DataWizardDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectCustomerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectCustomerControl.Designer.cs">
+      <DependentUpon>DataWizardSelectCustomerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectItemControl.Designer.cs">
+      <DependentUpon>DataWizardSelectItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectOrderPatternControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectOrderPatternControl.Designer.cs">
+      <DependentUpon>DataWizardSelectOrderPatternControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectVendorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\DataWizardSelectVendorControl.Designer.cs">
+      <DependentUpon>DataWizardSelectVendorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataWizardTestOptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DataWizardTestOptionsControl.Designer.cs">
+      <DependentUpon>DataWizardTestOptionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IConfirmableDialog.cs" />
+    <Compile Include="UI\IDataControl.cs" />
+    <Compile Include="UI\Snap\ItemDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\ItemDetailsControl.Designer.cs">
+      <DependentUpon>ItemDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IWizardDialog.cs" />
+    <Compile Include="UI\Snap\SnapOrderDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\SnapOrderDetailsControl.Designer.cs">
+      <DependentUpon>SnapOrderDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TestContainerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TestContainerControl.Designer.cs">
+      <DependentUpon>TestContainerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TestTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\VendorDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Snap\VendorDetailsControl.Designer.cs">
+      <DependentUpon>VendorDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="WCFServiceManager.cs" />
+    <Compile Include="TestManager.cs" />
+    <Compile Include="XMLDataSerializer.cs" />
+    <EmbeddedResource Include="MainDialog.resx">
+      <DependentUpon>MainDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\ItemSelectControl.resx">
+      <DependentUpon>ItemSelectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PropertyListControl.resx">
+      <DependentUpon>PropertyListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\CustomerDetailsControl.resx">
+      <DependentUpon>CustomerDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataDialog.resx">
+      <DependentUpon>DataDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataWizardBaseControl.resx">
+      <DependentUpon>DataWizardBaseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataWizardDialog.resx">
+      <DependentUpon>DataWizardDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\DataWizardSelectCustomerControl.resx">
+      <DependentUpon>DataWizardSelectCustomerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\DataWizardSelectItemControl.resx">
+      <DependentUpon>DataWizardSelectItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\DataWizardSelectOrderPatternControl.resx">
+      <DependentUpon>DataWizardSelectOrderPatternControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\DataWizardSelectVendorControl.resx">
+      <DependentUpon>DataWizardSelectVendorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataWizardTestOptionsControl.resx">
+      <DependentUpon>DataWizardTestOptionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\ItemDetailsControl.resx">
+      <DependentUpon>ItemDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\SnapOrderDetailsControl.resx">
+      <DependentUpon>SnapOrderDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TestContainerControl.resx">
+      <DependentUpon>TestContainerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Snap\VendorDetailsControl.resx">
+      <DependentUpon>VendorDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_select_24px.png" />
+    <None Include="Names.txt" />
+    <Content Include="Notes.txt" />
+    <None Include="Resources\edit_blue_24px.png" />
+    <None Include="Resources\clean_24px.png" />
+    <None Include="Resources\delete_24px.png" />
+    <None Include="Resources\import_24px.png" />
+    <None Include="Resources\add_24px.png" />
+    <None Include="Resources\settings_24px.png" />
+    <None Include="Resources\edit_24px.png" />
+    <None Include="Resources\edit_50px.png" />
+    <None Include="Resources\reject_24px.png" />
+    <None Include="Resources\save_48px.png" />
+    <None Include="Resources\open_48px.png" />
+    <None Include="Resources\stop_24px.png" />
+    <None Include="Resources\pause_24px.png" />
+    <None Include="Resources\play_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
