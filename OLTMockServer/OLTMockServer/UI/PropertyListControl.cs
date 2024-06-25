@@ -18,6 +18,8 @@ namespace OLTMockServer.UI
         private readonly UIOperation cancelOperation = new UIOperation("Cancel");
         private IConfirmableDialog parentDialog;
         private Type objectType;
+        private bool colsSet;
+
         public PropertyListControl(IConfirmableDialog parent) : base()
         {
             this.parentDialog = parent;
@@ -28,8 +30,13 @@ namespace OLTMockServer.UI
 
         private void RadGridView_Invalidated(object sender, InvalidateEventArgs e)
         {
-            SetColWidth(nameof(PropertyItem.PropertyName), 200);
-            SetColWidth(nameof(PropertyItem.PropertyType), 200);
+            if (!colsSet && radGridView.Columns.Count >= 2)
+            {
+                SetColWidth(nameof(PropertyItem.PropertyName), 200);
+                SetColWidth(nameof(PropertyItem.PropertyType), 200);
+                //radGridView.Columns[1].AllowFiltering = false;
+                colsSet = true;
+            }
         }
 
         public PropertyItem SelectedItem
