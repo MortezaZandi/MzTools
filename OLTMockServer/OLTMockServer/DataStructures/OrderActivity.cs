@@ -56,5 +56,10 @@ namespace OLTMockServer
                 return ProcessDate != DateTime.MinValue;
             }
         }
+
+        public override string ToString()
+        {
+            return $"{this.ActivityType}-{this.TryCount}/10 ({(IsDone ? "Done" : (TryCount>0?  "Failed": "New"))})";
+        }
     }
 }

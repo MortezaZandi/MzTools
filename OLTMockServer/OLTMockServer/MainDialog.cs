@@ -83,9 +83,9 @@ namespace OLTMockServer
 
             btnStopTest.Enabled = stopEnabled;
 
-            this.lblPlayStatus.Text = $"{activeTest.TestPlayStatuse}";
+            this.lblPlayStatus.Text = $"{activeTest?.TestPlayStatuse}";
 
-            this.playProgressbar.Parent.Visible = activeTest.TestPlayStatuse != Definitions.TestPlayStatuses.Stoped;
+            this.playProgressbar.Parent.Visible = activeTest?.TestPlayStatuse != Definitions.TestPlayStatuses.Stoped;
         }
 
         private void MainDialog_FormClosing(object sender, FormClosingEventArgs e)

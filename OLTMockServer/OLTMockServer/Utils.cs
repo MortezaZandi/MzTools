@@ -73,11 +73,14 @@ namespace OLTMockServer
 
             foreach (var pSource in sourceProps)
             {
-                if (!skipProps.Contains(pSource.Name) && pSource.SetMethod != null)
+                if (!skipProps.Contains(pSource.Name))
                 {
                     foreach (var pDest in destProps)
                     {
-                        if (pDest.Name == pSource.Name && pDest.PropertyType == pSource.PropertyType)
+                        if (
+                            pDest.Name == pSource.Name 
+                            && pDest.PropertyType == pSource.PropertyType 
+                            && pSource.SetMethod != null)
                         {
                             pDest.SetValue(dest, pSource.GetValue(source, null));
                             break;

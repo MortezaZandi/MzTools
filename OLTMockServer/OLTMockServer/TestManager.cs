@@ -118,36 +118,41 @@ namespace OLTMockServer
             Order nextOrder = null;
             while (continueExecution)
             {
+                bool projectChanged = false;
                 try
                 {
                     nextOrder = testProject.Orders[lastProcessingOrderIndex];
 
-                    OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderSelectedForProcessing);
-
-                    foreach (var activity in nextOrder.Activities)
+                    if (nextOrder.HasNotPrcessedActivity)
                     {
-                        if (!activity.IsDone && activity.TryCount < 10)
+                        OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderSelectedForProcessing);
+
+                        foreach (var activity in nextOrder.Activities)
                         {
-                            OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.PerformingOrderAcivity, activity.ActivityType);
-
-                            Vendor targetVendor = GetTargetVendorOfOrder(nextOrder);
-                            activity.TryCount++;
-                            if (Server.PerformOrderActivity(nextOrder, targetVendor, activity))
+                            if (!activity.IsDone && activity.TryCount < 10)
                             {
-                                activity.ProcessDate = DateTime.Now;
-                                OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityPerformed, activity.ActivityType);
+                                OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.PerformingOrderAcivity, activity.ActivityType);
+
+                                Vendor targetVendor = GetTargetVendorOfOrder(nextOrder);
+                                activity.TryCount++;
+                                projectChanged = true;
+                                if (Server.PerformOrderActivity(nextOrder, targetVendor, activity))
+                                {
+                                    activity.ProcessDate = DateTime.Now;
+                                    OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityPerformed, activity.ActivityType);
+                                }
+                                else
+                                {
+                                    OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityNotPerformed, activity.ActivityType);
+                                }
+
+                                Thread.Sleep(testProject.TestOptions.DelayBeforeSendNextOrder);
                             }
-                            else
+
+                            if (cancellationToken.IsCancellationRequested)
                             {
-                                OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityNotPerformed, activity.ActivityType);
+                                break;
                             }
-
-                            Thread.Sleep(testProject.TestOptions.DelayBeforeSendNextOrder);
-                        }
-
-                        if (cancellationToken.IsCancellationRequested)
-                        {
-                            break;
                         }
                     }
 
@@ -167,23 +172,29 @@ namespace OLTMockServer
                         {
                             var newOrder = Server.CreateNewOrder(testProject.OrderPattern, true);
                             testProject.Orders.Add(newOrder);
+                            projectChanged = true;
                             OrderProcessingFeedback?.Invoke(newOrder, Definitions.OrderProcessingSteps.NewOrderCreated);
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                        var notProcessedOrderExists = testProject.Orders.Any(o => o.HasNotPrcessedActivity);
+
+                        continueExecution = notProcessedOrderExists;
+
+                        if (lastProcessingOrderIndex >= testProject.Orders.Count)
+                        {
+                            lastProcessingOrderIndex = 0;
+                        }
+
+                        if (cancellationToken.IsCancellationRequested)
+                        {
+                            continueExecution = false;
                         }
                     }
 
-                    var notProcessedOrderExists = testProject.Orders.Any(o => o.HasNotPrcessedActivity);
-
-                    continueExecution = notProcessedOrderExists;
-
-                    if (lastProcessingOrderIndex >= testProject.Orders.Count)
-                    {
-                        lastProcessingOrderIndex = 0;
-                    }
-
-                    if (cancellationToken.IsCancellationRequested)
-                    {
-                        continueExecution = false;
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -195,8 +206,10 @@ namespace OLTMockServer
                 }
                 finally
                 {
-                    //Save changes:
-                    SaveTestProject();
+                    if (projectChanged)
+                    {
+                        SaveTestProject();
+                    }
                 }
             }
 
