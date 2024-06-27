@@ -28,6 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestContainerControl));
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
@@ -42,6 +53,8 @@
             this.btnEditOrder = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnShowTestOptions = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.btnShowOrderLogs = new Telerik.WinControls.UI.CommandBarButton();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView)).BeginInit();
@@ -66,7 +79,7 @@
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomDrawing = true;
             this.radGridView.EnableCustomFiltering = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 48);
+            this.radGridView.Location = new System.Drawing.Point(0, 71);
             // 
             // 
             // 
@@ -79,16 +92,85 @@
             this.radGridView.MasterTemplate.AllowEditRow = false;
             this.radGridView.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.radGridView.MasterTemplate.AllowRowResize = false;
+            gridViewTextBoxColumn1.FieldName = "Code";
+            gridViewTextBoxColumn1.HeaderText = "Code";
+            gridViewTextBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn1.Name = "clmOrderCode";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.Width = 90;
+            gridViewTextBoxColumn2.FieldName = "UIStatus";
+            gridViewTextBoxColumn2.HeaderText = "Status";
+            gridViewTextBoxColumn2.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn2.Name = "clmOrderStatus";
+            gridViewTextBoxColumn2.Width = 100;
+            gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
+            gridViewTextBoxColumn3.Expression = "";
+            gridViewTextBoxColumn3.FieldName = "CreateDate";
+            gridViewTextBoxColumn3.FormatString = "{0:yyyy-MM-dd HH:mm:ss}";
+            gridViewTextBoxColumn3.HeaderText = "Create Date";
+            gridViewTextBoxColumn3.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn3.Name = "clmCreateDate";
+            gridViewTextBoxColumn3.Width = 100;
+            gridViewTextBoxColumn4.FieldName = "VendorCode";
+            gridViewTextBoxColumn4.HeaderText = "Vendor Code";
+            gridViewTextBoxColumn4.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn4.Name = "clmVendorCode";
+            gridViewTextBoxColumn4.Width = 80;
+            gridViewTextBoxColumn5.FieldName = "StatusCode";
+            gridViewTextBoxColumn5.HeaderText = "Status Code";
+            gridViewTextBoxColumn5.Name = "clmStatusCode";
+            gridViewTextBoxColumn5.Width = 100;
+            gridViewTextBoxColumn6.FieldName = "AckDelay";
+            gridViewTextBoxColumn6.HeaderText = "Ack Delay";
+            gridViewTextBoxColumn6.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn6.Name = "clmAckDelay";
+            gridViewTextBoxColumn6.Width = 100;
+            gridViewTextBoxColumn7.FieldName = "PickDelay";
+            gridViewTextBoxColumn7.HeaderText = "Pick Delay";
+            gridViewTextBoxColumn7.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn7.Name = "clmPickDelay";
+            gridViewTextBoxColumn7.Width = 100;
+            gridViewTextBoxColumn8.FieldName = "AcceptDelay";
+            gridViewTextBoxColumn8.HeaderText = "Accept Delay";
+            gridViewTextBoxColumn8.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn8.Name = "clmAcceptDelay";
+            gridViewTextBoxColumn8.Width = 100;
+            gridViewTextBoxColumn9.FieldName = "Rejected";
+            gridViewTextBoxColumn9.HeaderText = "Rejected";
+            gridViewTextBoxColumn9.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn9.Name = "clmReject";
+            gridViewTextBoxColumn9.Width = 80;
+            gridViewTextBoxColumn10.FieldName = "RejectedByVendor";
+            gridViewTextBoxColumn10.HeaderText = "Vendor Reject";
+            gridViewTextBoxColumn10.Name = "clmVendorReject";
+            gridViewTextBoxColumn10.Width = 100;
+            gridViewTextBoxColumn11.FieldName = "IsAutoGenerated";
+            gridViewTextBoxColumn11.HeaderText = "Auto Gen";
+            gridViewTextBoxColumn11.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn11.Name = "clmAutoGenerated";
+            gridViewTextBoxColumn11.Width = 80;
+            this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11});
             this.radGridView.MasterTemplate.EnableCustomFiltering = true;
-            this.radGridView.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView.Name = "radGridView";
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(740, 368);
+            this.radGridView.Size = new System.Drawing.Size(740, 345);
             this.radGridView.TabIndex = 0;
             this.radGridView.ThemeName = "Windows7";
+            this.radGridView.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.radGridView_CellFormatting);
             // 
             // radCommandBar1
             // 
@@ -97,7 +179,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(740, 48);
+            this.radCommandBar1.Size = new System.Drawing.Size(740, 71);
             this.radCommandBar1.TabIndex = 1;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
@@ -147,7 +229,9 @@
             this.commandBarSeparator1,
             this.btnEditOrder,
             this.commandBarSeparator2,
-            this.btnShowTestOptions});
+            this.btnShowTestOptions,
+            this.commandBarSeparator3,
+            this.btnShowOrderLogs});
             this.commandBarStripElement2.Name = "commandBarStripElement2";
             // 
             // 
@@ -200,6 +284,22 @@
             this.btnShowTestOptions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnShowTestOptions.Click += new System.EventHandler(this.btnShowTestOptions_Click);
             // 
+            // commandBarSeparator3
+            // 
+            this.commandBarSeparator3.DisplayName = "commandBarSeparator3";
+            this.commandBarSeparator3.Name = "commandBarSeparator3";
+            this.commandBarSeparator3.VisibleInOverflowMenu = false;
+            // 
+            // btnShowOrderLogs
+            // 
+            this.btnShowOrderLogs.DisplayName = "commandBarButton1";
+            this.btnShowOrderLogs.DrawText = true;
+            this.btnShowOrderLogs.Image = global::OLTMockServer.Properties.Resources.book_24px;
+            this.btnShowOrderLogs.Name = "btnShowOrderLogs";
+            this.btnShowOrderLogs.Text = "Order Logs";
+            this.btnShowOrderLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnShowOrderLogs.Click += new System.EventHandler(this.btnShowOrderLogs_Click);
+            // 
             // TestContainerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,5 +331,7 @@
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator1;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator2;
         private Telerik.WinControls.UI.CommandBarButton btnShowTestOptions;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator3;
+        private Telerik.WinControls.UI.CommandBarButton btnShowOrderLogs;
     }
 }

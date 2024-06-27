@@ -107,6 +107,7 @@
     <Compile Include="DataStructures\Customer.cs" />
     <Compile Include="DataStructures\Digi\DigiOrder.cs" />
     <Compile Include="DataStructures\Item.cs" />
+    <Compile Include="DataStructures\Log.cs" />
     <Compile Include="DataStructures\Order.cs" />
     <Compile Include="DataStructures\OrderPattern.cs" />
     <Compile Include="DataStructures\OrderPatternItem.cs" />
@@ -139,6 +140,12 @@
     <Compile Include="APIUtil.cs" />
     <Compile Include="OnlineShops\Snap\SnapOrderFactory.cs" />
     <Compile Include="OnlineShops\Snap\SnapTestManager.cs" />
+    <Compile Include="UI\CodeTestDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CodeTestDialog.Designer.cs">
+      <DependentUpon>CodeTestDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ItemSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +154,12 @@
     </Compile>
     <Compile Include="UI\IUIFactory.cs" />
     <Compile Include="DataStructures\PropertyItem.cs" />
+    <Compile Include="UI\OrderLogsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\OrderLogsControl.Designer.cs">
+      <DependentUpon>OrderLogsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PropertyListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -255,8 +268,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\CodeTestDialog.resx">
+      <DependentUpon>CodeTestDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ItemSelectControl.resx">
       <DependentUpon>ItemSelectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OrderLogsControl.resx">
+      <DependentUpon>OrderLogsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PropertyListControl.resx">
       <DependentUpon>PropertyListControl.cs</DependentUpon>
@@ -314,6 +333,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\book_24px.png" />
+    <None Include="Resources\history_24px.png" />
     <None Include="Resources\single_select_24px.png" />
     <None Include="Names.txt" />
     <Content Include="Notes.txt" />

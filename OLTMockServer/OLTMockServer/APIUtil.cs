@@ -20,6 +20,18 @@ namespace OLTMockServer.spag
 
             var response = restClient.ExecuteAsync(restRequest).Result;
 
+            if (!response.IsSuccessful)
+            {
+                if (response.ErrorException != null)
+                {
+                    throw response.ErrorException;
+                }
+                else
+                {
+                    throw new Exception($"Request to '{baseUri}{methodName}' Failed StatusCode: {response.StatusCode}, StatusDescription: {response.StatusDescription}");
+                }
+            }
+
             return (response.IsSuccessful);
         }
 

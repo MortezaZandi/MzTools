@@ -12,7 +12,14 @@ namespace OLTMockServer
         public delegate void OrderProcessingFeedbackEventHandler(Order order, OrderProcessingSteps processingStep, OrderActivityTypes orderActivity = OrderActivityTypes.None, Exception exception = null);
 
         public const int Order_Max_Activity_Try_Count = 15;
-        
+        public const string Order_Status_Unknown = "Unknown";
+        public const string Order_Status_NotSend = "NotSend";
+        public const string Order_Status_Sent = "Sent";
+        public const string Order_Status_AckDone = "AckDone";
+        public const string Order_Status_PickDone = "PickDone";
+        public const string Order_Status_Rejected = "Rejected";
+        public const string Order_Status_SendFailed = "SendFailed";
+
         public enum APINames
         {
             NewOrder,
@@ -73,5 +80,17 @@ namespace OLTMockServer
             OrderProcessingError = 6,
             TestFinished = 7,
         }
+
+        public enum OrderStatusResults
+        {
+            Unknown = 0,
+            NotSend = 1,
+            Sent = 2,
+            AckDone = 3,
+            PickDone = 4,
+            Rejected = 5,
+            SendFailed = 6,
+        }
+
     }
 }

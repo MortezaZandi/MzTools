@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OLTMockServer
 {
@@ -26,7 +27,7 @@ namespace OLTMockServer
             this.appManager = new AppManager();
 
             InitUI();
-
+            //new CodeTestDialog().ShowDialog();
         }
 
         private void InitUI()

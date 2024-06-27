@@ -120,6 +120,8 @@ namespace OLTMockServer
                     TestProject.Orders.Insert(mainOrderPositionInList + 1, editedOrde);
                 }
 
+                editedOrde.AddLog($"Order created by EDIT(Manual), Main order: '{selectedOrder.Code}' UID:{selectedOrder.UId}");
+
                 return editedOrde;
             }
 

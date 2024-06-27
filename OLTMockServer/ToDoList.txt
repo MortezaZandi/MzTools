@@ -8,11 +8,12 @@ import vendor from olt
 import item from rmc
 update items price/discount from rmc
 -------------------------
-create order activivty history (each order has a activity history queue)
-implement order activity sender
-implement order list updater
+///////////create order activivty history (each order has a activity history queue)
+//////////implement order activity sender
+//////////implement order list updater
 
 ------------------------
 fix tab titles (normal and when executing)
-improve list of orders and their statuses in main dialog
+///////////improve list of orders and their statuses in main dialog
 allow process single or multiple orders selected by user(not all the list)
+

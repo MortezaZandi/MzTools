@@ -65,25 +65,30 @@ namespace OLTMockServer.MockServers
 
         internal void ClientRequest_Ack(string orderCode)
         {
+            //find order
             //operation for ack
+            //add log to order logs
             //if order not found return error
         }
 
         internal void ClientRequest_Pick(string orderCode)
         {
             //operation for pick
+            //add log to order logs
             //if order not found return error
         }
 
         internal void ClientRequest_Accept(string orderCode, DataStructures.Snap.olt.AcceptModel acceptModel)
         {
             //operation for accept
+            //add log to order logs
             //if order not found return error
         }
 
         internal void ClientRequest_Reject(string orderCode, DataStructures.Snap.olt.RejectModel rejectModel)
         {
             //operation for reject
+            //add log to order logs
             //if order not found return error
         }
 

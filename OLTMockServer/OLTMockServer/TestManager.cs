@@ -152,6 +152,8 @@ namespace OLTMockServer
 
                     if (nextOrder.HasNotPrcessedActivity)
                     {
+                        nextOrder.AddLog(string.Empty);
+                        nextOrder.AddLog($"Try processing order");
                         OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderSelectedForProcessing);
 
                         foreach (var activity in nextOrder.Activities)
@@ -159,17 +161,21 @@ namespace OLTMockServer
                             if (!activity.IsDone && activity.TryCount < Definitions.Order_Max_Activity_Try_Count)
                             {
                                 OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.PerformingOrderAcivity, activity.ActivityType);
+                                nextOrder.AddLog($"Perform activity '{activity.ActivityType}' on order '{nextOrder.Code}', try {activity.TryCount}/{Definitions.Order_Max_Activity_Try_Count}");
 
                                 Vendor targetVendor = GetTargetVendorOfOrder(nextOrder);
                                 activity.TryCount++;
                                 projectChanged = true;
                                 if (Server.PerformOrderActivity(nextOrder, targetVendor, activity))
                                 {
+                                    nextOrder.AddLog($"Activity '{activity.ActivityType}' done successfully.");
+
                                     activity.ProcessDate = DateTime.Now;
                                     OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityPerformed, activity.ActivityType);
                                 }
                                 else
                                 {
+                                    nextOrder.AddLog($"Activity '{activity.ActivityType}' failed. {activity.LastTryExceptionMessage}");
                                     OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityNotPerformed, activity.ActivityType);
                                 }
 

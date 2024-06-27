@@ -45,10 +45,11 @@ namespace OLTMockServer.DataStructures.Snap
             var clone = this.Clone() as SnapOrder;
 
             clone.Activities.Clear();
+            clone.Logs.Clear();
 
             if (!keepId)
             {
-               clone.UId = Guid.NewGuid();
+                clone.UId = Guid.NewGuid();
             }
 
             return clone;

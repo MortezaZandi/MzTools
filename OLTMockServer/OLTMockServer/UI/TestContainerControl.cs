@@ -52,10 +52,10 @@ namespace OLTMockServer.UI
 
                 if (lastHighlightedRow != null)
                 {
-                    SetRowHighlight(lastHighlightedRow, false, false);
+                    HighlightGridRow(lastHighlightedRow, false, false);
                 }
 
-                SetRowHighlight(rowElement, true, true);
+                HighlightGridRow(rowElement, true, true);
 
                 lastHighlightedRow = rowElement;
             }
@@ -63,7 +63,7 @@ namespace OLTMockServer.UI
             Application.DoEvents();
         }
 
-        private void SetRowHighlight(GridViewRowInfo row, bool set, bool bringToView)
+        private void HighlightGridRow(GridViewRowInfo row, bool set, bool bringToView)
         {
             if (set)
             {
@@ -97,6 +97,7 @@ namespace OLTMockServer.UI
         private void SetRowEffect(GridViewRowInfo row, Definitions.OrderProcessingSteps processingStep)
         {
             var effectCell = row.Cells[0];
+
             effectCell.Style.CustomizeFill = true;
             Color? backColor = Color.White;
             Color? foreColor = Color.Black;
@@ -171,26 +172,6 @@ namespace OLTMockServer.UI
         {
             radGridView.DataSource = null;
             radGridView.DataSource = this.testManager.TestProject.Orders;
-
-            SetColWidth(nameof(Order.Code), 50);
-            SetColWidth(nameof(Order.Vendor.Name), 80);
-            SetColWidth(nameof(Order.CreateDate), 50);
-            SetColWidth(nameof(Order.StatusCode), 50);
-            SetColWidth(nameof(Order.StatusDescription), 100);
-        }
-
-        private void SetColWidth(string text, int width)
-        {
-            if (!string.IsNullOrEmpty(text))
-            {
-                foreach (var col in radGridView.Columns)
-                {
-                    if (col.HeaderText.ToLower() == text.ToLower())
-                    {
-                        col.Width = width;
-                    }
-                }
-            }
         }
 
         private void btnShowTestOptions_Click(object sender, EventArgs e)
@@ -235,6 +216,24 @@ namespace OLTMockServer.UI
                 {
                     ResetDataSource();
                 }
+            }
+        }
+
+        private void radGridView_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+        }
+
+        private void btnShowOrderLogs_Click(object sender, EventArgs e)
+        {
+            if (radGridView.SelectedRows.Count > 0)
+            {
+                var selectedOrder = radGridView.SelectedRows[0].DataBoundItem as Order;
+
+                var logControl = new OrderLogsControl(null);
+                var dataDialog = new DataDialog(logControl);
+                logControl.ParentDialog = dataDialog;
+                logControl.Logs = selectedOrder.Logs;
+                dataDialog.ShowDialog();
             }
         }
     }

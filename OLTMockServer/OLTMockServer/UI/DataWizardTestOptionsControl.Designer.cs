@@ -130,6 +130,11 @@
             // 
             this.txtMaxOrderCount.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaxOrderCount.Location = new System.Drawing.Point(191, 93);
+            this.txtMaxOrderCount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.txtMaxOrderCount.Name = "txtMaxOrderCount";
             this.txtMaxOrderCount.Size = new System.Drawing.Size(125, 23);
             this.txtMaxOrderCount.TabIndex = 5;
