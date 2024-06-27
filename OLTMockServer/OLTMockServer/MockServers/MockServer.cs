@@ -127,8 +127,8 @@ namespace OLTMockServer.MockServers
                 case Definitions.OrderActivityTypes.Edit:
                 case Definitions.OrderActivityTypes.Reject:
 
-                    activity.OrderInstance.StatusCode = GetActivityStatusCode(activity.ActivityType);
-                    return SendOrder(activity.OrderInstance, vendor);
+                    order.StatusCode = GetActivityStatusCode(activity.ActivityType);
+                    return SendOrder(order, vendor);
 
                 case Definitions.OrderActivityTypes.None:
                 default:

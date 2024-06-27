@@ -23,7 +23,10 @@ namespace OLTMockServer.DataStructures
             this.CreateDate = DateTime.Now;
             this.Code = Utils.GenerateCode(8);
             this.Activities = new List<OrderActivity>();
+            this.UId = Guid.NewGuid();
         }
+
+        public Guid UId { get; set; }
 
         [Browsable(false)]
         public List<Item> Items { get; set; }
@@ -52,7 +55,7 @@ namespace OLTMockServer.DataStructures
         {
             this.Activities.Add(new OrderActivity
             {
-                OrderInstance = LightClone(),
+                //OrderInstance = LightClone(),
                 ActivityDate = DateTime.Now,
                 ActivityType = activityType,
                 IsCreatedByAuto = isAutoActivity,
@@ -63,7 +66,7 @@ namespace OLTMockServer.DataStructures
         {
             this.Activities.Add(new OrderActivity
             {
-                OrderInstance = LightClone(),
+                //OrderInstance = LightClone(),
                 ActivityDate = createDate,
                 ActivityType = activityType,
                 IsCreatedByAuto = isCreatedByAuto,
@@ -71,7 +74,7 @@ namespace OLTMockServer.DataStructures
             });
         }
 
-        public abstract Order LightClone();
+        public abstract Order LightClone(bool keepId = false);
 
         public bool HasNotPrcessedActivity
         {

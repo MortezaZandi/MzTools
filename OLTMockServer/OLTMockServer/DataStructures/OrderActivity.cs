@@ -14,7 +14,7 @@ namespace OLTMockServer
         //Does we need to keep the instance of order used for each activity in the activity object? //for debug perpuses
         //
 
-        public Order OrderInstance { get; set; }
+        //public Order OrderInstance { get; set; }
 
         /// <summary>
         /// When action command issued?

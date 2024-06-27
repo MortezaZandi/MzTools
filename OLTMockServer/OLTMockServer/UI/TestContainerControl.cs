@@ -148,7 +148,7 @@ namespace OLTMockServer.UI
             {
                 var rowOrder = row.DataBoundItem as Order;
 
-                if (rowOrder.Code == order.Code)
+                if (rowOrder.UId != Guid.Empty && rowOrder.UId == order.UId)
                 {
                     return row;
                 }

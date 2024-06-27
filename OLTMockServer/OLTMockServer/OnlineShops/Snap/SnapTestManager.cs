@@ -95,7 +95,7 @@ namespace OLTMockServer
             return null;
         }
 
-        public override object EditOrderUnigUI(Order selectedOrder)
+        public override Order EditOrderUnigUI(Order selectedOrder)
         {
             var orderControl = new SnapOrderDetailsControl(null, this);
             var dataDialog = new DataDialog(orderControl);
@@ -104,30 +104,23 @@ namespace OLTMockServer
             dataDialog.ClientSize = new Size(700, 460);
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
-                var snapOrder = (SnapOrder)selectedOrder;
-                //selectedOrder.Vendor = orderControl.Order.Vendor;
-                //snapOrder.CreateDate = orderControl.Order.CreateDate;
-                //snapOrder.StatusDescription = orderControl.Order.StatusDescription;
-                //snapOrder.Customer = orderControl.Order.Customer;
-                //snapOrder.AckTime = orderControl.Order.AckTime;
-                //snapOrder.AcceptTime = orderControl.Order.AcceptTime;
-                //snapOrder.Code = orderControl.Order.Code;
-                //snapOrder.Items = orderControl.Order.Items;
-                //snapOrder.PickTime = orderControl.Order.PickTime;
-                //snapOrder.RejectTime = orderControl.Order.RejectTime;
-                //snapOrder.StatusCode = orderControl.Order.StatusCode;
-                //snapOrder.DeliveryMode = orderControl.Order.DeliveryMode;
-                //snapOrder.VendorCode= orderControl.Order.VendorCode;
-                //snapOrder.Vat= orderControl.Order.Vat;
-                //snapOrder.Tax= orderControl.Order.Tax;
-                //snapOrder.Price = orderControl.Order.Price;
-                //snapOrder.Comment = orderControl.Order.Comment;
-                Utils.SwapObjects(orderControl.Order, snapOrder, nameof(snapOrder.Items), nameof(snapOrder.Vendor), nameof(snapOrder.Customer), nameof(snapOrder.Activities));
+                var editedOrde = orderControl.Order;
 
                 //send order with edit status code
-                selectedOrder.AddActivity(Definitions.OrderActivityTypes.Edit, false);
+                editedOrde.AddActivity(Definitions.OrderActivityTypes.Edit, false);
 
-                return selectedOrder;
+                var mainOrderPositionInList = TestProject.Orders.FindLastIndex(o => o.Code == selectedOrder.Code);
+
+                if (mainOrderPositionInList == TestProject.Orders.Count - 1)
+                {
+                    TestProject.Orders.Add(editedOrde);
+                }
+                else
+                {
+                    TestProject.Orders.Insert(mainOrderPositionInList + 1, editedOrde);
+                }
+
+                return editedOrde;
             }
 
             return null;

@@ -358,7 +358,7 @@ namespace OLTMockServer
         public abstract ItemSelectControl CreateItemSelectControl(IConfirmableDialog parentDialog);
 
         public abstract Order CreateNewOrderUsingUI();
-        public abstract object EditOrderUnigUI(Order selectedOrder);
+        public abstract Order EditOrderUnigUI(Order selectedOrder);
 
         public MockServer Server { get; set; }
     }
