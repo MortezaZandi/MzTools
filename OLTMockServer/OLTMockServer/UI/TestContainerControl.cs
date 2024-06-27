@@ -233,6 +233,7 @@ namespace OLTMockServer.UI
                 var dataDialog = new DataDialog(logControl);
                 logControl.ParentDialog = dataDialog;
                 logControl.Logs = selectedOrder.Logs;
+                dataDialog.ClientSize = new Size(1200, 600);
                 dataDialog.ShowDialog();
             }
         }

@@ -231,6 +231,9 @@ namespace OLTMockServer
                 }
                 catch (Exception ex)
                 {
+                    nextOrder.AddLog($"Error in processing order. {ex.Message}");
+                    projectChanged = true;
+
                     OrderProcessingFeedback?.Invoke(
                         nextOrder,
                         Definitions.OrderProcessingSteps.OrderProcessingError,
