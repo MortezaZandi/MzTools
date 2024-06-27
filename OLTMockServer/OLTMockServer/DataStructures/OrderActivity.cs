@@ -59,7 +59,7 @@ namespace OLTMockServer
 
         public override string ToString()
         {
-            return $"{this.ActivityType}-{this.TryCount}/10 ({(IsDone ? "Done" : (TryCount>0?  "Failed": "New"))})";
+            return $"{this.ActivityType}-{this.TryCount}/{Definitions.Order_Max_Activity_Try_Count} ({(IsDone ? "Done" : (TryCount>0?  "Failed": "New"))})";
         }
     }
 }

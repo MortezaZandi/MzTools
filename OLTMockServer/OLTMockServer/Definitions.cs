@@ -11,6 +11,8 @@ namespace OLTMockServer
     {
         public delegate void OrderProcessingFeedbackEventHandler(Order order, OrderProcessingSteps processingStep, OrderActivityTypes orderActivity = OrderActivityTypes.None, Exception exception = null);
 
+        public const int Order_Max_Activity_Try_Count = 15;
+        
         public enum APINames
         {
             NewOrder,

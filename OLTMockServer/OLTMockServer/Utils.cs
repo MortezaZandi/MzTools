@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls;
@@ -51,18 +52,21 @@ namespace OLTMockServer
         public static void ShowError(string message)
         {
             RadMessageBox.ThemeName = "Windows7";
+            RadMessageBox.Instance.TopMost = true;
             RadMessageBox.Show(null, message, "OLT-MockServer", MessageBoxButtons.OK, RadMessageIcon.Error);
         }
 
         internal static void ShowInfo(string message)
         {
             RadMessageBox.ThemeName = "Windows7";
+            RadMessageBox.Instance.TopMost = true;
             RadMessageBox.Show(null, message, "OLT-MockServer", MessageBoxButtons.OK, RadMessageIcon.Info);
         }
 
         internal static DialogResult AskQuestion(string message)
         {
             RadMessageBox.ThemeName = "Windows7";
+            RadMessageBox.Instance.TopMost = true;
             return RadMessageBox.Show(null, message, "OLT-MockServer", MessageBoxButtons.YesNoCancel, RadMessageIcon.Question);
         }
 
@@ -78,8 +82,8 @@ namespace OLTMockServer
                     foreach (var pDest in destProps)
                     {
                         if (
-                            pDest.Name == pSource.Name 
-                            && pDest.PropertyType == pSource.PropertyType 
+                            pDest.Name == pSource.Name
+                            && pDest.PropertyType == pSource.PropertyType
                             && pSource.SetMethod != null)
                         {
                             pDest.SetValue(dest, pSource.GetValue(source, null));
@@ -90,6 +94,24 @@ namespace OLTMockServer
             }
 
             return dest;
+        }
+
+        public static void DelayUIAction(Control ui, Action action, TimeSpan maxWait, Func<bool> waitBreaker)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                for (int i = 0; i < maxWait.TotalMilliseconds; i += 100)
+                {
+                    if (waitBreaker != null && waitBreaker())
+                    {
+                        break;
+                    }
+
+                    Thread.Sleep(100);
+                }
+
+                ui.Invoke(action);
+            });
         }
     }
 }

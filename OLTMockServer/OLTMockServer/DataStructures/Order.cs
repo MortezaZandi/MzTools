@@ -77,7 +77,7 @@ namespace OLTMockServer.DataStructures
         {
             get
             {
-                return this.Activities.Any(a => a.ProcessDate == DateTime.MinValue && a.TryCount < 10);
+                return this.Activities.Any(a => a.ProcessDate == DateTime.MinValue && a.TryCount < Definitions.Order_Max_Activity_Try_Count);
             }
         }
     }
