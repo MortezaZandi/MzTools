@@ -88,7 +88,7 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomFiltering = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 0);
+            this.radGridView.Location = new System.Drawing.Point(228, 0);
             // 
             // 
             // 
@@ -131,8 +131,8 @@
             this.radPanel1.Controls.Add(this.lblACKStatus);
             this.radPanel1.Controls.Add(this.lblResponseStatus);
             this.radPanel1.Controls.Add(this.lblSendStatus);
-            this.radPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radPanel1.Location = new System.Drawing.Point(778, 0);
+            this.radPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(228, 488);
             this.radPanel1.TabIndex = 5;

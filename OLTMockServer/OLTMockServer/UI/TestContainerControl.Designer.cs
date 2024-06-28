@@ -69,7 +69,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(740, 416);
+            this.radPanel1.Size = new System.Drawing.Size(1069, 569);
             this.radPanel1.TabIndex = 0;
             this.radPanel1.Text = "radPanel1";
             this.radPanel1.ThemeName = "Windows7";
@@ -167,7 +167,7 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(740, 370);
+            this.radGridView.Size = new System.Drawing.Size(1069, 523);
             this.radGridView.TabIndex = 0;
             this.radGridView.ThemeName = "Windows7";
             this.radGridView.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.radGridView_CellFormatting);
@@ -179,7 +179,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(740, 46);
+            this.radCommandBar1.Size = new System.Drawing.Size(1069, 46);
             this.radCommandBar1.TabIndex = 1;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
@@ -306,7 +306,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.radPanel1);
             this.Name = "TestContainerControl";
-            this.Size = new System.Drawing.Size(740, 416);
+            this.Size = new System.Drawing.Size(1069, 569);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();

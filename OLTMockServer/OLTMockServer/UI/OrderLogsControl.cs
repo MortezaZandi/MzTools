@@ -15,6 +15,8 @@ namespace OLTMockServer.UI
     public partial class OrderLogsControl : DataWizardBaseControl, IDataControl
     {
         private readonly UIOperation okOperation = new UIOperation("OK");
+        private readonly UIOperation refreshOperation = new UIOperation("Reftesh");
+
         private IConfirmableDialog parentDialog;
         private Order order;
 
@@ -36,6 +38,8 @@ namespace OLTMockServer.UI
                 this.order = value;
 
                 SetStatusLabels();
+
+                radGridView.Rows.Clear();
 
                 foreach (var log in this.order.Logs)
                 {
@@ -236,8 +240,9 @@ namespace OLTMockServer.UI
         private void InitOperations()
         {
             okOperation.OnSelected += OnOperationSelected;
+            refreshOperation.OnSelected += OnOperationSelected;
 
-            SetOperationButtons(okOperation);
+            SetOperationButtons(okOperation, refreshOperation);
         }
 
         private void OnOperationSelected(object sender, UIOperation uIOperation)
@@ -245,6 +250,11 @@ namespace OLTMockServer.UI
             if (uIOperation.Id == okOperation.Id)
             {
                 parentDialog?.OK();
+            }
+
+            if (uIOperation.Id == refreshOperation.Id)
+            {
+                this.Order = this.order;
             }
         }
     }
