@@ -121,6 +121,18 @@ namespace OLTMockServer
                     order.Items.Add(newItem);
                 }
             }
+            //choose a random customer:
+            var customerIndex = random.Next(0, testProject.Customers.Count);
+            var customer = testProject.Customers[customerIndex];
+            order.Customer = customer;
+            order.UserAddressCode = customer.Address;
+            order.UserCode = customer.Code;
+
+            //choose a random vendor:
+            var vendorIndex = random.Next(0, testProject.Vendors.Count);
+            var vendor = testProject.Vendors[vendorIndex];
+            order.Vendor = vendor;
+            order.VendorCode = vendor.Code;
 
             return order;
         }

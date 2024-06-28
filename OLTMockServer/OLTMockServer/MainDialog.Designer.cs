@@ -195,9 +195,9 @@
             // 
             this.radPanel2.Controls.Add(this.radPageView1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 93);
+            this.radPanel2.Location = new System.Drawing.Point(0, 68);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1075, 416);
+            this.radPanel2.Size = new System.Drawing.Size(1075, 441);
             this.radPanel2.TabIndex = 3;
             this.radPanel2.Text = "radPanel2";
             this.radPanel2.ThemeName = "Windows7";
@@ -207,7 +207,7 @@
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(1075, 416);
+            this.radPageView1.Size = new System.Drawing.Size(1075, 441);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.Text = "radPageView1";
             this.radPageView1.ThemeName = "Windows7";
@@ -269,7 +269,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(1075, 71);
+            this.radCommandBar1.Size = new System.Drawing.Size(1075, 46);
             this.radCommandBar1.TabIndex = 4;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
