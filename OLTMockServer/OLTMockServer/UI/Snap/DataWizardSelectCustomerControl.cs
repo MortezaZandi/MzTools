@@ -42,26 +42,6 @@ namespace OLTMockServer.UI
         {
             radGridView.DataSource = null;
             radGridView.DataSource = customers;
-
-            SetColWidth(nameof(Customer.Id), 100);
-            SetColWidth(nameof(Customer.Name), 150);
-            SetColWidth(nameof(Customer.Address), 150);
-            SetColWidth(nameof(Customer.DeliveryType), 100);
-            SetColWidth(nameof(Customer.IsActive), 50);
-        }
-
-        private void SetColWidth(string text, int width)
-        {
-            if (!string.IsNullOrEmpty(text))
-            {
-                foreach (var col in radGridView.Columns)
-                {
-                    if (col.HeaderText.ToLower() == text.ToLower())
-                    {
-                        col.Width = width;
-                    }
-                }
-            }
         }
 
         private void InitOperations()
@@ -104,6 +84,52 @@ namespace OLTMockServer.UI
                 customers.Add(customerControl.Customer);
 
                 ResetDataSource();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (radGridView.SelectedRows.Count > 0)
+            {
+                var selectedCustomer = radGridView.SelectedRows[0].DataBoundItem as Customer;
+
+                if (Utils.AskQuestion($"Delete selected customer '{selectedCustomer.Name}' ?") == DialogResult.Yes)
+                {
+                    customers.Remove(selectedCustomer);
+
+                    ResetDataSource();
+                }
+            }
+        }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (Utils.AskQuestion($"Delete all customer?") == DialogResult.Yes)
+            {
+                customers.Clear();
+
+                ResetDataSource();
+            }
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            if (radGridView.SelectedRows.Count > 0)
+            {
+                var selectedCustomer = radGridView.SelectedRows[0].DataBoundItem as Customer;
+
+                var customerControl = new CustomerDetailsControl(null);
+                var dataDialog = new DataDialog(customerControl);
+                customerControl.ParentDialog = dataDialog;
+                customerControl.Customer = selectedCustomer.Clone() as Customer;
+
+                if (dataDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var index = customers.IndexOf(selectedCustomer);
+                    customers.Remove(selectedCustomer);
+                    customers.Insert(index, customerControl.Customer);
+                    ResetDataSource();
+                }
             }
         }
     }

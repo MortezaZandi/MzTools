@@ -26,6 +26,7 @@ namespace OLTMockServer.DataStructures
             this.Activities = new List<OrderActivity>();
             this.UId = Guid.NewGuid();
             this.Logs = new List<LogInfo>();
+            this.MaxItemCount = 1;
         }
 
         public Guid UId { get; set; }

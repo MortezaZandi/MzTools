@@ -359,16 +359,19 @@ namespace OLTMockServer
         {
             try
             {
+                Application.DoEvents();
+
                 foreach (var testProject in this.appManager.LoadLastOpenedTestProjects())
                 {
                     this.AddTestPage(testProject);
+
+                    Application.DoEvents();
                 }
             }
             finally
             {
                 radWaitingBar1.Hide();
             }
-
         }
     }
 }

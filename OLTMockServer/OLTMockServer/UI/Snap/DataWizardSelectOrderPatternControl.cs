@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.UI;
 
 namespace OLTMockServer.UI
 {
@@ -56,6 +57,10 @@ namespace OLTMockServer.UI
         {
             radGridView.DataSource = null;
             radGridView.DataSource = orderPattern.PatternItems;
+
+            var gtc = radGridView.Columns["clmGeneratorType"] as GridViewComboBoxColumn;
+            gtc.DataSource = Enum.GetValues(typeof(Definitions.PropertyValueGeneratorTypes));
+
         }
 
         private void OnOperationSelected(object sender, UIOperation uIOperation)
@@ -63,6 +68,15 @@ namespace OLTMockServer.UI
             if (uIOperation.Id == nextOperation.Id)
             {
                 //if ok
+                foreach (var item in orderPattern.PatternItems)
+                {
+                    if (item.GenerateType == Definitions.PropertyValueGeneratorTypes.FixedValue && item.Value == null)
+                    {
+                        Utils.ShowError($"Fixed types need a value");
+                        return;
+                    }
+                }
+
                 wizard?.GoToNextPage();
             }
 
@@ -99,6 +113,7 @@ namespace OLTMockServer.UI
                         {
                             PropertyName = propControl.SelectedItem.PropertyName,
                             PropertyType = propControl.SelectedItem.PropertyType,
+                            Value = orderType.GetProperty(propControl.SelectedItem.PropertyName).GetValue(Activator.CreateInstance(orderType))?.ToString()
                         });
 
                         ResetDataSource();
@@ -120,6 +135,7 @@ namespace OLTMockServer.UI
                 if (Utils.AskQuestion($"Delete '{selectedPatternItem.PropertyName}' ?") == DialogResult.Yes)
                 {
                     orderPattern.PatternItems.Remove(selectedPatternItem);
+                    ResetDataSource();
                 }
             }
         }
@@ -131,6 +147,7 @@ namespace OLTMockServer.UI
                 if (Utils.AskQuestion($"Delete all patterns?") == DialogResult.Yes)
                 {
                     orderPattern.PatternItems.Clear();
+                    ResetDataSource();
                 }
             }
         }

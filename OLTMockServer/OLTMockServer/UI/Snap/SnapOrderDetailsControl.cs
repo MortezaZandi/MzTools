@@ -80,6 +80,12 @@ namespace OLTMockServer.UI.Snap
             if (uIOperation.Id == okOperation.Id)
             {
                 //if ok
+                if (this.order.Items.Count == 0)
+                {
+                    Utils.ShowError("Item list is empty.");
+                    return;
+                }
+
                 parentDialog?.OK();
             }
 
