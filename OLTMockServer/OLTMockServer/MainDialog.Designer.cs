@@ -66,6 +66,8 @@
             this.btnDuplicateTestProject = new Telerik.WinControls.UI.CommandBarButton();
             this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
             this.commandBarStripElement5 = new Telerik.WinControls.UI.CommandBarStripElement();
+            this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
+            this.dotsRingWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCommandBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -411,11 +414,37 @@
             this.commandBarStripElement5.DisplayName = "commandBarStripElement5";
             this.commandBarStripElement5.Name = "commandBarStripElement5";
             // 
+            // radWaitingBar1
+            // 
+            this.radWaitingBar1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radWaitingBar1.Location = new System.Drawing.Point(500, 250);
+            this.radWaitingBar1.Name = "radWaitingBar1";
+            this.radWaitingBar1.Size = new System.Drawing.Size(100, 100);
+            this.radWaitingBar1.TabIndex = 5;
+            this.radWaitingBar1.Text = "radWaitingBar1";
+            this.radWaitingBar1.ThemeName = "Windows7";
+            this.radWaitingBar1.WaitingIndicators.Add(this.dotsRingWaitingBarIndicatorElement1);
+            this.radWaitingBar1.WaitingSpeed = 50;
+            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsRing;
+            // 
+            // dotsRingWaitingBarIndicatorElement1
+            // 
+            this.dotsRingWaitingBarIndicatorElement1.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dotsRingWaitingBarIndicatorElement1.AutoSize = false;
+            this.dotsRingWaitingBarIndicatorElement1.Bounds = new System.Drawing.Rectangle(0, 0, 100, 100);
+            this.dotsRingWaitingBarIndicatorElement1.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentContent;
+            this.dotsRingWaitingBarIndicatorElement1.Name = "dotsRingWaitingBarIndicatorElement1";
+            this.dotsRingWaitingBarIndicatorElement1.StretchHorizontally = false;
+            this.dotsRingWaitingBarIndicatorElement1.Text = "Loading";
+            this.dotsRingWaitingBarIndicatorElement1.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.dotsRingWaitingBarIndicatorElement1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
             // MainDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1075, 545);
+            this.Controls.Add(this.radWaitingBar1);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radCommandBar1);
             this.Controls.Add(this.radPanel1);
@@ -430,6 +459,7 @@
             this.ThemeName = "Windows7";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDialog_FormClosing);
+            this.Load += new System.EventHandler(this.MainDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).EndInit();
@@ -446,6 +476,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCommandBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -491,5 +522,7 @@
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement4;
         private Telerik.WinControls.UI.CommandBarButton btnDuplicateTestProject;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement5;
+        private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
+        private Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement dotsRingWaitingBarIndicatorElement1;
     }
 }

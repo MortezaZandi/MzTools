@@ -98,7 +98,7 @@ namespace OLTMockServer.UI
                 else
                 {
                     lblSendStatus.Text = "Not Processed";
-                    lblSendStatusDescription.Text = $"This is order is not processed, Click play button to process new orders.";
+                    lblSendStatusDescription.Text = $"This order is not processed, Click play button to process new orders.";
                 }
             }
             else if (editActivity != null)
@@ -124,14 +124,14 @@ namespace OLTMockServer.UI
                     else
                     {
                         lblSendStatus.Text = "Edit Not Processed";
-                        lblSendStatusDescription.Text = $"This is order is not processed, Click play button to process edited orders.";
+                        lblSendStatusDescription.Text = $"This order is not processed, Click play button to process edited orders.";
                     }
                 }
             }
             else
             {
                 lblSendStatus.Text = "Unknown Send Status";
-                lblSendStatusDescription.Text = $"This is order is not processed or has error.";
+                lblSendStatusDescription.Text = $"This order is not processed or has error.";
             }
 
             //Ack status

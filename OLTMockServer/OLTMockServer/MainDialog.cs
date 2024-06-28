@@ -242,12 +242,14 @@ namespace OLTMockServer
 
                         testProj.SaveFilePath = saveFilePath;
                     }
-                    
+
                     activeTest.TestProject.TestOptions.TestName = Path.GetFileNameWithoutExtension(saveFilePath);
-                    
+
                     activeTestTab.Text = activeTest.TestProject.TestOptions.TestName;
 
                     activeTest.SaveTestProject(testProj, saveFilePath);
+
+                    appManager.UpdateTestList();
                 }
                 catch (Exception ex)
                 {
@@ -258,26 +260,27 @@ namespace OLTMockServer
 
         private void btnOpenTestFromFile_Click(object sender, EventArgs e)
         {
-            var odlg = new OpenFileDialog();
-
-            odlg.Filter = "Olt test file|*.dtf";
-
-            if (odlg.ShowDialog() == DialogResult.OK)
+            try
             {
-                var projFilePath = odlg.FileName;
+                var odlg = new OpenFileDialog();
 
-                var defaultProj = XMLDataSerializer.Deserialize<TestProject>(projFilePath);
+                odlg.Filter = "Olt test file|*.dtf";
 
-                var fullProj = appManager.CreateTestManager(defaultProj.OnlineShop);
-
-                fullProj.ImportFromFile(projFilePath);
-
-                if (fullProj != null)
+                if (odlg.ShowDialog() == DialogResult.OK)
                 {
-                    appManager.AddTest(fullProj);
+                    var projFilePath = odlg.FileName;
 
-                    AddTestPage(fullProj);
+                    var fullProj = this.appManager.ImportTestFromFile(projFilePath);
+
+                    if (fullProj != null)
+                    {
+                        AddTestPage(fullProj);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
             }
         }
 
@@ -299,6 +302,18 @@ namespace OLTMockServer
             {
                 e.Cancel = true;
             }
+            else
+            {
+                try
+                {
+                    appManager.RemoveTest(activeTest);
+                }
+                catch (Exception ex)
+                {
+                    e.Cancel = true;
+                    Utils.ShowError(ex.Message);
+                }
+            }
         }
 
         private void btnDuplicateTestProject_Click(object sender, EventArgs e)
@@ -314,13 +329,33 @@ namespace OLTMockServer
                 testProj.TestProject = newTest;
 
                 testProj.TestProject.SaveFilePath = null;
-                
+
                 testProj.TestProject.TempFilePath = Path.GetTempFileName();
 
                 this.appManager.AddTest(testProj);
 
                 AddTestPage(testProj);
             }
+        }
+
+        private void MainDialog_Load(object sender, EventArgs e)
+        {
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            try
+            {
+                foreach (var testProject in this.appManager.LoadLastOpenedTestProjects())
+                {
+                    this.AddTestPage(testProject);
+                }
+            }
+            finally
+            {
+                radWaitingBar1.Hide();
+            }
+            
         }
     }
 }

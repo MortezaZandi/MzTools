@@ -3,6 +3,7 @@ using OLTMockServer.MockServers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -53,6 +54,8 @@ namespace OLTMockServer
         internal void AddTest(TestManager newTest)
         {
             tests.Add(newTest);
+
+            UpdateTestList();
         }
 
         public TestManager CreateTestManager(Definitions.KnownOnlineShops onlineShop)
@@ -78,6 +81,8 @@ namespace OLTMockServer
             if (!onlyCreate)
             {
                 tests.Add(testManager);
+
+                UpdateTestList();
             }
 
             return testManager;
@@ -206,9 +211,98 @@ namespace OLTMockServer
 
             throw new ApplicationException($"An order with this code was not found, make sure that the test project related to this order is open on the server.");
         }
+
+        public void RemoveTest(TestManager test)
+        {
+            tests.Remove(test);
+            UpdateTestList();
+        }
+
+        public void UpdateTestList()
+        {
+            var appDataFilePath = Path.Combine(Path.GetTempPath(), "OltMockServer");
+
+            if (!Directory.Exists(appDataFilePath))
+            {
+                Directory.CreateDirectory(appDataFilePath);
+            }
+
+            appDataFilePath = Path.Combine(appDataFilePath, "ActiveTests.dat");
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var test in tests)
+            {
+                if (test.TestProject.IsTemp)
+                {
+                    sb.AppendLine(test.TestProject.TempFilePath);
+                }
+                else
+                {
+                    sb.AppendLine(test.TestProject.SaveFilePath);
+                }
+            }
+
+            File.WriteAllText(appDataFilePath, sb.ToString());
+        }
+
+        public List<TestManager> LoadLastOpenedTestProjects()
+        {
+            var appDataFilePath = Path.Combine(Path.GetTempPath(), "OltMockServer");
+
+            var result = new List<TestManager>();
+
+            if (!Directory.Exists(appDataFilePath))
+            {
+                return result;
+            }
+
+            appDataFilePath = Path.Combine(appDataFilePath, "ActiveTests.dat");
+
+            if (File.Exists(appDataFilePath))
+            {
+                var tesProjectPaths = File.ReadAllLines(appDataFilePath);
+
+                foreach (var filePath in tesProjectPaths)
+                {
+                    if (File.Exists(filePath))
+                    {
+                        try
+                        {
+                            var testProject = this.ImportTestFromFile(filePath);
+                            result.Add(testProject);
+                        }
+                        catch (Exception ex)
+                        {
+                            //log...
+                        }
+
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public TestManager ImportTestFromFile(string filePath)
+        {
+            var projFilePath = filePath;
+
+            var defaultProj = XMLDataSerializer.Deserialize<TestProject>(projFilePath);
+
+            var fullProj = CreateTestManager(defaultProj.OnlineShop);
+
+            fullProj.ImportFromFile(projFilePath);
+
+            if (fullProj != null)
+            {
+                AddTest(fullProj);
+            }
+
+            return fullProj;
+        }
     }
 }
-
 
 //public class Food { }
 //public class Meat : Food { }

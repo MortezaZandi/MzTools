@@ -127,19 +127,19 @@ namespace OLTMockServer.UI
             }
         }
 
-        private bool showQuantityColumn;
+        //private bool showQuantityColumn;
 
-        public bool ShowQuantityColumn
-        {
-            get
-            {
-                return showQuantityColumn;
-            }
-            set
-            {
-                showQuantityColumn = value;
-            }
-        }
+        //public bool ShowQuantityColumn
+        //{
+        //    get
+        //    {
+        //        return showQuantityColumn;
+        //    }
+        //    set
+        //    {
+        //        showQuantityColumn = value;
+        //    }
+        //}
 
         private void ResetDataSource()
         {
@@ -153,10 +153,10 @@ namespace OLTMockServer.UI
             SetColWidth(nameof(Item.Discount), 80);
             SetColWidth(nameof(Item.IsActive), 50);
 
-            if (radGridView.Columns.Count > 0)
-            {
-                radGridView.Columns["clmQuantity"].IsVisible = this.showQuantityColumn;
-            }
+            //if (radGridView.Columns.Count > 0)
+            //{
+            //    radGridView.Columns["clmQuantity"].IsVisible = this.showQuantityColumn;
+            //}
         }
 
         private void SetColWidth(string text, int width)
@@ -246,7 +246,7 @@ namespace OLTMockServer.UI
                 itemControl.ParentDialog = newItemDialog;
                 itemControl.Item = (Item)selectedItem.Clone();
 
-                itemControl.ShowQuantity = this.showQuantityColumn;
+                //itemControl.ShowQuantity = this.showQuantityColumn;
 
                 if (newItemDialog.ShowDialog() == DialogResult.OK)
                 {

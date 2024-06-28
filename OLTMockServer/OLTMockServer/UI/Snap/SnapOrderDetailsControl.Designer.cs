@@ -316,7 +316,6 @@
             this.dataWizardSelectItemControl1.Name = "dataWizardSelectItemControl1";
             this.dataWizardSelectItemControl1.ReadOnly = false;
             this.dataWizardSelectItemControl1.ShowOperationCommands = false;
-            this.dataWizardSelectItemControl1.ShowQuantityColumn = true;
             this.dataWizardSelectItemControl1.ShowTitleBar = false;
             this.dataWizardSelectItemControl1.Size = new System.Drawing.Size(800, 206);
             this.dataWizardSelectItemControl1.TabIndex = 0;
