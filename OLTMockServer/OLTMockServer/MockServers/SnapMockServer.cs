@@ -14,7 +14,7 @@ namespace OLTMockServer.MockServers
 {
     public class SnapMockServer : MockServer
     {
-        public SnapMockServer() : base(new SnapOrderFactory())
+        public SnapMockServer(IOrderRepository orderRepository) : base(orderRepository, new SnapOrderFactory())
         {
         }
 
@@ -66,30 +66,58 @@ namespace OLTMockServer.MockServers
         internal void ClientRequest_Ack(string orderCode)
         {
             //find order
+            var order = orderRepository.FindOrder(orderCode);
+
             //operation for ack
+            order.AckTime = DateTime.Now;
+
             //add log to order logs
-            //if order not found return error
+            order.AddLog("Ack", $"Ack message received");
+
+            orderRepository.SaveOrder(order);
         }
 
         internal void ClientRequest_Pick(string orderCode)
         {
-            //operation for pick
+            //find order
+            var order = orderRepository.FindOrder(orderCode);
+
+            //operation for ack
+            order.PickTime = DateTime.Now;
+
             //add log to order logs
-            //if order not found return error
+            order.AddLog("Pick", $"Pick message received");
+
+            orderRepository.SaveOrder(order);
         }
 
         internal void ClientRequest_Accept(string orderCode, DataStructures.Snap.olt.AcceptModel acceptModel)
         {
-            //operation for accept
+            //find order
+            var order = orderRepository.FindOrder(orderCode);
+
+            //operation for ack
+            order.AcceptTime = DateTime.Now;
+
             //add log to order logs
-            //if order not found return error
+            order.AddLog("Accept", $"Accept message received");
+
+            orderRepository.SaveOrder(order);
         }
 
         internal void ClientRequest_Reject(string orderCode, DataStructures.Snap.olt.RejectModel rejectModel)
         {
-            //operation for reject
+            //find order
+            var order = orderRepository.FindOrder(orderCode);
+
+            //operation for ack
+            order.RejectTime = DateTime.Now;
+            order.RejectedByVendor = true;
+
             //add log to order logs
-            //if order not found return error
+            order.AddLog("Reject", $"Reject request received, RejectReasonID= {rejectModel.ReasonId}, RejectReason={rejectModel.ReasonTitle}");
+
+            orderRepository.SaveOrder(order);
         }
 
         internal DataStructures.Snap.olt.TokenModel ClientRequest_Token()

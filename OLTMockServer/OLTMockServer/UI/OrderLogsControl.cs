@@ -184,7 +184,16 @@ namespace OLTMockServer.UI
             }
             else
             {
-                lblResponseStatusDescription.Text = $"The order not send yet.";
+                if ((order.AckTime != DateTime.MinValue || order.PickTime != DateTime.MinValue || order.AcceptTime != DateTime.MinValue))
+                {
+                    lblResponseStatus.Text = "Vendor Responsd";
+                    lblResponseStatusDescription.Text = $"The order not sent yet, but some response been received from the vendor.";
+                    lblResponseStatusDescription.ForeColor = Color.Orange;
+                }
+                else
+                {
+                    lblResponseStatusDescription.Text = $"The order not send yet.";
+                }
             }
         }
 

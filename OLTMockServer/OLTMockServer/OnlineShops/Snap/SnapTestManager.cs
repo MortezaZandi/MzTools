@@ -108,6 +108,8 @@ namespace OLTMockServer
 
                 //send order with edit status code
                 editedOrde.AddActivity(Definitions.OrderActivityTypes.Edit, false);
+                
+                //ToDo: Should i reset create-date in edited version if order edited?
 
                 var mainOrderPositionInList = TestProject.Orders.FindLastIndex(o => o.Code == selectedOrder.Code);
 

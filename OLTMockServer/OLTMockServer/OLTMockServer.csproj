@@ -123,6 +123,7 @@
     <Compile Include="DataStructures\Vendor.cs" />
     <Compile Include="Definitions.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="IOrderRepository.cs" />
     <Compile Include="MainDialog.cs">
       <SubType>Form</SubType>
     </Compile>

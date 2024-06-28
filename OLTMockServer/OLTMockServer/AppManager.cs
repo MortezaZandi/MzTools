@@ -4,12 +4,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OLTMockServer
 {
-    internal class AppManager : IDisposable
+    internal class AppManager : IDisposable, IOrderRepository
     {
         private readonly List<TestManager> tests;
         private readonly List<MockServer> servers;
@@ -59,7 +62,7 @@ namespace OLTMockServer
 
         private void LoadAvailableServers()
         {
-            servers.Add(new SnapMockServer());
+            servers.Add(new SnapMockServer((IOrderRepository)this));
         }
 
         internal void AddTest(TestManager newTest)
@@ -129,6 +132,95 @@ namespace OLTMockServer
             }
         }
 
+        public Order FindOrder(string code)
+        {
+            foreach (var test in this.tests)
+            {
+                var lastOrderWithRequestedCode = test.TestProject.Orders.FindLast(o => o.Code == code);
+
+                if (lastOrderWithRequestedCode != null)
+                {
+                    return lastOrderWithRequestedCode;
+                }
+            }
+
+            throw new ApplicationException($"An order with this code was not found, make sure that the test project related to this order is open on the server.");
+        }
+
+        public class DelayedAction
+        {
+            public DelayedAction(Action action, TimeSpan delay)
+            {
+                this.Action = action;
+                this.DelayTime = delay;
+                this.startTime = DateTime.Now;
+                ResetTask();
+            }
+
+            private void ResetTask()
+            {
+                this.task = Task.Factory.StartNew(() =>
+                {
+                    while ((DateTime.Now - this.startTime).TotalSeconds < this.DelayTime.TotalSeconds)
+                    {
+                        Thread.Sleep(100);
+                    }
+
+                    taskStarted = true;
+                    this.Action();
+                });
+            }
+            bool taskStarted = false;
+            private Task task;
+            private DateTime startTime;
+            public TimeSpan DelayTime { get; set; }
+            public Action Action { get; set; }
+
+            public void Delay(TimeSpan amount)
+            {
+                this.startTime = DateTime.Now;
+                this.DelayTime = this.DelayTime.Add(amount);
+                if (task == null || task.IsCompleted || taskStarted)
+                {
+                    ResetTask();
+                }
+            }
+        }
+
+        private Dictionary<string, DelayedAction> delayedActions = new Dictionary<string, DelayedAction>();
+
+        public void SaveOrder(Order order)
+        {
+            TestManager relatedTest = null;
+
+            foreach (var test in this.tests)
+            {
+                foreach (var o in test.TestProject.Orders)
+                {
+                    if (o.UId == order.UId)
+                    {
+                        relatedTest = test;
+
+                        if (delayedActions.ContainsKey("Save"))
+                        {
+                            delayedActions["Save"].Delay(TimeSpan.FromSeconds(2));
+                        }
+                        else
+                        {
+                            delayedActions["Save"] =
+                                new DelayedAction(
+                                    () => relatedTest.SaveTestProject(),
+                                    TimeSpan.FromSeconds(2)
+                                    );
+                        }
+
+                        return;
+                    }
+                }
+            }
+
+            throw new ApplicationException($"An order with this code was not found, make sure that the test project related to this order is open on the server.");
+        }
     }
 }
 
