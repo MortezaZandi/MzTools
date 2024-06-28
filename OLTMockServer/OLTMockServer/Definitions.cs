@@ -92,5 +92,13 @@ namespace OLTMockServer
             SendFailed = 6,
         }
 
+        public enum LogTypes
+        {
+            None = 0,
+            Information = 1,
+            Warining = 2,
+            Error = 3,
+            Debug = 4,
+        }
     }
 }

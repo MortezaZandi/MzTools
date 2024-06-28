@@ -29,15 +29,43 @@
         private void InitializeComponent()
         {
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radGridView = new Telerik.WinControls.UI.RadGridView();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.lblAcceptStatus = new Telerik.WinControls.UI.RadLabel();
+            this.lblAcceptStatusDescription = new Telerik.WinControls.UI.RadLabel();
+            this.lblPickStatus = new Telerik.WinControls.UI.RadLabel();
+            this.lblPickStatusDescription = new Telerik.WinControls.UI.RadLabel();
+            this.lblACKStatus = new Telerik.WinControls.UI.RadLabel();
+            this.lblACKStatusDescription = new Telerik.WinControls.UI.RadLabel();
+            this.lblResponseStatus = new Telerik.WinControls.UI.RadLabel();
+            this.lblResponseStatusDescription = new Telerik.WinControls.UI.RadLabel();
+            this.lblSendStatus = new Telerik.WinControls.UI.RadLabel();
+            this.lblSendStatusDescription = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
+            this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblAcceptStatus)).BeginInit();
+            this.lblAcceptStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblAcceptStatusDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPickStatus)).BeginInit();
+            this.lblPickStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPickStatusDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblACKStatus)).BeginInit();
+            this.lblACKStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblACKStatusDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblResponseStatus)).BeginInit();
+            this.lblResponseStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblResponseStatusDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblSendStatus)).BeginInit();
+            this.lblSendStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblSendStatusDescription)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlOperations
@@ -48,7 +76,7 @@
             // radPanel2
             // 
             this.radPanel2.Controls.Add(this.radGridView);
-            this.radPanel2.Controls.Add(this.listBox1);
+            this.radPanel2.Controls.Add(this.radPanel1);
             this.radPanel2.Size = new System.Drawing.Size(1006, 488);
             // 
             // lblTitle
@@ -73,13 +101,18 @@
             this.radGridView.MasterTemplate.AllowEditRow = false;
             this.radGridView.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.radGridView.MasterTemplate.AllowRowResize = false;
-            gridViewTextBoxColumn1.FieldName = "LogDetails";
-            gridViewTextBoxColumn1.HeaderText = "Log Details";
+            gridViewTextBoxColumn1.HeaderText = "Log Time";
             gridViewTextBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            gridViewTextBoxColumn1.Name = "clmLog";
-            gridViewTextBoxColumn1.Width = 1000;
+            gridViewTextBoxColumn1.Name = "clmLogTime";
+            gridViewTextBoxColumn1.Width = 150;
+            gridViewTextBoxColumn2.FieldName = "LogDetails";
+            gridViewTextBoxColumn2.HeaderText = "Log Details";
+            gridViewTextBoxColumn2.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn2.Name = "clmLog";
+            gridViewTextBoxColumn2.Width = 1000;
             this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2});
             this.radGridView.MasterTemplate.EnableCustomFiltering = true;
             this.radGridView.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -87,20 +120,140 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(767, 488);
+            this.radGridView.Size = new System.Drawing.Size(778, 488);
             this.radGridView.TabIndex = 4;
             this.radGridView.ThemeName = "Windows7";
             // 
-            // listBox1
+            // radPanel1
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(767, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(239, 488);
-            this.listBox1.TabIndex = 5;
+            this.radPanel1.Controls.Add(this.lblAcceptStatus);
+            this.radPanel1.Controls.Add(this.lblPickStatus);
+            this.radPanel1.Controls.Add(this.lblACKStatus);
+            this.radPanel1.Controls.Add(this.lblResponseStatus);
+            this.radPanel1.Controls.Add(this.lblSendStatus);
+            this.radPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radPanel1.Location = new System.Drawing.Point(778, 0);
+            this.radPanel1.Name = "radPanel1";
+            this.radPanel1.Size = new System.Drawing.Size(228, 488);
+            this.radPanel1.TabIndex = 5;
+            this.radPanel1.Text = "Stats";
+            this.radPanel1.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.radPanel1.ThemeName = "Windows7";
+            // 
+            // lblAcceptStatus
+            // 
+            this.lblAcceptStatus.AutoSize = false;
+            this.lblAcceptStatus.Controls.Add(this.lblAcceptStatusDescription);
+            this.lblAcceptStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAcceptStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcceptStatus.Location = new System.Drawing.Point(0, 244);
+            this.lblAcceptStatus.Name = "lblAcceptStatus";
+            this.lblAcceptStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblAcceptStatus.TabIndex = 4;
+            this.lblAcceptStatus.Text = "Accept not received";
+            this.lblAcceptStatus.ThemeName = "Windows7";
+            // 
+            // lblAcceptStatusDescription
+            // 
+            this.lblAcceptStatusDescription.AutoSize = false;
+            this.lblAcceptStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblAcceptStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblAcceptStatusDescription.Name = "lblAcceptStatusDescription";
+            this.lblAcceptStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblAcceptStatusDescription.TabIndex = 0;
+            this.lblAcceptStatusDescription.Text = "Order sent, But Accept message not received from target vendor";
+            // 
+            // lblPickStatus
+            // 
+            this.lblPickStatus.AutoSize = false;
+            this.lblPickStatus.Controls.Add(this.lblPickStatusDescription);
+            this.lblPickStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPickStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPickStatus.Location = new System.Drawing.Point(0, 183);
+            this.lblPickStatus.Name = "lblPickStatus";
+            this.lblPickStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblPickStatus.TabIndex = 3;
+            this.lblPickStatus.Text = "Pick not received";
+            this.lblPickStatus.ThemeName = "Windows7";
+            // 
+            // lblPickStatusDescription
+            // 
+            this.lblPickStatusDescription.AutoSize = false;
+            this.lblPickStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblPickStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblPickStatusDescription.Name = "lblPickStatusDescription";
+            this.lblPickStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblPickStatusDescription.TabIndex = 0;
+            this.lblPickStatusDescription.Text = "Order sent, But Pick message not received from target vendor";
+            // 
+            // lblACKStatus
+            // 
+            this.lblACKStatus.AutoSize = false;
+            this.lblACKStatus.Controls.Add(this.lblACKStatusDescription);
+            this.lblACKStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblACKStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblACKStatus.Location = new System.Drawing.Point(0, 122);
+            this.lblACKStatus.Name = "lblACKStatus";
+            this.lblACKStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblACKStatus.TabIndex = 2;
+            this.lblACKStatus.Text = "ACK not received";
+            this.lblACKStatus.ThemeName = "Windows7";
+            // 
+            // lblACKStatusDescription
+            // 
+            this.lblACKStatusDescription.AutoSize = false;
+            this.lblACKStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblACKStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblACKStatusDescription.Name = "lblACKStatusDescription";
+            this.lblACKStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblACKStatusDescription.TabIndex = 0;
+            this.lblACKStatusDescription.Text = "Order sent, But Ack message not received from target vendor";
+            // 
+            // lblResponseStatus
+            // 
+            this.lblResponseStatus.AutoSize = false;
+            this.lblResponseStatus.Controls.Add(this.lblResponseStatusDescription);
+            this.lblResponseStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblResponseStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResponseStatus.Location = new System.Drawing.Point(0, 61);
+            this.lblResponseStatus.Name = "lblResponseStatus";
+            this.lblResponseStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblResponseStatus.TabIndex = 1;
+            this.lblResponseStatus.Text = "No Response received";
+            this.lblResponseStatus.ThemeName = "Windows7";
+            // 
+            // lblResponseStatusDescription
+            // 
+            this.lblResponseStatusDescription.AutoSize = false;
+            this.lblResponseStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblResponseStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblResponseStatusDescription.Name = "lblResponseStatusDescription";
+            this.lblResponseStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblResponseStatusDescription.TabIndex = 0;
+            this.lblResponseStatusDescription.Text = "The order has been sent, but no response has been received from the vendor.";
+            // 
+            // lblSendStatus
+            // 
+            this.lblSendStatus.AutoSize = false;
+            this.lblSendStatus.Controls.Add(this.lblSendStatusDescription);
+            this.lblSendStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblSendStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSendStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblSendStatus.Name = "lblSendStatus";
+            this.lblSendStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblSendStatus.TabIndex = 0;
+            this.lblSendStatus.Text = "Not send";
+            this.lblSendStatus.ThemeName = "Windows7";
+            // 
+            // lblSendStatusDescription
+            // 
+            this.lblSendStatusDescription.AutoSize = false;
+            this.lblSendStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblSendStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblSendStatusDescription.Name = "lblSendStatusDescription";
+            this.lblSendStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblSendStatusDescription.TabIndex = 0;
+            this.lblSendStatusDescription.Text = "This order has not yet been sent to the destination vendor.";
             // 
             // OrderLogsControl
             // 
@@ -115,6 +268,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
+            this.radPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lblAcceptStatus)).EndInit();
+            this.lblAcceptStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lblAcceptStatusDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPickStatus)).EndInit();
+            this.lblPickStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lblPickStatusDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblACKStatus)).EndInit();
+            this.lblACKStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lblACKStatusDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblResponseStatus)).EndInit();
+            this.lblResponseStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lblResponseStatusDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblSendStatus)).EndInit();
+            this.lblSendStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lblSendStatusDescription)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -122,6 +292,16 @@
         #endregion
 
         private Telerik.WinControls.UI.RadGridView radGridView;
-        private System.Windows.Forms.ListBox listBox1;
+        private Telerik.WinControls.UI.RadPanel radPanel1;
+        private Telerik.WinControls.UI.RadLabel lblSendStatus;
+        private Telerik.WinControls.UI.RadLabel lblSendStatusDescription;
+        private Telerik.WinControls.UI.RadLabel lblResponseStatus;
+        private Telerik.WinControls.UI.RadLabel lblResponseStatusDescription;
+        private Telerik.WinControls.UI.RadLabel lblACKStatus;
+        private Telerik.WinControls.UI.RadLabel lblACKStatusDescription;
+        private Telerik.WinControls.UI.RadLabel lblAcceptStatus;
+        private Telerik.WinControls.UI.RadLabel lblAcceptStatusDescription;
+        private Telerik.WinControls.UI.RadLabel lblPickStatus;
+        private Telerik.WinControls.UI.RadLabel lblPickStatusDescription;
     }
 }

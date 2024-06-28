@@ -107,7 +107,7 @@
     <Compile Include="DataStructures\Customer.cs" />
     <Compile Include="DataStructures\Digi\DigiOrder.cs" />
     <Compile Include="DataStructures\Item.cs" />
-    <Compile Include="DataStructures\Log.cs" />
+    <Compile Include="DataStructures\LogInfo.cs" />
     <Compile Include="DataStructures\Order.cs" />
     <Compile Include="DataStructures\OrderPattern.cs" />
     <Compile Include="DataStructures\OrderPatternItem.cs" />

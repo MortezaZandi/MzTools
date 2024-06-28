@@ -161,7 +161,7 @@ namespace OLTMockServer
                             if (!activity.IsDone && activity.TryCount < Definitions.Order_Max_Activity_Try_Count)
                             {
                                 OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.PerformingOrderAcivity, activity.ActivityType);
-                                nextOrder.AddLog($"Perform activity '{activity.ActivityType}' on order '{nextOrder.Code}', try {activity.TryCount}/{Definitions.Order_Max_Activity_Try_Count}");
+                                nextOrder.AddLog($"{activity.ActivityType}", $"Perform activity '{activity.ActivityType}' on order '{nextOrder.Code}', try {activity.TryCount}/{Definitions.Order_Max_Activity_Try_Count}");
 
                                 Vendor targetVendor = GetTargetVendorOfOrder(nextOrder);
                                 activity.TryCount++;
@@ -175,7 +175,7 @@ namespace OLTMockServer
                                 }
                                 else
                                 {
-                                    nextOrder.AddLog($"Activity '{activity.ActivityType}' failed. {activity.LastTryExceptionMessage}");
+                                    nextOrder.AddLog($"Activity '{activity.ActivityType}' failed. {activity.LastTryExceptionMessage}", Definitions.LogTypes.Error);
                                     OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.OrderAcivityNotPerformed, activity.ActivityType);
                                 }
 
@@ -227,11 +227,10 @@ namespace OLTMockServer
                             continueExecution = false;
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
-                    nextOrder.AddLog($"Error in processing order. {ex.Message}");
+                    nextOrder.AddLog($"Error in processing order. {ex.Message}", Definitions.LogTypes.Error);
                     projectChanged = true;
 
                     OrderProcessingFeedback?.Invoke(

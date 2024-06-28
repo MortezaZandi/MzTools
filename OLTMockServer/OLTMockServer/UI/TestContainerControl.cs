@@ -232,7 +232,7 @@ namespace OLTMockServer.UI
                 var logControl = new OrderLogsControl(null);
                 var dataDialog = new DataDialog(logControl);
                 logControl.ParentDialog = dataDialog;
-                logControl.Logs = selectedOrder.Logs;
+                logControl.Order = selectedOrder;
                 dataDialog.ClientSize = new Size(1200, 600);
                 dataDialog.ShowDialog();
             }
