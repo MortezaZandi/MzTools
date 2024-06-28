@@ -89,6 +89,8 @@ namespace OLTMockServer
                 order.MaxItemCount = testProject.Items.Count;
             }
 
+            order.MaxItemCount = random.Next(1, order.MaxItemCount + 1);
+
             int maxTrtToFindNewItem = 1000;
 
             for (int i = 0; i < order.MaxItemCount; i++)

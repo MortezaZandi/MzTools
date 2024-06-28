@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radGridView = new Telerik.WinControls.UI.RadGridView();
             this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
@@ -64,7 +68,7 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomFiltering = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 73);
+            this.radGridView.Location = new System.Drawing.Point(0, 48);
             // 
             // 
             // 
@@ -77,6 +81,27 @@
             this.radGridView.MasterTemplate.AllowEditRow = false;
             this.radGridView.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.radGridView.MasterTemplate.AllowRowResize = false;
+            gridViewTextBoxColumn1.FieldName = "Code";
+            gridViewTextBoxColumn1.HeaderText = "Vendor Code";
+            gridViewTextBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn1.Name = "column1";
+            gridViewTextBoxColumn1.Width = 150;
+            gridViewTextBoxColumn2.FieldName = "Name";
+            gridViewTextBoxColumn2.HeaderText = "Name";
+            gridViewTextBoxColumn2.Name = "column2";
+            gridViewTextBoxColumn2.Width = 150;
+            gridViewTextBoxColumn3.FieldName = "BaseUrl";
+            gridViewTextBoxColumn3.HeaderText = "Base Url";
+            gridViewTextBoxColumn3.Name = "column3";
+            gridViewTextBoxColumn3.Width = 300;
+            gridViewCheckBoxColumn1.FieldName = "IsActive";
+            gridViewCheckBoxColumn1.HeaderText = "Is Active";
+            gridViewCheckBoxColumn1.Name = "column4";
+            this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewCheckBoxColumn1});
             this.radGridView.MasterTemplate.EnableCustomFiltering = true;
             this.radGridView.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -84,7 +109,7 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(690, 267);
+            this.radGridView.Size = new System.Drawing.Size(690, 292);
             this.radGridView.TabIndex = 3;
             this.radGridView.ThemeName = "Windows7";
             // 
@@ -95,7 +120,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(690, 73);
+            this.radCommandBar1.Size = new System.Drawing.Size(690, 48);
             this.radCommandBar1.TabIndex = 4;
             this.radCommandBar1.Text = "radCommandBar1";
             // 
@@ -119,6 +144,11 @@
             this.commandBarSeparator4,
             this.btnEditVendor});
             this.commandBarStripElement1.Name = "commandBarStripElement1";
+            // 
+            // 
+            // 
+            this.commandBarStripElement1.OverflowButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.RadCommandBarOverflowButton)(this.commandBarStripElement1.GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             // 
             // btnAddNewVendor
             // 

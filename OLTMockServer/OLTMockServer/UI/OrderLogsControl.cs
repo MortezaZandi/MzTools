@@ -14,7 +14,7 @@ namespace OLTMockServer.UI
 {
     public partial class OrderLogsControl : DataWizardBaseControl, IDataControl
     {
-        private readonly UIOperation okOperation = new UIOperation("OK");
+        private readonly UIOperation okOperation = new UIOperation("Close");
         private readonly UIOperation refreshOperation = new UIOperation("Reftesh");
 
         private IConfirmableDialog parentDialog;
