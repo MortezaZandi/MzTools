@@ -99,6 +99,11 @@ namespace OLTMockServer
         {
             var newTabPage = new TestTabPage(test);
             newTabPage.Text = test.TestProject.TestOptions.TestName;
+            if (test.TestProject.IsTemp)
+            {
+                newTabPage.Text += " *";
+            }
+
             newTabPage.Title = newTabPage.Text;
             radPageView1.ThemeName = "Windows7";
             radPageView1.Controls.Add(newTabPage);
@@ -158,6 +163,10 @@ namespace OLTMockServer
                 this.appManager.AddTest(newTest);
 
                 AddTestPage(newTest);
+
+                newTest.SaveTestProject();
+
+                appManager.UpdateTestList();
             }
         }
 
@@ -335,6 +344,10 @@ namespace OLTMockServer
                 this.appManager.AddTest(testProj);
 
                 AddTestPage(testProj);
+
+                testProj.SaveTestProject();
+
+                appManager.UpdateTestList();
             }
         }
 
@@ -355,7 +368,7 @@ namespace OLTMockServer
             {
                 radWaitingBar1.Hide();
             }
-            
+
         }
     }
 }

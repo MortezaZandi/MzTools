@@ -80,9 +80,10 @@ namespace OLTMockServer
             bool saveOrderGeneratorData = true;
             if (saveOrderGeneratorData)
             {
-                var tempTest = ImportTestProject(TestProject.SaveFilePath);
+                var path = TestProject.IsTemp ? TestProject.TempFilePath : TestProject.SaveFilePath;
+                var tempTest = ImportTestProject(path);
                 tempTest.OrderPattern = TestProject.OrderPattern;
-                SaveTestProject(tempTest, tempTest.SaveFilePath);
+                SaveTestProject(tempTest, path);
             }
 
             dataDialog.ClientSize = new Size(700, 460);
