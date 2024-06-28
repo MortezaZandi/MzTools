@@ -107,11 +107,29 @@ namespace OLTMockServer
             orderControl.Dock = DockStyle.Fill;
             newTabPage.Controls.Add(orderControl);
             orderControl.OnTestStatusChanged += TestControl_OnTestStatusChanged;
+            newTabPage.TestContainer = orderControl;
         }
 
-        private void TestControl_OnTestStatusChanged(object sender, EventArgs e)
+        private void TestControl_OnTestStatusChanged(TestContainerControl testContainer, int totalSteps, int doneSteps)
         {
             UpdatePlayButtons();
+
+            if (testContainer == activeTestTab.TestContainer)
+            {
+                if (totalSteps > 0)
+                {
+                    int progressValue = (int)((100f / totalSteps) * doneSteps);
+
+                    if (progressValue > 100)
+                    {
+                        progressValue = 100;
+                    }
+
+                    playProgressbar.Maximum = 100;
+                    playProgressbar.Value1 = progressValue;
+                    playProgressbar.Text = $"%{progressValue}";
+                }
+            }
         }
 
         private void btnCreateNewTest_Click(object sender, EventArgs e)
@@ -275,6 +293,28 @@ namespace OLTMockServer
             if (resp != DialogResult.Yes)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void btnDuplicateTestProject_Click(object sender, EventArgs e)
+        {
+            if (activeTest != null)
+            {
+                var newTest = this.activeTest.TestProject.Clone() as TestProject;
+
+                newTest.Orders.Clear();
+
+                var testProj = appManager.CreateTestManager(newTest.OnlineShop);
+
+                testProj.TestProject.SaveFilePath = null;
+
+                testProj.TestProject = newTest;
+
+                this.appManager.AddTest(testProj);
+
+                newTest.TestOptions.TestName += " (Clone)";
+
+                AddTestPage(testProj);
             }
         }
     }

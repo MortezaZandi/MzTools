@@ -18,26 +18,32 @@ namespace OLTMockServer.UI
     public partial class TestContainerControl : UserControl
     {
         private TestManager testManager;
-        public event EventHandler OnTestStatusChanged;
+        public event Definitions.OnTestStausChangedEventHandler OnTestStatusChanged;
         private GridViewRowInfo lastHighlightedRow;
         public TestContainerControl(TestManager testManager)
         {
             InitializeComponent();
             this.TestManager = testManager;
             this.testManager.OrderProcessingFeedback += TestManager_OrderProcessingFeedback;
+            this.radGridView.CellDoubleClick += RadGridView_CellDoubleClick;
         }
 
-        private void TestManager_OrderProcessingFeedback(Order order, Definitions.OrderProcessingSteps processingStep, Definitions.OrderActivityTypes orderActivity = Definitions.OrderActivityTypes.None, Exception exception = null)
+        private void RadGridView_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            this.btnShowOrderLogs.PerformClick();
+        }
+
+        private void TestManager_OrderProcessingFeedback(Order order, Definitions.OrderProcessingSteps processingStep, int totalSteps, int doneSteps, Definitions.OrderActivityTypes orderActivity = Definitions.OrderActivityTypes.None, Exception exception = null)
         {
             if (this.InvokeRequired)
             {
                 var m = new Definitions.OrderProcessingFeedbackEventHandler(TestManager_OrderProcessingFeedback);
 
-                this.Invoke(m, new object[] { order, processingStep, orderActivity, exception });
+                this.Invoke(m, new object[] { order, processingStep, totalSteps, doneSteps, orderActivity, exception });
             }
             else if (processingStep == Definitions.OrderProcessingSteps.TestFinished)
             {
-                OnTestStatusChanged?.Invoke(this, new EventArgs());
+                OnTestStatusChanged?.Invoke(this, totalSteps, doneSteps);
             }
             else
             {
@@ -58,6 +64,8 @@ namespace OLTMockServer.UI
                 HighlightGridRow(rowElement, true, true);
 
                 lastHighlightedRow = rowElement;
+
+                OnTestStatusChanged?.Invoke(this, totalSteps, doneSteps);
             }
 
             Application.DoEvents();
@@ -98,40 +106,38 @@ namespace OLTMockServer.UI
         {
             var effectCell = row.Cells[0];
 
-            effectCell.Style.CustomizeFill = true;
+            //effectCell.Style.CustomizeFill = true;
             Color? backColor = Color.White;
             Color? foreColor = Color.Black;
 
             switch (processingStep)
             {
                 case Definitions.OrderProcessingSteps.OrderSelectedForProcessing:
-                    backColor = Color.Yellow;
+                    foreColor = Color.Yellow;
                     break;
 
                 case Definitions.OrderProcessingSteps.PerformingOrderAcivity:
-                    backColor = Color.Orange;
+                    foreColor = Color.Orange;
                     break;
 
                 case Definitions.OrderProcessingSteps.OrderAcivityPerformed:
-                    backColor = Color.GreenYellow;
+                    foreColor = Color.GreenYellow;
                     break;
 
                 case Definitions.OrderProcessingSteps.OrderAcivityNotPerformed:
-                    backColor = Color.Pink;
-                    break;
-
-                case Definitions.OrderProcessingSteps.NewOrderCreated:
-                    backColor = Color.Green;
-                    foreColor = Color.White;
-                    break;
-
-                case Definitions.OrderProcessingSteps.OrderProcessingError:
-                    backColor = Color.Pink;
                     foreColor = Color.Red;
                     break;
 
+                case Definitions.OrderProcessingSteps.NewOrderCreated:
+                    foreColor = Color.Green;
+                    break;
+
+                case Definitions.OrderProcessingSteps.OrderProcessingError:
+                    foreColor = Color.Pink;
+                    break;
+
                 case Definitions.OrderProcessingSteps.TestFinished:
-                    backColor = Color.White;
+                    foreColor = Color.White;
                     break;
 
                 case Definitions.OrderProcessingSteps.None:
@@ -139,7 +145,7 @@ namespace OLTMockServer.UI
                     break;
             }
 
-            row.Cells[0].Style.BackColor = backColor.Value;
+            //row.Cells[0].Style.BackColor = backColor.Value;
             row.Cells[0].Style.ForeColor = foreColor.Value;
         }
 
@@ -206,6 +212,12 @@ namespace OLTMockServer.UI
 
         private void btnEditOrder_Click(object sender, EventArgs e)
         {
+            if (testManager.TestPlayStatuse == Definitions.TestPlayStatuses.Playing)
+            {
+                Utils.ShowError("Test is running");
+                return;
+            }
+
             if (radGridView.SelectedRows.Count > 0)
             {
                 var selectedOrder = radGridView.SelectedRows[0].DataBoundItem as Order;

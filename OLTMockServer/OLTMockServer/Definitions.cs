@@ -1,4 +1,5 @@
 ﻿using OLTMockServer.DataStructures;
+using OLTMockServer.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace OLTMockServer
 {
     public class Definitions
     {
-        public delegate void OrderProcessingFeedbackEventHandler(Order order, OrderProcessingSteps processingStep, OrderActivityTypes orderActivity = OrderActivityTypes.None, Exception exception = null);
+        public delegate void OrderProcessingFeedbackEventHandler(Order order, OrderProcessingSteps processingStep, int totalSteps, int doneSteps, OrderActivityTypes orderActivity = OrderActivityTypes.None, Exception exception = null);
+        public delegate void OnTestStausChangedEventHandler(TestContainerControl testContainer, int totalSteps, int doneSteps);
 
         public const int Order_Max_Activity_Try_Count = 15;
         public const string Order_Status_Unknown = "Unknown";
@@ -37,6 +39,7 @@ namespace OLTMockServer
             Stoped = 0,
             Playing = 1,
             Paused = 2,
+            Finished=0,
         }
 
         public enum PropertyValueGeneratorTypes

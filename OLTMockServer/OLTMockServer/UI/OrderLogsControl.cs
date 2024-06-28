@@ -45,7 +45,7 @@ namespace OLTMockServer.UI
                 {
                     if (!string.IsNullOrEmpty(log.LogTitle))
                     {
-                        radGridView.Rows.Add(new object[] { string.Empty, string.Empty });
+                        radGridView.Rows.Add(new object[] { string.Empty, string.Empty, log.LogTitle });
                         var index = radGridView.Rows.Count;
                         radGridView.Rows.Add(new object[] { log.LogTime.ToString("yyyy-MM-dd HH:mm:ss"), log.LogTitle });
 
@@ -59,6 +59,11 @@ namespace OLTMockServer.UI
                         radGridView.Rows.Add(new object[] { log.LogTime.ToString("yyyy-MM-dd HH:mm:ss"), log.LogDetails });
 
                         SetRowTextColor(index, log.LogType);
+                    }
+
+                    if (string.IsNullOrEmpty(log.LogTitle) && string.IsNullOrEmpty(log.LogDetails))
+                    {
+                        radGridView.Rows.Add(new object[] { string.Empty, string.Empty });
                     }
                 }
             }

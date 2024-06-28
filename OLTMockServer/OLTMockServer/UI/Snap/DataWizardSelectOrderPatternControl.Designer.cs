@@ -99,6 +99,7 @@
             // 
             // radDropDownList1
             // 
+            this.radDropDownList1.DropDownAnimationEnabled = false;
             this.radDropDownList1.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropDownList1.Location = new System.Drawing.Point(103, 10);
             this.radDropDownList1.Name = "radDropDownList1";
@@ -147,6 +148,7 @@
             this.radGridView.MasterTemplate.AllowRowResize = false;
             gridViewTextBoxColumn1.FieldName = "PropertyName";
             gridViewTextBoxColumn1.HeaderText = "Property Name";
+            gridViewTextBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn1.IsPinned = true;
             gridViewTextBoxColumn1.Name = "clmPropertyName";
             gridViewTextBoxColumn1.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
@@ -154,6 +156,7 @@
             gridViewTextBoxColumn1.Width = 150;
             gridViewTextBoxColumn2.FieldName = "PropertyType";
             gridViewTextBoxColumn2.HeaderText = "Property Type";
+            gridViewTextBoxColumn2.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn2.IsPinned = true;
             gridViewTextBoxColumn2.Name = "clmProprtyType";
             gridViewTextBoxColumn2.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
@@ -161,18 +164,21 @@
             gridViewTextBoxColumn2.Width = 80;
             gridViewComboBoxColumn1.FieldName = "GenerateType";
             gridViewComboBoxColumn1.HeaderText = "Generate Type";
+            gridViewComboBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewComboBoxColumn1.IsPinned = true;
             gridViewComboBoxColumn1.Name = "clmGeneratorType";
             gridViewComboBoxColumn1.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
-            gridViewComboBoxColumn1.Width = 100;
+            gridViewComboBoxColumn1.Width = 150;
             gridViewTextBoxColumn3.FieldName = "Value";
             gridViewTextBoxColumn3.HeaderText = "Fixed Value";
+            gridViewTextBoxColumn3.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn3.IsPinned = true;
             gridViewTextBoxColumn3.Name = "clmFixedValue";
             gridViewTextBoxColumn3.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
             gridViewTextBoxColumn3.Width = 150;
             gridViewTextBoxColumn4.FieldName = "SampleValue";
             gridViewTextBoxColumn4.HeaderText = "Sample Value";
+            gridViewTextBoxColumn4.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn4.IsPinned = true;
             gridViewTextBoxColumn4.Name = "clmSamplevalue";
             gridViewTextBoxColumn4.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
@@ -180,18 +186,21 @@
             gridViewTextBoxColumn4.Width = 100;
             gridViewTextBoxColumn5.FieldName = "MinValue";
             gridViewTextBoxColumn5.HeaderText = "MinValue";
+            gridViewTextBoxColumn5.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn5.IsPinned = true;
             gridViewTextBoxColumn5.Name = "clmMinValue";
             gridViewTextBoxColumn5.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
             gridViewTextBoxColumn5.Width = 80;
             gridViewTextBoxColumn6.FieldName = "MaxValue";
             gridViewTextBoxColumn6.HeaderText = "MaxValue";
+            gridViewTextBoxColumn6.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn6.IsPinned = true;
             gridViewTextBoxColumn6.Name = "clmMaxValue";
             gridViewTextBoxColumn6.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
             gridViewTextBoxColumn6.Width = 80;
             gridViewTextBoxColumn7.FieldName = "Unique";
             gridViewTextBoxColumn7.HeaderText = "Must Be Uniqe";
+            gridViewTextBoxColumn7.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn7.IsPinned = true;
             gridViewTextBoxColumn7.Name = "clmUniqe";
             gridViewTextBoxColumn7.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;

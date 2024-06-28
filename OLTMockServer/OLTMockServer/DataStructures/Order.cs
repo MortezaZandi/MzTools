@@ -62,11 +62,36 @@ namespace OLTMockServer.DataStructures
                 return Activities.FindLast(a => a.ActivityType == OrderActivityTypes.Send && a.IsDone == true);
             }
         }
+
+        private OrderActivity SendActivity
+        {
+            get
+            {
+                return Activities.FindLast(a => a.ActivityType == OrderActivityTypes.Send);
+            }
+        }
+
+        private OrderActivity EditSuccessActivity
+        {
+            get
+            {
+                return Activities.FindLast(a => a.ActivityType == OrderActivityTypes.Edit && a.IsDone == true);
+            }
+        }
+
+        private OrderActivity EditActivity
+        {
+            get
+            {
+                return Activities.FindLast(a => a.ActivityType == OrderActivityTypes.Edit);
+            }
+        }
+
         private bool IsSent
         {
             get
             {
-                return SendSuccessActivity != null;
+                return SendSuccessActivity != null || EditSuccessActivity != null;
             }
         }
 
@@ -116,15 +141,15 @@ namespace OLTMockServer.DataStructures
         {
             get
             {
-                var sendActivity = Activities.FirstOrDefault(a => a.ActivityType == Definitions.OrderActivityTypes.Send);
-                bool isSent = sendActivity != null && sendActivity.IsDone;
+                var sendActivity = SendActivity;
+                var editActivity = EditActivity;
                 bool isAckReceived = AckTime != DateTime.MinValue;
                 bool isPickReveived = PickTime != DateTime.MinValue;
                 bool isRejected = RejectTime != DateTime.MinValue;
 
                 OrderStatusResults status = OrderStatusResults.Unknown;
 
-                if (isSent)
+                if (IsSent)
                 {
                     status = OrderStatusResults.Sent;
 
@@ -145,7 +170,7 @@ namespace OLTMockServer.DataStructures
                 }
                 else
                 {
-                    if (sendActivity != null && sendActivity.TryCount > 1)
+                    if ((sendActivity != null && sendActivity.TryCount > 0) || (EditActivity != null && editActivity.TryCount > 0))
                     {
                         status = OrderStatusResults.SendFailed;
                     }

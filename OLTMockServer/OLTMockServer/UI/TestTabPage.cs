@@ -17,5 +17,7 @@ namespace OLTMockServer.UI
         }
 
         public TestManager TestManager => testManager;
+
+        public TestContainerControl TestContainer { get; internal set; }
     }
 }

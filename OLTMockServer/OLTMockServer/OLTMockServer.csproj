@@ -334,6 +334,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\duplicate_24px.png" />
     <None Include="Resources\book_24px.png" />
     <None Include="Resources\history_24px.png" />
     <None Include="Resources\single_select_24px.png" />
