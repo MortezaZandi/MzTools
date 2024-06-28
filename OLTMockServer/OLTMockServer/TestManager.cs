@@ -160,11 +160,12 @@ namespace OLTMockServer
                         {
                             if (!activity.IsDone && activity.TryCount < Definitions.Order_Max_Activity_Try_Count)
                             {
+                                activity.TryCount++;
+
                                 OrderProcessingFeedback?.Invoke(nextOrder, Definitions.OrderProcessingSteps.PerformingOrderAcivity, activity.ActivityType);
                                 nextOrder.AddLog($"{activity.ActivityType}", $"Perform activity '{activity.ActivityType}' on order '{nextOrder.Code}', try {activity.TryCount}/{Definitions.Order_Max_Activity_Try_Count}");
 
                                 Vendor targetVendor = GetTargetVendorOfOrder(nextOrder);
-                                activity.TryCount++;
                                 projectChanged = true;
                                 if (Server.PerformOrderActivity(nextOrder, targetVendor, activity))
                                 {

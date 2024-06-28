@@ -63,6 +63,7 @@ namespace OLTMockServer.UI
         private void SetStatusLabels()
         {
             var sendActivity = order.Activities.FindLast(a => a.ActivityType == Definitions.OrderActivityTypes.Send);
+            var editActivity = order.Activities.FindLast(a => a.ActivityType == Definitions.OrderActivityTypes.Edit);
             var successSendActivity = order.Activities.FirstOrDefault(a => a.ActivityType == Definitions.OrderActivityTypes.Send && a.IsDone == true);
             DateTime diffBaseTime = order.CreateDate;
             string baseString = "after create";
@@ -79,12 +80,49 @@ namespace OLTMockServer.UI
             }
             else if (sendActivity != null)
             {
-                if (sendActivity.TryCount > 1)
+                if (sendActivity.TryCount > 0)
                 {
                     lblSendStatus.Text = "Send Failed";
                     lblSendStatusDescription.Text = $"{sendActivity.TryCount}th send action faild at {sendActivity.ActivityDate:yyyy-MM-dd HH:mm:ss}";
                     lblSendStatus.ForeColor = Color.Red;
                 }
+                else
+                {
+                    lblSendStatus.Text = "Not Processed";
+                    lblSendStatusDescription.Text = $"This is order is not processed, Click play button to process new orders.";
+                }
+            }
+            else if (editActivity != null)
+            {
+                if (editActivity.IsDone == true)
+                {
+                    successSendActivity = editActivity;
+                    diffBaseTime = editActivity.ProcessDate;
+                    baseString = "after send";
+
+                    lblSendStatus.Text = "Edit Sent";
+                    lblSendStatusDescription.Text = $"Order was sent to vendor at {editActivity.ProcessDate:yyyy-MM-dd HH:mm:ss}, {(editActivity.ProcessDate - order.CreateDate)} after create.";
+                    lblSendStatus.ForeColor = Color.Green;
+                }
+                else
+                {
+                    if (editActivity.TryCount > 0)
+                    {
+                        lblSendStatus.Text = "Send Edit Failed";
+                        lblSendStatusDescription.Text = $"{editActivity.TryCount}th send action faild at {editActivity.ActivityDate:yyyy-MM-dd HH:mm:ss}";
+                        lblSendStatus.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        lblSendStatus.Text = "Edit Not Processed";
+                        lblSendStatusDescription.Text = $"This is order is not processed, Click play button to process edited orders.";
+                    }
+                }
+            }
+            else
+            {
+                lblSendStatus.Text = "Unknown Send Status";
+                lblSendStatusDescription.Text = $"This is order is not processed or has error.";
             }
 
             //Ack status

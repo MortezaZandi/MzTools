@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radGridView = new Telerik.WinControls.UI.RadGridView();
             this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
@@ -75,6 +81,41 @@
             this.radGridView.MasterTemplate.AllowEditRow = false;
             this.radGridView.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.radGridView.MasterTemplate.AllowRowResize = false;
+            gridViewTextBoxColumn1.FieldName = "Id";
+            gridViewTextBoxColumn1.HeaderText = "Item ID";
+            gridViewTextBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn1.Name = "column1";
+            gridViewTextBoxColumn1.Width = 100;
+            gridViewTextBoxColumn2.FieldName = "Barcode";
+            gridViewTextBoxColumn2.HeaderText = "Barcode";
+            gridViewTextBoxColumn2.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn2.Name = "column2";
+            gridViewTextBoxColumn2.Width = 150;
+            gridViewTextBoxColumn3.FieldName = "Name";
+            gridViewTextBoxColumn3.HeaderText = "Item Name";
+            gridViewTextBoxColumn3.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn3.Name = "column3";
+            gridViewTextBoxColumn3.Width = 200;
+            gridViewTextBoxColumn4.FieldName = "Price";
+            gridViewTextBoxColumn4.HeaderText = "Price";
+            gridViewTextBoxColumn4.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn4.Name = "column4";
+            gridViewTextBoxColumn4.Width = 70;
+            gridViewTextBoxColumn5.FieldName = "Discount";
+            gridViewTextBoxColumn5.HeaderText = "Discount";
+            gridViewTextBoxColumn5.Name = "column5";
+            gridViewTextBoxColumn5.Width = 80;
+            gridViewTextBoxColumn6.FieldName = "VAT";
+            gridViewTextBoxColumn6.HeaderText = "Tax";
+            gridViewTextBoxColumn6.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn6.Name = "column6";
+            this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.radGridView.MasterTemplate.EnableCustomFiltering = true;
             this.radGridView.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
