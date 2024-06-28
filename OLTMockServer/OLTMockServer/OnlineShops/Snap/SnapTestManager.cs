@@ -75,7 +75,7 @@ namespace OLTMockServer
             var orderControl = new SnapOrderDetailsControl(null, this);
             var dataDialog = new DataDialog(orderControl);
             orderControl.ParentDialog = dataDialog;
-            orderControl.Order = (SnapOrder)this.Server.CreateNewOrder(this.TestProject.OrderPattern, false);
+            orderControl.Order = (SnapOrder)this.Server.CreateNewOrder(this.TestProject, false);
 
             bool saveOrderGeneratorData = true;
             if (saveOrderGeneratorData)

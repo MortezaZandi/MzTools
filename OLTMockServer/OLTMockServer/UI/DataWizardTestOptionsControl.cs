@@ -41,7 +41,7 @@ namespace OLTMockServer.UI
                 txtTestName.DataBindings.Add(new Binding(nameof(RadTextBox.Text), options, nameof(TestOptions.TestName)));
 
                 txtDelay.DataBindings.Clear();
-                txtDelay.DataBindings.Add(new Binding(nameof(RadTextBox.Text), options, nameof(TestOptions.DelayBeforeSendNextOrder)));
+                txtDelay.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), options, nameof(TestOptions.DelayBeforeSendNextOrder)));
 
                 txtMaxOrderCount.DataBindings.Clear();
                 txtMaxOrderCount.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), options, nameof(TestOptions.MaxOrderCount)));
@@ -51,6 +51,12 @@ namespace OLTMockServer.UI
 
                 chkAutoGenerateOrder.DataBindings.Clear();
                 chkAutoGenerateOrder.DataBindings.Add(new Binding(nameof(RadCheckBox.Checked), options, nameof(TestOptions.GenerateOrdersAutomatically)));
+
+                txtMinRandomDelay.DataBindings.Clear();
+                txtMinRandomDelay.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), options, nameof(TestOptions.MinRandomDelay)));
+
+                txtMaxRandomDelay.DataBindings.Clear();
+                txtMaxRandomDelay.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), options, nameof(TestOptions.MaxRandomDelay)));
             }
         }
 
@@ -104,6 +110,11 @@ namespace OLTMockServer.UI
         private void chkAutoGenerateOrder_ToggleStateChanged(object sender, StateChangedEventArgs args)
         {
             txtMaxOrderCount.Enabled = chkAutoGenerateOrder.Checked;
+        }
+
+        private void chkUseRandomDelay_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+            this.pnlDelayAmount.Enabled = chkUseRandomDelay.Checked;
         }
     }
 }

@@ -218,7 +218,7 @@ namespace OLTMockServer
 
                         if (needMoreOrders)
                         {
-                            var newOrder = Server.CreateNewOrder(testProject.OrderPattern, true);
+                            var newOrder = Server.CreateNewOrder(testProject, true);
                             testProject.Orders.Add(newOrder);
                             projectChanged = true;
                             performedAcounsCount++;

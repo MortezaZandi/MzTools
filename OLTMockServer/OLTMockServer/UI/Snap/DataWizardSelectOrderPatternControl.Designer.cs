@@ -35,7 +35,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.radDropDownList1 = new Telerik.WinControls.UI.RadDropDownList();
@@ -48,8 +48,6 @@
             this.btnAddProperty = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDeleteProperty = new Telerik.WinControls.UI.CommandBarButton();
-            this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.btnEditProperty = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDeleteAllProperties = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarRowElement2 = new Telerik.WinControls.UI.CommandBarRowElement();
@@ -161,14 +159,14 @@
             gridViewTextBoxColumn2.Name = "clmProprtyType";
             gridViewTextBoxColumn2.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
             gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 80;
+            gridViewTextBoxColumn2.Width = 100;
             gridViewComboBoxColumn1.FieldName = "GenerateType";
             gridViewComboBoxColumn1.HeaderText = "Generate Type";
             gridViewComboBoxColumn1.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewComboBoxColumn1.IsPinned = true;
             gridViewComboBoxColumn1.Name = "clmGeneratorType";
             gridViewComboBoxColumn1.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
-            gridViewComboBoxColumn1.Width = 150;
+            gridViewComboBoxColumn1.Width = 160;
             gridViewTextBoxColumn3.FieldName = "Value";
             gridViewTextBoxColumn3.HeaderText = "Fixed Value";
             gridViewTextBoxColumn3.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -198,13 +196,9 @@
             gridViewTextBoxColumn6.Name = "clmMaxValue";
             gridViewTextBoxColumn6.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
             gridViewTextBoxColumn6.Width = 80;
-            gridViewTextBoxColumn7.FieldName = "Unique";
-            gridViewTextBoxColumn7.HeaderText = "Must Be Uniqe";
-            gridViewTextBoxColumn7.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            gridViewTextBoxColumn7.IsPinned = true;
-            gridViewTextBoxColumn7.Name = "clmUniqe";
-            gridViewTextBoxColumn7.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
-            gridViewTextBoxColumn7.Width = 100;
+            gridViewCheckBoxColumn1.FieldName = "Unique";
+            gridViewCheckBoxColumn1.HeaderText = "Unique";
+            gridViewCheckBoxColumn1.Name = "column1";
             this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -213,7 +207,7 @@
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
             gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7});
+            gridViewCheckBoxColumn1});
             this.radGridView.MasterTemplate.EnableCustomFiltering = true;
             this.radGridView.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -250,8 +244,6 @@
             this.btnAddProperty,
             this.commandBarSeparator1,
             this.btnDeleteProperty,
-            this.commandBarSeparator2,
-            this.btnEditProperty,
             this.commandBarSeparator3,
             this.btnDeleteAllProperties});
             this.commandBarStripElement1.Name = "commandBarStripElement1";
@@ -285,21 +277,7 @@
             this.btnDeleteProperty.Name = "btnDeleteProperty";
             this.btnDeleteProperty.Text = "Delete Property";
             this.btnDeleteProperty.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // commandBarSeparator2
-            // 
-            this.commandBarSeparator2.DisplayName = "commandBarSeparator2";
-            this.commandBarSeparator2.Name = "commandBarSeparator2";
-            this.commandBarSeparator2.VisibleInOverflowMenu = false;
-            // 
-            // btnEditProperty
-            // 
-            this.btnEditProperty.DisplayName = "commandBarButton3";
-            this.btnEditProperty.DrawText = true;
-            this.btnEditProperty.Image = global::OLTMockServer.Properties.Resources.edit_24px;
-            this.btnEditProperty.Name = "btnEditProperty";
-            this.btnEditProperty.Text = "Edit Property";
-            this.btnEditProperty.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteProperty.Click += new System.EventHandler(this.btnDeleteProperty_Click);
             // 
             // commandBarSeparator3
             // 
@@ -315,6 +293,7 @@
             this.btnDeleteAllProperties.Name = "btnDeleteAllProperties";
             this.btnDeleteAllProperties.Text = "Delete All";
             this.btnDeleteAllProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteAllProperties.Click += new System.EventHandler(this.btnDeleteAllProperties_Click);
             // 
             // commandBarRowElement2
             // 
@@ -356,8 +335,6 @@
         private Telerik.WinControls.UI.CommandBarButton btnAddProperty;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator1;
         private Telerik.WinControls.UI.CommandBarButton btnDeleteProperty;
-        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator2;
-        private Telerik.WinControls.UI.CommandBarButton btnEditProperty;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator3;
         private Telerik.WinControls.UI.CommandBarButton btnDeleteAllProperties;
         private Telerik.WinControls.UI.RadDropDownList radDropDownList1;

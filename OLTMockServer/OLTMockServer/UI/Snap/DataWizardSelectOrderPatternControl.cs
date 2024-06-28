@@ -26,36 +26,6 @@ namespace OLTMockServer.UI
             this.orderType = orderType;
             InitializeComponent();
             InitOperations();
-            radGridView.Invalidated += RadGridView_Invalidated;
-        }
-
-        private void RadGridView_Invalidated(object sender, InvalidateEventArgs e)
-        {
-            //SetColWidth(nameof(OrderPatternItem.PropertyName), 200);
-            //SetColWidth(nameof(OrderPatternItem.PropertyType), 200);
-            //SetColWidth(nameof(OrderPatternItem.AvailableValues), 100);
-            //SetColWidth(nameof(OrderPatternItem.Value), 100);
-
-            foreach (var col in radGridView.Columns)
-            {
-                if (!col.IsPinned)
-                {
-                    if (col.IsVisible)
-                    {
-                        col.IsVisible = false;
-                    }
-                }
-
-                if (col.Name == "clmGeneratorType")
-                {
-                    var colx = (Telerik.WinControls.UI.GridViewComboBoxColumn)col;
-                    if (colx.DataSource == null)
-                    {
-                        colx.DataSource = Enum.GetValues(typeof(Definitions.PropertyValueGeneratorTypes));
-                        colx.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-                    }
-                }
-            }
         }
 
         private void InitOperations()
@@ -88,23 +58,6 @@ namespace OLTMockServer.UI
             radGridView.DataSource = orderPattern.PatternItems;
         }
 
-        private void SetColWidth(string text, int width)
-        {
-            if (!string.IsNullOrEmpty(text))
-            {
-                foreach (var col in radGridView.Columns)
-                {
-                    if (col.HeaderText.ToLower() == text.ToLower())
-                    {
-                        if (col.Width != width)
-                        {
-                            col.Width = width;
-                        }
-                    }
-                }
-            }
-        }
-
         private void OnOperationSelected(object sender, UIOperation uIOperation)
         {
             if (uIOperation.Id == nextOperation.Id)
@@ -135,9 +88,9 @@ namespace OLTMockServer.UI
             {
                 if (propControl.SelectedItem != null)
                 {
-                    var found = 
-                        orderPattern.PatternItems.Any(x => 
-                            x.PropertyName == propControl.SelectedItem.PropertyName && 
+                    var found =
+                        orderPattern.PatternItems.Any(x =>
+                            x.PropertyName == propControl.SelectedItem.PropertyName &&
                             x.PropertyType == propControl.SelectedItem.PropertyType);
 
                     if (!found)
@@ -154,6 +107,30 @@ namespace OLTMockServer.UI
                     {
                         Utils.ShowError($"Property '{propControl.SelectedItem.PropertyName}' alreadt exists in list.");
                     }
+                }
+            }
+        }
+
+        private void btnDeleteProperty_Click(object sender, EventArgs e)
+        {
+            if (radGridView.SelectedRows.Count > 0)
+            {
+                var selectedPatternItem = radGridView.SelectedRows[0].DataBoundItem as OrderPatternItem;
+
+                if (Utils.AskQuestion($"Delete '{selectedPatternItem.PropertyName}' ?") == DialogResult.Yes)
+                {
+                    orderPattern.PatternItems.Remove(selectedPatternItem);
+                }
+            }
+        }
+
+        private void btnDeleteAllProperties_Click(object sender, EventArgs e)
+        {
+            if (radGridView.Rows.Count > 0)
+            {
+                if (Utils.AskQuestion($"Delete all patterns?") == DialogResult.Yes)
+                {
+                    orderPattern.PatternItems.Clear();
                 }
             }
         }

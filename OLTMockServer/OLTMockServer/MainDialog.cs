@@ -98,7 +98,7 @@ namespace OLTMockServer
         private void AddTestPage(TestManager test)
         {
             var newTabPage = new TestTabPage(test);
-            newTabPage.Text = $"{test.TestProject.TestOptions.TestName}{this.appManager.GetNextTestNumber()}";
+            newTabPage.Text = test.TestProject.TestOptions.TestName;
             newTabPage.Title = newTabPage.Text;
             radPageView1.ThemeName = "Windows7";
             radPageView1.Controls.Add(newTabPage);
@@ -242,6 +242,10 @@ namespace OLTMockServer
 
                         testProj.SaveFilePath = saveFilePath;
                     }
+                    
+                    activeTest.TestProject.TestOptions.TestName = Path.GetFileNameWithoutExtension(saveFilePath);
+                    
+                    activeTestTab.Text = activeTest.TestProject.TestOptions.TestName;
 
                     activeTest.SaveTestProject(testProj, saveFilePath);
                 }

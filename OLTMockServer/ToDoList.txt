@@ -17,3 +17,6 @@ fix tab titles (normal and when executing)
 ///////////improve list of orders and their statuses in main dialog
 allow process single or multiple orders selected by user(not all the list)
 
+apply vendor code of edited/selected vendor object to order.vendorCode
+apply customer of edited/selected customer object to order.userCode
+

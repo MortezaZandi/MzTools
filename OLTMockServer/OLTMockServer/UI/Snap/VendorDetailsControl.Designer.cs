@@ -59,6 +59,10 @@
             this.radPanel2.Controls.Add(this.chkIsActive);
             this.radPanel2.Text = "";
             // 
+            // lblTitle
+            // 
+            this.lblTitle.Text = "Vendor";
+            // 
             // radLabel4
             // 
             this.radLabel4.AutoSize = false;
@@ -66,7 +70,7 @@
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(110, 18);
             this.radLabel4.TabIndex = 34;
-            this.radLabel4.Text = "Vendor base url";
+            this.radLabel4.Text = "Base URL";
             this.radLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.radLabel4.ThemeName = "Windows7";
             // 
@@ -75,7 +79,7 @@
             this.txtVendorBaseUrl.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendorBaseUrl.Location = new System.Drawing.Point(152, 91);
             this.txtVendorBaseUrl.Name = "txtVendorBaseUrl";
-            this.txtVendorBaseUrl.Size = new System.Drawing.Size(235, 23);
+            this.txtVendorBaseUrl.Size = new System.Drawing.Size(428, 23);
             this.txtVendorBaseUrl.TabIndex = 2;
             this.txtVendorBaseUrl.ThemeName = "Windows7";
             // 
@@ -133,6 +137,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "VendorDetailsControl";
+            this.Title = "Vendor";
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);

@@ -15,6 +15,8 @@ namespace OLTMockServer.DataStructures
             DelayBeforeSendNextOrder = 1000;
             MaxOrderCount = 100;
             UseRandomDelay = true;
+            MinRandomDelay = 1;
+            MaxRandomDelay = 5000;
         }
 
         public string TestName { get; set; }
@@ -25,5 +27,7 @@ namespace OLTMockServer.DataStructures
 
         public bool UseRandomDelay { get; set; }
         public bool GenerateOrdersAutomatically { get; set; }
+        public int MinRandomDelay { get; set; }
+        public int MaxRandomDelay { get; set; }
     }
 }
