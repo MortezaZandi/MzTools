@@ -30,7 +30,6 @@
         {
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
-            this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.radPropertyGrid1 = new Telerik.WinControls.UI.RadPropertyGrid();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
@@ -45,6 +44,7 @@
             this.txtCustomerID = new Telerik.WinControls.UI.RadTextBoxControl();
             this.txtVendorID = new Telerik.WinControls.UI.RadTextBoxControl();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
+            this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.dataWizardSelectItemControl1 = new OLTMockServer.UI.DataWizardSelectItemControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
@@ -55,8 +55,6 @@
             this.radSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).BeginInit();
             this.splitPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).BeginInit();
-            this.splitPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPropertyGrid1)).BeginInit();
@@ -72,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVendorID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).BeginInit();
+            this.splitPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +102,7 @@
             // 
             // 
             // 
-            this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(0, 0);
             this.radSplitContainer1.Size = new System.Drawing.Size(804, 456);
             this.radSplitContainer1.TabIndex = 45;
             this.radSplitContainer1.TabStop = false;
@@ -116,25 +116,11 @@
             // 
             // 
             // 
-            this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(0, 0);
             this.splitPanel1.Size = new System.Drawing.Size(804, 226);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
             this.splitPanel1.Text = "splitPanel1";
-            // 
-            // splitPanel2
-            // 
-            this.splitPanel2.Controls.Add(this.radGroupBox1);
-            this.splitPanel2.Location = new System.Drawing.Point(0, 230);
-            this.splitPanel2.Name = "splitPanel2";
-            // 
-            // 
-            // 
-            this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(804, 226);
-            this.splitPanel2.TabIndex = 1;
-            this.splitPanel2.TabStop = false;
-            this.splitPanel2.Text = "splitPanel2";
             // 
             // radPanel1
             // 
@@ -293,6 +279,20 @@
             this.radLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.radLabel5.ThemeName = "Windows7";
             // 
+            // splitPanel2
+            // 
+            this.splitPanel2.Controls.Add(this.radGroupBox1);
+            this.splitPanel2.Location = new System.Drawing.Point(0, 230);
+            this.splitPanel2.Name = "splitPanel2";
+            // 
+            // 
+            // 
+            this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(0, 0);
+            this.splitPanel2.Size = new System.Drawing.Size(804, 226);
+            this.splitPanel2.TabIndex = 1;
+            this.splitPanel2.TabStop = false;
+            this.splitPanel2.Text = "splitPanel2";
+            // 
             // radGroupBox1
             // 
             this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
@@ -316,6 +316,7 @@
             this.dataWizardSelectItemControl1.Name = "dataWizardSelectItemControl1";
             this.dataWizardSelectItemControl1.ReadOnly = false;
             this.dataWizardSelectItemControl1.ShowOperationCommands = false;
+            this.dataWizardSelectItemControl1.ShowQuantityColumn = true;
             this.dataWizardSelectItemControl1.ShowTitleBar = false;
             this.dataWizardSelectItemControl1.Size = new System.Drawing.Size(800, 206);
             this.dataWizardSelectItemControl1.TabIndex = 0;
@@ -336,8 +337,6 @@
             this.radSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).EndInit();
             this.splitPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).EndInit();
-            this.splitPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPropertyGrid1)).EndInit();
@@ -353,6 +352,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVendorID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).EndInit();
+            this.splitPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

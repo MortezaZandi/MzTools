@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -306,13 +307,13 @@ namespace OLTMockServer
 
                 var testProj = appManager.CreateTestManager(newTest.OnlineShop);
 
-                testProj.TestProject.SaveFilePath = null;
-
                 testProj.TestProject = newTest;
 
-                this.appManager.AddTest(testProj);
+                testProj.TestProject.SaveFilePath = null;
+                
+                testProj.TestProject.TempFilePath = Path.GetTempFileName();
 
-                newTest.TestOptions.TestName += " (Clone)";
+                this.appManager.AddTest(testProj);
 
                 AddTestPage(testProj);
             }

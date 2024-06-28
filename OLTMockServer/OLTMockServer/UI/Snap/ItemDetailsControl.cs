@@ -54,10 +54,27 @@ namespace OLTMockServer.UI
                 chkIsActive.DataBindings.Clear();
                 chkIsActive.DataBindings.Add(new Binding(nameof(RadCheckBox.Checked), item, nameof(Item.IsActive)));
 
+                txtVatAmount.DataBindings.Clear();
+                txtVatAmount.DataBindings.Add(new Binding(nameof(RadCheckBox.Text), item, nameof(Item.VAT)));
+
+                txtQuantity.DataBindings.Clear();
+                txtQuantity.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), item, nameof(Item.Quantity)));
             }
         }
 
         public IConfirmableDialog ParentDialog { get => parentDialog; set => parentDialog = value; }
+        public bool ShowQuantity
+        {
+            get
+            {
+                return this.txtQuantity.Visible;
+            }
+            set
+            {
+                this.txtQuantity.Visible = value;
+                this.lblqnt.Visible = value;
+            }
+        }
 
         private void InitOperations()
         {
