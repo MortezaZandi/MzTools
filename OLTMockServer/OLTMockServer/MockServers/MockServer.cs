@@ -82,20 +82,7 @@ namespace OLTMockServer.MockServers
             }
         }
 
-        public bool SendOrder(Order order, Vendor targetVendor)
-        {
-            var methodNameInVendor = GetAPIMethodName(Definitions.APINames.NewOrder);
-
-            var objectToSend = GetSendModel(order);
-
-            if (APIUtil.CallApi(methodNameInVendor, objectToSend, RestSharp.Method.POST, targetVendor.BaseUrl))
-            {
-                return true;
-            }
-
-            //log
-            return false;
-        }
+        public abstract bool SendOrder(Order order, Vendor targetVendor);
 
         protected abstract object GetSendModel(Order order);
 

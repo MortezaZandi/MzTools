@@ -134,6 +134,10 @@ namespace OLTMockServer
             order.Vendor = vendor;
             order.VendorCode = vendor.Code;
 
+            order.Price = order.Items.Sum(i => i.Price);
+            order.Price += order.PackingPrice;
+            order.DiscountValue = order.Items.Sum(i => i.Discount);
+
             return order;
         }
 

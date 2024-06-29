@@ -17,7 +17,7 @@ namespace OLTMockServer.DataStructures.Snap
         public string VendorCode { get; set; } //	> "31qo57",
         public string Comment { get; set; } //	> null,
         public string UserCode { get; set; } //	> "q9w5my",
-        public string FullName { get; set; } //	> "mehdi heydari",
+        public string FullName { get { return $"{FirstName} {LastName}"; } set { } } //	> "mehdi heydari",
         public string FirstName { get; set; } //	> "mehdi",
         public string LastName { get; set; } //	> "heydari",
         public string UserAddressCode { get; set; } //	> "xryndzy",

@@ -37,9 +37,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
-            this.radDropDownList1 = new Telerik.WinControls.UI.RadDropDownList();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataWizardSelectOrderPatternControl));
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
             this.radGridView = new Telerik.WinControls.UI.RadGridView();
             this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
@@ -50,15 +48,15 @@
             this.btnDeleteProperty = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDeleteAllProperties = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarStripElement2 = new Telerik.WinControls.UI.CommandBarStripElement();
+            this.commandBarLabel1 = new Telerik.WinControls.UI.CommandBarLabel();
+            this.cmbPatterns = new Telerik.WinControls.UI.CommandBarDropDownList();
             this.commandBarRowElement2 = new Telerik.WinControls.UI.CommandBarRowElement();
+            this.btnApplyPattern = new Telerik.WinControls.UI.CommandBarButton();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
-            this.radPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView)).BeginInit();
@@ -74,7 +72,6 @@
             // radPanel2
             // 
             this.radPanel2.Controls.Add(this.radPanel3);
-            this.radPanel2.Controls.Add(this.radPanel1);
             this.radPanel2.Size = new System.Drawing.Size(861, 435);
             this.radPanel2.Text = "Define or select order pattern";
             this.radPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,47 +81,14 @@
             this.lblTitle.Size = new System.Drawing.Size(861, 42);
             this.lblTitle.Text = "Select Pattern";
             // 
-            // radPanel1
-            // 
-            this.radPanel1.Controls.Add(this.radDropDownList1);
-            this.radPanel1.Controls.Add(this.radLabel1);
-            this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radPanel1.Location = new System.Drawing.Point(0, 0);
-            this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(861, 37);
-            this.radPanel1.TabIndex = 0;
-            this.radPanel1.ThemeName = "Windows7";
-            // 
-            // radDropDownList1
-            // 
-            this.radDropDownList1.DropDownAnimationEnabled = false;
-            this.radDropDownList1.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.radDropDownList1.Location = new System.Drawing.Point(103, 10);
-            this.radDropDownList1.Name = "radDropDownList1";
-            this.radDropDownList1.Size = new System.Drawing.Size(257, 20);
-            this.radDropDownList1.TabIndex = 0;
-            this.radDropDownList1.Text = "radDropDownList1";
-            this.radDropDownList1.ThemeName = "Windows7";
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.AutoSize = false;
-            this.radLabel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radLabel1.Location = new System.Drawing.Point(0, 0);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(100, 37);
-            this.radLabel1.TabIndex = 0;
-            this.radLabel1.Text = "Use Old Patterns";
-            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // radPanel3
             // 
             this.radPanel3.Controls.Add(this.radGridView);
             this.radPanel3.Controls.Add(this.radCommandBar1);
             this.radPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel3.Location = new System.Drawing.Point(0, 37);
+            this.radPanel3.Location = new System.Drawing.Point(0, 0);
             this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(861, 398);
+            this.radPanel3.Size = new System.Drawing.Size(861, 435);
             this.radPanel3.TabIndex = 1;
             this.radPanel3.Text = "radPanel3";
             // 
@@ -132,7 +96,7 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomFiltering = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 48);
+            this.radGridView.Location = new System.Drawing.Point(0, 73);
             // 
             // 
             // 
@@ -215,7 +179,7 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(861, 350);
+            this.radGridView.Size = new System.Drawing.Size(861, 362);
             this.radGridView.TabIndex = 2;
             this.radGridView.ThemeName = "ControlDefault";
             // 
@@ -226,7 +190,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(861, 48);
+            this.radCommandBar1.Size = new System.Drawing.Size(861, 73);
             this.radCommandBar1.TabIndex = 0;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
@@ -235,7 +199,8 @@
             // 
             this.commandBarRowElement1.MinSize = new System.Drawing.Size(25, 25);
             this.commandBarRowElement1.Strips.AddRange(new Telerik.WinControls.UI.CommandBarStripElement[] {
-            this.commandBarStripElement1});
+            this.commandBarStripElement1,
+            this.commandBarStripElement2});
             // 
             // commandBarStripElement1
             // 
@@ -295,9 +260,52 @@
             this.btnDeleteAllProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteAllProperties.Click += new System.EventHandler(this.btnDeleteAllProperties_Click);
             // 
+            // commandBarStripElement2
+            // 
+            this.commandBarStripElement2.AutoSize = false;
+            this.commandBarStripElement2.Bounds = new System.Drawing.Rectangle(0, 0, 300, 48);
+            this.commandBarStripElement2.DisplayName = "commandBarStripElement2";
+            this.commandBarStripElement2.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
+            this.commandBarLabel1,
+            this.cmbPatterns,
+            this.btnApplyPattern});
+            this.commandBarStripElement2.Name = "commandBarStripElement2";
+            // 
+            // 
+            // 
+            this.commandBarStripElement2.OverflowButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.RadCommandBarOverflowButton)(this.commandBarStripElement2.GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // commandBarLabel1
+            // 
+            this.commandBarLabel1.DisplayName = "commandBarLabel1";
+            this.commandBarLabel1.Name = "commandBarLabel1";
+            this.commandBarLabel1.Text = "Patterns   ";
+            // 
+            // cmbPatterns
+            // 
+            this.cmbPatterns.AutoSize = true;
+            this.cmbPatterns.DisplayName = "commandBarDropDownList1";
+            this.cmbPatterns.DropDownAnimationEnabled = true;
+            this.cmbPatterns.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbPatterns.MaxDropDownItems = 0;
+            this.cmbPatterns.MinSize = new System.Drawing.Size(180, 22);
+            this.cmbPatterns.Name = "cmbPatterns";
+            this.cmbPatterns.Text = "commandBarDropDownList1";
+            // 
             // commandBarRowElement2
             // 
             this.commandBarRowElement2.MinSize = new System.Drawing.Size(25, 25);
+            // 
+            // btnApplyPattern
+            // 
+            this.btnApplyPattern.DisplayName = "commandBarButton1";
+            this.btnApplyPattern.DrawImage = false;
+            this.btnApplyPattern.DrawText = true;
+            this.btnApplyPattern.Image = ((System.Drawing.Image)(resources.GetObject("btnApplyPattern.Image")));
+            this.btnApplyPattern.Name = "btnApplyPattern";
+            this.btnApplyPattern.Text = "Apply";
+            this.btnApplyPattern.Click += new System.EventHandler(this.btnApplyPattern_Click);
             // 
             // DataWizardSelectOrderPatternControl
             // 
@@ -309,11 +317,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
-            this.radPanel1.ResumeLayout(false);
-            this.radPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
             this.radPanel3.ResumeLayout(false);
             this.radPanel3.PerformLayout();
@@ -330,15 +333,16 @@
         private Telerik.WinControls.UI.RadCommandBar radCommandBar1;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement1;
-        private Telerik.WinControls.UI.RadPanel radPanel1;
         private Telerik.WinControls.UI.RadGridView radGridView;
         private Telerik.WinControls.UI.CommandBarButton btnAddProperty;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator1;
         private Telerik.WinControls.UI.CommandBarButton btnDeleteProperty;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator3;
         private Telerik.WinControls.UI.CommandBarButton btnDeleteAllProperties;
-        private Telerik.WinControls.UI.RadDropDownList radDropDownList1;
-        private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement2;
+        private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement2;
+        private Telerik.WinControls.UI.CommandBarDropDownList cmbPatterns;
+        private Telerik.WinControls.UI.CommandBarLabel commandBarLabel1;
+        private Telerik.WinControls.UI.CommandBarButton btnApplyPattern;
     }
 }

@@ -4,6 +4,7 @@ using OLTMockServer.spag;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Web;
@@ -57,7 +58,7 @@ namespace OLTMockServer.MockServers
             switch (apiName)
             {
                 case Definitions.APINames.NewOrder:
-                    return "snapp_new_order_json";
+                    return "add-snapp-order";
                 default:
                     throw new NotImplementedException($"Api name resolver not implemented. API:{apiName}");
             }
@@ -120,14 +121,17 @@ namespace OLTMockServer.MockServers
             orderRepository.SaveOrder(order);
         }
 
-        internal DataStructures.Snap.olt.TokenModel ClientRequest_Token()
+        internal Stream ClientRequest_Token()
         {
-            return
-                new DataStructures.Snap.olt.TokenModel()
-                {
-                    AccessToken = "123412342134klhjsdfk",
-                    ExpiresIn = 60,
-                };
+            var model = new DataStructures.Snap.olt.TokenModel()
+            {
+                AccessToken = "123412342134klhjsdfk",
+                ExpiresIn = 60,
+            };
+
+            var jsonResult = Newtonsoft.Json.JsonConvert.SerializeObject(model, Newtonsoft.Json.Formatting.Indented);
+
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonResult));
         }
 
         protected override void AddDefaultActivitiesToNewOrder(Order newOrder)
@@ -135,12 +139,86 @@ namespace OLTMockServer.MockServers
             newOrder.AddActivity(Definitions.OrderActivityTypes.Send, false);
         }
 
+        public override bool SendOrder(Order order, Vendor targetVendor)
+        {
+            var methodNameInVendor = GetAPIMethodName(Definitions.APINames.NewOrder);
+
+            var objectToSend = (DataStructures.Snap.ApiModels.SnapOrderDto)GetSendModel(order);
+
+            var keyvalues = objectToSend.GetType().GetProperties()
+            .ToList().Where(p=>p.Name!=nameof(DataStructures.Snap.ApiModels.SnapOrderDto.Products))
+            .Select(p => new KeyValuePair<string, string>(p.Name, p.GetValue(objectToSend)?.ToString())).ToList();
+
+            for (int i = 0; i < objectToSend.Products.Count; i++)
+            {
+                var item = objectToSend.Products[i];
+
+                var itemKeyValues = item.GetType().GetProperties()
+                    .ToList()
+                    .Select(p => new KeyValuePair<string, string>($"products[{i}][{p.Name}]", p.GetValue(item)?.ToString())).ToList();
+
+                keyvalues.AddRange(itemKeyValues);
+            }
+
+            if (APIUtil.CallApiForFormUrlEncodedContent(methodNameInVendor, keyvalues, RestSharp.Method.POST, targetVendor.BaseUrl))
+            {
+                return true;
+            }
+
+            //log
+            return false;
+        }
+
         protected override object GetSendModel(Order order)
         {
             SnapOrder snapOrder = (SnapOrder)order;
 
             //create real snap-order-model
-            var newOrderModel = snapOrder;
+            var newOrderModel = new DataStructures.Snap.ApiModels.SnapOrderDto()
+            {
+                Code = snapOrder.Code,
+                Comment = snapOrder.Comment,
+                DeliverAddress = snapOrder.DeliverAddress,
+                DeliveryPrice = snapOrder.DeliveryPrice.ToString(),
+                DeliveryTime = snapOrder.DeliveryTime.ToString(),
+                DiscountType = snapOrder.DiscountType,
+                DiscountValue = snapOrder.DiscountValue.ToString(),
+                ExpeditionType = snapOrder.ExpeditionType,
+                FirstName = snapOrder.FirstName,
+                FullName = snapOrder.FullName,
+                LastName = snapOrder.LastName,
+                Latitude = snapOrder.Latitude,
+                Longitude = snapOrder.Longitude,
+                NewOrderDate = snapOrder.NewOrderDate.ToString(),
+                OrderDate = snapOrder.OrderDate,
+                OrderPaymentTypeCode = snapOrder.OrderPaymentTypeCode,
+                PackingPrice = snapOrder.PackingPrice.ToString(),
+                Phone = snapOrder.Phone,
+                PreparationTime = snapOrder.PreparationTime.ToString(),
+                Price = snapOrder.Price.ToString(),
+                StatusCode = snapOrder.StatusCode,
+                Tax = snapOrder.Tax.ToString(),
+                TaxCoefficient = snapOrder.TaxCoeff.ToString(),
+                UserAddressCode = snapOrder.UserAddressCode,
+                UserCode = snapOrder.UserCode,
+                Vat = snapOrder.Vat.ToString(),
+                VendorCode = snapOrder.VendorCode,
+                VendorMaxPreparationTime = snapOrder.VendorMaxPreparationTime.ToString(),
+                Products = new List<DataStructures.Snap.ApiModels.SnappProductDto>(),
+            };
+
+            foreach (var item in snapOrder.Items)
+            {
+                newOrderModel.Products.Add(new DataStructures.Snap.ApiModels.SnappProductDto()
+                {
+                    Barcode = item.Barcode,
+                    Discount = item.Discount.ToString(),
+                    Price = item.Price.ToString(),
+                    Quantity = item.Quantity.ToString(),
+                    Title = item.Name,
+                    Vat = item.VAT.ToString(),
+                });
+            }
 
             return newOrderModel;
         }
@@ -152,9 +230,9 @@ namespace OLTMockServer.MockServers
                 case Definitions.OrderActivityTypes.Send:
                     return "56";
                 case Definitions.OrderActivityTypes.Edit:
-                    return "54";
+                    return "56";
                 case Definitions.OrderActivityTypes.Reject:
-                    return "714";
+                    return "54";
                 case Definitions.OrderActivityTypes.None:
                 default:
                     throw new ApplicationException($"No status code provided for activity '{activityType}' in {this.GetType().Name}.");
@@ -223,7 +301,7 @@ namespace OLTMockServer.MockServers
     {
         [OperationContract]
         [WebInvoke(UriTemplate = "token", Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        DataStructures.Snap.olt.TokenModel GetTocken();
+        Stream GetTocken();
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single, AddressFilterMode = AddressFilterMode.Any)]
@@ -236,7 +314,7 @@ namespace OLTMockServer.MockServers
             this.snapMockServer = snapMockServer;
         }
 
-        public DataStructures.Snap.olt.TokenModel GetTocken()
+        public Stream GetTocken()
         {
             return this.snapMockServer.ClientRequest_Token();
         }

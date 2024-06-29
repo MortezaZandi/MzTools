@@ -52,6 +52,7 @@ namespace OLTMockServer.UI
                     if (operationButton.UIOperation.Id == selectedOpr.Id)
                     {
                         operationButton.Enabled = selectedOpr.Enabled;
+                        operationButton.Text = selectedOpr.Text;
                         break;
                     }
                 }

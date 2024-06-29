@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.ServiceModel.Configuration;
 using System.Text;
@@ -121,7 +122,7 @@ namespace OLTMockServer.UI
                     break;
 
                 case Definitions.OrderProcessingSteps.OrderAcivityPerformed:
-                    foreColor = Color.GreenYellow;
+                    foreColor = Color.Green;
                     break;
 
                 case Definitions.OrderProcessingSteps.OrderAcivityNotPerformed:
@@ -184,10 +185,13 @@ namespace OLTMockServer.UI
         {
             var tempTest = (TestProject)this.testManager.TestProject.Clone();
 
+            tempTest.OrderPattern.PatternName = tempTest.TestOptions.TestName;
+            tempTest.OrderPattern.PredifinedOrderPatterns = LoadPredifinedPatterns();
+
             var wizard = new DataWizardDialog(this.testManager, tempTest);
 
             wizard.Text = "Edit Test";
-
+            
             if (wizard.ShowDialog() == DialogResult.OK)
             {
                 //apply changes
@@ -196,7 +200,75 @@ namespace OLTMockServer.UI
                 this.testManager.TestProject.Customers = tempTest.Customers;
                 this.testManager.TestProject.TestOptions = tempTest.TestOptions;
                 this.testManager.TestProject.OrderPattern = tempTest.OrderPattern;
+
+                //Save patterns to predefined patterns:
+                this.testManager.TestProject.OrderPattern.PatternName = this.testManager.TestProject.TestOptions.TestName;
+                SavePatternToPredifinedPatterns(tempTest.OrderPattern);
             }
+        }
+
+        private void SavePatternToPredifinedPatterns(OrderPattern orderPattern)
+        {
+            var allPatterns = LoadPredifinedPatterns();
+
+            foreach (var pattern in allPatterns)
+            {
+                if (pattern.GetUniqueString() == orderPattern.GetUniqueString())
+                {
+                    //Already exists
+                    return;
+                }
+            }
+
+            var dataDir = Path.GetTempPath();
+
+            dataDir = Path.Combine(dataDir, "OltMockServer");
+
+            if (!Directory.Exists(dataDir))
+            {
+                Directory.CreateDirectory(dataDir);
+            }
+
+            var filePath = Path.Combine(dataDir, orderPattern.PatternName + ".ptrn");
+
+            XMLDataSerializer.Serialize(orderPattern, filePath);
+        }
+
+        private List<OrderPattern> LoadPredifinedPatterns()
+        {
+            var result = new List<OrderPattern>();
+            var dataDir = Path.GetTempPath();
+
+            dataDir = Path.Combine(dataDir, "OltMockServer");
+
+            if (!Directory.Exists(dataDir))
+            {
+                return result;
+            }
+
+            try
+            {
+                var patternFiles = Directory.GetFiles(dataDir, "*.ptrn");
+
+                foreach (var patternFile in patternFiles)
+                {
+                    try
+                    {
+                        var pattern = XMLDataSerializer.Deserialize<OrderPattern>(patternFile);
+                        result.Add(pattern);
+                    }
+                    catch (Exception)
+                    {
+                        //log...
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //log...
+            }
+
+            return result;
         }
 
         private void btnAddNewOrder_Click(object sender, EventArgs e)

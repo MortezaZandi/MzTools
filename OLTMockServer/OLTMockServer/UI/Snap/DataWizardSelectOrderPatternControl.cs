@@ -12,7 +12,7 @@ using Telerik.WinControls.UI;
 
 namespace OLTMockServer.UI
 {
-    public partial class DataWizardSelectOrderPatternControl : DataWizardBaseControl
+    public partial class DataWizardSelectOrderPatternControl : DataWizardBaseControl, IDataControl
     {
         private readonly UIOperation nextOperation = new UIOperation("Next");
         private readonly UIOperation backOperation = new UIOperation("Back");
@@ -25,6 +25,7 @@ namespace OLTMockServer.UI
         {
             this.wizard = wizard;
             this.orderType = orderType;
+
             InitializeComponent();
             InitOperations();
         }
@@ -52,6 +53,30 @@ namespace OLTMockServer.UI
             }
         }
 
+        public bool ShowCommands
+        {
+            get
+            {
+                return radCommandBar1.Visible;
+            }
+            set
+            {
+                radCommandBar1.Visible = value;
+            }
+        }
+
+        private IConfirmableDialog parentDialog;
+        public IConfirmableDialog ParentDialog
+        {
+            get { return parentDialog; }
+            set
+            {
+                nextOperation.Text = "OK";
+                backOperation.Enabled = false;
+                nextOperation.Enabled = true;
+                parentDialog = value;
+            }
+        }
 
         private void ResetDataSource()
         {
@@ -60,6 +85,22 @@ namespace OLTMockServer.UI
 
             var gtc = radGridView.Columns["clmGeneratorType"] as GridViewComboBoxColumn;
             gtc.DataSource = Enum.GetValues(typeof(Definitions.PropertyValueGeneratorTypes));
+
+            if (this.orderPattern.PredifinedOrderPatterns.Count > 0)
+            {
+                if (this.orderPattern.PredifinedOrderPatterns[0].PatternName != string.Empty)
+                {
+                    this.orderPattern.PredifinedOrderPatterns.Insert(0, new OrderPattern());
+                }
+            }
+
+            cmbPatterns.DisplayMember = nameof(OrderPattern.PatternName);
+            cmbPatterns.SelectedIndexChanged += CmbPatterns_SelectedIndexChanged;
+            cmbPatterns.DataSource = this.orderPattern.PredifinedOrderPatterns;
+        }
+
+        private void CmbPatterns_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
 
         }
 
@@ -78,17 +119,20 @@ namespace OLTMockServer.UI
                 }
 
                 wizard?.GoToNextPage();
+                ParentDialog?.OK();
             }
 
             if (uIOperation.Id == backOperation.Id)
             {
                 //if ok
                 wizard?.GoToPreviousPage();
+                ParentDialog?.OK();
             }
 
             if (uIOperation.Id == cancelOperation.Id)
             {
                 wizard?.Cancel();
+                ParentDialog?.Cancel();
             }
         }
 
@@ -148,6 +192,52 @@ namespace OLTMockServer.UI
                 {
                     orderPattern.PatternItems.Clear();
                     ResetDataSource();
+                }
+            }
+        }
+
+        private void btnApplyPattern_Click(object sender, EventArgs e)
+        {
+            if (cmbPatterns.SelectedIndex > 0)
+            {
+                var selectedItem = cmbPatterns.SelectedItem.DataBoundItem as OrderPattern;
+
+                if (selectedItem.PatternItems.Count > 0)
+                {
+                    if (selectedItem.GetUniqueString() != this.orderPattern.GetUniqueString())
+                    {
+                        bool confirmed = (orderPattern.PatternItems.Count == 0);
+
+                        if (!confirmed)
+                        {
+                            var control = new DataWizardSelectOrderPatternControl(null, null);
+                            var dataDialog = new DataDialog(control);
+                            control.ParentDialog = dataDialog;
+                            control.OrderPattern = selectedItem;
+                            control.Title = "Replace pattern?";
+                            control.ShowCommands = false;
+
+                            if (dataDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                confirmed = true;
+                            }
+                        }
+
+                        if (confirmed)
+                        {
+                            orderPattern.PatternItems.Clear();
+                            orderPattern.PatternItems.AddRange(selectedItem.PatternItems);
+                            ResetDataSource();
+                        }
+                    }
+                    else
+                    {
+                        Utils.ShowInfo("Nothing changed.");
+                    }
+                }
+                else
+                {
+                    Utils.ShowInfo("Pattern is empty.");
                 }
             }
         }

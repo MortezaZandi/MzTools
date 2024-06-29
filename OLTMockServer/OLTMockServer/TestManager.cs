@@ -105,6 +105,7 @@ namespace OLTMockServer
             bool isResumed = TestPlayStatuse == Definitions.TestPlayStatuses.Paused;
             this.executionCancellationToken = new CancellationTokenSource();
             ManualResetEvent jobStart = new ManualResetEvent(false);
+
             executionTask = Task.Factory.StartNew(() =>
             {
                 TestPlayStatuse = Definitions.TestPlayStatuses.Playing;
@@ -112,9 +113,10 @@ namespace OLTMockServer
                 StartSending(this.executionCancellationToken.Token, isResumed);
             });
 
+            //waiting for job to start, it wont let user change the status, before task begins
             while (!jobStart.WaitOne(100))
             {
-
+                Thread.Sleep(100);
             }
         }
 

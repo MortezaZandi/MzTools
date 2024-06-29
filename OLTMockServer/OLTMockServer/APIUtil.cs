@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,23 @@ namespace OLTMockServer.spag
 
             return (response.IsSuccessful);
         }
+
+        public static bool CallApiForFormUrlEncodedContent(string methodName, IEnumerable<KeyValuePair<string, string>> methodInput, Method method, string baseUri)
+        {
+            var restClient = CreateRestClient(methodName, baseUri);
+
+            var restRequest = CreateRestReuestForFormUrlEncodedContent(methodInput, method);
+
+            var response = restClient.ExecuteAsync(restRequest).Result;
+
+            if (response.IsSuccessful)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         public static TOutput CallApi<TInput, TOutput>(string methodName, TInput methodInput, Method method, string baseUri)
         {
@@ -80,6 +98,21 @@ namespace OLTMockServer.spag
                 var body = JsonConvert.SerializeObject(methodInput, setting);
                 body = body.Replace("\\\\", "\\");
                 request.AddParameter("application/json", body, ParameterType.RequestBody);
+            }
+
+            return request;
+        }
+
+        public static RestRequest CreateRestReuestForFormUrlEncodedContent(IEnumerable<KeyValuePair<string, string>> methodInput, Method method)
+        {
+            var request = new RestRequest(method);
+
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            foreach (var item in methodInput)
+            {
+                request.AddParameter(item.Key, item.Value);
+
             }
 
             return request;
