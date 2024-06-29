@@ -39,8 +39,6 @@
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.btnAddCustomer = new Telerik.WinControls.UI.CommandBarButton();
-            this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.btnImportFromRMC = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDelete = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
@@ -147,8 +145,6 @@
             this.commandBarStripElement1.DisplayName = "commandBarStripElement1";
             this.commandBarStripElement1.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
             this.btnAddCustomer,
-            this.commandBarSeparator1,
-            this.btnImportFromRMC,
             this.commandBarSeparator2,
             this.btnDelete,
             this.commandBarSeparator3,
@@ -171,21 +167,6 @@
             this.btnAddCustomer.Text = "Add New Customer";
             this.btnAddCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
-            // 
-            // commandBarSeparator1
-            // 
-            this.commandBarSeparator1.DisplayName = "commandBarSeparator1";
-            this.commandBarSeparator1.Name = "commandBarSeparator1";
-            this.commandBarSeparator1.VisibleInOverflowMenu = false;
-            // 
-            // btnImportFromRMC
-            // 
-            this.btnImportFromRMC.DisplayName = "commandBarButton2";
-            this.btnImportFromRMC.DrawText = true;
-            this.btnImportFromRMC.Image = global::OLTMockServer.Properties.Resources.import_24px;
-            this.btnImportFromRMC.Name = "btnImportFromRMC";
-            this.btnImportFromRMC.Text = "Import From RMC";
-            this.btnImportFromRMC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // commandBarSeparator2
             // 
@@ -259,8 +240,6 @@
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement1;
         private Telerik.WinControls.UI.CommandBarButton btnAddCustomer;
-        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator1;
-        private Telerik.WinControls.UI.CommandBarButton btnImportFromRMC;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator2;
         private Telerik.WinControls.UI.CommandBarButton btnDelete;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator3;

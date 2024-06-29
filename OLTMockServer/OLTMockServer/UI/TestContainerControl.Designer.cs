@@ -78,7 +78,6 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomDrawing = true;
-            this.radGridView.EnableCustomFiltering = true;
             this.radGridView.Location = new System.Drawing.Point(0, 46);
             // 
             // 
@@ -161,7 +160,7 @@
             gridViewTextBoxColumn9,
             gridViewTextBoxColumn10,
             gridViewTextBoxColumn11});
-            this.radGridView.MasterTemplate.EnableCustomFiltering = true;
+            this.radGridView.MasterTemplate.EnableFiltering = true;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView.Name = "radGridView";
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
@@ -247,6 +246,7 @@
             this.btnRejectOrder.Name = "btnRejectOrder";
             this.btnRejectOrder.Text = "Reject Order";
             this.btnRejectOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRejectOrder.Click += new System.EventHandler(this.btnRejectOrder_Click);
             // 
             // commandBarSeparator1
             // 

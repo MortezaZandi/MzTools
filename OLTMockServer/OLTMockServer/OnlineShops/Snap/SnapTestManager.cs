@@ -109,7 +109,7 @@ namespace OLTMockServer
 
                 //send order with edit status code
                 editedOrde.AddActivity(Definitions.OrderActivityTypes.Edit, false);
-                
+
                 //ToDo: Should i reset create-date in edited version if order edited?
 
                 var mainOrderPositionInList = TestProject.Orders.FindLastIndex(o => o.Code == selectedOrder.Code);
@@ -129,6 +129,21 @@ namespace OLTMockServer
             }
 
             return null;
+        }
+
+        public override void RejectOrder(Order order, bool isAutoReject)
+        {
+            order.AddActivity(Definitions.OrderActivityTypes.Reject, isAutoReject);
+            order.Rejected = true;
+
+            if (isAutoReject)
+            {
+                order.AddLog("Reject Request", $"Reject requested by auto, Code: '{order.Code}' UID:{order.UId}");
+            }
+            else
+            {
+                order.AddLog("Reject Request", $"Reject requested by user, Code: '{order.Code}' UID:{order.UId}");
+            }
         }
 
         protected override Vendor GetTargetVendorOfOrder(Order order)

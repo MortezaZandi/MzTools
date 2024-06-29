@@ -148,6 +148,7 @@ namespace OLTMockServer.DataStructures
                 bool isAckReceived = AckTime != DateTime.MinValue;
                 bool isPickReveived = PickTime != DateTime.MinValue;
                 bool isRejected = RejectTime != DateTime.MinValue;
+                bool isEdited = editActivity?.IsDone ?? false;
 
                 OrderStatusResults status = OrderStatusResults.Unknown;
 
@@ -165,9 +166,14 @@ namespace OLTMockServer.DataStructures
                         status = OrderStatusResults.PickDone;
                     }
 
-                    if (isRejected)
+                    if (Rejected)
                     {
-                        status = OrderStatusResults.Rejected;
+                        status = OrderStatusResults.RejectedByServer;
+                    }
+
+                    if (RejectedByVendor)
+                    {
+                        status = OrderStatusResults.RejectedByVendor;
                     }
                 }
                 else

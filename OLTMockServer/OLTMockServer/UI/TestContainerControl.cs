@@ -191,7 +191,7 @@ namespace OLTMockServer.UI
             var wizard = new DataWizardDialog(this.testManager, tempTest);
 
             wizard.Text = "Edit Test";
-            
+
             if (wizard.ShowDialog() == DialogResult.OK)
             {
                 //apply changes
@@ -319,6 +319,29 @@ namespace OLTMockServer.UI
                 logControl.Order = selectedOrder;
                 dataDialog.ClientSize = new Size(1200, 600);
                 dataDialog.ShowDialog();
+            }
+        }
+
+        private void btnRejectOrder_Click(object sender, EventArgs e)
+        {
+            if (radGridView.SelectedRows.Count > 0)
+            {
+                var selectedOrder = radGridView.SelectedRows[0].DataBoundItem as Order;
+
+                if (Utils.AskQuestion($"Do you want to reject order '{selectedOrder.Code}'") == DialogResult.Yes)
+                {
+                    try
+                    {
+                        this.testManager.RejectOrder(selectedOrder, false);
+                        this.testManager.SaveTestProject();
+
+                        ResetDataSource();
+                    }
+                    catch (Exception ex)
+                    {
+                        Utils.ShowError(ex.Message);
+                    }
+                }
             }
         }
     }
