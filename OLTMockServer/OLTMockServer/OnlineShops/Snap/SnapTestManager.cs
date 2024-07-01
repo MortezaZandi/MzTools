@@ -131,10 +131,30 @@ namespace OLTMockServer
             return null;
         }
 
+        public override Order CreateNewOrderInBackground()
+        {
+            var newOrder = (SnapOrder)this.Server.CreateNewOrder(this.TestProject, false);
+
+            bool saveOrderGeneratorData = true;
+
+            if (saveOrderGeneratorData)
+            {
+                var path = TestProject.IsTemp ? TestProject.TempFilePath : TestProject.SaveFilePath;
+                var tempTest = ImportTestProject(path);
+                tempTest.OrderPattern = TestProject.OrderPattern;
+                SaveTestProject(tempTest, path);
+            }
+
+            return newOrder;
+        }
+
         public override void RejectOrder(Order order, bool isAutoReject)
         {
             order.AddActivity(Definitions.OrderActivityTypes.Reject, isAutoReject);
             order.Rejected = true;
+
+            //since reject activity sits on the main order (no clone made for reject operation), so the status of orgiginal order will be changed to identify if order has been rejected.
+            order.StatusCode = this.Server.GetActivityStatusCode(Definitions.OrderActivityTypes.Reject);
 
             if (isAutoReject)
             {

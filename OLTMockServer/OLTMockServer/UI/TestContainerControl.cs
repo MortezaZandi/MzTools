@@ -282,6 +282,24 @@ namespace OLTMockServer.UI
             }
         }
 
+        private void btnCreateFastOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Order newOrder = this.testManager.CreateNewOrderInBackground();
+
+                if (newOrder != null)
+                {
+                    testManager.TestProject.Orders.Add(newOrder);
+                    ResetDataSource();
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+        }
+
         private void btnEditOrder_Click(object sender, EventArgs e)
         {
             if (testManager.TestPlayStatuse == Definitions.TestPlayStatuses.Playing)
@@ -344,5 +362,6 @@ namespace OLTMockServer.UI
                 }
             }
         }
+
     }
 }

@@ -385,7 +385,11 @@ namespace OLTMockServer
 
         public abstract Order CreateNewOrderUsingUI();
         public abstract Order EditOrderUnigUI(Order selectedOrder);
+
+        public abstract Order CreateNewOrderInBackground();
+
         public abstract void RejectOrder(Order order, bool isAutoReject);
+
         public MockServer Server { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace OLTMockServer.DataStructures.Snap.olt
 {
+    [JsonObject]
     public class RejectModel
     {
         [JsonProperty("reasonId")]

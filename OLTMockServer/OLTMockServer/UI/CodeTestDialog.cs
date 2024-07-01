@@ -20,8 +20,8 @@ namespace OLTMockServer.UI
             InitializeComponent();
 
             var dogs = new List<Dog>();
-            dogs.Add(new Dog() { Name = "Jessi", Age = 3, Wight = 8, EatBone = true });
-            dogs.Add(new Dog() { Name = "Rex", Age = 7, Wight = 14, EatBone = true });
+            dogs.Add(new Dog() { Name = "dany", Age = 3, Wight = 8, EatBone = true });
+            dogs.Add(new Dog() { Name = "rex", Age = 7, Wight = 14, EatBone = true });
             radGridView.DataSource = dogs;
         }
     }

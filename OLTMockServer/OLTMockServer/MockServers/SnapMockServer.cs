@@ -76,6 +76,9 @@ namespace OLTMockServer.MockServers
             order.AddLog("Ack", $"Ack message received");
 
             orderRepository.SaveOrder(order);
+
+            WebOperationContext ctx = WebOperationContext.Current;
+            var sc = ctx.OutgoingResponse.StatusCode;
         }
 
         internal void ClientRequest_Pick(string orderCode)
@@ -90,6 +93,8 @@ namespace OLTMockServer.MockServers
             order.AddLog("Pick", $"Pick message received");
 
             orderRepository.SaveOrder(order);
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NoContent;
         }
 
         internal void ClientRequest_Accept(string orderCode, DataStructures.Snap.olt.AcceptModel acceptModel)
@@ -104,6 +109,8 @@ namespace OLTMockServer.MockServers
             order.AddLog("Accept", $"Accept message received");
 
             orderRepository.SaveOrder(order);
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NoContent;
         }
 
         internal void ClientRequest_Reject(string orderCode, DataStructures.Snap.olt.RejectModel rejectModel)
@@ -223,7 +230,7 @@ namespace OLTMockServer.MockServers
             return newOrderModel;
         }
 
-        protected override string GetActivityStatusCode(Definitions.OrderActivityTypes activityType)
+        public override string GetActivityStatusCode(Definitions.OrderActivityTypes activityType)
         {
             switch (activityType)
             {

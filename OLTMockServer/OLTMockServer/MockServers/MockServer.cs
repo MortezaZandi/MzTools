@@ -135,7 +135,7 @@ namespace OLTMockServer.MockServers
             }
         }
 
-        protected abstract string GetActivityStatusCode(Definitions.OrderActivityTypes activityType);
+        public abstract string GetActivityStatusCode(Definitions.OrderActivityTypes activityType);
 
         public abstract Definitions.KnownOnlineShops OnlineShopType { get; }
     }
