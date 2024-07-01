@@ -335,7 +335,21 @@ namespace OLTMockServer
         {
             try
             {
-                XMLDataSerializer.Serialize<TestProject>(project, filePath);
+                var tempFilePath = filePath + "~.temp";
+
+                if (File.Exists(tempFilePath))
+                {
+                    File.Delete(tempFilePath);
+                }
+
+                XMLDataSerializer.Serialize<TestProject>(project, tempFilePath);
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+
+                    File.Move(tempFilePath, filePath);
+                }
             }
             catch (Exception ex)
             {

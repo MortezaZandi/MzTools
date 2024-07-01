@@ -57,7 +57,10 @@ namespace OLTMockServer.DataStructures
         public List<LogInfo> Logs { get; set; }
         public int MaxItemCount { get; set; }
 
-        private OrderActivity SendSuccessActivity
+        /// <summary>
+        /// Find last successfull send activty if exists.
+        /// </summary>
+        public OrderActivity SendSuccessActivity
         {
             get
             {
@@ -65,7 +68,10 @@ namespace OLTMockServer.DataStructures
             }
         }
 
-        private OrderActivity SendActivity
+        /// <summary>
+        /// Find last send activty if exists (whether sent or not).
+        /// </summary>
+        public OrderActivity SendActivity
         {
             get
             {
@@ -73,7 +79,10 @@ namespace OLTMockServer.DataStructures
             }
         }
 
-        private OrderActivity EditSuccessActivity
+        /// <summary>
+        /// Find last successfull sent edit activty if exists.
+        /// </summary>
+        public OrderActivity EditSuccessActivity
         {
             get
             {
@@ -81,7 +90,10 @@ namespace OLTMockServer.DataStructures
             }
         }
 
-        private OrderActivity EditActivity
+        /// <summary>
+        /// Find last edit activty if exists (whether sent or not).
+        /// </summary>
+        public OrderActivity EditActivity
         {
             get
             {
@@ -89,10 +101,48 @@ namespace OLTMockServer.DataStructures
             }
         }
 
-        private bool IsSent
+        /// <summary>
+        /// Find any successfully sent activity (Edit or Send)
+        /// </summary>
+        public OrderActivity AnySuccessSendActivity
         {
             get
             {
+                if (SendSuccessActivity != null)
+                {
+                    return SendSuccessActivity;
+                }
+                else if (EditSuccessActivity != null)
+                {
+                    return EditSuccessActivity;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public DateTime BaseTime
+        {
+            get
+            {
+                if (AnySuccessSendActivity != null)
+                {
+                    return AnySuccessSendActivity.ProcessDate;
+                }
+                else
+                {
+                    return CreateDate;
+                }
+            }
+        }
+
+        public bool IsSent
+        {
+            get
+            {
+
                 return SendSuccessActivity != null || EditSuccessActivity != null;
             }
         }
@@ -103,8 +153,7 @@ namespace OLTMockServer.DataStructures
             {
                 if (AckTime != DateTime.MinValue)
                 {
-                    DateTime baseTime = IsSent ? SendSuccessActivity.ProcessDate : CreateDate;
-                    return TimeSpan.FromSeconds((long)(AckTime - baseTime).TotalSeconds);
+                    return TimeSpan.FromSeconds((long)(AckTime - BaseTime).TotalSeconds);
                 }
 
                 return TimeSpan.Zero;
@@ -117,8 +166,7 @@ namespace OLTMockServer.DataStructures
             {
                 if (PickTime != DateTime.MinValue)
                 {
-                    DateTime baseTime = IsSent ? SendSuccessActivity.ProcessDate : CreateDate;
-                    return TimeSpan.FromSeconds((long)(PickTime - baseTime).TotalSeconds);
+                    return TimeSpan.FromSeconds((long)(PickTime - BaseTime).TotalSeconds);
                 }
 
                 return TimeSpan.Zero;
@@ -131,8 +179,7 @@ namespace OLTMockServer.DataStructures
             {
                 if (AcceptTime != DateTime.MinValue)
                 {
-                    DateTime baseTime = IsSent ? SendSuccessActivity.ProcessDate : CreateDate;
-                    return TimeSpan.FromSeconds((long)(AcceptTime - baseTime).TotalSeconds);
+                    return TimeSpan.FromSeconds((long)(AcceptTime - BaseTime).TotalSeconds);
                 }
 
                 return TimeSpan.Zero;
@@ -147,7 +194,8 @@ namespace OLTMockServer.DataStructures
                 var editActivity = EditActivity;
                 bool isAckReceived = AckTime != DateTime.MinValue;
                 bool isPickReveived = PickTime != DateTime.MinValue;
-                bool isRejected = RejectTime != DateTime.MinValue;
+                bool isAccepted = AcceptTime != DateTime.MinValue;
+
                 bool isEdited = editActivity?.IsDone ?? false;
 
                 OrderStatusResults status = OrderStatusResults.Unknown;
@@ -166,6 +214,11 @@ namespace OLTMockServer.DataStructures
                         status = OrderStatusResults.PickDone;
                     }
 
+                    if (isAccepted)
+                    {
+                        status = OrderStatusResults.Accepted;
+                    }
+                    
                     if (Rejected)
                     {
                         status = OrderStatusResults.RejectedByServer;
@@ -202,18 +255,6 @@ namespace OLTMockServer.DataStructures
                 ActivityDate = DateTime.Now,
                 ActivityType = activityType,
                 IsCreatedByAuto = isAutoActivity,
-            });
-        }
-
-        public void AddActivity(Definitions.OrderActivityTypes activityType, bool isCreatedByAuto, DateTime createDate, DateTime processDate)
-        {
-            this.Activities.Add(new OrderActivity
-            {
-                //OrderInstance = LightClone(),
-                ActivityDate = createDate,
-                ActivityType = activityType,
-                IsCreatedByAuto = isCreatedByAuto,
-                ProcessDate = processDate,
             });
         }
 

@@ -50,7 +50,7 @@
             this.commandBarButton1 = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarButton4 = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarButton5 = new Telerik.WinControls.UI.CommandBarButton();
-            this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
+            this.btnIncommingMessageLogs = new Telerik.WinControls.UI.RadCommandBar();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement2 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.btnCreateNewTest = new Telerik.WinControls.UI.CommandBarButton();
@@ -64,6 +64,8 @@
             this.btnStopTest = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarStripElement4 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.btnDuplicateTestProject = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarStripElement6 = new Telerik.WinControls.UI.CommandBarStripElement();
+            this.commandBarButton2 = new Telerik.WinControls.UI.CommandBarButton();
             this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
             this.commandBarStripElement5 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
@@ -83,7 +85,7 @@
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCommandBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnIncommingMessageLogs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -195,9 +197,9 @@
             // 
             this.radPanel2.Controls.Add(this.radPageView1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 68);
+            this.radPanel2.Location = new System.Drawing.Point(0, 93);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1075, 441);
+            this.radPanel2.Size = new System.Drawing.Size(1075, 416);
             this.radPanel2.TabIndex = 3;
             this.radPanel2.Text = "radPanel2";
             this.radPanel2.ThemeName = "Windows7";
@@ -207,7 +209,7 @@
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(1075, 441);
+            this.radPageView1.Size = new System.Drawing.Size(1075, 416);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.Text = "radPageView1";
             this.radPageView1.ThemeName = "Windows7";
@@ -262,17 +264,17 @@
             this.commandBarButton5.Text = "commandBarButton5";
             this.commandBarButton5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
-            // radCommandBar1
+            // btnIncommingMessageLogs
             // 
-            this.radCommandBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radCommandBar1.Location = new System.Drawing.Point(0, 22);
-            this.radCommandBar1.Name = "radCommandBar1";
-            this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
+            this.btnIncommingMessageLogs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIncommingMessageLogs.Location = new System.Drawing.Point(0, 22);
+            this.btnIncommingMessageLogs.Name = "btnIncommingMessageLogs";
+            this.btnIncommingMessageLogs.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(1075, 46);
-            this.radCommandBar1.TabIndex = 4;
-            this.radCommandBar1.Text = "radCommandBar1";
-            this.radCommandBar1.ThemeName = "Windows7";
+            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 71);
+            this.btnIncommingMessageLogs.TabIndex = 4;
+            this.btnIncommingMessageLogs.Text = "radCommandBar1";
+            this.btnIncommingMessageLogs.ThemeName = "Windows7";
             // 
             // commandBarRowElement1
             // 
@@ -281,7 +283,8 @@
             this.commandBarRowElement1.Strips.AddRange(new Telerik.WinControls.UI.CommandBarStripElement[] {
             this.commandBarStripElement2,
             this.commandBarStripElement3,
-            this.commandBarStripElement4});
+            this.commandBarStripElement4,
+            this.commandBarStripElement6});
             this.commandBarRowElement1.Text = "";
             this.commandBarRowElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
@@ -409,6 +412,28 @@
             this.btnDuplicateTestProject.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDuplicateTestProject.Click += new System.EventHandler(this.btnDuplicateTestProject_Click);
             // 
+            // commandBarStripElement6
+            // 
+            this.commandBarStripElement6.DisplayName = "commandBarStripElement6";
+            this.commandBarStripElement6.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
+            this.commandBarButton2});
+            this.commandBarStripElement6.Name = "commandBarStripElement6";
+            // 
+            // 
+            // 
+            this.commandBarStripElement6.OverflowButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.RadCommandBarOverflowButton)(this.commandBarStripElement6.GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // commandBarButton2
+            // 
+            this.commandBarButton2.DisplayName = "commandBarButton2";
+            this.commandBarButton2.DrawText = true;
+            this.commandBarButton2.Image = global::OLTMockServer.Properties.Resources.input_24px;
+            this.commandBarButton2.Name = "commandBarButton2";
+            this.commandBarButton2.Text = "Incomming Messages";
+            this.commandBarButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.commandBarButton2.Click += new System.EventHandler(this.commandBarButton2_Click);
+            // 
             // commandBarStripElement5
             // 
             this.commandBarStripElement5.DisplayName = "commandBarStripElement5";
@@ -446,7 +471,7 @@
             this.ClientSize = new System.Drawing.Size(1075, 545);
             this.Controls.Add(this.radWaitingBar1);
             this.Controls.Add(this.radPanel2);
-            this.Controls.Add(this.radCommandBar1);
+            this.Controls.Add(this.btnIncommingMessageLogs);
             this.Controls.Add(this.radPanel1);
             this.Controls.Add(this.radMenu1);
             this.Name = "MainDialog";
@@ -475,7 +500,7 @@
             this.radPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCommandBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnIncommingMessageLogs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -499,7 +524,7 @@
         private Telerik.WinControls.UI.CommandBarButton commandBarButton4;
         private Telerik.WinControls.UI.CommandBarButton commandBarButton5;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement1;
-        private Telerik.WinControls.UI.RadCommandBar radCommandBar1;
+        private Telerik.WinControls.UI.RadCommandBar btnIncommingMessageLogs;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement2;
         private Telerik.WinControls.UI.CommandBarButton btnCreateNewTest;
@@ -524,5 +549,7 @@
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement5;
         private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
         private Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement dotsRingWaitingBarIndicatorElement1;
+        private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement6;
+        private Telerik.WinControls.UI.CommandBarButton commandBarButton2;
     }
 }

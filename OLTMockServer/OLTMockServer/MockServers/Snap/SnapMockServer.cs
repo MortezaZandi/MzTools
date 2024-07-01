@@ -4,6 +4,7 @@ using OLTMockServer.spag;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceModel;
@@ -66,6 +67,8 @@ namespace OLTMockServer.MockServers
 
         internal void ClientRequest_Ack(string orderCode)
         {
+            Debug.WriteLine($"Ack message received for '{orderCode}'");
+
             //find order
             var order = orderRepository.FindOrder(orderCode);
 
@@ -83,6 +86,8 @@ namespace OLTMockServer.MockServers
 
         internal void ClientRequest_Pick(string orderCode)
         {
+            Debug.WriteLine($"Pick message received for '{orderCode}'");
+
             //find order
             var order = orderRepository.FindOrder(orderCode);
 
@@ -99,6 +104,8 @@ namespace OLTMockServer.MockServers
 
         internal void ClientRequest_Accept(string orderCode, DataStructures.Snap.olt.AcceptModel acceptModel)
         {
+            Debug.WriteLine($"Accept message received for '{orderCode}'");
+
             //find order
             var order = orderRepository.FindOrder(orderCode);
 
@@ -115,6 +122,8 @@ namespace OLTMockServer.MockServers
 
         internal void ClientRequest_Reject(string orderCode, DataStructures.Snap.olt.RejectModel rejectModel)
         {
+            Debug.WriteLine($"Reject message received for '{orderCode}'");
+
             //find order
             var order = orderRepository.FindOrder(orderCode);
 
@@ -130,6 +139,8 @@ namespace OLTMockServer.MockServers
 
         internal Stream ClientRequest_Token()
         {
+            Debug.WriteLine($"Token request.");
+
             var model = new DataStructures.Snap.olt.TokenModel()
             {
                 AccessToken = "123412342134klhjsdfk",
@@ -153,7 +164,7 @@ namespace OLTMockServer.MockServers
             var objectToSend = (DataStructures.Snap.ApiModels.SnapOrderDto)GetSendModel(order);
 
             var keyvalues = objectToSend.GetType().GetProperties()
-            .ToList().Where(p=>p.Name!=nameof(DataStructures.Snap.ApiModels.SnapOrderDto.Products))
+            .ToList().Where(p => p.Name != nameof(DataStructures.Snap.ApiModels.SnapOrderDto.Products))
             .Select(p => new KeyValuePair<string, string>(p.Name, p.GetValue(objectToSend)?.ToString())).ToList();
 
             for (int i = 0; i < objectToSend.Products.Count; i++)

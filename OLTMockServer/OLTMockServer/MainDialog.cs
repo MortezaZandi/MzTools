@@ -373,5 +373,29 @@ namespace OLTMockServer
                 radWaitingBar1.Hide();
             }
         }
+
+        private DataDialog incommintMessageLogs;
+
+        private void commandBarButton2_Click(object sender, EventArgs e)
+        {
+            if (incommintMessageLogs == null || incommintMessageLogs.IsDisposed)
+            {
+                if (incommintMessageLogs != null && !incommintMessageLogs.IsDisposed)
+                {
+                    incommintMessageLogs.Dispose();
+                }
+
+                var logControl = new ServerLogsControl(null);
+                incommintMessageLogs = new DataDialog(logControl);
+                logControl.ParentDialog = incommintMessageLogs;
+                incommintMessageLogs.Show();
+            }
+            else
+            {
+                incommintMessageLogs.TopMost = true;
+                incommintMessageLogs.TopMost = false;
+                incommintMessageLogs.Show();
+            }
+        }
     }
 }

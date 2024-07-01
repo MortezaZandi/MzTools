@@ -34,14 +34,8 @@ namespace OLTMockServer.UI
             set
             {
                 customers = value;
-                ResetDataSource();
+                radGridView.DataSource = customers;
             }
-        }
-
-        private void ResetDataSource()
-        {
-            radGridView.DataSource = null;
-            radGridView.DataSource = customers;
         }
 
         private void InitOperations()
@@ -83,7 +77,7 @@ namespace OLTMockServer.UI
             {
                 customers.Add(customerControl.Customer);
 
-                ResetDataSource();
+                radGridView.ResetDataSource();
             }
         }
 
@@ -97,7 +91,7 @@ namespace OLTMockServer.UI
                 {
                     customers.Remove(selectedCustomer);
 
-                    ResetDataSource();
+                    radGridView.ResetDataSource();
                 }
             }
         }
@@ -108,15 +102,15 @@ namespace OLTMockServer.UI
             {
                 customers.Clear();
 
-                ResetDataSource();
+                radGridView.ResetDataSource();
             }
         }
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-            if (radGridView.SelectedRows.Count > 0)
+            if (radGridView.HasSelection)
             {
-                var selectedCustomer = radGridView.SelectedRows[0].DataBoundItem as Customer;
+                var selectedCustomer = radGridView.GetSelectedRowObject<Customer>();
 
                 var customerControl = new CustomerDetailsControl(null);
                 var dataDialog = new DataDialog(customerControl);
@@ -128,7 +122,7 @@ namespace OLTMockServer.UI
                     var index = customers.IndexOf(selectedCustomer);
                     customers.Remove(selectedCustomer);
                     customers.Insert(index, customerControl.Customer);
-                    ResetDataSource();
+                    radGridView.ResetDataSource();
                 }
             }
         }

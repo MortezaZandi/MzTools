@@ -132,22 +132,25 @@
     <Compile Include="MainDialog.Designer.cs">
       <DependentUpon>MainDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="MockServers\DigiMockServer.cs" />
+    <Compile Include="MockServers\Digi\DigiMockServer.cs" />
     <Compile Include="MockServers\MockServer.cs" />
     <Compile Include="DataStructures\MockServerServiceInfo.cs" />
-    <Compile Include="MockServers\SnapMockServer.cs" />
+    <Compile Include="MockServers\Snap\SnapMockServer.cs" />
     <Compile Include="DataStructures\OrderActivity.cs" />
     <Compile Include="DataStructures\OrderFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="APIUtil.cs" />
-    <Compile Include="OnlineShops\Snap\SnapOrderFactory.cs" />
-    <Compile Include="OnlineShops\Snap\SnapTestManager.cs" />
+    <Compile Include="MockServers\Snap\SnapOrderFactory.cs" />
+    <Compile Include="MockServers\Snap\SnapTestManager.cs" />
     <Compile Include="UI\CodeTestDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\CodeTestDialog.Designer.cs">
       <DependentUpon>CodeTestDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CustomGridView.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ItemSelectControl.cs">
       <SubType>UserControl</SubType>
@@ -168,6 +171,12 @@
     </Compile>
     <Compile Include="UI\PropertyListControl.Designer.cs">
       <DependentUpon>PropertyListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ServerLogsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerLogsControl.Designer.cs">
+      <DependentUpon>ServerLogsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Snap\CustomerDetailsControl.cs">
       <SubType>UserControl</SubType>
@@ -283,6 +292,9 @@
     <EmbeddedResource Include="UI\PropertyListControl.resx">
       <DependentUpon>PropertyListControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerLogsControl.resx">
+      <DependentUpon>ServerLogsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Snap\CustomerDetailsControl.resx">
       <DependentUpon>CustomerDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,6 +348,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\up_24px.png" />
+    <None Include="Resources\input_24px.png" />
     <None Include="Resources\fast-add-30-1.png" />
     <None Include="Resources\fast-add-24-1.png" />
     <None Include="Resources\fast-add-48-2.png" />

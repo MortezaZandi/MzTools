@@ -95,6 +95,7 @@ namespace OLTMockServer
             SendFailed = 6,
             RejectedByServer = 7,
             RejectedByVendor = 8,
+            Accepted = 9,
         }
 
         public enum LogTypes

@@ -41,5 +41,15 @@ namespace OLTMockServer
                 return binaryFormatter.Deserialize(memoryStream);
             }
         }
+
+        /// <summary>
+        /// Remove millieseconds from TimeSpan object
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static TimeSpan Round(this TimeSpan value)
+        {
+            return TimeSpan.FromSeconds((long)value.TotalSeconds);
+        }
     }
 }

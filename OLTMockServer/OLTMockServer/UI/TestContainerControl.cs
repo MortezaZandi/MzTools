@@ -105,10 +105,6 @@ namespace OLTMockServer.UI
 
         private void SetRowEffect(GridViewRowInfo row, Definitions.OrderProcessingSteps processingStep)
         {
-            var effectCell = row.Cells[0];
-
-            //effectCell.Style.CustomizeFill = true;
-            Color? backColor = Color.White;
             Color? foreColor = Color.Black;
 
             switch (processingStep)
@@ -146,7 +142,6 @@ namespace OLTMockServer.UI
                     break;
             }
 
-            //row.Cells[0].Style.BackColor = backColor.Value;
             row.Cells[0].Style.ForeColor = foreColor.Value;
         }
 

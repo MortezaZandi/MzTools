@@ -71,9 +71,9 @@ namespace OLTMockServer.UI
 
         private void SetStatusLabels()
         {
-            var sendActivity = order.Activities.FindLast(a => a.ActivityType == Definitions.OrderActivityTypes.Send);
-            var editActivity = order.Activities.FindLast(a => a.ActivityType == Definitions.OrderActivityTypes.Edit);
-            var successSendActivity = order.Activities.FirstOrDefault(a => a.ActivityType == Definitions.OrderActivityTypes.Send && a.IsDone == true);
+            var sendActivity = order.SendActivity;
+            var editActivity = order.EditActivity;
+            var successSendActivity = order.AnySuccessSendActivity;
             DateTime diffBaseTime = order.CreateDate;
             string baseString = "after create";
 
@@ -84,7 +84,7 @@ namespace OLTMockServer.UI
                 baseString = "after send";
 
                 lblSendStatus.Text = "Order Sent";
-                lblSendStatusDescription.Text = $"Order was sent to vendor at {successSendActivity.ProcessDate:yyyy-MM-dd HH:mm:ss}, {(successSendActivity.ProcessDate - order.CreateDate)} after create.";
+                lblSendStatusDescription.Text = $"Order was sent to vendor at {successSendActivity.ProcessDate:yyyy-MM-dd HH:mm:ss}, {(successSendActivity.ProcessDate - order.CreateDate).Round()} after create.";
                 lblSendStatus.ForeColor = Color.Green;
             }
             else if (sendActivity != null)

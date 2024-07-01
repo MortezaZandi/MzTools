@@ -43,6 +43,12 @@
             this.lblResponseStatusDescription = new Telerik.WinControls.UI.RadLabel();
             this.lblSendStatus = new Telerik.WinControls.UI.RadLabel();
             this.lblSendStatusDescription = new Telerik.WinControls.UI.RadLabel();
+            this.radSeparator2 = new Telerik.WinControls.UI.RadSeparator();
+            this.radSeparator3 = new Telerik.WinControls.UI.RadSeparator();
+            this.radSeparator4 = new Telerik.WinControls.UI.RadSeparator();
+            this.radSeparator5 = new Telerik.WinControls.UI.RadSeparator();
+            this.radSeparator6 = new Telerik.WinControls.UI.RadSeparator();
+            this.radSeparator7 = new Telerik.WinControls.UI.RadSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -66,6 +72,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblSendStatus)).BeginInit();
             this.lblSendStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblSendStatusDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator7)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlOperations
@@ -144,11 +156,12 @@
             // 
             this.lblAcceptStatus.AutoSize = false;
             this.lblAcceptStatus.Controls.Add(this.lblAcceptStatusDescription);
+            this.lblAcceptStatus.Controls.Add(this.radSeparator7);
             this.lblAcceptStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblAcceptStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcceptStatus.Location = new System.Drawing.Point(0, 244);
+            this.lblAcceptStatus.Location = new System.Drawing.Point(0, 320);
             this.lblAcceptStatus.Name = "lblAcceptStatus";
-            this.lblAcceptStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblAcceptStatus.Size = new System.Drawing.Size(228, 80);
             this.lblAcceptStatus.TabIndex = 4;
             this.lblAcceptStatus.Text = "Accept not received";
             this.lblAcceptStatus.ThemeName = "Windows7";
@@ -157,9 +170,9 @@
             // 
             this.lblAcceptStatusDescription.AutoSize = false;
             this.lblAcceptStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblAcceptStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblAcceptStatusDescription.Location = new System.Drawing.Point(0, 26);
             this.lblAcceptStatusDescription.Name = "lblAcceptStatusDescription";
-            this.lblAcceptStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblAcceptStatusDescription.Size = new System.Drawing.Size(228, 50);
             this.lblAcceptStatusDescription.TabIndex = 0;
             this.lblAcceptStatusDescription.Text = "Order sent, But Accept message not received from target vendor";
             // 
@@ -167,11 +180,12 @@
             // 
             this.lblPickStatus.AutoSize = false;
             this.lblPickStatus.Controls.Add(this.lblPickStatusDescription);
+            this.lblPickStatus.Controls.Add(this.radSeparator5);
             this.lblPickStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblPickStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPickStatus.Location = new System.Drawing.Point(0, 183);
+            this.lblPickStatus.Location = new System.Drawing.Point(0, 240);
             this.lblPickStatus.Name = "lblPickStatus";
-            this.lblPickStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblPickStatus.Size = new System.Drawing.Size(228, 80);
             this.lblPickStatus.TabIndex = 3;
             this.lblPickStatus.Text = "Pick not received";
             this.lblPickStatus.ThemeName = "Windows7";
@@ -180,9 +194,9 @@
             // 
             this.lblPickStatusDescription.AutoSize = false;
             this.lblPickStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblPickStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblPickStatusDescription.Location = new System.Drawing.Point(0, 26);
             this.lblPickStatusDescription.Name = "lblPickStatusDescription";
-            this.lblPickStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblPickStatusDescription.Size = new System.Drawing.Size(228, 50);
             this.lblPickStatusDescription.TabIndex = 0;
             this.lblPickStatusDescription.Text = "Order sent, But Pick message not received from target vendor";
             // 
@@ -190,11 +204,12 @@
             // 
             this.lblACKStatus.AutoSize = false;
             this.lblACKStatus.Controls.Add(this.lblACKStatusDescription);
+            this.lblACKStatus.Controls.Add(this.radSeparator4);
             this.lblACKStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblACKStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblACKStatus.Location = new System.Drawing.Point(0, 122);
+            this.lblACKStatus.Location = new System.Drawing.Point(0, 160);
             this.lblACKStatus.Name = "lblACKStatus";
-            this.lblACKStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblACKStatus.Size = new System.Drawing.Size(228, 80);
             this.lblACKStatus.TabIndex = 2;
             this.lblACKStatus.Text = "ACK not received";
             this.lblACKStatus.ThemeName = "Windows7";
@@ -203,9 +218,9 @@
             // 
             this.lblACKStatusDescription.AutoSize = false;
             this.lblACKStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblACKStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblACKStatusDescription.Location = new System.Drawing.Point(0, 26);
             this.lblACKStatusDescription.Name = "lblACKStatusDescription";
-            this.lblACKStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblACKStatusDescription.Size = new System.Drawing.Size(228, 50);
             this.lblACKStatusDescription.TabIndex = 0;
             this.lblACKStatusDescription.Text = "Order sent, But Ack message not received from target vendor";
             // 
@@ -213,11 +228,12 @@
             // 
             this.lblResponseStatus.AutoSize = false;
             this.lblResponseStatus.Controls.Add(this.lblResponseStatusDescription);
+            this.lblResponseStatus.Controls.Add(this.radSeparator3);
             this.lblResponseStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblResponseStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResponseStatus.Location = new System.Drawing.Point(0, 61);
+            this.lblResponseStatus.Location = new System.Drawing.Point(0, 80);
             this.lblResponseStatus.Name = "lblResponseStatus";
-            this.lblResponseStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblResponseStatus.Size = new System.Drawing.Size(228, 80);
             this.lblResponseStatus.TabIndex = 1;
             this.lblResponseStatus.Text = "No Response received";
             this.lblResponseStatus.ThemeName = "Windows7";
@@ -226,21 +242,23 @@
             // 
             this.lblResponseStatusDescription.AutoSize = false;
             this.lblResponseStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblResponseStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblResponseStatusDescription.Location = new System.Drawing.Point(0, 26);
             this.lblResponseStatusDescription.Name = "lblResponseStatusDescription";
-            this.lblResponseStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblResponseStatusDescription.Size = new System.Drawing.Size(228, 50);
             this.lblResponseStatusDescription.TabIndex = 0;
             this.lblResponseStatusDescription.Text = "The order has been sent, but no response has been received from the vendor.";
             // 
             // lblSendStatus
             // 
             this.lblSendStatus.AutoSize = false;
+            this.lblSendStatus.Controls.Add(this.radSeparator6);
             this.lblSendStatus.Controls.Add(this.lblSendStatusDescription);
+            this.lblSendStatus.Controls.Add(this.radSeparator2);
             this.lblSendStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSendStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSendStatus.Location = new System.Drawing.Point(0, 0);
             this.lblSendStatus.Name = "lblSendStatus";
-            this.lblSendStatus.Size = new System.Drawing.Size(228, 61);
+            this.lblSendStatus.Size = new System.Drawing.Size(228, 80);
             this.lblSendStatus.TabIndex = 0;
             this.lblSendStatus.Text = "Not send";
             this.lblSendStatus.ThemeName = "Windows7";
@@ -249,11 +267,65 @@
             // 
             this.lblSendStatusDescription.AutoSize = false;
             this.lblSendStatusDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblSendStatusDescription.Location = new System.Drawing.Point(0, 25);
+            this.lblSendStatusDescription.Location = new System.Drawing.Point(0, 26);
             this.lblSendStatusDescription.Name = "lblSendStatusDescription";
-            this.lblSendStatusDescription.Size = new System.Drawing.Size(228, 36);
+            this.lblSendStatusDescription.Size = new System.Drawing.Size(228, 50);
             this.lblSendStatusDescription.TabIndex = 0;
             this.lblSendStatusDescription.Text = "This order has not yet been sent to the destination vendor.";
+            // 
+            // radSeparator2
+            // 
+            this.radSeparator2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.radSeparator2.Location = new System.Drawing.Point(0, 76);
+            this.radSeparator2.Name = "radSeparator2";
+            this.radSeparator2.Size = new System.Drawing.Size(228, 4);
+            this.radSeparator2.TabIndex = 1;
+            this.radSeparator2.Text = "radSeparator2";
+            // 
+            // radSeparator3
+            // 
+            this.radSeparator3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.radSeparator3.Location = new System.Drawing.Point(0, 76);
+            this.radSeparator3.Name = "radSeparator3";
+            this.radSeparator3.Size = new System.Drawing.Size(228, 4);
+            this.radSeparator3.TabIndex = 2;
+            this.radSeparator3.Text = "radSeparator3";
+            // 
+            // radSeparator4
+            // 
+            this.radSeparator4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.radSeparator4.Location = new System.Drawing.Point(0, 76);
+            this.radSeparator4.Name = "radSeparator4";
+            this.radSeparator4.Size = new System.Drawing.Size(228, 4);
+            this.radSeparator4.TabIndex = 2;
+            this.radSeparator4.Text = "radSeparator4";
+            // 
+            // radSeparator5
+            // 
+            this.radSeparator5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.radSeparator5.Location = new System.Drawing.Point(0, 76);
+            this.radSeparator5.Name = "radSeparator5";
+            this.radSeparator5.Size = new System.Drawing.Size(228, 4);
+            this.radSeparator5.TabIndex = 2;
+            this.radSeparator5.Text = "radSeparator5";
+            // 
+            // radSeparator6
+            // 
+            this.radSeparator6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radSeparator6.Location = new System.Drawing.Point(0, 0);
+            this.radSeparator6.Name = "radSeparator6";
+            this.radSeparator6.Size = new System.Drawing.Size(228, 4);
+            this.radSeparator6.TabIndex = 2;
+            this.radSeparator6.Text = "radSeparator6";
+            // 
+            // radSeparator7
+            // 
+            this.radSeparator7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.radSeparator7.Location = new System.Drawing.Point(0, 76);
+            this.radSeparator7.Name = "radSeparator7";
+            this.radSeparator7.Size = new System.Drawing.Size(228, 4);
+            this.radSeparator7.TabIndex = 3;
+            this.radSeparator7.Text = "radSeparator7";
             // 
             // OrderLogsControl
             // 
@@ -285,6 +357,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblSendStatus)).EndInit();
             this.lblSendStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lblSendStatusDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSeparator7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,5 +381,11 @@
         private Telerik.WinControls.UI.RadLabel lblAcceptStatusDescription;
         private Telerik.WinControls.UI.RadLabel lblPickStatus;
         private Telerik.WinControls.UI.RadLabel lblPickStatusDescription;
+        private Telerik.WinControls.UI.RadSeparator radSeparator5;
+        private Telerik.WinControls.UI.RadSeparator radSeparator4;
+        private Telerik.WinControls.UI.RadSeparator radSeparator3;
+        private Telerik.WinControls.UI.RadSeparator radSeparator2;
+        private Telerik.WinControls.UI.RadSeparator radSeparator7;
+        private Telerik.WinControls.UI.RadSeparator radSeparator6;
     }
 }
