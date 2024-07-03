@@ -169,9 +169,8 @@
             this.playProgressbar.Name = "playProgressbar";
             this.playProgressbar.Size = new System.Drawing.Size(180, 16);
             this.playProgressbar.TabIndex = 0;
-            this.playProgressbar.Text = "%96";
+            this.playProgressbar.Text = "%0";
             this.playProgressbar.ThemeName = "Windows7";
-            this.playProgressbar.Value1 = 50;
             // 
             // radPanel3
             // 
@@ -197,9 +196,9 @@
             // 
             this.radPanel2.Controls.Add(this.radPageView1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 93);
+            this.radPanel2.Location = new System.Drawing.Point(0, 68);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1075, 416);
+            this.radPanel2.Size = new System.Drawing.Size(1075, 441);
             this.radPanel2.TabIndex = 3;
             this.radPanel2.Text = "radPanel2";
             this.radPanel2.ThemeName = "Windows7";
@@ -209,7 +208,7 @@
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(1075, 416);
+            this.radPageView1.Size = new System.Drawing.Size(1075, 441);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.Text = "radPageView1";
             this.radPageView1.ThemeName = "Windows7";
@@ -271,7 +270,7 @@
             this.btnIncommingMessageLogs.Name = "btnIncommingMessageLogs";
             this.btnIncommingMessageLogs.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 71);
+            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 46);
             this.btnIncommingMessageLogs.TabIndex = 4;
             this.btnIncommingMessageLogs.Text = "radCommandBar1";
             this.btnIncommingMessageLogs.ThemeName = "Windows7";

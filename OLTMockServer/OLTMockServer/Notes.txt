@@ -1,4 +1,0 @@
-﻿vendor:
---address
---method names/types
---

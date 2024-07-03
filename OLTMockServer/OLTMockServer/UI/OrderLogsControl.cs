@@ -138,7 +138,7 @@ namespace OLTMockServer.UI
             if (order.AckTime != DateTime.MinValue)
             {
                 lblACKStatus.Text = "Ack done";
-                lblACKStatusDescription.Text = $"ACK response received at {order.AckTime:yyyy-MM-dd HH:mm:ss}, {(order.AckTime - diffBaseTime)} {baseString}.";
+                lblACKStatusDescription.Text = $"ACK response received at {order.AckTime:yyyy-MM-dd HH:mm:ss}, {(order.AckTime - diffBaseTime).Round()} {baseString}.";
                 lblACKStatus.ForeColor = Color.Green;
             }
             else

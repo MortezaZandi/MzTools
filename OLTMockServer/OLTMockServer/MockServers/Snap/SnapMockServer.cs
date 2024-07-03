@@ -1,5 +1,6 @@
 ﻿using OLTMockServer.DataStructures;
 using OLTMockServer.DataStructures.Snap;
+using OLTMockServer.DataStructures.Snap.ApiModels;
 using OLTMockServer.spag;
 using RestSharp;
 using System;
@@ -79,9 +80,6 @@ namespace OLTMockServer.MockServers
             order.AddLog("Ack", $"Ack message received");
 
             orderRepository.SaveOrder(order);
-
-            WebOperationContext ctx = WebOperationContext.Current;
-            var sc = ctx.OutgoingResponse.StatusCode;
         }
 
         internal void ClientRequest_Pick(string orderCode)
@@ -161,12 +159,27 @@ namespace OLTMockServer.MockServers
         {
             var methodNameInVendor = GetAPIMethodName(Definitions.APINames.NewOrder);
 
-            var objectToSend = (DataStructures.Snap.ApiModels.SnapOrderDto)GetSendModel(order);
+            var objectToSend = (SnapOrderDto)GetSendModel(order);
 
+            List<KeyValuePair<string, string>> keyvalues = ConvertOrderToKeyValueParameters(objectToSend);
+
+            if (APIUtil.CallApiForFormUrlEncodedContent(methodNameInVendor, keyvalues, RestSharp.Method.POST, targetVendor.BaseUrl))
+            {
+                return true;
+            }
+
+            //log
+            return false;
+        }
+
+        private static List<KeyValuePair<string, string>> ConvertOrderToKeyValueParameters(SnapOrderDto objectToSend)
+        {
             var keyvalues = objectToSend.GetType().GetProperties()
-            .ToList().Where(p => p.Name != nameof(DataStructures.Snap.ApiModels.SnapOrderDto.Products))
-            .Select(p => new KeyValuePair<string, string>(p.Name, p.GetValue(objectToSend)?.ToString())).ToList();
+                        .ToList().Where(p => p.Name != nameof(DataStructures.Snap.ApiModels.SnapOrderDto.Products))
+                        .Select(p => new KeyValuePair<string, string>(p.Name, p.GetValue(objectToSend)?.ToString())).ToList();
 
+            //Convert product list:
+            ////ToDo: this must be automated for any enumerable property in the input model
             for (int i = 0; i < objectToSend.Products.Count; i++)
             {
                 var item = objectToSend.Products[i];
@@ -178,13 +191,7 @@ namespace OLTMockServer.MockServers
                 keyvalues.AddRange(itemKeyValues);
             }
 
-            if (APIUtil.CallApiForFormUrlEncodedContent(methodNameInVendor, keyvalues, RestSharp.Method.POST, targetVendor.BaseUrl))
-            {
-                return true;
-            }
-
-            //log
-            return false;
+            return keyvalues;
         }
 
         protected override object GetSendModel(Order order)

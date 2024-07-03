@@ -152,21 +152,28 @@ namespace OLTMockServer
 
         private void AddTest(Definitions.KnownOnlineShops type)
         {
-            var newTest = this.appManager.AddTest(type, true);
+            var tempTest = this.appManager.AddTest(type, true);
 
-            var wizard = new DataWizardDialog(newTest, newTest.TestProject);
+            tempTest.TestProject.OrderPattern.PatternName = tempTest.TestProject.TestOptions.TestName;
+            tempTest.TestProject.OrderPattern.PredifinedOrderPatterns = TestContainerControl.LoadPredifinedPatterns(type);
+
+            var wizard = new DataWizardDialog(tempTest, tempTest.TestProject);
 
             wizard.Text = "New Test";
 
             if (wizard.ShowDialog() == DialogResult.OK)
             {
-                this.appManager.AddTest(newTest);
+                this.appManager.AddTest(tempTest);
 
-                AddTestPage(newTest);
+                AddTestPage(tempTest);
 
-                newTest.SaveTestProject();
+                tempTest.SaveTestProject();
 
                 appManager.UpdateTestList();
+
+                //Save patterns to predefined patterns:
+                tempTest.TestProject.OrderPattern.PatternName = tempTest.TestProject.TestOptions.TestName;
+                TestContainerControl.SavePatternToPredifinedPatterns(tempTest.TestProject.OrderPattern, type);
             }
         }
 

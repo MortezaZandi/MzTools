@@ -2,6 +2,7 @@
 using OLTMockServer.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,7 @@ namespace OLTMockServer
             RandomStringCode6,
             RandomFixedList,
             RandomDecimal,
+            RandomStringCode7,
         }
 
         public enum OrderActivityTypes
@@ -106,5 +108,7 @@ namespace OLTMockServer
             Error = 3,
             Debug = 4,
         }
+
+        public class NotEditableAttribute : Attribute { }
     }
 }

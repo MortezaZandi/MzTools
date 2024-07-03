@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -69,25 +70,26 @@ namespace OLTMockServer.UI
             }
         }
 
-        public Type ObjectType
+        public void SetObjectType(Type objectType, List<string> skipList)
         {
-            get
-            {
-                return objectType;
-            }
-            set
-            {
-                this.objectType = value;
+            this.objectType = objectType;
 
-                var items = new List<PropertyItem>();
+            var items = new List<PropertyItem>();
 
-                foreach (var prop in value.GetProperties())
+            foreach (var prop in
+                objectType.GetProperties().Where(p =>
+                p.SetMethod != null && //It is not readonly
+                p.GetCustomAttribute(typeof(BrowsableAttribute)) == null && // it is not marked as NotBrowsable
+                p.GetCustomAttribute(typeof(Definitions.NotEditableAttribute)) == null)//it is not marked as NotEditable
+                )
+            {
+                if (skipList == null || !skipList.Contains(prop.Name))
                 {
                     items.Add(new PropertyItem(prop.Name, prop.PropertyType.Name));
                 }
-
-                radGridView.DataSource = items;
             }
+
+            radGridView.DataSource = items;
         }
 
         protected void SetColWidth(string text, int width)

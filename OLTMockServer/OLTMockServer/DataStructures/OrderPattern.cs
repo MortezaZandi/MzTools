@@ -25,6 +25,7 @@ namespace OLTMockServer.DataStructures
         public List<decimal> decimals = new List<decimal>();
         public List<DateTime> dates = new List<DateTime>();
         public List<string> codes8 = new List<string>();
+        public List<string> codes7 = new List<string>();
         public List<string> codes6 = new List<string>();
         public List<string> codes = new List<string>();
 

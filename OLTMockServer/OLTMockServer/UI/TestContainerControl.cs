@@ -181,7 +181,7 @@ namespace OLTMockServer.UI
             var tempTest = (TestProject)this.testManager.TestProject.Clone();
 
             tempTest.OrderPattern.PatternName = tempTest.TestOptions.TestName;
-            tempTest.OrderPattern.PredifinedOrderPatterns = LoadPredifinedPatterns();
+            tempTest.OrderPattern.PredifinedOrderPatterns = LoadPredifinedPatterns(this.TestManager.TestProject.OnlineShop);
 
             var wizard = new DataWizardDialog(this.testManager, tempTest);
 
@@ -198,13 +198,13 @@ namespace OLTMockServer.UI
 
                 //Save patterns to predefined patterns:
                 this.testManager.TestProject.OrderPattern.PatternName = this.testManager.TestProject.TestOptions.TestName;
-                SavePatternToPredifinedPatterns(tempTest.OrderPattern);
+                SavePatternToPredifinedPatterns(tempTest.OrderPattern, this.TestManager.TestProject.OnlineShop);
             }
         }
 
-        private void SavePatternToPredifinedPatterns(OrderPattern orderPattern)
+        internal static void SavePatternToPredifinedPatterns(OrderPattern orderPattern, Definitions.KnownOnlineShops type)
         {
-            var allPatterns = LoadPredifinedPatterns();
+            var allPatterns = LoadPredifinedPatterns(type);
 
             foreach (var pattern in allPatterns)
             {
@@ -229,7 +229,7 @@ namespace OLTMockServer.UI
             XMLDataSerializer.Serialize(orderPattern, filePath);
         }
 
-        private List<OrderPattern> LoadPredifinedPatterns()
+        internal static List<OrderPattern> LoadPredifinedPatterns(Definitions.KnownOnlineShops type)
         {
             var result = new List<OrderPattern>();
             var dataDir = Path.GetTempPath();
@@ -243,7 +243,7 @@ namespace OLTMockServer.UI
 
             try
             {
-                var patternFiles = Directory.GetFiles(dataDir, "*.ptrn");
+                var patternFiles = Directory.GetFiles(dataDir, $"*.{type}.ptrn");
 
                 foreach (var patternFile in patternFiles)
                 {

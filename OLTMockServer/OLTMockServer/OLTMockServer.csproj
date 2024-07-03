@@ -359,7 +359,6 @@
     <None Include="Resources\history_24px.png" />
     <None Include="Resources\single_select_24px.png" />
     <None Include="Names.txt" />
-    <Content Include="Notes.txt" />
     <None Include="Resources\edit_blue_24px.png" />
     <None Include="Resources\clean_24px.png" />
     <None Include="Resources\delete_24px.png" />

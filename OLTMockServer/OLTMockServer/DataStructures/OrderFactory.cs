@@ -259,6 +259,18 @@ namespace OLTMockServer
                     }
                     break;
 
+                case Definitions.PropertyValueGeneratorTypes.RandomStringCode7:
+                    value = Utils.GenerateCode(7);
+                    if (pattern.codes7.Contains(value.ToString()))
+                    {
+                        isNew = false;
+                    }
+                    else
+                    {
+                        pattern.codes7.Add(value.ToString());
+                    }
+                    break;
+
                 case Definitions.PropertyValueGeneratorTypes.RandomStringCode6:
                     value = Utils.GenerateCode(6);
                     if (pattern.codes6.Contains(value.ToString()))

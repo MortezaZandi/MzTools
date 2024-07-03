@@ -139,9 +139,13 @@ namespace OLTMockServer.UI
         private void btnAddProperty_Click(object sender, EventArgs e)
         {
             var propControl = new PropertyListControl(null);
+            
             var dataDialog = new DataDialog(propControl, "Add Property");
+            
             propControl.ParentDialog = dataDialog;
-            propControl.ObjectType = this.orderType;
+            
+            propControl.SetObjectType(this.orderType, orderPattern.PatternItems.Select(pi => pi.PropertyName).ToList());
+
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
                 if (propControl.SelectedItem != null)
