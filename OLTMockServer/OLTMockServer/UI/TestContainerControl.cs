@@ -268,12 +268,19 @@ namespace OLTMockServer.UI
 
         private void btnAddNewOrder_Click(object sender, EventArgs e)
         {
-            Order newOrder = this.testManager.CreateNewOrderUsingUI();
-
-            if (newOrder != null)
+            try
             {
-                testManager.TestProject.Orders.Add(newOrder);
-                ResetDataSource();
+                Order newOrder = this.testManager.CreateNewOrderUsingUI();
+
+                if (newOrder != null)
+                {
+                    testManager.TestProject.Orders.Add(newOrder);
+                    ResetDataSource();
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
             }
         }
 
