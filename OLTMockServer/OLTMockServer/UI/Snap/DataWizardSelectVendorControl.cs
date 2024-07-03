@@ -77,7 +77,7 @@ namespace OLTMockServer.UI
         private void btnAddNewVendor_Click(object sender, EventArgs e)
         {
             var vendorControl = this.wizard.UIFactory.CreateVendorDetailsControl(null);
-            var dataDialog = new DataDialog(vendorControl);
+            var dataDialog = new DataDialog(vendorControl, "Add New Vendor");
             vendorControl.ParentDialog = dataDialog;
             vendorControl.Vendor = new Vendor();
             if (dataDialog.ShowDialog() == DialogResult.OK)
@@ -122,7 +122,7 @@ namespace OLTMockServer.UI
                 var selectedVendor = radGridView.SelectedRows[0].DataBoundItem as Vendor;
 
                 var vendorControl = new VendorDetailsControl(null);
-                var dataDialog = new DataDialog(vendorControl);
+                var dataDialog = new DataDialog(vendorControl, "Edit Vendor");
                 vendorControl.ParentDialog = dataDialog;
                 vendorControl.Vendor = selectedVendor.Clone() as Vendor;
 

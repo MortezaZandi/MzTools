@@ -39,7 +39,7 @@ namespace OLTMockServer
             Stoped = 0,
             Playing = 1,
             Paused = 2,
-            Finished=0,
+            Finished = 0,
         }
 
         public enum PropertyValueGeneratorTypes

@@ -305,24 +305,43 @@ namespace OLTMockServer
 
         private void radPageView1_PageRemoving(object sender, RadPageViewCancelEventArgs e)
         {
-            var resp = Utils.AskQuestion($"Are you sure you want to delete '{radPageView1.SelectedPage.Text}'?{Environment.NewLine}You cannot undo this action.");
-
-            if (resp != DialogResult.Yes)
+            if (!RemoveTab(this.activeTestTab))
             {
                 e.Cancel = true;
             }
-            else
+        }
+
+        private bool RemoveTab(TestTabPage tab)
+        {
+            if (tab == null)
             {
-                try
+                return false;
+            }
+
+            var testNotSaved = tab.TestManager.TestProject.IsTemp;
+
+            if (testNotSaved)
+            {
+                var resp = Utils.AskQuestion($"Delete '{tab.TestManager.TestProject.TestOptions.TestName}'?{Environment.NewLine}You cannot undo this action.");
+
+                if (resp != DialogResult.Yes)
                 {
-                    appManager.RemoveTest(activeTest);
-                }
-                catch (Exception ex)
-                {
-                    e.Cancel = true;
-                    Utils.ShowError(ex.Message);
+                    return false;
                 }
             }
+
+            try
+            {
+                appManager.RemoveTest(tab.TestManager);
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+
+                return false;
+            }
+
+            return true;
         }
 
         private void btnDuplicateTestProject_Click(object sender, EventArgs e)
@@ -386,8 +405,9 @@ namespace OLTMockServer
                 }
 
                 var logControl = new ServerLogsControl(null);
-                incommintMessageLogs = new DataDialog(logControl);
+                incommintMessageLogs = new DataDialog(logControl, "Server Incomming Messages");
                 logControl.ParentDialog = incommintMessageLogs;
+                incommintMessageLogs.SingleInstance = true;
                 incommintMessageLogs.Show();
             }
             else

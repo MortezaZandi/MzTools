@@ -200,7 +200,7 @@ namespace OLTMockServer.UI
         private void btnAddNewItem_Click(object sender, EventArgs e)
         {
             var itemControl = this.UIFactory.CreateItemDetailsControl(null);
-            var newItemDialog = new DataDialog(itemControl);
+            var newItemDialog = new DataDialog(itemControl, "Add New Item");
             itemControl.ParentDialog = newItemDialog;
             itemControl.Item = new Item();
             if (newItemDialog.ShowDialog() == DialogResult.OK)
@@ -242,7 +242,7 @@ namespace OLTMockServer.UI
                 var selectedItem = radGridView.SelectedRows[0].DataBoundItem as Item;
 
                 var itemControl = this.UIFactory.CreateItemDetailsControl(null);
-                var newItemDialog = new DataDialog(itemControl);
+                var newItemDialog = new DataDialog(itemControl, "Edit Item");
                 itemControl.ParentDialog = newItemDialog;
                 itemControl.Item = (Item)selectedItem.Clone();
 
@@ -261,7 +261,7 @@ namespace OLTMockServer.UI
         private void btnSelectItemFromList_Click(object sender, EventArgs e)
         {
             var itemSelectControl = uiFactory.CreateItemSelectControl(null);
-            var dataDialog = new DataDialog(itemSelectControl);
+            var dataDialog = new DataDialog(itemSelectControl, "Select Item");
             itemSelectControl.ParentDialog = dataDialog;
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {

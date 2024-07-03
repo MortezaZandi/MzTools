@@ -348,6 +348,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\check_all_24px.png" />
     <None Include="Resources\up_24px.png" />
     <None Include="Resources\input_24px.png" />
     <None Include="Resources\fast-add-30-1.png" />

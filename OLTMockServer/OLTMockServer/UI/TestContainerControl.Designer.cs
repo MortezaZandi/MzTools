@@ -103,7 +103,7 @@
             gridViewTextBoxColumn2.HeaderText = "Status";
             gridViewTextBoxColumn2.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn2.Name = "clmOrderStatus";
-            gridViewTextBoxColumn2.Width = 100;
+            gridViewTextBoxColumn2.Width = 120;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
             gridViewTextBoxColumn3.Expression = "";
             gridViewTextBoxColumn3.FieldName = "CreateDate";
@@ -111,7 +111,7 @@
             gridViewTextBoxColumn3.HeaderText = "Create Date";
             gridViewTextBoxColumn3.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn3.Name = "clmCreateDate";
-            gridViewTextBoxColumn3.Width = 100;
+            gridViewTextBoxColumn3.Width = 120;
             gridViewTextBoxColumn4.FieldName = "VendorCode";
             gridViewTextBoxColumn4.HeaderText = "Vendor Code";
             gridViewTextBoxColumn4.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;

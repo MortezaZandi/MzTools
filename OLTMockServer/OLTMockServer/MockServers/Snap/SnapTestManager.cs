@@ -73,7 +73,7 @@ namespace OLTMockServer
         public override Order CreateNewOrderUsingUI()
         {
             var orderControl = new SnapOrderDetailsControl(null, this);
-            var dataDialog = new DataDialog(orderControl);
+            var dataDialog = new DataDialog(orderControl, "Create New Order");
             orderControl.ParentDialog = dataDialog;
             orderControl.Order = (SnapOrder)this.Server.CreateNewOrder(this.TestProject, false);
 
@@ -99,7 +99,7 @@ namespace OLTMockServer
         public override Order EditOrderUnigUI(Order selectedOrder)
         {
             var orderControl = new SnapOrderDetailsControl(null, this);
-            var dataDialog = new DataDialog(orderControl);
+            var dataDialog = new DataDialog(orderControl, "Edit Order");
             orderControl.ParentDialog = dataDialog;
             orderControl.Order = (SnapOrder)selectedOrder.LightClone();
             dataDialog.ClientSize = new Size(700, 460);

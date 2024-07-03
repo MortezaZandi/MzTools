@@ -139,7 +139,7 @@ namespace OLTMockServer.UI
         private void btnAddProperty_Click(object sender, EventArgs e)
         {
             var propControl = new PropertyListControl(null);
-            var dataDialog = new DataDialog(propControl);
+            var dataDialog = new DataDialog(propControl, "Add Property");
             propControl.ParentDialog = dataDialog;
             propControl.ObjectType = this.orderType;
             if (dataDialog.ShowDialog() == DialogResult.OK)
@@ -211,7 +211,7 @@ namespace OLTMockServer.UI
                         if (!confirmed)
                         {
                             var control = new DataWizardSelectOrderPatternControl(null, null);
-                            var dataDialog = new DataDialog(control);
+                            var dataDialog = new DataDialog(control, "Replace Alert");
                             control.ParentDialog = dataDialog;
                             control.OrderPattern = selectedItem;
                             control.Title = "Replace pattern?";

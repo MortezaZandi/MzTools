@@ -110,7 +110,7 @@ namespace OLTMockServer.UI
                     baseString = "after send";
 
                     lblSendStatus.Text = "Edit Sent";
-                    lblSendStatusDescription.Text = $"Order was sent to vendor at {editActivity.ProcessDate:yyyy-MM-dd HH:mm:ss}, {(editActivity.ProcessDate - order.CreateDate)} after create.";
+                    lblSendStatusDescription.Text = $"Order was sent to vendor at {editActivity.ProcessDate:yyyy-MM-dd HH:mm:ss}, {(editActivity.ProcessDate - order.CreateDate).Round()} after create.";
                     lblSendStatus.ForeColor = Color.Green;
                 }
                 else
@@ -153,7 +153,7 @@ namespace OLTMockServer.UI
             if (order.PickTime != DateTime.MinValue)
             {
                 lblPickStatus.Text = "Pick done";
-                lblPickStatusDescription.Text = $"Pick response received at {order.PickTime:yyyy-MM-dd HH:mm:ss}, {(order.PickTime - diffBaseTime)} {baseString}.";
+                lblPickStatusDescription.Text = $"Pick response received at {order.PickTime:yyyy-MM-dd HH:mm:ss}, {(order.PickTime - diffBaseTime).Round()} {baseString}.";
                 lblPickStatus.ForeColor = Color.Green;
             }
             else
@@ -168,7 +168,7 @@ namespace OLTMockServer.UI
             if (order.AcceptTime != DateTime.MinValue)
             {
                 lblAcceptStatus.Text = "Accept done";
-                lblAcceptStatusDescription.Text = $"Accept response received at {order.AcceptTime:yyyy-MM-dd HH:mm:ss}, {(order.AcceptTime - diffBaseTime)}  {baseString} .";
+                lblAcceptStatusDescription.Text = $"Accept response received at {order.AcceptTime:yyyy-MM-dd HH:mm:ss}, {(order.AcceptTime - diffBaseTime).Round()}  {baseString} .";
                 lblAcceptStatus.ForeColor = Color.Green;
             }
             else

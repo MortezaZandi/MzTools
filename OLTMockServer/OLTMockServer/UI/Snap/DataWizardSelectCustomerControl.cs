@@ -70,7 +70,7 @@ namespace OLTMockServer.UI
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             var customerControl = wizard.UIFactory.CreateCustomerDetailsControl(null);
-            var dataDialog = new DataDialog(customerControl);
+            var dataDialog = new DataDialog(customerControl, "New Customer");
             customerControl.ParentDialog = dataDialog;
             customerControl.Customer = new Customer();
             if (dataDialog.ShowDialog() == DialogResult.OK)
@@ -113,7 +113,7 @@ namespace OLTMockServer.UI
                 var selectedCustomer = radGridView.GetSelectedRowObject<Customer>();
 
                 var customerControl = new CustomerDetailsControl(null);
-                var dataDialog = new DataDialog(customerControl);
+                var dataDialog = new DataDialog(customerControl, "Edit Customer");
                 customerControl.ParentDialog = dataDialog;
                 customerControl.Customer = selectedCustomer.Clone() as Customer;
 

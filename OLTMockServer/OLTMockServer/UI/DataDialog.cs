@@ -14,11 +14,12 @@ namespace OLTMockServer.UI
     public partial class DataDialog : RadForm, IConfirmableDialog
     {
         private readonly IDataControl childControl;
-        public DataDialog(IDataControl childControl)
+        public DataDialog(IDataControl childControl, string title)
         {
             InitializeComponent();
             this.childControl = childControl;
             this.childControl.ParentDialog = this;
+            this.Text = title;
         }
 
         protected override void OnShown(EventArgs e)
@@ -51,5 +52,21 @@ namespace OLTMockServer.UI
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (SingleInstance && !closeRequested)
+            {
+                e.Cancel = true;
+                this.Hide();
+            }
+            else
+            {
+                base.OnFormClosing(e);
+            }
+        }
+
+        private bool closeRequested;
+        public bool SingleInstance { get; set; }
     }
 }
