@@ -20,6 +20,11 @@ namespace OLTMockServer
             instance = this;
         }
 
+        public DataProvider(string connectionString, bool tempProvider)
+        {
+            this.connectionString = connectionString;
+        }
+
         public static DataProvider Instance
         {
             get
@@ -47,7 +52,7 @@ namespace OLTMockServer
                 {
                     if (connection.State != ConnectionState.Closed)
                     {
-                        connection.Clone();
+                        connection.Close();
                     }
                 }
             }
@@ -71,7 +76,7 @@ namespace OLTMockServer
                     {
                         if (connection.State != ConnectionState.Closed)
                         {
-                            connection.Clone();
+                            connection.Close();
                         }
                     }
                 }
@@ -101,7 +106,7 @@ namespace OLTMockServer
                     {
                         if (connection.State != ConnectionState.Closed)
                         {
-                            connection.Clone();
+                            connection.Close();
                         }
                     }
                 }
@@ -137,7 +142,7 @@ namespace OLTMockServer
                         {
                             if (connection.State != ConnectionState.Closed)
                             {
-                                connection.Clone();
+                                connection.Close();
                             }
                         }
                     }

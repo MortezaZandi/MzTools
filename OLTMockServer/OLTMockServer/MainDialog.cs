@@ -424,5 +424,19 @@ namespace OLTMockServer
                 incommintMessageLogs.Show();
             }
         }
+
+        private void btnDBConnection_Click(object sender, EventArgs e)
+        {
+            var dbControl = new DBConnectionControl(null);
+            var dataDialog = new DataDialog(dbControl, "Master DB Connection");
+            dbControl.ParentDialog = dataDialog;
+            dbControl.ConnectionString = appManager.AppData.MasterDBConnection;
+
+            if (dataDialog.ShowDialog() == DialogResult.OK)
+            {
+                appManager.AppData.MasterDBConnection = dbControl.ConnectionString;
+                appManager.SaveAppData();
+            }
+        }
     }
 }

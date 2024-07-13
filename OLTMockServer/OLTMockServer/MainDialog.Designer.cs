@@ -70,6 +70,8 @@
             this.commandBarStripElement5 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
             this.dotsRingWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement();
+            this.commandBarStripElement7 = new Telerik.WinControls.UI.CommandBarStripElement();
+            this.btnDBConnection = new Telerik.WinControls.UI.CommandBarButton();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).BeginInit();
@@ -196,9 +198,9 @@
             // 
             this.radPanel2.Controls.Add(this.radPageView1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 68);
+            this.radPanel2.Location = new System.Drawing.Point(0, 93);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1075, 441);
+            this.radPanel2.Size = new System.Drawing.Size(1075, 416);
             this.radPanel2.TabIndex = 3;
             this.radPanel2.Text = "radPanel2";
             this.radPanel2.ThemeName = "Windows7";
@@ -208,7 +210,7 @@
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(1075, 441);
+            this.radPageView1.Size = new System.Drawing.Size(1075, 416);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.Text = "radPageView1";
             this.radPageView1.ThemeName = "Windows7";
@@ -270,7 +272,7 @@
             this.btnIncommingMessageLogs.Name = "btnIncommingMessageLogs";
             this.btnIncommingMessageLogs.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 46);
+            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 71);
             this.btnIncommingMessageLogs.TabIndex = 4;
             this.btnIncommingMessageLogs.Text = "radCommandBar1";
             this.btnIncommingMessageLogs.ThemeName = "Windows7";
@@ -283,7 +285,8 @@
             this.commandBarStripElement2,
             this.commandBarStripElement3,
             this.commandBarStripElement4,
-            this.commandBarStripElement6});
+            this.commandBarStripElement6,
+            this.commandBarStripElement7});
             this.commandBarRowElement1.Text = "";
             this.commandBarRowElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
@@ -463,6 +466,23 @@
             this.dotsRingWaitingBarIndicatorElement1.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.dotsRingWaitingBarIndicatorElement1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
+            // commandBarStripElement7
+            // 
+            this.commandBarStripElement7.DisplayName = "commandBarStripElement7";
+            this.commandBarStripElement7.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
+            this.btnDBConnection});
+            this.commandBarStripElement7.Name = "commandBarStripElement7";
+            // 
+            // btnDBConnection
+            // 
+            this.btnDBConnection.DisplayName = "commandBarButton3";
+            this.btnDBConnection.DrawText = true;
+            this.btnDBConnection.Image = global::OLTMockServer.Properties.Resources.database_administrator_24px;
+            this.btnDBConnection.Name = "btnDBConnection";
+            this.btnDBConnection.Text = "Master DB Connection";
+            this.btnDBConnection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDBConnection.Click += new System.EventHandler(this.btnDBConnection_Click);
+            // 
             // MainDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,5 +570,7 @@
         private Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement dotsRingWaitingBarIndicatorElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement6;
         private Telerik.WinControls.UI.CommandBarButton commandBarButton2;
+        private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement7;
+        private Telerik.WinControls.UI.CommandBarButton btnDBConnection;
     }
 }

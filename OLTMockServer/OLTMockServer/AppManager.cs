@@ -24,11 +24,62 @@ namespace OLTMockServer
             this.tests = new List<TestManager>();
             this.servers = new List<MockServer>();
 
+            LoadAppData();
+
             LoadAvailableServers();
 
             StartServersApiService();
 
+            InitDataProvider();
+
             AppManager.Current = this;
+        }
+
+        private void InitDataProvider()
+        {
+            if (!string.IsNullOrEmpty(AppData.MasterDBConnection))
+            {
+                var dataProvider = new DataProvider(AppData.MasterDBConnection);
+                var connectionError = string.Empty;
+
+                if (!dataProvider.TestConnection(out connectionError))
+                {
+                    Utils.ShowError($"Cannot connect to master db: {connectionError}");
+                }
+            }
+        }
+
+        private void LoadAppData()
+        {
+            var appDataFilePath = Path.Combine(AppDataPath, "OLTMockServer.data");
+
+            AppData = new AppData();
+
+            if (File.Exists(appDataFilePath))
+            {
+                try
+                {
+                    AppData = XMLDataSerializer.Deserialize<AppData>(appDataFilePath);
+                }
+                catch (Exception ex)
+                {
+                    Utils.ShowError($"Error in reading app data: {ex.Message}");
+                }
+            }
+        }
+
+        public void SaveAppData()
+        {
+            var appDataFilePath = Path.Combine(AppDataPath, "OLTMockServer.data");
+
+            try
+            {
+                XMLDataSerializer.Serialize(AppData, appDataFilePath);
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError($"Error in saving app data: {ex.Message}");
+            }
         }
 
         private void StartServersApiService()
@@ -38,6 +89,7 @@ namespace OLTMockServer
                 if (!server.StartServer())
                 {
                     //log... server not started. 'name' 
+                    Utils.ShowError($"Unable to start api service for {server.OnlineShopType}.");
                 }
                 else
                 {
@@ -253,6 +305,8 @@ namespace OLTMockServer
                 return Path.Combine(Path.GetTempPath(), "OltMockServer");
             }
         }
+
+        public AppData AppData { get; private set; }
 
         public List<TestManager> LoadLastOpenedTestProjects()
         {
