@@ -48,11 +48,13 @@
             this.btnDeleteProperty = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnDeleteAllProperties = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.btnImportFromFile = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarStripElement2 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.commandBarLabel1 = new Telerik.WinControls.UI.CommandBarLabel();
             this.cmbPatterns = new Telerik.WinControls.UI.CommandBarDropDownList();
-            this.commandBarRowElement2 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.btnApplyPattern = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarRowElement2 = new Telerik.WinControls.UI.CommandBarRowElement();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -210,7 +212,9 @@
             this.commandBarSeparator1,
             this.btnDeleteProperty,
             this.commandBarSeparator3,
-            this.btnDeleteAllProperties});
+            this.btnDeleteAllProperties,
+            this.commandBarSeparator2,
+            this.btnImportFromFile});
             this.commandBarStripElement1.Name = "commandBarStripElement1";
             // 
             // 
@@ -260,6 +264,22 @@
             this.btnDeleteAllProperties.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteAllProperties.Click += new System.EventHandler(this.btnDeleteAllProperties_Click);
             // 
+            // commandBarSeparator2
+            // 
+            this.commandBarSeparator2.DisplayName = "commandBarSeparator2";
+            this.commandBarSeparator2.Name = "commandBarSeparator2";
+            this.commandBarSeparator2.VisibleInOverflowMenu = false;
+            // 
+            // btnImportFromFile
+            // 
+            this.btnImportFromFile.DisplayName = "commandBarButton1";
+            this.btnImportFromFile.DrawText = true;
+            this.btnImportFromFile.Image = global::OLTMockServer.Properties.Resources.open_document_24px;
+            this.btnImportFromFile.Name = "btnImportFromFile";
+            this.btnImportFromFile.Text = "Import";
+            this.btnImportFromFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImportFromFile.Click += new System.EventHandler(this.btnImportFromFile_Click);
+            // 
             // commandBarStripElement2
             // 
             this.commandBarStripElement2.AutoSize = false;
@@ -293,10 +313,6 @@
             this.cmbPatterns.Name = "cmbPatterns";
             this.cmbPatterns.Text = "commandBarDropDownList1";
             // 
-            // commandBarRowElement2
-            // 
-            this.commandBarRowElement2.MinSize = new System.Drawing.Size(25, 25);
-            // 
             // btnApplyPattern
             // 
             this.btnApplyPattern.DisplayName = "commandBarButton1";
@@ -306,6 +322,10 @@
             this.btnApplyPattern.Name = "btnApplyPattern";
             this.btnApplyPattern.Text = "Apply";
             this.btnApplyPattern.Click += new System.EventHandler(this.btnApplyPattern_Click);
+            // 
+            // commandBarRowElement2
+            // 
+            this.commandBarRowElement2.MinSize = new System.Drawing.Size(25, 25);
             // 
             // DataWizardSelectOrderPatternControl
             // 
@@ -344,5 +364,7 @@
         private Telerik.WinControls.UI.CommandBarDropDownList cmbPatterns;
         private Telerik.WinControls.UI.CommandBarLabel commandBarLabel1;
         private Telerik.WinControls.UI.CommandBarButton btnApplyPattern;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator2;
+        private Telerik.WinControls.UI.CommandBarButton btnImportFromFile;
     }
 }

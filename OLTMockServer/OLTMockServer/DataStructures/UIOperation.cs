@@ -23,7 +23,10 @@ namespace OLTMockServer.DataStructures
 
         public bool Enabled
         {
-            get => enabled;
+            get
+            {
+                return enabled;
+            }
             set
             {
                 enabled = value;

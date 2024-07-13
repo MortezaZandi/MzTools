@@ -215,9 +215,7 @@ namespace OLTMockServer.UI
                 }
             }
 
-            var dataDir = Path.GetTempPath();
-
-            dataDir = Path.Combine(dataDir, "OltMockServer");
+            var dataDir = AppManager.AppDataPath;
 
             if (!Directory.Exists(dataDir))
             {
@@ -232,9 +230,7 @@ namespace OLTMockServer.UI
         internal static List<OrderPattern> LoadPredifinedPatterns(Definitions.KnownOnlineShops type)
         {
             var result = new List<OrderPattern>();
-            var dataDir = Path.GetTempPath();
-
-            dataDir = Path.Combine(dataDir, "OltMockServer");
+            var dataDir = AppManager.AppDataPath;
 
             if (!Directory.Exists(dataDir))
             {

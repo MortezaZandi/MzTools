@@ -46,7 +46,17 @@ namespace OLTMockServer.UI
             }
         }
 
-        public IConfirmableDialog ParentDialog { get => parentDialog; set => parentDialog = value; }
+        public IConfirmableDialog ParentDialog
+        {
+            get
+            {
+                return parentDialog;
+            }
+            set
+            {
+                parentDialog = value;
+            }
+        }
 
         private void InitOperations()
         {

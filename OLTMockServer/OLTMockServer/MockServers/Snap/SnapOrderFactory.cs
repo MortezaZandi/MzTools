@@ -29,6 +29,11 @@ namespace OLTMockServer
                 throw new ApplicationException("No pattern defined to create new order.");
             }
 
+            if (testProject.Items.Count == 0)
+            {
+                throw new ApplicationException("No item defined to create new order.");
+            }
+
             foreach (OrderPatternItem item in testProject.OrderPattern.PatternItems)
             {
                 var orderProp = props.FirstOrDefault(p => p.Name == item.PropertyName && p.PropertyType.Name == item.PropertyType);

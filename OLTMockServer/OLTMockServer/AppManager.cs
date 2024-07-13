@@ -220,7 +220,7 @@ namespace OLTMockServer
 
         public void UpdateTestList()
         {
-            var appDataFilePath = Path.Combine(Path.GetTempPath(), "OltMockServer");
+            var appDataFilePath = AppDataPath;
 
             if (!Directory.Exists(appDataFilePath))
             {
@@ -246,9 +246,17 @@ namespace OLTMockServer
             File.WriteAllText(appDataFilePath, sb.ToString());
         }
 
+        public static string AppDataPath
+        {
+            get
+            {
+                return Path.Combine(Path.GetTempPath(), "OltMockServer");
+            }
+        }
+
         public List<TestManager> LoadLastOpenedTestProjects()
         {
-            var appDataFilePath = Path.Combine(Path.GetTempPath(), "OltMockServer");
+            var appDataFilePath = AppDataPath;
 
             var result = new List<TestManager>();
 
@@ -304,34 +312,34 @@ namespace OLTMockServer
     }
 }
 
-//public class Food { }
-//public class Meat : Food { }
-//public class Grass : Food { }
+public class Food { }
+public class Meat : Food { }
+public class Grass : Food { }
 
-//public interface IAnimal<out T>
-//    where T : Food
-//{ }
+public interface IAnimal<out T>
+//where T : Food
+{ }
 
-//public abstract class Animal<TFood> : IAnimal<TFood>
-//    where TFood : Food
-//{ }
+public abstract class Animal<TFood> : IAnimal<TFood>
+//where TFood : Food
+{ }
 
-//public class Lion : Animal<Meat> { }
+public class Lion : Animal<Meat> { }
 
-//public class Goat : Animal<Grass> { }
+public class Goat : Animal<Grass> { }
 
-//public class World
-//{
-//    public List<IAnimal<Food>> Animals { get; set; }
+public class World
+{
+    public List<IAnimal<Food>> Animals { get; set; }
 
-//    public World()
-//    {
-//        Animals.Add(new Lion());
-//        Animals.Add(new Goat());
-//    }
+    public World()
+    {
+        Animals.Add(new Lion());
+        Animals.Add(new Goat());
+    }
 
-//    private void Check()
-//    {
+    private void Check()
+    {
 
-//    }
-//}
+    }
+}

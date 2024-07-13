@@ -6,6 +6,7 @@ using OLTMockServer.UI.Snap;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace OLTMockServer
 
         public override DataWizardSelectOrderPatternControl CreateDataWizardSelectOrderPatternControl(DataWizardDialog dataWizardDialog)
         {
-            return new DataWizardSelectOrderPatternControl(dataWizardDialog, typeof(SnapOrder));
+            return new DataWizardSelectOrderPatternControl(dataWizardDialog, typeof(SnapOrder), this);
         }
 
         public override DataWizardSelectVendorControl CreateDataWizardSelectVendorControl(DataWizardDialog dataWizardDialog)
@@ -181,6 +182,36 @@ namespace OLTMockServer
             }
 
             throw new ApplicationException($"Vendor '{snapOrder.VendorCode}' not found in the list of vendors. Go to test options and define this vendor.");
+        }
+
+        public override OrderPattern ImportPatternFromFile()
+        {
+            var fdlg = new OpenFileDialog();
+            
+            fdlg.Filter = $"Snap order pattern|*.{nameof(Definitions.KnownOnlineShops.Snap)}.ptrn";
+
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = fdlg.FileName;
+
+                if (filePath.ToLower().EndsWith(".snap.ptrn"))
+                {
+                    if (File.Exists(filePath))
+                    {
+                        return XMLDataSerializer.Deserialize<OrderPattern>(filePath);
+                    }
+                    else
+                    {
+                        throw new ApplicationException($"File not found in '{filePath}'");
+                    }
+                }
+                else
+                {
+                    throw new ApplicationException("Selected file does not contains snapp pattern.");
+                }
+            }
+
+            return null;
         }
     }
 }

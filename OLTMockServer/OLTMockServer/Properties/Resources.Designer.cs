@@ -103,6 +103,56 @@ namespace OLTMockServer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap control_panel_2_24px {
+            get {
+                object obj = ResourceManager.GetObject("control_panel_2_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap control_panel_24px {
+            get {
+                object obj = ResourceManager.GetObject("control_panel_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap control_panel_24px1 {
+            get {
+                object obj = ResourceManager.GetObject("control_panel_24px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap data_fraction {
+            get {
+                object obj = ResourceManager.GetObject("data_fraction", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_administrator_24px {
+            get {
+                object obj = ResourceManager.GetObject("database_administrator_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_24px {
             get {
                 object obj = ResourceManager.GetObject("delete_24px", resourceCulture);
@@ -271,6 +321,16 @@ namespace OLTMockServer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open_document_24px {
+            get {
+                object obj = ResourceManager.GetObject("open_document_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pause_24px {
             get {
                 object obj = ResourceManager.GetObject("pause_24px", resourceCulture);
@@ -334,6 +394,26 @@ namespace OLTMockServer.Properties {
         internal static System.Drawing.Bitmap stop_24px {
             get {
                 object obj = ResourceManager.GetObject("stop_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap test_options1 {
+            get {
+                object obj = ResourceManager.GetObject("test_options1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap test_options2 {
+            get {
+                object obj = ResourceManager.GetObject("test_options2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

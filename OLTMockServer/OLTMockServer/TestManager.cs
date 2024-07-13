@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OLTMockServer
 {
-    public abstract class TestManager : IUIFactory
+    public abstract class TestManager : IUIFactory, IOrderPatternImporter
     {
         private TestProject testProject;
         public event Definitions.OrderProcessingFeedbackEventHandler OrderProcessingFeedback;
@@ -403,6 +403,7 @@ namespace OLTMockServer
         public abstract Order CreateNewOrderInBackground();
 
         public abstract void RejectOrder(Order order, bool isAutoReject);
+        public abstract OrderPattern ImportPatternFromFile();
 
         public MockServer Server { get; set; }
     }

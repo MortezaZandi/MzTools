@@ -34,7 +34,9 @@ namespace OLTMockServer.UI
             {
                 ResetRowColor(expiredRow.Row);
 
-                this.tempHighlightedRows.TryRemove(expiredRow.Row, out var row);
+                var row = new RowHighlightInfo();
+
+                this.tempHighlightedRows.TryRemove(expiredRow.Row, out row);
             }
         }
 

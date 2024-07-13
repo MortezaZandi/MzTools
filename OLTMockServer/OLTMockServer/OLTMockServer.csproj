@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppManager.cs" />
+    <Compile Include="DataProvider.cs" />
     <Compile Include="DataStructures\Customer.cs" />
     <Compile Include="DataStructures\Digi\DigiOrder.cs" />
     <Compile Include="DataStructures\Item.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="DataStructures\Vendor.cs" />
     <Compile Include="Definitions.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="IOrderPatternImporter.cs" />
     <Compile Include="IOrderRepository.cs" />
     <Compile Include="MainDialog.cs">
       <SubType>Form</SubType>
@@ -143,6 +145,11 @@
     <Compile Include="APIUtil.cs" />
     <Compile Include="MockServers\Snap\SnapOrderFactory.cs" />
     <Compile Include="MockServers\Snap\SnapTestManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\CodeTestDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,14 +279,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UI\CodeTestDialog.resx">
       <DependentUpon>CodeTestDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,6 +388,32 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\registry_editor_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data-fraction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test_options1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test_options2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control_panel_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control_panel_2_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control_panel_24px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_administrator_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_document_24px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

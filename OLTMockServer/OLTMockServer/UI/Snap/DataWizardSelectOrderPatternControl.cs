@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,11 +22,13 @@ namespace OLTMockServer.UI
         private IWizardDialog wizard;
         private Type orderType;
         private OrderPattern orderPattern;
+        private IOrderPatternImporter orderPatternImporter;
 
-        public DataWizardSelectOrderPatternControl(IWizardDialog wizard, Type orderType) : base()
+        public DataWizardSelectOrderPatternControl(IWizardDialog wizard, Type orderType, IOrderPatternImporter orderPatternImporter) : base()
         {
             this.wizard = wizard;
             this.orderType = orderType;
+            this.orderPatternImporter = orderPatternImporter;
 
             InitializeComponent();
             InitOperations();
@@ -139,11 +143,11 @@ namespace OLTMockServer.UI
         private void btnAddProperty_Click(object sender, EventArgs e)
         {
             var propControl = new PropertyListControl(null);
-            
+
             var dataDialog = new DataDialog(propControl, "Add Property");
-            
+
             propControl.ParentDialog = dataDialog;
-            
+
             propControl.SetObjectType(this.orderType, orderPattern.PatternItems.Select(pi => pi.PropertyName).ToList());
 
             if (dataDialog.ShowDialog() == DialogResult.OK)
@@ -214,7 +218,7 @@ namespace OLTMockServer.UI
 
                         if (!confirmed)
                         {
-                            var control = new DataWizardSelectOrderPatternControl(null, null);
+                            var control = new DataWizardSelectOrderPatternControl(null, null, null);
                             var dataDialog = new DataDialog(control, "Replace Alert");
                             control.ParentDialog = dataDialog;
                             control.OrderPattern = selectedItem;
@@ -243,6 +247,34 @@ namespace OLTMockServer.UI
                 {
                     Utils.ShowInfo("Pattern is empty.");
                 }
+            }
+        }
+
+        private void btnImportFromFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.orderPatternImporter != null)
+                {
+                    var pattern = this.orderPatternImporter.ImportPatternFromFile();
+
+                    if (pattern != null)
+                    {
+                        this.orderPattern.PatternItems.Clear();
+
+                        this.orderPattern.PatternItems.AddRange(pattern.PatternItems);
+
+                        ResetDataSource();
+                    }
+                }
+                else
+                {
+                    throw new ApplicationException("Pattern importer is null.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
             }
         }
     }
