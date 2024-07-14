@@ -184,6 +184,9 @@
   <data name="clean_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clean_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="open_document_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open_document_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="stop_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -214,7 +217,7 @@
   <data name="input_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\input_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="open_document_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open_document_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="data_recovery_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\data_recovery_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

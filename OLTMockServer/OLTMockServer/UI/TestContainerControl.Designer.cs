@@ -302,7 +302,7 @@
             // 
             this.btnShowTestOptions.DisplayName = "commandBarButton4";
             this.btnShowTestOptions.DrawText = true;
-            this.btnShowTestOptions.Image = global::OLTMockServer.Properties.Resources.database_administrator_24px;
+            this.btnShowTestOptions.Image = global::OLTMockServer.Properties.Resources.data_recovery_30px;
             this.btnShowTestOptions.Name = "btnShowTestOptions";
             this.btnShowTestOptions.Text = "Test Data";
             this.btnShowTestOptions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
