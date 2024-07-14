@@ -14,7 +14,6 @@ namespace OLTMockServer.UI
     public partial class DataWizardSelectVendorControl : DataWizardBaseControl
     {
         private readonly UIOperation nextOperation = new UIOperation("Next");
-        private readonly UIOperation backOperation = new UIOperation("Back");
         private readonly UIOperation cancelOperation = new UIOperation("Cancel");
         private IWizardDialog wizard;
         private List<Vendor> vendors;
@@ -48,10 +47,9 @@ namespace OLTMockServer.UI
         private void InitOperations()
         {
             nextOperation.OnSelected += OnOperationSelected;
-            backOperation.OnSelected += OnOperationSelected;
             cancelOperation.OnSelected += OnOperationSelected;
 
-            SetOperationButtons(nextOperation, backOperation, cancelOperation);
+            SetOperationButtons(nextOperation, cancelOperation);
         }
 
         private void OnOperationSelected(object sender, UIOperation uIOperation)
@@ -60,12 +58,6 @@ namespace OLTMockServer.UI
             {
                 //if ok
                 wizard.GoToNextPage();
-            }
-
-            if (uIOperation.Id == backOperation.Id)
-            {
-                //if ok
-                wizard.GoToPreviousPage();
             }
 
             if (uIOperation.Id == cancelOperation.Id)

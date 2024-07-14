@@ -51,9 +51,9 @@ namespace OLTMockServer.UI
             testOptionsControl = UIFactory.CreateDataWizardTestOptionsControl(this);
             testOptionsControl.Dock = DockStyle.Fill;
 
+            pages.Add(selectVendorControl);
             pages.Add(selectItemControl);
             pages.Add(selectCustomerControl);
-            pages.Add(selectVendorControl);
             pages.Add(selectOrderPatternControl);
             pages.Add(testOptionsControl);
 
@@ -87,6 +87,20 @@ namespace OLTMockServer.UI
                 pageIndex++;
                 ShowPage(pageIndex);
             }
+        }
+        
+        public T GetPageOfType<T>()
+            where T : DataWizardBaseControl
+        {
+            foreach (var page in pages)
+            {
+                if (page.GetType() == typeof(T))
+                {
+                    return (T)page;
+                }
+            }
+
+            return null;
         }
 
         public void ShowPage(int index)

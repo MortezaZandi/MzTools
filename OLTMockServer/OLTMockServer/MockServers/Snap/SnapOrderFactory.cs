@@ -34,6 +34,11 @@ namespace OLTMockServer
                 throw new ApplicationException("No item defined to create new order.");
             }
 
+            if (testProject.Vendors.Count == 0)
+            {
+                throw new ApplicationException("No vendor defined to create new order.");
+            }
+
             foreach (OrderPatternItem item in testProject.OrderPattern.PatternItems)
             {
                 var orderProp = props.FirstOrDefault(p => p.Name == item.PropertyName && p.PropertyType.Name == item.PropertyType);
@@ -89,6 +94,12 @@ namespace OLTMockServer
                 }
             }
 
+            //choose a random vendor:
+            var vendorIndex = random.Next(0, testProject.Vendors.Count);
+            var vendor = testProject.Vendors[vendorIndex];
+            order.Vendor = vendor;
+            order.VendorCode = vendor.Code;
+
             if (order.MaxItemCount == 0)
             {
                 order.MaxItemCount = 1;
@@ -111,7 +122,7 @@ namespace OLTMockServer
 
                 while (true)
                 {
-                    newItem = CreateNewItem(testProject);
+                    newItem = CreateNewItem(testProject, vendor);
 
                     if (!order.Items.Any(o => o.Id == newItem.Id))
                     {
@@ -138,25 +149,22 @@ namespace OLTMockServer
             order.UserAddressCode = customer.Address;
             order.UserCode = customer.Code;
 
-            //choose a random vendor:
-            var vendorIndex = random.Next(0, testProject.Vendors.Count);
-            var vendor = testProject.Vendors[vendorIndex];
-            order.Vendor = vendor;
-            order.VendorCode = vendor.Code;
-
             order.Price = order.Items.Sum(i => i.Price);
-            order.Price += order.PackingPrice;
+            order.Price += order.PackingPrice + order.DeliveryPrice;
             order.DiscountValue = order.Items.Sum(i => i.Discount);
 
             return order;
         }
 
-        private Item CreateNewItem(TestProject testProject)
+        private Item CreateNewItem(TestProject testProject, Vendor vendor)
         {
-            var itemIndex = random.Next(0, testProject.Items.Count);
-            var item = testProject.Items[itemIndex];
+            var vendorItems = testProject.Items.Where(i => i.VendorCode == vendor.Code).ToList();
+            var itemIndex = random.Next(0, vendorItems.Count);
+            var item = vendorItems[itemIndex];
 
             //modify item info
+            //make diff price
+            //...
 
             return item;
         }

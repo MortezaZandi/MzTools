@@ -114,6 +114,7 @@
     <Compile Include="DataStructures\Order.cs" />
     <Compile Include="DataStructures\OrderPattern.cs" />
     <Compile Include="DataStructures\OrderPatternItem.cs" />
+    <Compile Include="DataStructures\QueryCommandInfo.cs" />
     <Compile Include="DataStructures\Snap\ApiModels\AcceptModel.cs" />
     <Compile Include="DataStructures\Snap\ApiModels\NewOrder.cs" />
     <Compile Include="DataStructures\Snap\ApiModels\RejectModel.cs" />
@@ -185,6 +186,12 @@
     </Compile>
     <Compile Include="UI\PropertyListControl.Designer.cs">
       <DependentUpon>PropertyListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SelectDBItemsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SelectDBItemsControl.Designer.cs">
+      <DependentUpon>SelectDBItemsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ServerLogsControl.cs">
       <SubType>UserControl</SubType>
@@ -303,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PropertyListControl.resx">
       <DependentUpon>PropertyListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectDBItemsControl.resx">
+      <DependentUpon>SelectDBItemsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ServerLogsControl.resx">
       <DependentUpon>ServerLogsControl.cs</DependentUpon>
@@ -427,6 +437,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\data_recovery_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_24px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reject_24px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_24px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fast-add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

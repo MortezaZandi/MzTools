@@ -70,10 +70,10 @@ namespace OLTMockServer.UI
         {
             if (uIOperation.Id == okOperation.Id)
             {
-                //if ok
                 if (dataWizardSelectItemControl1.SelectedItem == null)
                 {
                     Utils.ShowError("No item selected.");
+                    return;
                 }
 
                 parentDialog?.OK();

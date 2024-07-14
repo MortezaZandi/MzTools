@@ -8,25 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using static Telerik.WinControls.UI.ValueMapper;
 
 namespace OLTMockServer.UI
 {
     public partial class DataWizardSelectItemControl : DataWizardBaseControl
     {
-        private readonly UIOperation okOperation = new UIOperation("Next");
+        private readonly UIOperation nextOperation = new UIOperation("Next");
+        private readonly UIOperation backOperation = new UIOperation("Back");
         private readonly UIOperation cancelOperation = new UIOperation("Cancel");
         private IWizardDialog wizard;
         private IUIFactory uiFactory;
         private List<Item> items;
+        private Definitions.KnownOnlineShops onlineShop;
 
-        public DataWizardSelectItemControl() : this(null)
+        public DataWizardSelectItemControl() : this(null, Definitions.KnownOnlineShops.None)
         {
         }
 
-        public DataWizardSelectItemControl(IWizardDialog wizard) : base()
+        public DataWizardSelectItemControl(IWizardDialog wizard, Definitions.KnownOnlineShops onlineShop) : base()
         {
             this.wizard = wizard;
+            this.onlineShop = onlineShop;
 
             if (wizard != null)
             {
@@ -127,20 +131,6 @@ namespace OLTMockServer.UI
             }
         }
 
-        //private bool showQuantityColumn;
-
-        //public bool ShowQuantityColumn
-        //{
-        //    get
-        //    {
-        //        return showQuantityColumn;
-        //    }
-        //    set
-        //    {
-        //        showQuantityColumn = value;
-        //    }
-        //}
-
         private void ResetDataSource()
         {
             radGridView.DataSource = null;
@@ -152,11 +142,6 @@ namespace OLTMockServer.UI
             SetColWidth(nameof(Item.Price), 80);
             SetColWidth(nameof(Item.Discount), 80);
             SetColWidth(nameof(Item.IsActive), 50);
-
-            //if (radGridView.Columns.Count > 0)
-            //{
-            //    radGridView.Columns["clmQuantity"].IsVisible = this.showQuantityColumn;
-            //}
         }
 
         private void SetColWidth(string text, int width)
@@ -175,20 +160,36 @@ namespace OLTMockServer.UI
 
         private void InitOperations()
         {
-            okOperation.OnSelected += OnOperationSelected;
+            nextOperation.OnSelected += OnOperationSelected;
+            backOperation.OnSelected += OnOperationSelected;
             cancelOperation.OnSelected += OnOperationSelected;
 
-            SetOperationButtons(okOperation, cancelOperation);
-
-            //okOperation.Enabled = false;
+            SetOperationButtons(nextOperation, backOperation, cancelOperation);
         }
 
         private void OnOperationSelected(object sender, UIOperation uIOperation)
         {
-            if (uIOperation.Id == okOperation.Id)
+            if (uIOperation.Id == nextOperation.Id)
             {
-                //if ok
+                var selectedVendors = this.GetSelectetVendors;
+
+                var vendorsOfSelectedItems = this.Items.Select(i => i.VendorCode).Distinct();
+
+                var vendorsWithNoItemSelected = selectedVendors.Where(v => !vendorsOfSelectedItems.Contains(v.Code)).ToList();
+
+                if (vendorsWithNoItemSelected.Count > 0)
+                {
+                    Utils.ShowError("No item selected for these vendors:" + Environment.NewLine + string.Join(" , ", vendorsWithNoItemSelected.Select(v => $"{v.Code}:{v.Name}")));
+
+                    return;
+                }
+
                 wizard?.GoToNextPage();
+            }
+
+            if (uIOperation.Id == backOperation.Id)
+            {
+                wizard.GoToPreviousPage();
             }
 
             if (uIOperation.Id == cancelOperation.Id)
@@ -281,13 +282,91 @@ namespace OLTMockServer.UI
         {
             foreach (var existItem in items)
             {
-                if (existItem.Id == item.Id)
+                if (existItem.Id == item.Id && existItem.VendorCode==item.VendorCode)
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        private void btnImportItemFromRMC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (wizard == null)
+                {
+                    throw new ApplicationException("This function is not available in the edit mode.");
+                }
+
+                if (GetSelectetVendors.Count == 0)
+                {
+                    throw new ApplicationException("No vendor selected");
+                }
+
+                PerformDBActionWithDBCheck(() =>
+                {
+                    var items = SelectItemsFromCMSDB();
+
+                    if (items?.Count > 0)
+                    {
+                        var existsItems = items.Where(i => IsItemExistsInList(i)).ToList();
+
+                        if (existsItems.Any())
+                        {
+                            StringBuilder sb = new StringBuilder("These items already exists in the list:").AppendLine();
+
+                            foreach (var item in existsItems)
+                            {
+                                sb.AppendLine($"Barcode: {item.Barcode}\tName: {item.Name}");
+                                items.Remove(item);
+                            }
+
+                            Utils.ShowError(sb.ToString());
+                        }
+
+                        if (items.Count > 0)
+                        {
+                            Items.AddRange(items);
+                        }
+
+                        ResetDataSource();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+        }
+
+        private List<Vendor> GetSelectetVendors
+        {
+            get
+            {
+                return this.wizard.GetPageOfType<DataWizardSelectVendorControl>().Vendors;
+            }
+        }
+
+        private List<Item> SelectItemsFromCMSDB()
+        {
+            var itemSelectControl =
+                    new SelectDBItemsControl(
+                        null,
+                        this.onlineShop,
+                        GetSelectetVendors);
+
+            var dataDialog = new DataDialog(itemSelectControl, "Select Item From DB");
+
+            itemSelectControl.ParentDialog = dataDialog;
+
+            if (dataDialog.ShowDialog() == DialogResult.OK)
+            {
+                return itemSelectControl.Items;
+            }
+
+            return null;
         }
     }
 }

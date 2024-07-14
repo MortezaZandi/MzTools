@@ -28,7 +28,7 @@ namespace OLTMockServer
 
         public override DataWizardSelectItemControl CreateDataWizardSelectItemControl(DataWizardDialog dataWizardDialog)
         {
-            return new DataWizardSelectItemControl(dataWizardDialog);
+            return new DataWizardSelectItemControl(dataWizardDialog, Definitions.KnownOnlineShops.Snap);
         }
 
         public override DataWizardSelectOrderPatternControl CreateDataWizardSelectOrderPatternControl(DataWizardDialog dataWizardDialog)

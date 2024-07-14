@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OLTMockServer.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace OLTMockServer.UI
     {
         void GoToNextPage();
         void GoToPreviousPage();
+        T GetPageOfType<T>() where T : DataWizardBaseControl;
+
         IUIFactory UIFactory { get; }
     }
 }

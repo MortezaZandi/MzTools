@@ -45,6 +45,8 @@
             this.txtQuantity = new Telerik.WinControls.UI.RadSpinEditor();
             this.radSeparator2 = new Telerik.WinControls.UI.RadSeparator();
             this.btnUpdatePriceInfo = new Telerik.WinControls.UI.RadButton();
+            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
+            this.txtVendorCode = new Telerik.WinControls.UI.RadTextBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -66,10 +68,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUpdatePriceInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVendorCode)).BeginInit();
             this.SuspendLayout();
             // 
             // radPanel2
             // 
+            this.radPanel2.Controls.Add(this.radLabel7);
+            this.radPanel2.Controls.Add(this.txtVendorCode);
             this.radPanel2.Controls.Add(this.btnUpdatePriceInfo);
             this.radPanel2.Controls.Add(this.radSeparator2);
             this.radPanel2.Controls.Add(this.txtQuantity);
@@ -228,7 +234,7 @@
             // lblqnt
             // 
             this.lblqnt.AutoSize = false;
-            this.lblqnt.Location = new System.Drawing.Point(33, 256);
+            this.lblqnt.Location = new System.Drawing.Point(33, 289);
             this.lblqnt.Name = "lblqnt";
             this.lblqnt.Size = new System.Drawing.Size(87, 18);
             this.lblqnt.TabIndex = 22;
@@ -238,7 +244,7 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(137, 254);
+            this.txtQuantity.Location = new System.Drawing.Point(137, 287);
             this.txtQuantity.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -251,7 +257,7 @@
             // 
             // radSeparator2
             // 
-            this.radSeparator2.Location = new System.Drawing.Point(33, 234);
+            this.radSeparator2.Location = new System.Drawing.Point(33, 267);
             this.radSeparator2.Name = "radSeparator2";
             this.radSeparator2.Size = new System.Drawing.Size(569, 10);
             this.radSeparator2.TabIndex = 24;
@@ -264,6 +270,26 @@
             this.btnUpdatePriceInfo.Size = new System.Drawing.Size(136, 24);
             this.btnUpdatePriceInfo.TabIndex = 25;
             this.btnUpdatePriceInfo.Text = "Sync Price With DB";
+            // 
+            // radLabel7
+            // 
+            this.radLabel7.AutoSize = false;
+            this.radLabel7.Location = new System.Drawing.Point(31, 230);
+            this.radLabel7.Name = "radLabel7";
+            this.radLabel7.Size = new System.Drawing.Size(100, 18);
+            this.radLabel7.TabIndex = 27;
+            this.radLabel7.Text = "Vendor Code";
+            this.radLabel7.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radLabel7.ThemeName = "Windows7";
+            // 
+            // txtVendorCode
+            // 
+            this.txtVendorCode.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendorCode.Location = new System.Drawing.Point(137, 230);
+            this.txtVendorCode.Name = "txtVendorCode";
+            this.txtVendorCode.Size = new System.Drawing.Size(235, 22);
+            this.txtVendorCode.TabIndex = 26;
+            this.txtVendorCode.ThemeName = "Windows7";
             // 
             // ItemDetailsControl
             // 
@@ -292,6 +318,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUpdatePriceInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVendorCode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,5 +342,7 @@
         private Telerik.WinControls.UI.RadSpinEditor txtQuantity;
         private Telerik.WinControls.UI.RadLabel lblqnt;
         private Telerik.WinControls.UI.RadButton btnUpdatePriceInfo;
+        private Telerik.WinControls.UI.RadLabel radLabel7;
+        private Telerik.WinControls.UI.RadTextBoxControl txtVendorCode;
     }
 }

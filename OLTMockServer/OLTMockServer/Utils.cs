@@ -113,5 +113,21 @@ namespace OLTMockServer
                 ui.Invoke(action);
             });
         }
+
+        public static int GetAppTypeNumber(Definitions.KnownOnlineShops onlineShopType)
+        {
+            switch (onlineShopType)
+            {
+                case Definitions.KnownOnlineShops.Snap:
+                    return 1;
+
+                case Definitions.KnownOnlineShops.Digi:
+                    return 2;
+
+                case Definitions.KnownOnlineShops.None:
+                default:
+                    throw new ApplicationException($"Unhandled onlineshop type '{onlineShopType}' used in GetAppTypeNumber");
+            }
+        }
     }
 }

@@ -59,6 +59,9 @@ namespace OLTMockServer.UI
 
                 txtQuantity.DataBindings.Clear();
                 txtQuantity.DataBindings.Add(new Binding(nameof(RadSpinEditor.Value), item, nameof(Item.Quantity)));
+
+                txtVendorCode.DataBindings.Clear();
+                txtVendorCode.DataBindings.Add(new Binding(nameof(RadTextBox.Text), item, nameof(Item.VendorCode)));
             }
         }
 

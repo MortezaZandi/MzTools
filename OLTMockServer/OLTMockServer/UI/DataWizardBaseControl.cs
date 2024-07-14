@@ -96,6 +96,25 @@ namespace OLTMockServer.UI
                 pnlTitlebar.Visible = value;
             }
         }
+
+        public virtual void PerformDBActionWithDBCheck(Action action)
+        {
+            if (!AppManager.Current.TestDBConnection(true))
+            {
+                if (AppManager.Current.EditDBConnectionUsingUI() == DialogResult.Cancel)
+                {
+                    return;
+                }
+                else if (!AppManager.Current.TestDBConnection(true))
+                {
+                    return;
+                }
+            }
+            else
+            {
+                action();
+            }
+        }
     }
 
 

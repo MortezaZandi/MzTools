@@ -80,7 +80,7 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomDrawing = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 52);
+            this.radGridView.Location = new System.Drawing.Point(0, 77);
             // 
             // 
             // 
@@ -169,7 +169,7 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(1069, 517);
+            this.radGridView.Size = new System.Drawing.Size(1069, 492);
             this.radGridView.TabIndex = 0;
             this.radGridView.ThemeName = "Windows7";
             this.radGridView.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.radGridView_CellFormatting);
@@ -181,7 +181,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(1069, 52);
+            this.radCommandBar1.Size = new System.Drawing.Size(1069, 77);
             this.radCommandBar1.TabIndex = 1;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
@@ -235,7 +235,7 @@
             // 
             this.btnCreateFastOrder.DisplayName = "commandBarButton1";
             this.btnCreateFastOrder.DrawText = true;
-            this.btnCreateFastOrder.Image = global::OLTMockServer.Properties.Resources.fast_add_30_1;
+            this.btnCreateFastOrder.Image = global::OLTMockServer.Properties.Resources.fast_add;
             this.btnCreateFastOrder.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnCreateFastOrder.ImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCreateFastOrder.MaxSize = new System.Drawing.Size(0, 0);
@@ -266,7 +266,7 @@
             // 
             this.btnRejectOrder.DisplayName = "commandBarButton2";
             this.btnRejectOrder.DrawText = true;
-            this.btnRejectOrder.Image = global::OLTMockServer.Properties.Resources.reject_24px;
+            this.btnRejectOrder.Image = global::OLTMockServer.Properties.Resources.reject_24px1;
             this.btnRejectOrder.Name = "btnRejectOrder";
             this.btnRejectOrder.Text = "Reject Order";
             this.btnRejectOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -282,7 +282,7 @@
             // 
             this.btnEditOrder.DisplayName = "commandBarButton3";
             this.btnEditOrder.DrawText = true;
-            this.btnEditOrder.Image = global::OLTMockServer.Properties.Resources.edit_24px;
+            this.btnEditOrder.Image = global::OLTMockServer.Properties.Resources.edit_24px1;
             this.btnEditOrder.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnEditOrder.ImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEditOrder.MaxSize = new System.Drawing.Size(0, 0);
@@ -318,7 +318,7 @@
             // 
             this.btnShowOrderLogs.DisplayName = "commandBarButton1";
             this.btnShowOrderLogs.DrawText = true;
-            this.btnShowOrderLogs.Image = global::OLTMockServer.Properties.Resources.book_24px;
+            this.btnShowOrderLogs.Image = global::OLTMockServer.Properties.Resources.book_24px1;
             this.btnShowOrderLogs.Name = "btnShowOrderLogs";
             this.btnShowOrderLogs.Text = "Order Logs";
             this.btnShowOrderLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;

@@ -1,5 +1,6 @@
 ﻿using OLTMockServer.DataStructures;
 using OLTMockServer.MockServers;
+using OLTMockServer.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace OLTMockServer
@@ -47,6 +49,27 @@ namespace OLTMockServer
                     Utils.ShowError($"Cannot connect to master db: {connectionError}");
                 }
             }
+        }
+
+        public bool TestDBConnection(bool showError = false)
+        {
+            if (!string.IsNullOrEmpty(AppData.MasterDBConnection))
+            {
+                var dataProvider = new DataProvider(AppData.MasterDBConnection, true);
+                var connectionError = string.Empty;
+
+                if (!dataProvider.TestConnection(out connectionError))
+                {
+                    if (showError)
+                    {
+                        Utils.ShowError($"Cannot connect to master db: {connectionError}");
+                    }
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         private void LoadAppData()
@@ -362,6 +385,24 @@ namespace OLTMockServer
             }
 
             return fullProj;
+        }
+
+        public DialogResult EditDBConnectionUsingUI()
+        {
+            var dbControl = new DBConnectionControl(null);
+            var dataDialog = new DataDialog(dbControl, "Master DB Connection");
+            dbControl.ParentDialog = dataDialog;
+            dbControl.ConnectionString = AppData.MasterDBConnection;
+
+            if (dataDialog.ShowDialog() == DialogResult.OK)
+            {
+                AppData.MasterDBConnection = dbControl.ConnectionString;
+                SaveAppData();
+
+                return DialogResult.OK;
+            }
+
+            return DialogResult.Cancel;
         }
     }
 }

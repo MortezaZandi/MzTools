@@ -23,6 +23,10 @@ namespace OLTMockServer
         public const string Order_Status_Rejected = "Rejected";
         public const string Order_Status_SendFailed = "SendFailed";
 
+
+        public const string Query_Name_ReadItemsFromCMSDB = "ReadItemsFromCMSDB";
+
+
         public enum APINames
         {
             NewOrder,

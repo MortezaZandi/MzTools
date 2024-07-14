@@ -35,6 +35,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radGridView = new Telerik.WinControls.UI.RadGridView();
             this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
@@ -68,8 +69,7 @@
             // radGridView
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radGridView.EnableCustomFiltering = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 71);
+            this.radGridView.Location = new System.Drawing.Point(0, 46);
             // 
             // 
             // 
@@ -114,6 +114,11 @@
             gridViewTextBoxColumn7.HeaderText = "Tax";
             gridViewTextBoxColumn7.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             gridViewTextBoxColumn7.Name = "column6";
+            gridViewTextBoxColumn8.FieldName = "VendorCode";
+            gridViewTextBoxColumn8.HeaderText = "Vendor";
+            gridViewTextBoxColumn8.HeaderTextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            gridViewTextBoxColumn8.Name = "clmVendorCode";
+            gridViewTextBoxColumn8.Width = 100;
             this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -121,15 +126,16 @@
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
             gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7});
-            this.radGridView.MasterTemplate.EnableCustomFiltering = true;
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8});
+            this.radGridView.MasterTemplate.EnableFiltering = true;
             this.radGridView.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView.Name = "radGridView";
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(690, 269);
+            this.radGridView.Size = new System.Drawing.Size(690, 294);
             this.radGridView.TabIndex = 1;
             this.radGridView.ThemeName = "Windows7";
             // 
@@ -140,7 +146,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(690, 71);
+            this.radCommandBar1.Size = new System.Drawing.Size(690, 46);
             this.radCommandBar1.TabIndex = 1;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
@@ -214,6 +220,7 @@
             this.btnImportItemFromRMC.Name = "btnImportItemFromRMC";
             this.btnImportItemFromRMC.Text = "Import From RMC";
             this.btnImportItemFromRMC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImportItemFromRMC.Click += new System.EventHandler(this.btnImportItemFromRMC_Click);
             // 
             // commandBarSeparator2
             // 

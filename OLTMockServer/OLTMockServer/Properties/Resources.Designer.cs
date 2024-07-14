@@ -83,6 +83,16 @@ namespace OLTMockServer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap book_24px1 {
+            get {
+                object obj = ResourceManager.GetObject("book_24px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap check_all_24px {
             get {
                 object obj = ResourceManager.GetObject("check_all_24px", resourceCulture);
@@ -193,6 +203,16 @@ namespace OLTMockServer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_24px1 {
+            get {
+                object obj = ResourceManager.GetObject("edit_24px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_50px {
             get {
                 object obj = ResourceManager.GetObject("edit_50px", resourceCulture);
@@ -206,6 +226,16 @@ namespace OLTMockServer.Properties {
         internal static System.Drawing.Bitmap edit_blue_24px {
             get {
                 object obj = ResourceManager.GetObject("edit_blue_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fast_add {
+            get {
+                object obj = ResourceManager.GetObject("fast-add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -364,6 +394,16 @@ namespace OLTMockServer.Properties {
         internal static System.Drawing.Bitmap reject_24px {
             get {
                 object obj = ResourceManager.GetObject("reject_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reject_24px1 {
+            get {
+                object obj = ResourceManager.GetObject("reject_24px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

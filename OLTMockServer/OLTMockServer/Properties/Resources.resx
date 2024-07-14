@@ -130,6 +130,9 @@
   <data name="save_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="book_24px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book_24px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="duplicate_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\duplicate_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,6 +144,9 @@
   </data>
   <data name="data_fraction" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\data-fraction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_24px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_24px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="import_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\import_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,13 +217,19 @@
   <data name="database_administrator_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database_administrator_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="data_recovery_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\data_recovery_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reject_24px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reject_24px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="control_panel_24px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\control_panel_24px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="input_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\input_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="data_recovery_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\data_recovery_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fast-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fast-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

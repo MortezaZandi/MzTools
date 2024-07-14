@@ -48,9 +48,15 @@ namespace OLTMockServer.UI
             }
             set
             {
-                base.DataSource = value;
-
-                this.data = value;
+                if (value != base.DataSource)
+                {
+                    this.data = value;
+                    base.DataSource = value;
+                }
+                else
+                {
+                    ResetDataSource();
+                }
             }
         }
 

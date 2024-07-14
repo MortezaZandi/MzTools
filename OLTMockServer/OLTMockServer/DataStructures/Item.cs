@@ -18,5 +18,9 @@ namespace OLTMockServer.DataStructures
         public bool IsActive { get; set; }
         public decimal VAT { get; set; }
 
+        /// <summary>
+        /// Each item is defined for a specific vendor
+        /// </summary>
+        public string VendorCode { get; set; }
     }
 }
