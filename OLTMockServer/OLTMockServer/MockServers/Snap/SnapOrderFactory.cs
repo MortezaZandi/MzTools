@@ -142,6 +142,7 @@ namespace OLTMockServer
                     order.Items.Add(newItem);
                 }
             }
+
             //choose a random customer:
             var customerIndex = random.Next(0, testProject.Customers.Count);
             var customer = testProject.Customers[customerIndex];
@@ -149,9 +150,7 @@ namespace OLTMockServer
             order.UserAddressCode = customer.Address;
             order.UserCode = customer.Code;
 
-            order.Price = order.Items.Sum(i => i.Price);
-            order.Price += order.PackingPrice + order.DeliveryPrice;
-            order.DiscountValue = order.Items.Sum(i => i.Discount);
+            order.RecalculatePrices();
 
             return order;
         }
@@ -165,6 +164,7 @@ namespace OLTMockServer
             //modify item info
             //make diff price
             //...
+            item.Quantity = random.Next(1, 10);
 
             return item;
         }

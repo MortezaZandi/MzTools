@@ -28,7 +28,10 @@ namespace OLTMockServer
 
         public override DataWizardSelectItemControl CreateDataWizardSelectItemControl(DataWizardDialog dataWizardDialog)
         {
-            return new DataWizardSelectItemControl(dataWizardDialog, Definitions.KnownOnlineShops.Snap);
+            return new DataWizardSelectItemControl(dataWizardDialog, Definitions.KnownOnlineShops.Snap)
+            {
+                ClientSize = new System.Drawing.Size(820, 240),
+            };
         }
 
         public override DataWizardSelectOrderPatternControl CreateDataWizardSelectOrderPatternControl(DataWizardDialog dataWizardDialog)
@@ -77,6 +80,7 @@ namespace OLTMockServer
             var dataDialog = new DataDialog(orderControl, "Create New Order");
             orderControl.ParentDialog = dataDialog;
             orderControl.Order = (SnapOrder)this.Server.CreateNewOrder(this.TestProject, false);
+            dataDialog.ClientSize = new Size(840, 700);
 
             bool saveOrderGeneratorData = true;
             if (saveOrderGeneratorData)
@@ -86,8 +90,6 @@ namespace OLTMockServer
                 tempTest.OrderPattern = TestProject.OrderPattern;
                 SaveTestProject(tempTest, path);
             }
-
-            dataDialog.ClientSize = new Size(700, 460);
 
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
@@ -103,7 +105,7 @@ namespace OLTMockServer
             var dataDialog = new DataDialog(orderControl, "Edit Order");
             orderControl.ParentDialog = dataDialog;
             orderControl.Order = (SnapOrder)selectedOrder.LightClone();
-            dataDialog.ClientSize = new Size(700, 460);
+            dataDialog.ClientSize = new Size(840, 700);
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
                 var editedOrde = orderControl.Order;
@@ -187,7 +189,7 @@ namespace OLTMockServer
         public override OrderPattern ImportPatternFromFile()
         {
             var fdlg = new OpenFileDialog();
-            
+
             fdlg.Filter = $"Snap order pattern|*.{nameof(Definitions.KnownOnlineShops.Snap)}.ptrn";
 
             if (fdlg.ShowDialog() == DialogResult.OK)

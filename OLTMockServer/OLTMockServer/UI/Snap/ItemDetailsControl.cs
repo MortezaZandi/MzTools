@@ -105,6 +105,16 @@ namespace OLTMockServer.UI
             if (uIOperation.Id == okOperation.Id)
             {
                 //if ok
+                if (item.Quantity <= 0)
+                {
+                    var confrimResult = Utils.AskQuestion($"Quantity '{item.Quantity}' is not valid! Continue?");
+
+                    if (confrimResult != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+
                 parentDialog?.OK();
             }
 

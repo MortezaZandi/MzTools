@@ -154,6 +154,9 @@
   <data name="add_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="copy_12px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy_12px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="edit_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -226,10 +229,13 @@
   <data name="control_panel_24px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\control_panel_24px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fast-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fast-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="input_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\input_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fast-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fast-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="copy_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

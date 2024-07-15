@@ -54,5 +54,12 @@ namespace OLTMockServer.DataStructures.Snap
 
             return clone;
         }
+
+        internal void RecalculatePrices()
+        {
+            this.Price = this.Items.Sum(i => i.Price * i.Quantity);
+            this.Price += this.PackingPrice + this.DeliveryPrice + this.Vat + this.Tax;
+            this.DiscountValue = this.Items.Sum(i => i.Discount);
+        }
     }
 }

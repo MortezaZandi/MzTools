@@ -148,7 +148,7 @@ namespace OLTMockServer.UI
                         Price = (decimal)row["Price"],
                         Discount = (decimal)row["Discount"],
                         VendorCode = (string)row["VendorCode"],
-                        Quantity = 0,
+                        Quantity = 1,
                         VAT = 0,
                         IsActive = true,
                     });

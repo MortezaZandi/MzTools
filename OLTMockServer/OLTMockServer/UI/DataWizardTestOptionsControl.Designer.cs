@@ -36,11 +36,12 @@
             this.txtMaxOrderCount = new Telerik.WinControls.UI.RadSpinEditor();
             this.chkAutoGenerateOrder = new Telerik.WinControls.UI.RadCheckBox();
             this.pnlDelayAmount = new Telerik.WinControls.UI.RadPanel();
-            this.txtMinRandomDelay = new Telerik.WinControls.UI.RadSpinEditor();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.txtMaxRandomDelay = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
+            this.txtMinRandomDelay = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.txtDelay = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radCheckBox1 = new Telerik.WinControls.UI.RadCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pnlOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -54,15 +55,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAutoGenerateOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDelayAmount)).BeginInit();
             this.pnlDelayAmount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMinRandomDelay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxRandomDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMinRandomDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radCheckBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // radPanel2
             // 
+            this.radPanel2.Controls.Add(this.radCheckBox1);
             this.radPanel2.Controls.Add(this.txtDelay);
             this.radPanel2.Controls.Add(this.pnlDelayAmount);
             this.radPanel2.Controls.Add(this.chkAutoGenerateOrder);
@@ -164,13 +167,46 @@
             this.pnlDelayAmount.Enabled = false;
             this.pnlDelayAmount.Location = new System.Drawing.Point(35, 190);
             this.pnlDelayAmount.Name = "pnlDelayAmount";
-            this.pnlDelayAmount.Size = new System.Drawing.Size(397, 40);
+            this.pnlDelayAmount.Size = new System.Drawing.Size(281, 69);
             this.pnlDelayAmount.TabIndex = 7;
+            this.pnlDelayAmount.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.pnlDelayAmount.ThemeName = "Windows7";
+            // 
+            // txtMaxRandomDelay
+            // 
+            this.txtMaxRandomDelay.Location = new System.Drawing.Point(91, 39);
+            this.txtMaxRandomDelay.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.txtMaxRandomDelay.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtMaxRandomDelay.Name = "txtMaxRandomDelay";
+            this.txtMaxRandomDelay.Size = new System.Drawing.Size(100, 20);
+            this.txtMaxRandomDelay.TabIndex = 10;
+            this.txtMaxRandomDelay.TabStop = false;
+            this.txtMaxRandomDelay.ThemeName = "Windows7";
+            this.txtMaxRandomDelay.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // radLabel5
+            // 
+            this.radLabel5.Location = new System.Drawing.Point(7, 39);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(58, 18);
+            this.radLabel5.TabIndex = 11;
+            this.radLabel5.Text = "Max Delay";
             // 
             // txtMinRandomDelay
             // 
-            this.txtMinRandomDelay.Location = new System.Drawing.Point(69, 10);
+            this.txtMinRandomDelay.Location = new System.Drawing.Point(91, 9);
             this.txtMinRandomDelay.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -200,38 +236,6 @@
             this.radLabel4.TabIndex = 9;
             this.radLabel4.Text = "Min Delay";
             // 
-            // txtMaxRandomDelay
-            // 
-            this.txtMaxRandomDelay.Location = new System.Drawing.Point(253, 10);
-            this.txtMaxRandomDelay.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.txtMaxRandomDelay.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtMaxRandomDelay.Name = "txtMaxRandomDelay";
-            this.txtMaxRandomDelay.Size = new System.Drawing.Size(100, 20);
-            this.txtMaxRandomDelay.TabIndex = 10;
-            this.txtMaxRandomDelay.TabStop = false;
-            this.txtMaxRandomDelay.ThemeName = "Windows7";
-            this.txtMaxRandomDelay.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            // 
-            // radLabel5
-            // 
-            this.radLabel5.Location = new System.Drawing.Point(191, 11);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(58, 18);
-            this.radLabel5.TabIndex = 11;
-            this.radLabel5.Text = "Max Delay";
-            // 
             // txtDelay
             // 
             this.txtDelay.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,6 +261,18 @@
             0,
             0});
             // 
+            // radCheckBox1
+            // 
+            this.radCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.radCheckBox1.Enabled = false;
+            this.radCheckBox1.Location = new System.Drawing.Point(35, 288);
+            this.radCheckBox1.Name = "radCheckBox1";
+            this.radCheckBox1.Size = new System.Drawing.Size(214, 16);
+            this.radCheckBox1.TabIndex = 9;
+            this.radCheckBox1.Text = "Read RMC items from OLT StockPrice";
+            this.radCheckBox1.ThemeName = "Windows7";
+            this.radCheckBox1.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
+            // 
             // DataWizardTestOptionsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,11 +293,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlDelayAmount)).EndInit();
             this.pnlDelayAmount.ResumeLayout(false);
             this.pnlDelayAmount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMinRandomDelay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxRandomDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMinRandomDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radCheckBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,5 +318,6 @@
         private Telerik.WinControls.UI.RadSpinEditor txtMinRandomDelay;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadSpinEditor txtDelay;
+        private Telerik.WinControls.UI.RadCheckBox radCheckBox1;
     }
 }

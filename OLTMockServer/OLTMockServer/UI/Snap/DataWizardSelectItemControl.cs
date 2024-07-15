@@ -23,6 +23,8 @@ namespace OLTMockServer.UI
         private List<Item> items;
         private Definitions.KnownOnlineShops onlineShop;
 
+        public event EventHandler OnItemsChanged;
+
         public DataWizardSelectItemControl() : this(null, Definitions.KnownOnlineShops.None)
         {
         }
@@ -213,6 +215,7 @@ namespace OLTMockServer.UI
                 else
                 {
                     Items.Add(itemControl.Item);
+                    OnItemsChanged?.Invoke(this, EventArgs.Empty);
                     ResetDataSource();
                 }
             }
@@ -225,6 +228,7 @@ namespace OLTMockServer.UI
                 var selectedRow = radGridView.SelectedRows[0];
                 var data = selectedRow.DataBoundItem as Item;
                 this.items.Remove(data);
+                OnItemsChanged?.Invoke(this, EventArgs.Empty);
                 ResetDataSource();
             }
         }
@@ -232,6 +236,7 @@ namespace OLTMockServer.UI
         private void btnCleanItems_Click(object sender, EventArgs e)
         {
             items.Clear();
+            OnItemsChanged?.Invoke(this, EventArgs.Empty);
             ResetDataSource();
         }
 
@@ -254,6 +259,7 @@ namespace OLTMockServer.UI
                     var index = items.IndexOf(selectedItem);
                     items.Remove(selectedItem);
                     Items.Insert(index, itemControl.Item);
+                    OnItemsChanged?.Invoke(this, EventArgs.Empty);
                     ResetDataSource();
                 }
             }
@@ -273,6 +279,7 @@ namespace OLTMockServer.UI
                 else
                 {
                     items.Add(itemSelectControl.SelectedItem);
+                    OnItemsChanged?.Invoke(this, EventArgs.Empty);
                     ResetDataSource();
                 }
             }
@@ -282,7 +289,7 @@ namespace OLTMockServer.UI
         {
             foreach (var existItem in items)
             {
-                if (existItem.Id == item.Id && existItem.VendorCode==item.VendorCode)
+                if (existItem.Id == item.Id && existItem.VendorCode == item.VendorCode)
                 {
                     return true;
                 }
@@ -319,7 +326,7 @@ namespace OLTMockServer.UI
 
                             foreach (var item in existsItems)
                             {
-                                sb.AppendLine($"Barcode: {item.Barcode}\tName: {item.Name}");
+                                sb.AppendLine($"{item.Barcode}    :   {item.Name}");
                                 items.Remove(item);
                             }
 
@@ -331,6 +338,7 @@ namespace OLTMockServer.UI
                             Items.AddRange(items);
                         }
 
+                        OnItemsChanged?.Invoke(this, EventArgs.Empty);
                         ResetDataSource();
                     }
                 });
@@ -360,7 +368,7 @@ namespace OLTMockServer.UI
             var dataDialog = new DataDialog(itemSelectControl, "Select Item From DB");
 
             itemSelectControl.ParentDialog = dataDialog;
-
+            dataDialog.ClientSize = new Size(800, 650);
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
                 return itemSelectControl.Items;

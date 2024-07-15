@@ -250,11 +250,6 @@
             0,
             0,
             0});
-            this.txtQuantity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(100, 20);
             this.txtQuantity.TabIndex = 23;
