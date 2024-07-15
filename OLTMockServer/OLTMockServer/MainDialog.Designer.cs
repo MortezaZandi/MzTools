@@ -39,10 +39,20 @@
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.radPanel4 = new Telerik.WinControls.UI.RadPanel();
             this.lblStatus = new Telerik.WinControls.UI.RadLabel();
+            this.statisticStatusBarControl1 = new OLTMockServer.UI.StatisticStatusBarControl();
+            this.lblPlayStatus = new Telerik.WinControls.UI.RadLabelElement();
+            this.commandBarSeparator7 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.lblStatistics_OrderCount = new Telerik.WinControls.UI.RadStatusBarPanelElement();
+            this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.lblStatistics_ACKCount = new Telerik.WinControls.UI.RadStatusBarPanelElement();
+            this.commandBarSeparator5 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.lblStatistics_PickCount = new Telerik.WinControls.UI.RadStatusBarPanelElement();
+            this.commandBarSeparator6 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.lblStatistics_RejectCount = new Telerik.WinControls.UI.RadStatusBarPanelElement();
+            this.commandBarSeparator4 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.lblStatistics_EditCount = new Telerik.WinControls.UI.RadStatusBarPanelElement();
             this.radPanel5 = new Telerik.WinControls.UI.RadPanel();
             this.playProgressbar = new Telerik.WinControls.UI.RadProgressBar();
-            this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
-            this.lblPlayStatus = new Telerik.WinControls.UI.RadLabel();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
@@ -66,23 +76,24 @@
             this.btnDuplicateTestProject = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarStripElement6 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.commandBarButton2 = new Telerik.WinControls.UI.CommandBarButton();
+            this.commandBarStripElement7 = new Telerik.WinControls.UI.CommandBarStripElement();
+            this.btnDBConnection = new Telerik.WinControls.UI.CommandBarButton();
             this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
             this.commandBarStripElement5 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
             this.dotsRingWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement();
-            this.commandBarStripElement7 = new Telerik.WinControls.UI.CommandBarStripElement();
-            this.btnDBConnection = new Telerik.WinControls.UI.CommandBarButton();
+            this.lblStatistics_SendCount = new Telerik.WinControls.UI.RadStatusBarPanelElement();
+            this.commandBarSeparator8 = new Telerik.WinControls.UI.CommandBarSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).BeginInit();
             this.radPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblStatus)).BeginInit();
+            this.lblStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticStatusBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel5)).BeginInit();
             this.radPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playProgressbar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
-            this.radPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lblPlayStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
@@ -122,7 +133,6 @@
             // 
             this.radPanel1.Controls.Add(this.radPanel4);
             this.radPanel1.Controls.Add(this.radPanel5);
-            this.radPanel1.Controls.Add(this.radPanel3);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.radPanel1.Location = new System.Drawing.Point(0, 509);
             this.radPanel1.Name = "radPanel1";
@@ -134,22 +144,124 @@
             // 
             this.radPanel4.Controls.Add(this.lblStatus);
             this.radPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel4.Location = new System.Drawing.Point(95, 0);
+            this.radPanel4.Location = new System.Drawing.Point(0, 0);
             this.radPanel4.Name = "radPanel4";
-            this.radPanel4.Size = new System.Drawing.Size(780, 36);
+            this.radPanel4.Size = new System.Drawing.Size(875, 36);
             this.radPanel4.TabIndex = 5;
             this.radPanel4.ThemeName = "Windows7";
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = false;
+            this.lblStatus.Controls.Add(this.statisticStatusBarControl1);
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblStatus.Location = new System.Drawing.Point(0, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(780, 36);
+            this.lblStatus.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblStatus.Size = new System.Drawing.Size(875, 36);
             this.lblStatus.TabIndex = 3;
             this.lblStatus.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // statisticStatusBarControl1
+            // 
+            this.statisticStatusBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statisticStatusBarControl1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.lblPlayStatus,
+            this.commandBarSeparator7,
+            this.lblStatistics_OrderCount,
+            this.commandBarSeparator3,
+            this.lblStatistics_SendCount,
+            this.commandBarSeparator8,
+            this.lblStatistics_ACKCount,
+            this.commandBarSeparator5,
+            this.lblStatistics_PickCount,
+            this.commandBarSeparator6,
+            this.lblStatistics_RejectCount,
+            this.commandBarSeparator4,
+            this.lblStatistics_EditCount});
+            this.statisticStatusBarControl1.Location = new System.Drawing.Point(0, 6);
+            this.statisticStatusBarControl1.Name = "statisticStatusBarControl1";
+            this.statisticStatusBarControl1.Size = new System.Drawing.Size(875, 28);
+            this.statisticStatusBarControl1.TabIndex = 0;
+            this.statisticStatusBarControl1.Text = "StatusBar";
+            this.statisticStatusBarControl1.ThemeName = "Windows7";
+            // 
+            // lblPlayStatus
+            // 
+            this.lblPlayStatus.AutoSize = false;
+            this.lblPlayStatus.Bounds = new System.Drawing.Rectangle(0, 0, 100, 20);
+            this.lblPlayStatus.Name = "lblPlayStatus";
+            this.statisticStatusBarControl1.SetSpring(this.lblPlayStatus, false);
+            this.lblPlayStatus.Text = "...";
+            this.lblPlayStatus.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPlayStatus.TextWrap = true;
+            // 
+            // commandBarSeparator7
+            // 
+            this.commandBarSeparator7.Name = "commandBarSeparator7";
+            this.statisticStatusBarControl1.SetSpring(this.commandBarSeparator7, false);
+            this.commandBarSeparator7.VisibleInOverflowMenu = false;
+            // 
+            // lblStatistics_OrderCount
+            // 
+            this.lblStatistics_OrderCount.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStatistics_OrderCount.Name = "lblStatistics_OrderCount";
+            this.lblStatistics_OrderCount.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.statisticStatusBarControl1.SetSpring(this.lblStatistics_OrderCount, false);
+            this.lblStatistics_OrderCount.Text = "...";
+            // 
+            // commandBarSeparator3
+            // 
+            this.commandBarSeparator3.Name = "commandBarSeparator3";
+            this.statisticStatusBarControl1.SetSpring(this.commandBarSeparator3, false);
+            this.commandBarSeparator3.VisibleInOverflowMenu = false;
+            // 
+            // lblStatistics_ACKCount
+            // 
+            this.lblStatistics_ACKCount.Name = "lblStatistics_ACKCount";
+            this.lblStatistics_ACKCount.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.statisticStatusBarControl1.SetSpring(this.lblStatistics_ACKCount, false);
+            this.lblStatistics_ACKCount.Text = "...";
+            // 
+            // commandBarSeparator5
+            // 
+            this.commandBarSeparator5.Name = "commandBarSeparator5";
+            this.statisticStatusBarControl1.SetSpring(this.commandBarSeparator5, false);
+            this.commandBarSeparator5.VisibleInOverflowMenu = false;
+            // 
+            // lblStatistics_PickCount
+            // 
+            this.lblStatistics_PickCount.Name = "lblStatistics_PickCount";
+            this.lblStatistics_PickCount.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.statisticStatusBarControl1.SetSpring(this.lblStatistics_PickCount, false);
+            this.lblStatistics_PickCount.Text = "...";
+            // 
+            // commandBarSeparator6
+            // 
+            this.commandBarSeparator6.Name = "commandBarSeparator6";
+            this.statisticStatusBarControl1.SetSpring(this.commandBarSeparator6, false);
+            this.commandBarSeparator6.VisibleInOverflowMenu = false;
+            // 
+            // lblStatistics_RejectCount
+            // 
+            this.lblStatistics_RejectCount.Name = "lblStatistics_RejectCount";
+            this.lblStatistics_RejectCount.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.statisticStatusBarControl1.SetSpring(this.lblStatistics_RejectCount, false);
+            this.lblStatistics_RejectCount.Text = "...";
+            // 
+            // commandBarSeparator4
+            // 
+            this.commandBarSeparator4.Name = "commandBarSeparator4";
+            this.statisticStatusBarControl1.SetSpring(this.commandBarSeparator4, false);
+            this.commandBarSeparator4.VisibleInOverflowMenu = false;
+            // 
+            // lblStatistics_EditCount
+            // 
+            this.lblStatistics_EditCount.Name = "lblStatistics_EditCount";
+            this.lblStatistics_EditCount.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.statisticStatusBarControl1.SetSpring(this.lblStatistics_EditCount, false);
+            this.lblStatistics_EditCount.Text = "...";
             // 
             // radPanel5
             // 
@@ -174,33 +286,13 @@
             this.playProgressbar.Text = "%0";
             this.playProgressbar.ThemeName = "Windows7";
             // 
-            // radPanel3
-            // 
-            this.radPanel3.Controls.Add(this.lblPlayStatus);
-            this.radPanel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radPanel3.Location = new System.Drawing.Point(0, 0);
-            this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(95, 36);
-            this.radPanel3.TabIndex = 5;
-            // 
-            // lblPlayStatus
-            // 
-            this.lblPlayStatus.AutoSize = false;
-            this.lblPlayStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPlayStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblPlayStatus.Location = new System.Drawing.Point(0, 0);
-            this.lblPlayStatus.Name = "lblPlayStatus";
-            this.lblPlayStatus.Size = new System.Drawing.Size(95, 36);
-            this.lblPlayStatus.TabIndex = 2;
-            this.lblPlayStatus.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // radPanel2
             // 
             this.radPanel2.Controls.Add(this.radPageView1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 93);
+            this.radPanel2.Location = new System.Drawing.Point(0, 68);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1075, 416);
+            this.radPanel2.Size = new System.Drawing.Size(1075, 441);
             this.radPanel2.TabIndex = 3;
             this.radPanel2.Text = "radPanel2";
             this.radPanel2.ThemeName = "Windows7";
@@ -210,7 +302,7 @@
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(1075, 416);
+            this.radPageView1.Size = new System.Drawing.Size(1075, 441);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.Text = "radPageView1";
             this.radPageView1.ThemeName = "Windows7";
@@ -272,7 +364,7 @@
             this.btnIncommingMessageLogs.Name = "btnIncommingMessageLogs";
             this.btnIncommingMessageLogs.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 71);
+            this.btnIncommingMessageLogs.Size = new System.Drawing.Size(1075, 46);
             this.btnIncommingMessageLogs.TabIndex = 4;
             this.btnIncommingMessageLogs.Text = "radCommandBar1";
             this.btnIncommingMessageLogs.ThemeName = "Windows7";
@@ -436,6 +528,23 @@
             this.commandBarButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.commandBarButton2.Click += new System.EventHandler(this.commandBarButton2_Click);
             // 
+            // commandBarStripElement7
+            // 
+            this.commandBarStripElement7.DisplayName = "commandBarStripElement7";
+            this.commandBarStripElement7.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
+            this.btnDBConnection});
+            this.commandBarStripElement7.Name = "commandBarStripElement7";
+            // 
+            // btnDBConnection
+            // 
+            this.btnDBConnection.DisplayName = "commandBarButton3";
+            this.btnDBConnection.DrawText = true;
+            this.btnDBConnection.Image = global::OLTMockServer.Properties.Resources.database_administrator_24px;
+            this.btnDBConnection.Name = "btnDBConnection";
+            this.btnDBConnection.Text = "Master DB Connection";
+            this.btnDBConnection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDBConnection.Click += new System.EventHandler(this.btnDBConnection_Click);
+            // 
             // commandBarStripElement5
             // 
             this.commandBarStripElement5.DisplayName = "commandBarStripElement5";
@@ -466,22 +575,19 @@
             this.dotsRingWaitingBarIndicatorElement1.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.dotsRingWaitingBarIndicatorElement1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
-            // commandBarStripElement7
+            // lblStatistics_SendCount
             // 
-            this.commandBarStripElement7.DisplayName = "commandBarStripElement7";
-            this.commandBarStripElement7.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
-            this.btnDBConnection});
-            this.commandBarStripElement7.Name = "commandBarStripElement7";
+            this.lblStatistics_SendCount.Name = "lblStatistics_SendCount";
+            this.lblStatistics_SendCount.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.statisticStatusBarControl1.SetSpring(this.lblStatistics_SendCount, false);
+            this.lblStatistics_SendCount.Text = "...";
             // 
-            // btnDBConnection
+            // commandBarSeparator8
             // 
-            this.btnDBConnection.DisplayName = "commandBarButton3";
-            this.btnDBConnection.DrawText = true;
-            this.btnDBConnection.Image = global::OLTMockServer.Properties.Resources.database_administrator_24px;
-            this.btnDBConnection.Name = "btnDBConnection";
-            this.btnDBConnection.Text = "Master DB Connection";
-            this.btnDBConnection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDBConnection.Click += new System.EventHandler(this.btnDBConnection_Click);
+            this.commandBarSeparator8.Name = "commandBarSeparator8";
+            this.statisticStatusBarControl1.SetSpring(this.commandBarSeparator8, false);
+            this.commandBarSeparator8.Text = "";
+            this.commandBarSeparator8.VisibleInOverflowMenu = false;
             // 
             // MainDialog
             // 
@@ -509,12 +615,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).EndInit();
             this.radPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lblStatus)).EndInit();
+            this.lblStatus.ResumeLayout(false);
+            this.lblStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticStatusBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel5)).EndInit();
             this.radPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.playProgressbar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
-            this.radPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lblPlayStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
@@ -556,11 +662,9 @@
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator2;
         private Telerik.WinControls.UI.CommandBarButton btnSaveTestToFile;
         private Telerik.WinControls.UI.RadPageView radPageView1;
-        private Telerik.WinControls.UI.RadPanel radPanel3;
         private Telerik.WinControls.UI.RadPanel radPanel4;
         private Telerik.WinControls.UI.RadPanel radPanel5;
         private Telerik.WinControls.UI.RadProgressBar playProgressbar;
-        private Telerik.WinControls.UI.RadLabel lblPlayStatus;
         private Telerik.WinControls.UI.RadLabel lblStatus;
         private Telerik.WinControls.Themes.VisualStudio2012DarkTheme visualStudio2012DarkTheme1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement4;
@@ -572,5 +676,19 @@
         private Telerik.WinControls.UI.CommandBarButton commandBarButton2;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement7;
         private Telerik.WinControls.UI.CommandBarButton btnDBConnection;
+        private UI.StatisticStatusBarControl statisticStatusBarControl1;
+        private Telerik.WinControls.UI.RadStatusBarPanelElement lblStatistics_OrderCount;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator3;
+        private Telerik.WinControls.UI.RadStatusBarPanelElement lblStatistics_ACKCount;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
+        private Telerik.WinControls.UI.RadStatusBarPanelElement lblStatistics_PickCount;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator6;
+        private Telerik.WinControls.UI.RadStatusBarPanelElement lblStatistics_RejectCount;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator4;
+        private Telerik.WinControls.UI.RadStatusBarPanelElement lblStatistics_EditCount;
+        private Telerik.WinControls.UI.RadLabelElement lblPlayStatus;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator7;
+        private Telerik.WinControls.UI.RadStatusBarPanelElement lblStatistics_SendCount;
+        private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator8;
     }
 }

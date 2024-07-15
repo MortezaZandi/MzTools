@@ -21,6 +21,7 @@ namespace OLTMockServer.UI
         private TestManager testManager;
         public event Definitions.OnTestStausChangedEventHandler OnTestStatusChanged;
         private GridViewRowInfo lastHighlightedRow;
+
         public TestContainerControl(TestManager testManager)
         {
             InitializeComponent();
@@ -272,6 +273,7 @@ namespace OLTMockServer.UI
                 {
                     testManager.TestProject.Orders.Add(newOrder);
                     ResetDataSource();
+                    OnTestStatusChanged?.Invoke(this, 1, 1);
                 }
             }
             catch (Exception ex)
@@ -290,6 +292,7 @@ namespace OLTMockServer.UI
                 {
                     testManager.TestProject.Orders.Add(newOrder);
                     ResetDataSource();
+                    OnTestStatusChanged?.Invoke(this, 1, 1);
                 }
             }
             catch (Exception ex)
@@ -315,6 +318,14 @@ namespace OLTMockServer.UI
                 if (editedOrder != null)
                 {
                     ResetDataSource();
+
+                    var rowOfORder = this.GetRowOfOrder(editedOrder);
+                    var cellControl = radGridView.TableElement.GetCellElement(rowOfORder, rowOfORder.Cells[1].ColumnInfo);
+                    var cellBounds = cellControl.ControlBoundingRectangle;
+                    rowOfORder.EnsureVisible();
+                    cellControl.PerformClick();
+                    radGridView.Invalidate();
+                    OnTestStatusChanged?.Invoke(this, 1, 1);
                 }
             }
         }
@@ -377,6 +388,7 @@ namespace OLTMockServer.UI
                         this.testManager.SaveTestProject();
 
                         ResetDataSource();
+                        OnTestStatusChanged?.Invoke(this, 1, 1);
                     }
                     catch (Exception ex)
                     {

@@ -268,6 +268,12 @@
     <Compile Include="UI\Snap\SnapOrderDetailsControl.Designer.cs">
       <DependentUpon>SnapOrderDetailsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\StatisticStatusBarControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\StatisticStatusBarControl.Designer.cs">
+      <DependentUpon>StatisticStatusBarControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TestContainerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -349,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Snap\SnapOrderDetailsControl.resx">
       <DependentUpon>SnapOrderDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StatisticStatusBarControl.resx">
+      <DependentUpon>StatisticStatusBarControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TestContainerControl.resx">
       <DependentUpon>TestContainerControl.cs</DependentUpon>

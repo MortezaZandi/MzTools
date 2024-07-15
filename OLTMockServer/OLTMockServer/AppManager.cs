@@ -397,6 +397,7 @@ namespace OLTMockServer
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
                 AppData.MasterDBConnection = dbControl.ConnectionString;
+
                 SaveAppData();
 
                 return DialogResult.OK;

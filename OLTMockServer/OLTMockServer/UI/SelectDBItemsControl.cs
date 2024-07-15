@@ -21,18 +21,18 @@ namespace OLTMockServer.UI
         private IConfirmableDialog parentDialog;
         private List<Item> items;
         private Definitions.KnownOnlineShops onlineShops;
-        private List<Vendor> allowsVendors;
+        private List<Vendor> selectedVendors;
 
         public SelectDBItemsControl() : base()
         {
             InitializeComponent();
         }
 
-        public SelectDBItemsControl(IConfirmableDialog parent, Definitions.KnownOnlineShops onlineShops, List<Vendor> allowsVendors) : base()
+        public SelectDBItemsControl(IConfirmableDialog parent, Definitions.KnownOnlineShops onlineShops, List<Vendor> selectedVendors) : base()
         {
             this.parentDialog = parent;
             this.onlineShops = onlineShops;
-            this.allowsVendors = allowsVendors;
+            this.selectedVendors = selectedVendors;
 
             InitializeComponent();
             InitOperations();
@@ -123,12 +123,12 @@ namespace OLTMockServer.UI
                 throw new ApplicationException("Item read query command in empty.");
             }
 
-            if (this.allowsVendors.Count == 0)
+            if (this.selectedVendors.Count == 0)
             {
                 throw new ApplicationException("You need to select vendors first.");
             }
 
-            var allowedVendorCodes = string.Join("','", this.allowsVendors.Select(v => v.Code));
+            var allowedVendorCodes = string.Join("','", this.selectedVendors.Select(v => v.Code));
 
             command = string.Format(command, Utils.GetAppTypeNumber(this.onlineShops), $"'{allowedVendorCodes}'");
 

@@ -114,6 +114,7 @@ namespace OLTMockServer
             newTabPage.Controls.Add(orderControl);
             orderControl.OnTestStatusChanged += TestControl_OnTestStatusChanged;
             newTabPage.TestContainer = orderControl;
+            UpdateStatistics(test, true);
         }
 
         private void TestControl_OnTestStatusChanged(TestContainerControl testContainer, int totalSteps, int doneSteps)
@@ -136,6 +137,8 @@ namespace OLTMockServer
                     playProgressbar.Text = $"%{progressValue}";
                 }
             }
+
+            UpdateStatistics(testContainer.TestManager);
         }
 
         private void btnCreateNewTest_Click(object sender, EventArgs e)
@@ -427,7 +430,25 @@ namespace OLTMockServer
 
         private void btnDBConnection_Click(object sender, EventArgs e)
         {
-          appManager.EditDBConnectionUsingUI();
+            appManager.EditDBConnectionUsingUI();
         }
+
+        private void UpdateStatistics(TestManager test, bool forceUpdate = false)
+        {
+            if ((this.activeTest != null && test == this.activeTest) || forceUpdate)
+            {
+                lblStatistics_OrderCount.Text = "Orders: " + test.TestProject.Orders.Count.ToString("N0");
+                lblStatistics_ACKCount.Text = "ACK: " + test.TestProject.Orders.Where(o => o.AckTime != DateTime.MinValue).Count().ToString("N0");
+                lblStatistics_PickCount.Text = "Pick: " + test.TestProject.Orders.Where(o => o.PickTime != DateTime.MinValue).Count().ToString("N0");
+                lblStatistics_RejectCount.Text = "Reject: " + test.TestProject.Orders.Where(o => o.Rejected || o.RejectedByVendor).Count().ToString("N0");
+                lblStatistics_EditCount.Text = "Edit: " + test.TestProject.Orders.Where(o => o.EditActivity != null).Count().ToString("N0");
+                lblStatistics_SendCount.Text = "Sent: " + test.TestProject.Orders.Where(o => o.SendSuccessActivity != null).Count().ToString("N0");
+            }
+            else
+            {
+                lblStatistics_OrderCount.Text = "N/A";
+            }
+        }
+
     }
 }
