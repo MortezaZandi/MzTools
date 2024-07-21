@@ -220,11 +220,19 @@ namespace OLTMockServer
 
                         if (needMoreOrders)
                         {
-                            var newOrder = Server.CreateNewOrder(testProject, true);
-                            testProject.Orders.Add(newOrder);
-                            projectChanged = true;
-                            performedAcounsCount++;
-                            OrderProcessingFeedback?.Invoke(newOrder, Definitions.OrderProcessingSteps.NewOrderCreated, totalRequiredActionsCount, performedAcounsCount);
+                            try
+                            {
+                                var newOrder = Server.CreateNewOrder(testProject, true);
+                                testProject.Orders.Add(newOrder);
+                                projectChanged = true;
+                                performedAcounsCount++;
+                                OrderProcessingFeedback?.Invoke(newOrder, Definitions.OrderProcessingSteps.NewOrderCreated, totalRequiredActionsCount, performedAcounsCount);
+                            }
+                            catch (Exception ex)
+                            {
+                                Utils.ShowError($"Error when creating new order:{Environment.NewLine}{ex.Message}");
+                                break;
+                            }
                         }
                         else
                         {

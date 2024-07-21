@@ -11,11 +11,14 @@ namespace OLTMockServer.DataStructures
     {
         public Vendor()
         {
+            UID = Guid.NewGuid();
         }
 
         public string Name { get; set; }
         public string BaseUrl { get; set; }
         public bool IsActive { get; set; }
         public string Code { get; set; }
+        public Guid UID { get; set; }
+
     }
 }

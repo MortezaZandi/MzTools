@@ -70,6 +70,13 @@ namespace OLTMockServer
             return RadMessageBox.Show(null, message, "OLT-MockServer", MessageBoxButtons.YesNoCancel, RadMessageIcon.Question);
         }
 
+        internal static DialogResult ShowWarningQuestion(string message)
+        {
+            RadMessageBox.ThemeName = "Windows7";
+            RadMessageBox.Instance.TopMost = true;
+            return RadMessageBox.Show(null, message, "OLT-MockServer", MessageBoxButtons.YesNoCancel, RadMessageIcon.Exclamation);
+        }
+
         public static TDest SwapObjects<TSource, TDest>(TSource source, TDest dest, params string[] skipProps)
         {
             var sourceProps = source.GetType().GetProperties();
@@ -129,5 +136,6 @@ namespace OLTMockServer
                     throw new ApplicationException($"Unhandled onlineshop type '{onlineShopType}' used in GetAppTypeNumber");
             }
         }
+
     }
 }

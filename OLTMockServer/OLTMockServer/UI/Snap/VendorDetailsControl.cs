@@ -78,6 +78,12 @@ namespace OLTMockServer.UI
             if (uIOperation.Id == okOperation.Id)
             {
                 //if ok
+                if (string.IsNullOrWhiteSpace(vendor.BaseUrl))
+                {
+                    Utils.ShowError($"Vendor must have a valid base url.");
+                    return;
+                }
+
                 parentDialog?.OK();
             }
 

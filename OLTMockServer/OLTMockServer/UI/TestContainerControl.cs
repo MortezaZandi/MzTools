@@ -73,15 +73,21 @@ namespace OLTMockServer.UI
             Application.DoEvents();
         }
 
-        private void HighlightGridRow(GridViewRowInfo row, bool set, bool bringToView)
+        private void HighlightGridRow(GridViewRowInfo row, bool set, bool bringToView, Color? setColor = null, Color? clearColor = null)
         {
+            if (!setColor.HasValue)
+                setColor = Color.Yellow;
+
+            if (!clearColor.HasValue)
+                clearColor = Color.White;
+
             if (set)
             {
                 foreach (GridViewCellInfo cel in row.Cells)
                 {
                     if (cel.ColumnInfo.Index > 0)
                     {
-                        cel.Style.BackColor = Color.Yellow;
+                        cel.Style.BackColor = setColor.Value;
                         cel.Style.CustomizeFill = true;
                     }
                 }
@@ -97,7 +103,7 @@ namespace OLTMockServer.UI
                 {
                     if (cel.ColumnInfo.Index > 0)
                     {
-                        cel.Style.BackColor = Color.White;
+                        cel.Style.BackColor = clearColor.Value;
                         cel.Style.CustomizeFill = false;
                     }
                 }
@@ -175,6 +181,20 @@ namespace OLTMockServer.UI
         {
             radGridView.DataSource = null;
             radGridView.DataSource = this.testManager.TestProject.Orders;
+            foreach (GridViewRowInfo row in this.radGridView.Rows)
+            {
+                var data = row.DataBoundItem as Order;
+
+                var orderIsProcessed = data.HasNotPrcessedActivity == false;
+
+                if (orderIsProcessed)
+                {
+                    foreach (GridViewCellInfo cell in row.Cells)
+                    {
+                        cell.Style.ForeColor = Color.Gray;
+                    }
+                }
+            }
         }
 
         private void btnShowTestOptions_Click(object sender, EventArgs e)

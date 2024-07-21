@@ -43,7 +43,6 @@
             this.txtVatAmount = new Telerik.WinControls.UI.RadTextBoxControl();
             this.lblqnt = new Telerik.WinControls.UI.RadLabel();
             this.txtQuantity = new Telerik.WinControls.UI.RadSpinEditor();
-            this.radSeparator2 = new Telerik.WinControls.UI.RadSeparator();
             this.btnUpdatePriceInfo = new Telerik.WinControls.UI.RadButton();
             this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
             this.txtVendorCode = new Telerik.WinControls.UI.RadTextBoxControl();
@@ -66,7 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVatAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblqnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSeparator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUpdatePriceInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVendorCode)).BeginInit();
@@ -77,7 +75,6 @@
             this.radPanel2.Controls.Add(this.radLabel7);
             this.radPanel2.Controls.Add(this.txtVendorCode);
             this.radPanel2.Controls.Add(this.btnUpdatePriceInfo);
-            this.radPanel2.Controls.Add(this.radSeparator2);
             this.radPanel2.Controls.Add(this.txtQuantity);
             this.radPanel2.Controls.Add(this.lblqnt);
             this.radPanel2.Controls.Add(this.radLabel3);
@@ -234,7 +231,7 @@
             // lblqnt
             // 
             this.lblqnt.AutoSize = false;
-            this.lblqnt.Location = new System.Drawing.Point(33, 289);
+            this.lblqnt.Location = new System.Drawing.Point(31, 269);
             this.lblqnt.Name = "lblqnt";
             this.lblqnt.Size = new System.Drawing.Size(87, 18);
             this.lblqnt.TabIndex = 22;
@@ -244,14 +241,14 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(137, 287);
+            this.txtQuantity.Location = new System.Drawing.Point(137, 268);
             this.txtQuantity.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantity.Size = new System.Drawing.Size(128, 20);
             this.txtQuantity.TabIndex = 23;
             this.txtQuantity.TabStop = false;
             this.txtQuantity.Value = new decimal(new int[] {
@@ -259,14 +256,6 @@
             0,
             0,
             0});
-            // 
-            // radSeparator2
-            // 
-            this.radSeparator2.Location = new System.Drawing.Point(33, 267);
-            this.radSeparator2.Name = "radSeparator2";
-            this.radSeparator2.Size = new System.Drawing.Size(569, 10);
-            this.radSeparator2.TabIndex = 24;
-            this.radSeparator2.Text = "radSeparator2";
             // 
             // btnUpdatePriceInfo
             // 
@@ -321,7 +310,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVatAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblqnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSeparator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUpdatePriceInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVendorCode)).EndInit();
@@ -343,7 +331,6 @@
         private Telerik.WinControls.UI.RadTextBoxControl txtItemPrice;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadTextBoxControl txtVatAmount;
-        private Telerik.WinControls.UI.RadSeparator radSeparator2;
         private Telerik.WinControls.UI.RadSpinEditor txtQuantity;
         private Telerik.WinControls.UI.RadLabel lblqnt;
         private Telerik.WinControls.UI.RadButton btnUpdatePriceInfo;

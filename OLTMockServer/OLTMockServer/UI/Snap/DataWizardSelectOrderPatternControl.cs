@@ -85,7 +85,7 @@ namespace OLTMockServer.UI
         private void ResetDataSource()
         {
             radGridView.DataSource = null;
-            radGridView.DataSource = orderPattern.PatternItems;
+            radGridView.DataSource = orderPattern.PatternItems.OrderBy(i => i.PropertyName);
 
             var gtc = radGridView.Columns["clmGeneratorType"] as GridViewComboBoxColumn;
             gtc.DataSource = Enum.GetValues(typeof(Definitions.PropertyValueGeneratorTypes));
@@ -117,7 +117,7 @@ namespace OLTMockServer.UI
                 {
                     if (item.GenerateType == Definitions.PropertyValueGeneratorTypes.FixedValue && item.Value == null)
                     {
-                        Utils.ShowError($"Fixed types need a value");
+                        Utils.ShowError($"Fixed types need a value, '{item.PropertyName}'");
                         return;
                     }
                 }
@@ -222,7 +222,7 @@ namespace OLTMockServer.UI
                             var dataDialog = new DataDialog(control, "Replace Alert");
                             control.ParentDialog = dataDialog;
                             control.OrderPattern = selectedItem;
-                            control.Title = "Replace pattern?";
+                            control.Title = "Check Before Replace";
                             control.ShowCommands = false;
 
                             if (dataDialog.ShowDialog() == DialogResult.OK)

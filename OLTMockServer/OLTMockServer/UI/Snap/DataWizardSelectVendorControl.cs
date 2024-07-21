@@ -57,6 +57,35 @@ namespace OLTMockServer.UI
             if (uIOperation.Id == nextOperation.Id)
             {
                 //if ok
+                bool noActiveVendorFound = true;
+                foreach (var vendor in this.Vendors)
+                {
+                    if (string.IsNullOrWhiteSpace(vendor.BaseUrl))
+                    {
+                        Utils.ShowError($"Vendor must have a valid base url. VendorrName: {vendor.Name}");
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(vendor.Code))
+                    {
+                        Utils.ShowError($"Vendor must have a valid code. VendorrName: {vendor.Name}");
+                        return;
+                    }
+
+                    if (vendor.IsActive)
+                    {
+                        noActiveVendorFound = false;
+                    }
+                }
+
+                if (noActiveVendorFound)
+                {
+                    if (Utils.ShowWarningQuestion($"None of the vendors are active, continue?") != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+
                 wizard.GoToNextPage();
             }
 
@@ -72,8 +101,18 @@ namespace OLTMockServer.UI
             var dataDialog = new DataDialog(vendorControl, "Add New Vendor");
             vendorControl.ParentDialog = dataDialog;
             vendorControl.Vendor = new Vendor();
+            vendorControl.Vendor.Code = Utils.GenerateCode(5);
             if (dataDialog.ShowDialog() == DialogResult.OK)
             {
+                foreach (var vendor in vendors)
+                {
+                    if (vendor.Code == vendorControl.Vendor.Code)
+                    {
+                        Utils.ShowError($"Vendor code '{vendor.Code}' already exists in the list.");
+                        return;
+                    }
+                }
+
                 vendors.Add(vendorControl.Vendor);
 
                 ResetDataSource();
@@ -120,6 +159,18 @@ namespace OLTMockServer.UI
 
                 if (dataDialog.ShowDialog() == DialogResult.OK)
                 {
+                    foreach (var vendor in vendors)
+                    {
+                        if (vendor.UID != selectedVendor.UID)
+                        {
+                            if (vendor.Code == vendorControl.Vendor.Code)
+                            {
+                                Utils.ShowError($"Vendor code '{vendor.Code}' already exists in the list.");
+                                return;
+                            }
+                        }
+                    }
+
                     var index = this.vendors.IndexOf(selectedVendor);
 
                     this.vendors.Remove(selectedVendor);

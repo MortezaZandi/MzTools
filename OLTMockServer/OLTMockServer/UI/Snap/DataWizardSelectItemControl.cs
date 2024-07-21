@@ -235,9 +235,12 @@ namespace OLTMockServer.UI
 
         private void btnCleanItems_Click(object sender, EventArgs e)
         {
-            items.Clear();
-            OnItemsChanged?.Invoke(this, EventArgs.Empty);
-            ResetDataSource();
+            if (Utils.AskQuestion("Delete all items?") == DialogResult.Yes)
+            {
+                items.Clear();
+                OnItemsChanged?.Invoke(this, EventArgs.Empty);
+                ResetDataSource();
+            }
         }
 
         private void btnEditItem_Click(object sender, EventArgs e)

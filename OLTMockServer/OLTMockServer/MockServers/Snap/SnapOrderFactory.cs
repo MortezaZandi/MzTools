@@ -29,14 +29,19 @@ namespace OLTMockServer
                 throw new ApplicationException("No pattern defined to create new order.");
             }
 
-            if (testProject.Items.Count == 0)
+            if (testProject.ActiveItems.Count == 0)
             {
-                throw new ApplicationException("No item defined to create new order.");
+                throw new ApplicationException("No active item found in the test options to create new order.");
             }
 
-            if (testProject.Vendors.Count == 0)
+            if (testProject.ActiveVendors.Count == 0)
             {
-                throw new ApplicationException("No vendor defined to create new order.");
+                throw new ApplicationException("No active vendor found in the test options to create new order.");
+            }
+
+            if (testProject.ActiveCustomers.Count == 0)
+            {
+                throw new ApplicationException("No active customer found in the test options to create new order.");
             }
 
             foreach (OrderPatternItem item in testProject.OrderPattern.PatternItems)
@@ -45,7 +50,7 @@ namespace OLTMockServer
 
                 if (orderProp == null)
                 {
-                    throw new ApplicationException($"SnapOrder does not conatin property '{item.PropertyName}' with type of {item.PropertyType}");
+                    throw new ApplicationException($"SnapOrder does not contains property '{item.PropertyName}' with type of {item.PropertyType}");
                 }
 
                 object value = null;
@@ -95,8 +100,8 @@ namespace OLTMockServer
             }
 
             //choose a random vendor:
-            var vendorIndex = random.Next(0, testProject.Vendors.Count);
-            var vendor = testProject.Vendors[vendorIndex];
+            var vendorIndex = random.Next(0, testProject.ActiveVendors.Count);
+            var vendor = testProject.ActiveVendors[vendorIndex];
             order.Vendor = vendor;
             order.VendorCode = vendor.Code;
 
@@ -105,9 +110,9 @@ namespace OLTMockServer
                 order.MaxItemCount = 1;
             }
 
-            if (order.MaxItemCount > testProject.Items.Count)
+            if (order.MaxItemCount > testProject.ActiveItems.Count)
             {
-                order.MaxItemCount = testProject.Items.Count;
+                order.MaxItemCount = testProject.ActiveItems.Count;
             }
 
             order.MaxItemCount = random.Next(1, order.MaxItemCount + 1);
@@ -157,7 +162,7 @@ namespace OLTMockServer
 
         private Item CreateNewItem(TestProject testProject, Vendor vendor)
         {
-            var vendorItems = testProject.Items.Where(i => i.VendorCode == vendor.Code).ToList();
+            var vendorItems = testProject.ActiveItems.Where(i => i.VendorCode == vendor.Code).ToList();
             var itemIndex = random.Next(0, vendorItems.Count);
             var item = vendorItems[itemIndex];
 

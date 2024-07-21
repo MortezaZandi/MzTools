@@ -34,6 +34,30 @@ namespace OLTMockServer.DataStructures
         public Definitions.KnownOnlineShops OnlineShop { get; set; }
 
 
+        public List<Customer> ActiveCustomers
+        {
+            get
+            {
+                return this.Customers.Where(c => c.IsActive).ToList();
+            }
+        }
+
+        public List<Vendor> ActiveVendors
+        {
+            get
+            {
+                return this.Vendors.Where(v => v.IsActive).ToList();
+            }
+        }
+
+        public List<Item> ActiveItems
+        {
+            get
+            {
+                return this.Items.Where(c => c.IsActive).ToList();
+            }
+        }
+
         public bool IsTemp
         {
             get

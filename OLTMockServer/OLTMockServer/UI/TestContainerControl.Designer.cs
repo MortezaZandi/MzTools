@@ -80,7 +80,7 @@
             // 
             this.radGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView.EnableCustomDrawing = true;
-            this.radGridView.Location = new System.Drawing.Point(0, 77);
+            this.radGridView.Location = new System.Drawing.Point(0, 52);
             // 
             // 
             // 
@@ -169,7 +169,7 @@
             this.radGridView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radGridView.ShowGroupPanel = false;
             this.radGridView.ShowGroupPanelScrollbars = false;
-            this.radGridView.Size = new System.Drawing.Size(1069, 492);
+            this.radGridView.Size = new System.Drawing.Size(1069, 517);
             this.radGridView.TabIndex = 0;
             this.radGridView.ThemeName = "Windows7";
             this.radGridView.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.radGridView_CellFormatting);
@@ -181,7 +181,7 @@
             this.radCommandBar1.Name = "radCommandBar1";
             this.radCommandBar1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.radCommandBar1.Size = new System.Drawing.Size(1069, 77);
+            this.radCommandBar1.Size = new System.Drawing.Size(1069, 52);
             this.radCommandBar1.TabIndex = 1;
             this.radCommandBar1.Text = "radCommandBar1";
             this.radCommandBar1.ThemeName = "Windows7";
