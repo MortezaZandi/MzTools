@@ -437,7 +437,16 @@ namespace OLTMockServer
 
         private void UpdateStatistics(TestManager test, bool forceUpdate = false)
         {
-            if ((this.activeTest != null && test == this.activeTest) || forceUpdate)
+            if (test == null)
+            {
+                lblStatistics_OrderCount.Text = "Orders: N/A";
+                lblStatistics_ACKCount.Text = "ACK: N/A";
+                lblStatistics_PickCount.Text = "Pick: N/A";
+                lblStatistics_RejectCount.Text = "Reject: N/A";
+                lblStatistics_EditCount.Text = "Edit: N/A";
+                lblStatistics_SendCount.Text = "Sent: N/A";
+            }
+            else if (test == this.activeTest || forceUpdate)
             {
                 lblStatistics_OrderCount.Text = "Orders: " + test.TestProject.Orders.Count.ToString("N0");
                 lblStatistics_ACKCount.Text = "ACK: " + test.TestProject.Orders.Where(o => o.AckTime != DateTime.MinValue).Count().ToString("N0");
