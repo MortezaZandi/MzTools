@@ -465,5 +465,11 @@
   <ItemGroup>
     <None Include="Resources\copy_16px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_filter_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_30px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

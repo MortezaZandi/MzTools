@@ -32,8 +32,6 @@
             this.txtCustomerDeliveryType = new Telerik.WinControls.UI.RadTextBoxControl();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.txtCustomerAddress = new Telerik.WinControls.UI.RadTextBoxControl();
-            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.txtCustomerID = new Telerik.WinControls.UI.RadTextBoxControl();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.txtCustomerName = new Telerik.WinControls.UI.RadTextBoxControl();
             this.chkIsActive = new Telerik.WinControls.UI.RadCheckBox();
@@ -47,8 +45,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerDeliveryType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerAddress)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIsActive)).BeginInit();
@@ -64,8 +60,6 @@
             this.radPanel2.Controls.Add(this.txtCustomerDeliveryType);
             this.radPanel2.Controls.Add(this.radLabel4);
             this.radPanel2.Controls.Add(this.txtCustomerAddress);
-            this.radPanel2.Controls.Add(this.radLabel2);
-            this.radPanel2.Controls.Add(this.txtCustomerID);
             this.radPanel2.Controls.Add(this.radLabel1);
             this.radPanel2.Controls.Add(this.txtCustomerName);
             this.radPanel2.Controls.Add(this.chkIsActive);
@@ -78,7 +72,7 @@
             // radLabel5
             // 
             this.radLabel5.AutoSize = false;
-            this.radLabel5.Location = new System.Drawing.Point(30, 156);
+            this.radLabel5.Location = new System.Drawing.Point(30, 128);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(110, 18);
             this.radLabel5.TabIndex = 27;
@@ -89,7 +83,7 @@
             // txtCustomerDeliveryType
             // 
             this.txtCustomerDeliveryType.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerDeliveryType.Location = new System.Drawing.Point(148, 156);
+            this.txtCustomerDeliveryType.Location = new System.Drawing.Point(148, 128);
             this.txtCustomerDeliveryType.Name = "txtCustomerDeliveryType";
             this.txtCustomerDeliveryType.Size = new System.Drawing.Size(235, 23);
             this.txtCustomerDeliveryType.TabIndex = 3;
@@ -98,7 +92,7 @@
             // radLabel4
             // 
             this.radLabel4.AutoSize = false;
-            this.radLabel4.Location = new System.Drawing.Point(30, 122);
+            this.radLabel4.Location = new System.Drawing.Point(30, 94);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(110, 18);
             this.radLabel4.TabIndex = 25;
@@ -109,36 +103,16 @@
             // txtCustomerAddress
             // 
             this.txtCustomerAddress.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerAddress.Location = new System.Drawing.Point(148, 122);
+            this.txtCustomerAddress.Location = new System.Drawing.Point(148, 94);
             this.txtCustomerAddress.Name = "txtCustomerAddress";
             this.txtCustomerAddress.Size = new System.Drawing.Size(235, 23);
             this.txtCustomerAddress.TabIndex = 2;
             this.txtCustomerAddress.ThemeName = "Windows7";
             // 
-            // radLabel2
-            // 
-            this.radLabel2.AutoSize = false;
-            this.radLabel2.Location = new System.Drawing.Point(30, 26);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(110, 18);
-            this.radLabel2.TabIndex = 23;
-            this.radLabel2.Text = "Customer ID";
-            this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radLabel2.ThemeName = "Windows7";
-            // 
-            // txtCustomerID
-            // 
-            this.txtCustomerID.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerID.Location = new System.Drawing.Point(148, 25);
-            this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.Size = new System.Drawing.Size(235, 23);
-            this.txtCustomerID.TabIndex = 0;
-            this.txtCustomerID.ThemeName = "Windows7";
-            // 
             // radLabel1
             // 
             this.radLabel1.AutoSize = false;
-            this.radLabel1.Location = new System.Drawing.Point(30, 88);
+            this.radLabel1.Location = new System.Drawing.Point(30, 60);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(110, 18);
             this.radLabel1.TabIndex = 21;
@@ -149,7 +123,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerName.Location = new System.Drawing.Point(148, 88);
+            this.txtCustomerName.Location = new System.Drawing.Point(148, 60);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(235, 23);
             this.txtCustomerName.TabIndex = 1;
@@ -157,7 +131,7 @@
             // 
             // chkIsActive
             // 
-            this.chkIsActive.Location = new System.Drawing.Point(148, 202);
+            this.chkIsActive.Location = new System.Drawing.Point(577, 30);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(51, 16);
             this.chkIsActive.TabIndex = 4;
@@ -167,7 +141,7 @@
             // radLabel3
             // 
             this.radLabel3.AutoSize = false;
-            this.radLabel3.Location = new System.Drawing.Point(30, 57);
+            this.radLabel3.Location = new System.Drawing.Point(30, 29);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(110, 18);
             this.radLabel3.TabIndex = 25;
@@ -178,7 +152,7 @@
             // txtCustomerCode
             // 
             this.txtCustomerCode.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerCode.Location = new System.Drawing.Point(148, 56);
+            this.txtCustomerCode.Location = new System.Drawing.Point(148, 28);
             this.txtCustomerCode.Name = "txtCustomerCode";
             this.txtCustomerCode.Size = new System.Drawing.Size(235, 23);
             this.txtCustomerCode.TabIndex = 24;
@@ -199,8 +173,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerDeliveryType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerAddress)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIsActive)).EndInit();
@@ -215,8 +187,6 @@
         private Telerik.WinControls.UI.RadTextBoxControl txtCustomerDeliveryType;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadTextBoxControl txtCustomerAddress;
-        private Telerik.WinControls.UI.RadLabel radLabel2;
-        private Telerik.WinControls.UI.RadTextBoxControl txtCustomerID;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadTextBoxControl txtCustomerName;
         private Telerik.WinControls.UI.RadCheckBox chkIsActive;

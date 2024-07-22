@@ -379,5 +379,13 @@ namespace OLTMockServer.UI
 
             return null;
         }
+
+        private void radGridView_CellDoubleClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            if (radGridView.SelectedRows.Count > 0)
+            {
+                btnEditItem.PerformClick();
+            }
+        }
     }
 }

@@ -112,6 +112,7 @@
             this.radGridView.Size = new System.Drawing.Size(690, 292);
             this.radGridView.TabIndex = 3;
             this.radGridView.ThemeName = "Windows7";
+            this.radGridView.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.radGridView_CellDoubleClick);
             // 
             // radCommandBar1
             // 

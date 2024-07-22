@@ -12,6 +12,7 @@ namespace OLTMockServer.DataStructures
         public Customer()
         {
             IsActive = true;
+            Code = Utils.GenerateCode(5);
         }
 
         public long Id { get;  set; }

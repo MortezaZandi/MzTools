@@ -140,7 +140,7 @@
             // chkIsActive
             // 
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkIsActive.Location = new System.Drawing.Point(402, 27);
+            this.chkIsActive.Location = new System.Drawing.Point(585, 27);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(51, 16);
             this.chkIsActive.TabIndex = 5;

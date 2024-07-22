@@ -113,6 +113,16 @@ namespace OLTMockServer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clear_filter_30px {
+            get {
+                object obj = ResourceManager.GetObject("clear_filter_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap control_panel_2_24px {
             get {
                 object obj = ResourceManager.GetObject("control_panel_2_24px", resourceCulture);
@@ -286,6 +296,16 @@ namespace OLTMockServer.Properties {
         internal static System.Drawing.Bitmap fast_add_48_2 {
             get {
                 object obj = ResourceManager.GetObject("fast-add-48-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filter_30px {
+            get {
+                object obj = ResourceManager.GetObject("filter_30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

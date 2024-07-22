@@ -125,7 +125,7 @@
             // 
             // chkIsActive
             // 
-            this.chkIsActive.Location = new System.Drawing.Point(152, 139);
+            this.chkIsActive.Location = new System.Drawing.Point(608, 26);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(51, 16);
             this.chkIsActive.TabIndex = 3;

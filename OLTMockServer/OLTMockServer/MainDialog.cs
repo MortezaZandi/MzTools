@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OLTMockServer
@@ -63,8 +64,9 @@ namespace OLTMockServer
             this.activeTestTab = selectedTestTab;
 
             this.activeTest = selectedTest;
-
             UpdatePlayButtons();
+
+            UpdateStatistics(this.activeTest, true);
         }
 
         private void UpdatePlayButtons()
@@ -388,13 +390,13 @@ namespace OLTMockServer
         {
             try
             {
-                Application.DoEvents();
+                System.Windows.Forms.Application.DoEvents();
 
                 foreach (var testProject in this.appManager.LoadLastOpenedTestProjects())
                 {
                     this.AddTestPage(testProject);
 
-                    Application.DoEvents();
+                    System.Windows.Forms.Application.DoEvents();
                 }
             }
             finally

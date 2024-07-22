@@ -36,9 +36,6 @@ namespace OLTMockServer.UI
             {
                 customer = value;
 
-                txtCustomerID.DataBindings.Clear();
-                txtCustomerID.DataBindings.Add(new Binding(nameof(RadTextBox.Text), customer, nameof(Customer.Id)));
-
                 txtCustomerCode.DataBindings.Clear();
                 txtCustomerCode.DataBindings.Add(new Binding(nameof(RadTextBox.Text), customer, nameof(Customer.Code)));
 

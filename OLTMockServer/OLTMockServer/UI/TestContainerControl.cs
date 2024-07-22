@@ -189,12 +189,21 @@ namespace OLTMockServer.UI
 
                 if (orderIsProcessed)
                 {
-                    foreach (GridViewCellInfo cell in row.Cells)
+                    if (HideProcessedOrders)
                     {
-                        cell.Style.ForeColor = Color.Gray;
+                        row.IsVisible = false;
+                    }
+                    else
+                    {
+                        foreach (GridViewCellInfo cell in row.Cells)
+                        {
+                            cell.Style.ForeColor = Color.Gray;
+                        }
                     }
                 }
             }
+
+            radGridView.Invalidate();
         }
 
         private void btnShowTestOptions_Click(object sender, EventArgs e)
@@ -418,5 +427,26 @@ namespace OLTMockServer.UI
             }
         }
 
+        private bool HideProcessedOrders
+        {
+            get
+            {
+                return btnHideProcessed.ToggleState == Telerik.WinControls.Enumerations.ToggleState.On;
+            }
+        }
+
+        private void btnHideProcessed_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+            ResetDataSource();
+
+            if (btnHideProcessed.ToggleState == Telerik.WinControls.Enumerations.ToggleState.On)
+            {
+                btnHideProcessed.Image = global::OLTMockServer.Properties.Resources.filter_30px;
+            }
+            else
+            {
+                btnHideProcessed.Image = global::OLTMockServer.Properties.Resources.clear_filter_30px;
+            }
+        }
     }
 }
