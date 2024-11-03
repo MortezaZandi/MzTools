@@ -288,7 +288,7 @@ namespace MouseHole
 
             if (Control.ModifierKeys == Keys.Control)
             {
-                this.Opacity = 0.9d;
+                this.Opacity = 0.5d;
             }
             else if (Control.ModifierKeys == Keys.Shift)
             {
