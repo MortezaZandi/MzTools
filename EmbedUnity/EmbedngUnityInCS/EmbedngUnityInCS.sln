@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmbedngUnityInCS", "EmbedngUnityInCS.csproj", "{03C12EC0-D827-4852-AB81-773E0176B83D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03C12EC0-D827-4852-AB81-773E0176B83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C12EC0-D827-4852-AB81-773E0176B83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C12EC0-D827-4852-AB81-773E0176B83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C12EC0-D827-4852-AB81-773E0176B83D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3FEC0E0-AAF9-4DED-88A3-F752AC511E42}
+	EndGlobalSection
+EndGlobal

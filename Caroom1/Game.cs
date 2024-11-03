@@ -11,12 +11,10 @@ namespace Caroom1
     internal class Game
     {
         public List<Carrommen> carrommens;
-        private ShootEffect ShootEffect { get; set; }
 
         public Game()
         {
             this.carrommens = new List<Carrommen>();
-            this.ShootEffect = new ShootEffect();
         }
 
         public void StartNewGame()
@@ -38,22 +36,13 @@ namespace Caroom1
 
         public void Draw(Graphics g)
         {
-            g.Clear(Color.Tan);
 
             foreach (var c in carrommens)
             {
                 c.Draw(g);
             }
 
-            if (this.ShootEffect.IsValid)
-            {
-                g.DrawLine(new Pen(Color.Black, 3), this.ShootEffect.Start, ShootEffect.End);
-
-                if (GameStriker.HasTarget)
-                {
-                    g.FillEllipse(Brushes.Red, GameStriker.CenterPoint.Inflate(3));
-                }
-            }
+            
         }
 
         public Stricker GameStriker
@@ -72,37 +61,6 @@ namespace Caroom1
         //    }
         //}
 
-        public void ClearShootEffect()
-        {
-            this.ShootEffect.IsValid = false;
-        }
-
-        public void SetShootEffect(PointF start, PointF end)
-        {
-            this.ShootEffect.Start = start;
-            this.ShootEffect.End = end;
-            this.ShootEffect.IsValid = true;
-
-            SetTarget(start, end);
-        }
-
-
-        private void SetTarget(PointF start, PointF end)
-        {
-            //if (!GameStriker.HasTarget)
-            {
-                var targetPoint = new PointF(
-                 start.X + (start.X - end.X),
-                 start.Y + (start.Y - end.Y));
-
-                var targetObject = GetGameObjectByPoint(targetPoint);
-
-                if (targetObject != null && targetObject != GameStriker)
-                {
-                    GameStriker.SetTarget(targetObject);
-                }
-            }
-        }
 
         public GameObject GetGameObjectByPoint(PointF p)
         {
@@ -115,11 +73,6 @@ namespace Caroom1
             }
 
             return null;
-        }
-
-        internal void HitStriker()
-        {
-            GameStriker.MoveTowardsTarget();
         }
 
         public bool Update()
@@ -143,5 +96,7 @@ namespace Caroom1
         public PointF Start { get; set; }
         public PointF End { get; set; }
         public bool IsValid { get; set; }
+        public PointF Target { get; set; }
+
     }
 }

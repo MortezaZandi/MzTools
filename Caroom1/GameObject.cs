@@ -17,9 +17,9 @@ namespace Caroom1
         public Color FillColor { get; set; }
         public Color BorderColor { get; set; }
         public float BorderSize { get; set; } = 3;
-        public float Speed { get; set; } = 10f;
+        public float Speed { get; set; } = 8f;
         public PointF Force { get; set; }
-        public GameObject Target { get { return target; } }
+        public PointF Target { get { return target; } }
         public bool HasChanged { get; private set; } = true;
 
         public PointF CenterPoint
@@ -35,7 +35,7 @@ namespace Caroom1
         {
             get
             {
-                return target != null;
+                return target != Point.Empty;
             }
         }
 
@@ -44,14 +44,39 @@ namespace Caroom1
             return new RectangleF(this.Location, this.Size).Contains(location);
         }
 
-        public bool IsColide(GameObject other, float offsetX, float offsetY)
+        public bool IsColideWith(GameObject other, float offsetX, float offsetY)
         {
             return new RectangleF(other.Location, other.Size).Contains(Location);
         }
 
-        public bool IsColided(GameObject other)
+        public bool IsColidWith(GameObject other)
         {
-            return IsColide(other, 0, 0);
+            return IsColideWith(other, 0, 0);
+        }
+
+        public bool IsCollideWith(PointF p)
+        {
+            return new RectangleF(Location, Size).Contains(p);
+        }
+
+        public bool IsPointInCircle(float x, float y)
+        {
+            var radius = (Math.Min(Size.Width, Size.Height) / 2) - BorderSize;
+
+            var rect = new RectangleF(CenterPoint.X - radius, CenterPoint.Y - radius, radius * 2, radius * 2);
+
+            if (rect.Contains(x, y))
+            {
+                double dx = CenterPoint.X - x;
+                double dy = CenterPoint.Y - y;
+                dx *= dx;
+                dy *= dy;
+                double distanceSquared = dx + dy;
+                double radiusSquared = radius * radius;
+                return distanceSquared <= radiusSquared;
+            }
+
+            return false;
         }
 
         public void Update()
@@ -67,17 +92,14 @@ namespace Caroom1
 
         protected abstract void InternalDraw(Graphics g);
 
-        public void SetTarget(GameObject targetObject)
+        public void MoveTowardsTarget(PointF targetLocation)
         {
-            target = targetObject;
+            target = targetLocation;
             targetReached = false;
-        }
 
-        public void MoveTowardsTarget()
-        {
             //Calculate direction vector
-            float directionX = target.CenterPoint.X - Location.X;
-            float directionY = target.CenterPoint.Y - Location.Y;
+            float directionX = target.X - CenterPoint.X;
+            float directionY = target.Y - CenterPoint.Y;
 
             // Calculate distance to target
             float distance = (float)Math.Sqrt(directionX * directionX + directionY * directionY);
@@ -89,10 +111,6 @@ namespace Caroom1
                 float stepY = (directionY / distance) * Speed;
                 Force = new PointF(stepX, stepY);
             }
-            else
-            {
-                Force = PointF.Empty;
-            }
         }
 
 
@@ -100,17 +118,18 @@ namespace Caroom1
         #region Privates
 
         private bool targetReached;
-        private GameObject target;
+        private PointF target;
 
 
         private void ContinueMoveTowardsTarget()
         {
-            if (!targetReached && Target != null && Force != Point.Empty)
+            if (!targetReached && Target != Point.Empty && Force != Point.Empty)
             {
-                if (!IsColide(Target, Speed * Force.X, Speed * Force.Y))
+                if (!IsCollideWith(Target))
                 {
                     Location = new PointF(Location.X + (Speed * Force.X), Location.Y + (Speed * Force.Y));
                     HasChanged = true;
+                    Force = new PointF(Force.X * 0.95f, Force.Y * 0.95f);
                 }
                 else
                 {
