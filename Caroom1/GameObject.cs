@@ -17,7 +17,7 @@ namespace Caroom1
         public Color FillColor { get; set; }
         public Color BorderColor { get; set; }
         public float BorderSize { get; set; } = 3;
-        public float Speed { get; set; } = 8f;
+        public float Speed { get; set; } = 6f;
         public PointF Force { get; set; }
         public PointF Target { get { return target; } }
         public bool HasChanged { get; private set; } = true;
@@ -57,6 +57,19 @@ namespace Caroom1
         public bool IsCollideWith(PointF p)
         {
             return new RectangleF(Location, Size).Contains(p);
+        }
+
+        public Circle Circle
+        {
+            get
+            {
+                return new Circle
+                {
+                    CenterX = CenterPoint.X,
+                    CenterY = CenterPoint.Y,
+                    Radius = Math.Min(this.Size.Width, this.Size.Height) / 2,
+                };
+            }
         }
 
         public bool IsPointInCircle(float x, float y)
@@ -125,9 +138,12 @@ namespace Caroom1
         {
             if (!targetReached && Target != Point.Empty && Force != Point.Empty)
             {
-                if (!IsCollideWith(Target))
+                var newLocation = new PointF(Location.X + (Speed * Force.X), Location.Y + (Speed * Force.Y));
+                var newLocationIsAvailable = CheckIfNewLocationAvailable?.Invoke(this, newLocation) ?? true;
+
+                if (!IsCollideWith(Target) && newLocationIsAvailable)
                 {
-                    Location = new PointF(Location.X + (Speed * Force.X), Location.Y + (Speed * Force.Y));
+                    Location = newLocation;
                     HasChanged = true;
                     Force = new PointF(Force.X * 0.95f, Force.Y * 0.95f);
                 }
@@ -138,6 +154,20 @@ namespace Caroom1
             }
 
         }
+
+        public override string ToString()
+        {
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                return Name;
+            }
+
+            return base.ToString();
+        }
+
+        public delegate bool LocationAvailabilityCheckEventHandler(GameObject gameObject, PointF location);
+        public event LocationAvailabilityCheckEventHandler CheckIfNewLocationAvailable;
+
         #endregion
     }
 }

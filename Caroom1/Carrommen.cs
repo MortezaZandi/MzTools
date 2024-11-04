@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Caroom1
 {
@@ -20,6 +21,15 @@ namespace Caroom1
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.FillEllipse(new SolidBrush(FillColor), Location.X, Location.Y, Size.Width, Size.Height);
             g.DrawEllipse(new Pen(BorderColor, BorderSize), Location.X, Location.Y, Size.Width, Size.Height);
+
+            var p = new Pen(Color.Yellow, 1) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash };
+
+            if (!string.IsNullOrEmpty(Name))
+            {
+                g.DrawString(Name, new Font("Tahoma", 9), Brushes.White, CenterPoint, new StringFormat { Alignment = StringAlignment.Center });
+            }
+
+            g.DrawEllipse(p, Circle.Rect);
         }
 
         //public void MoveTowardsTarget()
@@ -64,8 +74,8 @@ namespace Caroom1
         public BlackCarrommen()
         {
             Location = new Point(800, 400);
-            FillColor = Color.FromArgb(65, 65, 65);
-            BorderColor = Color.White;
+            FillColor = Color.Gray;
+            BorderColor = Color.FromArgb(140, 140, 140);
         }
     }
 
@@ -74,8 +84,8 @@ namespace Caroom1
         public WhiteCarrommen()
         {
             Location = new Point(400, 200);
-            FillColor = Color.FromArgb(245, 245, 245);
-            BorderColor = Color.FromArgb(65, 65, 65);
+            FillColor = Color.Gray;
+            BorderColor = Color.FromArgb(150, 150, 150);
         }
     }
 
@@ -85,8 +95,8 @@ namespace Caroom1
         {
             Location = new Point(700, 600);
             Size = new Size(100, 100);
-            FillColor = Color.Maroon;
-            BorderColor = Color.White;
+            FillColor = Color.Gray;
+            BorderColor = Color.FromArgb(140, 140, 140);
             BorderSize = 5;
         }
     }

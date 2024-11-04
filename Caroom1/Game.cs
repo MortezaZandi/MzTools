@@ -20,11 +20,39 @@ namespace Caroom1
         public void StartNewGame()
         {
             carrommens.Clear();
-            carrommens.Add(new BlackCarrommen());
-            carrommens.Add(new WhiteCarrommen());
-            carrommens.Add(new Stricker());
+            carrommens.Add(new BlackCarrommen() { Name = "BlackC1" });
+            carrommens.Add(new WhiteCarrommen() { Name = "WhiteC2" });
+            carrommens.Add(new Stricker() { Name = "Striker" });
+
+            foreach (var item in carrommens)
+            {
+                item.CheckIfNewLocationAvailable += Item_CheckIfNewLocationAvailable;
+            }
 
             ArrangeCarrommens();
+        }
+
+        private bool Item_CheckIfNewLocationAvailable(GameObject gameObject, PointF location)
+        {
+            var c = new Circle()
+            {
+                CenterX = location.X + gameObject.Size.Width / 2,
+                CenterY = location.Y + gameObject.Size.Height / 2,
+                Radius = gameObject.Circle.Radius
+            };
+
+            foreach (var other in carrommens)
+            {
+                if (other != gameObject)
+                {
+                    if (c.IsCollideWith(other.Circle))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         private void ArrangeCarrommens()
@@ -42,7 +70,7 @@ namespace Caroom1
                 c.Draw(g);
             }
 
-            
+
         }
 
         public Stricker GameStriker

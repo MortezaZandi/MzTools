@@ -29,15 +29,15 @@ namespace Caroom1
         {
             base.OnPaint(e);
 
-            e.Graphics.Clear(SystemColors.GradientInactiveCaption);
+            e.Graphics.Clear(Color.Gray);
 
             game.Draw(e.Graphics);
 
             if (this.ShootEffect.IsValid)
             {
-                e.Graphics.DrawLine(new Pen(Color.Black, 3), this.ShootEffect.Start, ShootEffect.End);
+                e.Graphics.DrawLine(new Pen(Color.FromArgb(140, 140, 140), 3), this.ShootEffect.Start, ShootEffect.End);
 
-                e.Graphics.DrawLine(Pens.Gray, game.GameStriker.CenterPoint, ShootEffect.Target);
+                e.Graphics.DrawLine(Pens.LightGray, game.GameStriker.CenterPoint, ShootEffect.Target);
 
             }
         }
@@ -83,14 +83,14 @@ namespace Caroom1
                 this.Invalidate();
             }
 
-            if (game.GameStriker.IsPointInCircle(e.X, e.Y))
-            {
-                game.GameStriker.FillColor = Color.Green;
-            }
-            else
-            {
-                game.GameStriker.FillColor = Color.Maroon;
-            }
+            //if (game.GameStriker.IsPointInCircle(e.X, e.Y))
+            //{
+            //    game.GameStriker.FillColor = Color.Green;
+            //}
+            //else
+            //{
+            //    game.GameStriker.FillColor = Color.Maroon;
+            //}
 
             Invalidate();
         }
