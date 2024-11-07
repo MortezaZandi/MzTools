@@ -23,10 +23,18 @@ namespace TestFontDialog
 
         private void btnChangeFont_Click(object sender, EventArgs e)
         {
+            new ColorDialog()
+            {
+                AllowFullOpen = true,
+                AnyColor = true,
+                FullOpen = true,
+            }.ShowDialog();
+
             var fontDialog = new FontDialogEx();
 
+            fontDialog.ShowScripts = false;
             fontDialog.EnableScripts = false;
-            fontDialog.ScriptControlTitle = "Disabled";
+            fontDialog.ScriptControlTitle = "Script Is Disabled";
             fontDialog.Font = CreateDefaultFont();
 
             if (fontDialog.ShowDialog() == DialogResult.OK)
@@ -70,6 +78,12 @@ namespace TestFontDialog
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         static extern bool SetWindowText(IntPtr hwnd, String lpString);
 
+        [DllImport("user32.dll")]
+        public static extern long GetWindowRect(int hWnd, ref Rectangle lpRect);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
 
         public bool EnableScripts { get; set; }
 
@@ -103,6 +117,19 @@ namespace TestFontDialog
 
                                 if (!string.IsNullOrEmpty(ScriptControlTitle))
                                 {
+                                    Rectangle dialogRect = new Rectangle();
+                                    Rectangle controlRect = new Rectangle();
+
+                                    GetWindowRect(h.ToInt32(), ref controlRect);
+                                    GetWindowRect(lparam.ToInt32(), ref dialogRect);
+
+                                    if (controlRect.Width < 1000)
+                                    {
+                                        controlRect.Width = 1000;
+
+                                        MoveWindow(h, controlRect.X - dialogRect.X - 5, controlRect.Y - dialogRect.Y - 32, 1000, 15, true);
+
+                                    }
                                     SetWindowText(h, ScriptControlTitle);
                                 }
                             }
@@ -124,7 +151,6 @@ namespace TestFontDialog
         {
             try
             {
-                // Allocate correct string length first
                 int length = GetWindowTextLength(hWnd);
                 StringBuilder sb = new StringBuilder(length + 1);
                 GetWindowText(hWnd, sb, sb.Capacity);
@@ -150,7 +176,7 @@ namespace TestFontDialog
             public ushort atomWindowType;
             public ushort wCreatorVersion;
 
-            public WINDOWINFO(Boolean? filler) : this()   // Allows automatic initialization of "cbSize" with "new WINDOWINFO(null/true/false)".
+            public WINDOWINFO(Boolean? filler) : this()
             {
                 cbSize = (UInt32)(Marshal.SizeOf(typeof(WINDOWINFO)));
             }
@@ -261,7 +287,7 @@ namespace TestFontDialog
             public uint cbSize;
             [MarshalAs(UnmanagedType.U4)]
             public int style;
-            public IntPtr lpfnWndProc; // not WndProc
+            public IntPtr lpfnWndProc;
             public int cbClsExtra;
             public int cbWndExtra;
             public IntPtr hInstance;
@@ -272,9 +298,6 @@ namespace TestFontDialog
             public string lpszClassName;
             public IntPtr hIconSm;
 
-            //Use this function to make a new one with cbSize already filled in.
-            //For example:
-            //var WndClss = WNDCLASSEX.Build()
             public static WNDCLASSEX Build()
             {
                 var nw = new WNDCLASSEX();
