@@ -11,8 +11,17 @@ using System.Windows.Forms;
 
 namespace MBase.UI.WinForm
 {
+
+    public static class MyContainer
+    {
+        public static IContainer container { get; set; }
+    }
+
+
     internal static class Program
     {
+
+        public static IContainer ioc;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,6 +29,7 @@ namespace MBase.UI.WinForm
         static void Main()
         {
             var Container = InitializeIOC();
+            ApContext.Initialize(Container);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -45,9 +55,11 @@ namespace MBase.UI.WinForm
 
             builder.RegisterAssemblyTypes(assemblyList.ToArray())
               .Where(type => type.IsAssignableFrom(type)).AsSelf()
-              .InstancePerLifetimeScope();
+              .InstancePerDependency();
 
-            // builder.RegisterType<Form1>();
+            //// Register Form2 specifically as non-singleton
+            //builder.RegisterType<Form2>()
+            //    .InstancePerDependency();  // This ensures a new instance each time
 
             return builder.Build();
         }
