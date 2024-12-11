@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,14 +27,21 @@ namespace Graph2D
 
         private void btnAddData_Click(object sender, EventArgs e)
         {
-            var nd = DateTime.Now.Second;
-            //nd = rnd.Next(0, 1000);
-            graphControl1.AddData(nd);
+            //var nd = DateTime.Now.Second;
+            PerformanceCounter cpuCounter;
+            PerformanceCounter ramCounter;
+
+            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            ramCounter = new PerformanceCounter("Memory", "Available MBytes");
+
+            var nd = Process.GetCurrentProcess().PrivateMemorySize64/1024;
+            graphControl1.AddData(ramCounter.RawValue);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Text = $"2D Graph - Time : {DateTime.Now:HH:mm:ss}";
+            btnAddData.PerformClick();
         }
     }
 }

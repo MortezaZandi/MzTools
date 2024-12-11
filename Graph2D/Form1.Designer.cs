@@ -68,7 +68,7 @@
             this.graphControl1.Location = new System.Drawing.Point(154, 34);
             this.graphControl1.Name = "graphControl1";
             this.graphControl1.PrecisionType = Graph2D.GraphPrecisionTypes.Minute;
-            this.graphControl1.SampleCount = 100;
+            this.graphControl1.SampleCount = 60;
             this.graphControl1.Size = new System.Drawing.Size(500, 285);
             this.graphControl1.TabIndex = 0;
             // 
