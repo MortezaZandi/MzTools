@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -96,6 +97,49 @@ namespace DllArchShortcut
                     lblDllName.Text = assembyName;
                     lblDllPath.Text = assemblyPath;
                     lblDllArc.Text = DllHelper.PrintDllInfo(assemblyFilePath);
+
+                    assemblyFilePath = DllHelper.GetShortPath(assemblyFilePath);
+
+                    try
+                    {
+                        var asm = AssemblyName.GetAssemblyName(assemblyFilePath);
+                        lblAssemblyVersion.Text = asm.Version.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        lblAssemblyVersion.Text = "Unable to load assembly.";
+                    }
+
+                    try
+                    {
+                        var asm = Assembly.LoadFrom(assemblyFilePath).GetName();
+
+                        if (asm.GetPublicKey().Length > 0)
+                        {
+                            lblStronglyNamed.Text = "Sigend";
+                            lblStronglyNamed.ForeColor = Color.Green;
+                        }
+                        else
+                        {
+                            lblStronglyNamed.Text = "Not signed";
+                            lblStronglyNamed.ForeColor = Color.Red;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        lblStronglyNamed.Text = "?";
+                    }
+
+                    try
+                    {
+                        lblAssemblyFile.Text = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyFilePath).FileVersion;
+                        var fileInfo = new FileInfo(assemblyFilePath);
+                        lblAssemblyCreateDate.Text = fileInfo.CreationTime.ToString("yyyy-MM-dd HH:mm:ss");
+                        lblAssemblyModifyDate.Text = fileInfo.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+                    catch (Exception exx)
+                    {
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -147,6 +191,11 @@ namespace DllArchShortcut
 
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
         {
             this.Close();
         }

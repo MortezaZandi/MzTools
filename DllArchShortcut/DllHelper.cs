@@ -11,7 +11,7 @@ namespace DllArchShortcut
         const int MAX_PATH = 255;
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern int GetShortPathName(
+        private static extern int GetShortPathName(
             [MarshalAs(UnmanagedType.LPTStr)]
             string path,
             [MarshalAs(UnmanagedType.LPTStr)]
@@ -19,7 +19,7 @@ namespace DllArchShortcut
             int shortPathLength
             );
 
-        private static string GetShortPath(string path)
+        internal static string GetShortPath(string path)
         {
             var shortPath = new StringBuilder(MAX_PATH);
             GetShortPathName(path, shortPath, MAX_PATH);
@@ -29,17 +29,17 @@ namespace DllArchShortcut
 
         public static string PrintDllInfo(string dllPath)
         {
-            dllPath = GetShortPath(dllPath);
+            //dllPath = GetShortPath(dllPath);
 
             MachineType type = GetDllMachineType(dllPath);
 
             if (type.Equals(MachineType.IMAGE_FILE_MACHINE_I386))
             {
-                return ("Architecture: x86/32bit");
+                return ("x86/32bit");
             }
             else if (type.Equals(MachineType.IMAGE_FILE_MACHINE_IA64) || type.Equals(MachineType.IMAGE_FILE_MACHINE_AMD64))
             {
-                return ("Architecture: x64/64bit");
+                return ("x64/64bit");
             }
 
             return $"{type}";
