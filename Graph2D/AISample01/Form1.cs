@@ -41,13 +41,8 @@ namespace Test2DGraph
         public void AddDataCount(int count)
         {
             currentMinuteOrders += count;
-            
-            // Update the last point in the data to show current minute's progress
-            if (orderData.Count > 0)
-            {
-                orderData[orderData.Count - 1] = new PointF(timeCounter / 60, currentMinuteOrders);
-                chartControl.SetData(orderData);
-            }
+            orderData.Add(new PointF(timeCounter / 60, currentMinuteOrders));
+            chartControl.SetData(orderData);
         }
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -102,7 +97,7 @@ namespace Test2DGraph
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddDataCount(1);
+            currentMinuteOrders++;
         }
     }
 }
