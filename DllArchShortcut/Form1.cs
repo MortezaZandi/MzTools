@@ -81,21 +81,25 @@ namespace DllArchShortcut
         private void ShowAssemblyInfo()
         {
             var args = Environment.GetCommandLineArgs();
+            string assemblyFilePath = null;
 
             if (args.Length > 1)
             {
                 try
                 {
-                    var assemblyFilePath = args[1];
+                    assemblyFilePath = string.Join(" ", args.Skip(1).ToArray());
+
                     var assembyName = Path.GetFileName(assemblyFilePath);
+
                     var assemblyPath = Path.GetDirectoryName(assemblyFilePath);
+
                     lblDllName.Text = assembyName;
                     lblDllPath.Text = assemblyPath;
                     lblDllArc.Text = DllHelper.PrintDllInfo(assemblyFilePath);
                 }
                 catch (Exception ex)
                 {
-                    ShowError($"Error in reading assembly info: {ex.Message}");
+                    ShowError($"Error in reading assembly info: {ex.Message}{Environment.NewLine}AssemblyFilePath: {assemblyFilePath}");
                     Close();
                 }
             }

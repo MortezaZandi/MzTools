@@ -1,12 +1,36 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 
 namespace DllArchShortcut
 {
     public static class DllHelper
     {
+        const int MAX_PATH = 255;
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern int GetShortPathName(
+            [MarshalAs(UnmanagedType.LPTStr)]
+            string path,
+            [MarshalAs(UnmanagedType.LPTStr)]
+            StringBuilder shortPath,
+            int shortPathLength
+            );
+
+        private static string GetShortPath(string path)
+        {
+            var shortPath = new StringBuilder(MAX_PATH);
+            GetShortPathName(path, shortPath, MAX_PATH);
+            return shortPath.ToString();
+
+        }
+
         public static string PrintDllInfo(string dllPath)
         {
+            dllPath = GetShortPath(dllPath);
+
             MachineType type = GetDllMachineType(dllPath);
 
             if (type.Equals(MachineType.IMAGE_FILE_MACHINE_I386))
