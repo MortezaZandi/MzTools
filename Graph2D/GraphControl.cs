@@ -57,6 +57,20 @@ namespace Graph2D
             }
         }
 
+        private int maxSampleValue;
+        public int MaxSampleValue
+        {
+            get => this.maxSampleValue;
+            set
+            {
+                if (value != this.maxSampleValue)
+                {
+                    this.maxSampleValue = value;
+                    OnGraphDataChanged();
+                }
+            }
+        }
+
         public void AddData(long value)
         {
             this.dataCollection.Add(value);

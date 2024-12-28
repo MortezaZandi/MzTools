@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketObjectTransmiter", "SocketObjectTransmiter.csproj", "{4CB23091-13FF-4FF5-995B-83BB9E69C4AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "Samples\SampleApp\SampleApp.csproj", "{553FE51B-AF0B-4646-9EA2-A8BCA982B137}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CB23091-13FF-4FF5-995B-83BB9E69C4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB23091-13FF-4FF5-995B-83BB9E69C4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB23091-13FF-4FF5-995B-83BB9E69C4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB23091-13FF-4FF5-995B-83BB9E69C4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553FE51B-AF0B-4646-9EA2-A8BCA982B137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553FE51B-AF0B-4646-9EA2-A8BCA982B137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553FE51B-AF0B-4646-9EA2-A8BCA982B137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553FE51B-AF0B-4646-9EA2-A8BCA982B137}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {927EBB9D-9E16-4974-94B6-77E638832F17}
+	EndGlobalSection
+EndGlobal

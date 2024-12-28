@@ -53,6 +53,7 @@ namespace Shatoraj
 
     public class ChessBoard
     {
+        private List<ChessPiece> chessPieces = new List<ChessPiece>();
 
     }
 
@@ -76,7 +77,7 @@ namespace Shatoraj
 
     public abstract class ChessPlayer
     {
-        public abstract ChessMove SelectPieceForMove(List<ChessPiece> chessPieces);
+        public abstract ChessMove Move(ChessBoard chessBoard);
 
     }
 
@@ -92,18 +93,32 @@ namespace Shatoraj
 
     public class ChessMove
     {
+        private string pieceId;
+        private ChessCell target;
+
         public ChessMove()
         {
         }
 
-        public ChessMove(ChessPiece chessPiece, int moveSquareCount)
+        public ChessMove(string pieceId, ChessCell target)
         {
-            ChessPiece = chessPiece;
-            MoveSquareCount = moveSquareCount;
+            this.PieceToMove = pieceId;
+            this.Target = target;
         }
 
-        public ChessPiece ChessPiece { get; set; }
+        public string PieceToMove { get => pieceId; set => pieceId = value; }
+        public ChessCell Target { get => target; set => target = value; }
+    }
 
-        public int MoveSquareCount { get; set; }
+    public class ChessCell
+    {
+        public ChessCell(string cellName, int cellNumber)
+        {
+            CellName = cellName;
+            CellNumber = cellNumber;
+        }
+
+        public string CellName { get; set; }
+        public int CellNumber { get; set; }
     }
 }
