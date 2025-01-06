@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,30 @@ public partial class MainForm : Form
     public MainForm()
     {
         InitializeComponent();
+
+        //AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+
         LoadServers();
+
         SetupControls();
+    }
+
+    private void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
+    {
+        var sb = new StringBuilder();
+        ExtractExMessage(e.Exception, sb);
+        var message = sb.ToString();
+        MessageBox.Show(message + Environment.NewLine + e.Exception.StackTrace);
+    }
+
+    private void ExtractExMessage(Exception ex, StringBuilder sb)
+    {
+        if (ex != null)
+        {
+            sb.AppendLine(ex.Message);
+
+            ExtractExMessage(ex.InnerException, sb);
+        }
     }
 
     private void SetupControls()
@@ -66,10 +89,10 @@ public partial class MainForm : Form
             var selectedServers = checkedListServers.CheckedItems.Cast<SqlServerInfo>().ToList();
             progressBar.Maximum = selectedServers.Count;
 
-            // Process servers in batches of 20
-            for (int i = 0; i < selectedServers.Count; i += 20)
+            // Process servers in batches of 10
+            for (int i = 0; i < selectedServers.Count; i += 10)
             {
-                var batch = selectedServers.Skip(i).Take(20);
+                var batch = selectedServers.Skip(i).Take(10);
                 var tasks = batch.Select(server => ExecuteQueryAsync(server, txtQuery.Text, _cts.Token));
 
                 var results = await Task.WhenAll(tasks);
@@ -103,7 +126,13 @@ public partial class MainForm : Form
         var item = new ListViewItem(result.ServerName);
         item.SubItems.Add(result.Version ?? "N/A");
         item.SubItems.Add(result.Message ?? "Success");
-        item.SubItems.Add(result.ExecutionTime.ToString("mm:ss.fff"));
+        try
+        {
+            item.SubItems.Add(result.ExecutionTime.ToString("mm:ss.fff"));
+        }
+        catch (Exception)
+        {
+        }
         listResults.Items.Add(item);
     }
 
@@ -142,7 +171,7 @@ public partial class MainForm : Form
 
     private void LoadServers()
     {
-        using (var connection = new SqlConnection("Your_Connection_String_Here"))
+        using (var connection = new SqlConnection("Data Source=172.17.0.21;Initial Catalog=CMSDB;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=KY$0ftP@$$;Pooling=False;Max Pool Size=200;Packet Size=4096;Workstation ID=KYAN-CON-BL"))
         {
             using (var command = new SqlCommand("SELECT ServerName, Instance, CatalogName, UserID, Password FROM ConnectionString", connection))
             {

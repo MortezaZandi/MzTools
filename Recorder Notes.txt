@@ -1,0 +1,9 @@
+i want to create a screen recorder app,
+i want to record screen to a video file
+i want to use a algorith to detect changes between frames and only record changes in screen images to prevent video files to grow too much
+i want to use compression methods if necessary to reduce the file size
+i want to let user to bookmark the current frame by pressing a shortcut keys like ctrl+b, if user wants a bookmark then a note dialog will be shown to let the user write a description for that bookmark
+i want to record some information in a separate file besides the record file(like window text, time, bookmarks info)
+i want a play dialog to let user see the list of recorded videos and play theme
+i want to be able to search the entire files for specifc window title or bookmart text
+each video should not exceed 30 minute, i want to split recordings file into multiple smaller video files
