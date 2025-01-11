@@ -36,8 +36,8 @@
             this.clmQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roundPanel3 = new TestPrinter.RoundPanel();
             this.btnPrintPreview = new System.Windows.Forms.Button();
-            this.cmbPrinters = new System.Windows.Forms.ComboBox();
             this.tnSendToPrinter = new System.Windows.Forms.Button();
+            this.cmbPrinters = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.roundPanel1 = new TestPrinter.RoundPanel();
             this.roundPanel2.SuspendLayout();
@@ -130,16 +130,6 @@
             this.btnPrintPreview.UseVisualStyleBackColor = true;
             this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
             // 
-            // cmbPrinters
-            // 
-            this.cmbPrinters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbPrinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPrinters.FormattingEnabled = true;
-            this.cmbPrinters.Location = new System.Drawing.Point(310, 25);
-            this.cmbPrinters.Name = "cmbPrinters";
-            this.cmbPrinters.Size = new System.Drawing.Size(262, 24);
-            this.cmbPrinters.TabIndex = 2;
-            // 
             // tnSendToPrinter
             // 
             this.tnSendToPrinter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,6 +140,16 @@
             this.tnSendToPrinter.Text = "چاپ";
             this.tnSendToPrinter.UseVisualStyleBackColor = true;
             this.tnSendToPrinter.Click += new System.EventHandler(this.tnSendToPrinter_Click);
+            // 
+            // cmbPrinters
+            // 
+            this.cmbPrinters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbPrinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrinters.FormattingEnabled = true;
+            this.cmbPrinters.Location = new System.Drawing.Point(199, 25);
+            this.cmbPrinters.Name = "cmbPrinters";
+            this.cmbPrinters.Size = new System.Drawing.Size(373, 24);
+            this.cmbPrinters.TabIndex = 2;
             // 
             // label1
             // 

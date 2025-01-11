@@ -18,10 +18,12 @@ namespace TestPrinter
             InitializeComponent();
             SetStyle(ControlStyles.ResizeRedraw, true);
             PopulatePrinters();
+            this.cmbPrinters.SelectedIndexChanged += new System.EventHandler(this.cmbPrinters_SelectedIndexChanged);
 
             dataGridView1.Rows.Add(new object[] { 141, "ماست موسیر", 25000, 2 });
             dataGridView1.Rows.Add(new object[] { 196, "سر شیر", 50000, 1 });
             dataGridView1.Rows.Add(new object[] { 122, "پنیر خامه", 10000, 4 });
+            dataGridView1.Rows.Add(new object[] { 160, "خامه شکلات", 12000, 2 });
         }
 
         private void PopulatePrinters()
@@ -34,6 +36,15 @@ namespace TestPrinter
             if (cmbPrinters.Items.Count > 0)
             {
                 cmbPrinters.SelectedIndex = 0;
+            }
+
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.SelectedPrinter))
+            {
+                var index = cmbPrinters.FindStringExact(Properties.Settings.Default.SelectedPrinter);
+                if (index >= 0)
+                {
+                    cmbPrinters.SelectedIndex = index;
+                }
             }
         }
 
@@ -129,6 +140,14 @@ namespace TestPrinter
             return ds;
         }
 
+        private void cmbPrinters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPrinters.SelectedIndex >= 0 && cmbPrinters.Text != string.Empty)
+            {
+                Properties.Settings.Default.SelectedPrinter = cmbPrinters.Text;
+                Properties.Settings.Default.Save();
+            }
+        }
     }
 
     internal class UIHelper
