@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons8_printer.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastReport, Version=2022.3.4.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -81,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons8_printer.ico" />
+    <None Include="icons8_printer_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
