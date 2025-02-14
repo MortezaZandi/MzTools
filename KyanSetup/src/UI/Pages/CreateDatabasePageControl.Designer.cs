@@ -122,12 +122,15 @@
             // 
             // btnUnselectAll
             // 
+            this.btnUnselectAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnUnselectAll.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnUnselectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUnselectAll.Location = new System.Drawing.Point(84, 319);
             this.btnUnselectAll.Name = "btnUnselectAll";
-            this.btnUnselectAll.Size = new System.Drawing.Size(111, 27);
+            this.btnUnselectAll.Size = new System.Drawing.Size(111, 25);
             this.btnUnselectAll.TabIndex = 10;
             this.btnUnselectAll.Text = "Test Connection";
-            this.btnUnselectAll.UseVisualStyleBackColor = true;
+            this.btnUnselectAll.UseVisualStyleBackColor = false;
             // 
             // CreateDatabasePageControl
             // 

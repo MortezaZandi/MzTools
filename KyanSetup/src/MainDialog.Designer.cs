@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDialog));
             this.pnlPageControl = new KyanSetup.GradientPanel();
-            this.homePageControl1 = new KyanSetup.HomePageControl();
             this.pageNavigationList = new KyanSetup.GradientPanel();
             this.gradientPanel4 = new KyanSetup.GradientPanel();
             this.btnBack = new System.Windows.Forms.Button();
@@ -39,7 +38,6 @@
             this.gradientPanel1 = new KyanSetup.GradientPanel();
             this.lblPageDescription = new System.Windows.Forms.Label();
             this.lblPageTitle = new System.Windows.Forms.Label();
-            this.pnlPageControl.SuspendLayout();
             this.gradientPanel4.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +45,6 @@
             // pnlPageControl
             // 
             this.pnlPageControl.BorderColor = System.Drawing.Color.Transparent;
-            this.pnlPageControl.Controls.Add(this.homePageControl1);
             this.pnlPageControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPageControl.GradientColor1 = System.Drawing.Color.Empty;
             this.pnlPageControl.GradientColor2 = System.Drawing.Color.Empty;
@@ -58,16 +55,8 @@
             this.pnlPageControl.ShowLeftBorder = false;
             this.pnlPageControl.ShowRightBorder = false;
             this.pnlPageControl.ShowTopBorder = false;
-            this.pnlPageControl.Size = new System.Drawing.Size(692, 425);
+            this.pnlPageControl.Size = new System.Drawing.Size(712, 452);
             this.pnlPageControl.TabIndex = 1;
-            // 
-            // homePageControl1
-            // 
-            this.homePageControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homePageControl1.Location = new System.Drawing.Point(0, 0);
-            this.homePageControl1.Name = "homePageControl1";
-            this.homePageControl1.Size = new System.Drawing.Size(692, 425);
-            this.homePageControl1.TabIndex = 0;
             // 
             // pageNavigationList
             // 
@@ -83,7 +72,7 @@
             this.pageNavigationList.ShowLeftBorder = false;
             this.pageNavigationList.ShowRightBorder = true;
             this.pageNavigationList.ShowTopBorder = false;
-            this.pageNavigationList.Size = new System.Drawing.Size(244, 425);
+            this.pageNavigationList.Size = new System.Drawing.Size(244, 452);
             this.pageNavigationList.TabIndex = 2;
             // 
             // gradientPanel4
@@ -97,46 +86,55 @@
             this.gradientPanel4.GradientColor1 = System.Drawing.Color.Transparent;
             this.gradientPanel4.GradientColor2 = System.Drawing.Color.Transparent;
             this.gradientPanel4.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.gradientPanel4.Location = new System.Drawing.Point(0, 502);
+            this.gradientPanel4.Location = new System.Drawing.Point(0, 529);
             this.gradientPanel4.Name = "gradientPanel4";
             this.gradientPanel4.ShowBottomBorder = false;
             this.gradientPanel4.ShowLeftBorder = false;
             this.gradientPanel4.ShowRightBorder = false;
             this.gradientPanel4.ShowTopBorder = true;
-            this.gradientPanel4.Size = new System.Drawing.Size(936, 51);
+            this.gradientPanel4.Size = new System.Drawing.Size(956, 51);
             this.gradientPanel4.TabIndex = 3;
             // 
             // btnBack
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.Location = new System.Drawing.Point(634, 15);
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Location = new System.Drawing.Point(654, 15);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(91, 25);
             this.btnBack.TabIndex = 2;
             this.btnBack.Text = "<Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.Location = new System.Drawing.Point(731, 15);
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Location = new System.Drawing.Point(751, 15);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(91, 25);
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "Next>";
-            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(828, 15);
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Location = new System.Drawing.Point(848, 15);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 25);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // gradientPanel1
@@ -154,7 +152,7 @@
             this.gradientPanel1.ShowLeftBorder = false;
             this.gradientPanel1.ShowRightBorder = false;
             this.gradientPanel1.ShowTopBorder = false;
-            this.gradientPanel1.Size = new System.Drawing.Size(936, 77);
+            this.gradientPanel1.Size = new System.Drawing.Size(956, 77);
             this.gradientPanel1.TabIndex = 0;
             // 
             // lblPageDescription
@@ -165,7 +163,7 @@
             this.lblPageDescription.Location = new System.Drawing.Point(0, 40);
             this.lblPageDescription.Name = "lblPageDescription";
             this.lblPageDescription.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.lblPageDescription.Size = new System.Drawing.Size(936, 37);
+            this.lblPageDescription.Size = new System.Drawing.Size(956, 37);
             this.lblPageDescription.TabIndex = 5;
             this.lblPageDescription.Text = "Create new database or update an existing database to the last version.";
             // 
@@ -177,7 +175,7 @@
             this.lblPageTitle.Location = new System.Drawing.Point(0, 0);
             this.lblPageTitle.Name = "lblPageTitle";
             this.lblPageTitle.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.lblPageTitle.Size = new System.Drawing.Size(936, 40);
+            this.lblPageTitle.Size = new System.Drawing.Size(956, 40);
             this.lblPageTitle.TabIndex = 4;
             this.lblPageTitle.Text = "Create Database";
             this.lblPageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(936, 553);
+            this.ClientSize = new System.Drawing.Size(956, 580);
             this.Controls.Add(this.pnlPageControl);
             this.Controls.Add(this.pageNavigationList);
             this.Controls.Add(this.gradientPanel4);
@@ -197,7 +195,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = ".";
             this.Load += new System.EventHandler(this.MainDialog_Load);
-            this.pnlPageControl.ResumeLayout(false);
             this.gradientPanel4.ResumeLayout(false);
             this.gradientPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -215,7 +212,6 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblPageDescription;
         private System.Windows.Forms.Label lblPageTitle;
-        private HomePageControl homePageControl1;
     }
 }
 

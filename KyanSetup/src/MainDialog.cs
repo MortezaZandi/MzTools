@@ -15,12 +15,15 @@ namespace KyanSetup
     {
         private List<Page> pages;
         private Page currentPage;
+        private SetupParameters setupParameters;
 
         public MainDialog()
         {
             SplashScreen.ShowSplashScreen();
 
             InitializeComponent();
+
+            this.setupParameters = new SetupParameters();
         }
 
         private void MainDialog_Load(object sender, EventArgs e)
@@ -43,6 +46,7 @@ namespace KyanSetup
             homePage.PageTitle = "Kyan CMS Installation";
             homePage.PageDescription = "By using this installation wizard you can install a new CMS or Update existing CMS.";
             homePage.PageDetailControl = new HomePageControl();
+            homePage.PageDetailControl.SetupParameters = setupParameters;
             homePage.PageItemControl = new NavListItemControl()
             {
                 Text = "Home",
@@ -133,7 +137,7 @@ namespace KyanSetup
 
                 SplashScreen.UpdateStep($"Initializing {page.PageTitle}...");
 
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
             }
 
             CurrentPage = FirstPage;

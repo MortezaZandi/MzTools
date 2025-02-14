@@ -16,5 +16,33 @@ namespace KyanSetup
         {
             InitializeComponent();
         }
+
+        public override bool ValidateData()
+        {
+            var valid = base.ValidateData();
+
+            if (valid)
+            {
+                if (rdInstallHeadquarter.Checked)
+                {
+
+                }
+                else if (rdInstallRetailStore.Checked)
+                {
+
+                }
+                else if (rdInstallPOS.Checked)
+                {
+
+                }
+                else
+                {
+                    valid = false;
+                   // throw new Exception("Select installation type");
+                }
+            }
+
+            return valid;
+        }
     }
 }

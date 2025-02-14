@@ -11,9 +11,29 @@ namespace KyanSetup
 {
     public partial class BasePageControl : UserControl
     {
+        protected SetupParameters setupParameters;
+
         public BasePageControl()
         {
             InitializeComponent();
+        }
+
+        public SetupParameters SetupParameters
+        {
+            get
+            {
+                return setupParameters;
+            }
+            set
+            {
+                setupParameters = value;
+                InitControls(setupParameters);
+            }
+        }
+        
+        protected virtual void InitControls(SetupParameters setupParameters)
+        {
+
         }
 
         /// <summary>
@@ -50,5 +70,6 @@ namespace KyanSetup
         {
 
         }
+
     }
 }

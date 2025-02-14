@@ -5,5 +5,11 @@ using System.Text;
 
 namespace KyanSetup
 {
-    
+    public enum InstallationTypes
+    {
+        InstallHeadquarter,
+        InstallRetailStore,
+        InstallPos,
+
+    }
 }

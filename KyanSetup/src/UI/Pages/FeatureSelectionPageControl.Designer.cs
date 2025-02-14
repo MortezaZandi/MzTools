@@ -33,15 +33,15 @@
             this.lblFeatureDescription = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnUnselectAll = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkAllowFreeSelection
@@ -96,24 +96,41 @@
             this.panel1.Size = new System.Drawing.Size(407, 433);
             this.panel1.TabIndex = 8;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.chkAllowFreeSelection);
+            this.panel3.Controls.Add(this.btnSelectAll);
+            this.panel3.Controls.Add(this.btnUnselectAll);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(50, 340);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(347, 100);
+            this.panel3.TabIndex = 11;
+            // 
             // btnSelectAll
             // 
+            this.btnSelectAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnSelectAll.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectAll.Location = new System.Drawing.Point(13, 54);
             this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(111, 27);
+            this.btnSelectAll.Size = new System.Drawing.Size(111, 25);
             this.btnSelectAll.TabIndex = 10;
             this.btnSelectAll.Text = "Select All";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.UseVisualStyleBackColor = false;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // btnUnselectAll
             // 
+            this.btnUnselectAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnUnselectAll.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnUnselectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUnselectAll.Location = new System.Drawing.Point(154, 54);
             this.btnUnselectAll.Name = "btnUnselectAll";
-            this.btnUnselectAll.Size = new System.Drawing.Size(111, 27);
+            this.btnUnselectAll.Size = new System.Drawing.Size(111, 25);
             this.btnUnselectAll.TabIndex = 9;
             this.btnUnselectAll.Text = "Unselect All";
-            this.btnUnselectAll.UseVisualStyleBackColor = true;
+            this.btnUnselectAll.UseVisualStyleBackColor = false;
             this.btnUnselectAll.Click += new System.EventHandler(this.btnUnselectAll_Click);
             // 
             // label1
@@ -148,17 +165,6 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Features Description";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.chkAllowFreeSelection);
-            this.panel3.Controls.Add(this.btnSelectAll);
-            this.panel3.Controls.Add(this.btnUnselectAll);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(50, 340);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(347, 100);
-            this.panel3.TabIndex = 11;
-            // 
             // FeatureSelectionPageControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -169,10 +175,10 @@
             this.Size = new System.Drawing.Size(721, 433);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

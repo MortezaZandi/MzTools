@@ -39,30 +39,39 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(145, 194);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 27);
+            this.button2.Size = new System.Drawing.Size(111, 25);
             this.button2.TabIndex = 12;
             this.button2.Text = "Delete Config";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(262, 194);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 27);
+            this.button1.Size = new System.Drawing.Size(111, 25);
             this.button1.TabIndex = 11;
             this.button1.Text = "Import";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // btnUnselectAll
             // 
+            this.btnUnselectAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnUnselectAll.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnUnselectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUnselectAll.Location = new System.Drawing.Point(28, 194);
             this.btnUnselectAll.Name = "btnUnselectAll";
-            this.btnUnselectAll.Size = new System.Drawing.Size(111, 27);
+            this.btnUnselectAll.Size = new System.Drawing.Size(111, 25);
             this.btnUnselectAll.TabIndex = 10;
             this.btnUnselectAll.Text = "Add Config";
-            this.btnUnselectAll.UseVisualStyleBackColor = true;
+            this.btnUnselectAll.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
