@@ -235,6 +235,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test Printer";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.roundPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.roundPanel3.ResumeLayout(false);

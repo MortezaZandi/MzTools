@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KyanSetup</RootNamespace>
     <AssemblyName>KyanSetup</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>K-removebg-preview.ico</ApplicationIcon>
@@ -47,38 +50,111 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasePageControl.cs">
+    <Compile Include="UI\Pages\BasePageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BasePageControl.Designer.cs">
+    <Compile Include="UI\Pages\BasePageControl.Designer.cs">
       <DependentUpon>BasePageControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enumerations.cs" />
-    <Compile Include="GradientPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="HomePageControl.cs">
+    <Compile Include="UI\Pages\BasicInformationPageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HomePageControl.Designer.cs">
+    <Compile Include="UI\Pages\BasicInformationPageControl.Designer.cs">
+      <DependentUpon>BasicInformationPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\CreateDatabasePageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\CreateDatabasePageControl.Designer.cs">
+      <DependentUpon>CreateDatabasePageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\DefaultConfigsPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\DefaultConfigsPageControl.Designer.cs">
+      <DependentUpon>DefaultConfigsPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Definitions\Enumerations.cs" />
+    <Compile Include="Definitions\Models\Feature.cs" />
+    <Compile Include="UI\Pages\FeatureSelectionPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\FeatureSelectionPageControl.Designer.cs">
+      <DependentUpon>FeatureSelectionPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\HomePageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\HomePageControl.Designer.cs">
       <DependentUpon>HomePageControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="IPage.cs" />
-    <Compile Include="IPageNavigator.cs" />
+    <Compile Include="UI\Pages\InstallationPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\InstallationPageControl.Designer.cs">
+      <DependentUpon>InstallationPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\InstallationTypePageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\InstallationTypePageControl.Designer.cs">
+      <DependentUpon>InstallationTypePageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\LicensePageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\LicensePageControl.Designer.cs">
+      <DependentUpon>LicensePageControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainDialog.Designer.cs">
       <DependentUpon>MainDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controls\NavListItemControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Definitions\Models\Page.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetupParameters.cs" />
-    <EmbeddedResource Include="BasePageControl.resx">
+    <Compile Include="Definitions\Models\SetupParameters.cs" />
+    <Compile Include="UI\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilis.cs" />
+    <EmbeddedResource Include="UI\Pages\BasePageControl.resx">
       <DependentUpon>BasePageControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomePageControl.resx">
+    <EmbeddedResource Include="UI\Pages\BasicInformationPageControl.resx">
+      <DependentUpon>BasicInformationPageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\CreateDatabasePageControl.resx">
+      <DependentUpon>CreateDatabasePageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\DefaultConfigsPageControl.resx">
+      <DependentUpon>DefaultConfigsPageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\FeatureSelectionPageControl.resx">
+      <DependentUpon>FeatureSelectionPageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\HomePageControl.resx">
       <DependentUpon>HomePageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\InstallationPageControl.resx">
+      <DependentUpon>InstallationPageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\InstallationTypePageControl.resx">
+      <DependentUpon>InstallationTypePageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pages\LicensePageControl.resx">
+      <DependentUpon>LicensePageControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainDialog.resx">
       <DependentUpon>MainDialog.cs</DependentUpon>
@@ -91,7 +167,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

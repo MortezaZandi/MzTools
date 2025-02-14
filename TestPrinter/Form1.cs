@@ -168,6 +168,11 @@ namespace TestPrinter
                 MessageBox.Show("No record selected");
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show(DateTime.UtcNow.ToString());
+        }
     }
 
     internal class UIHelper

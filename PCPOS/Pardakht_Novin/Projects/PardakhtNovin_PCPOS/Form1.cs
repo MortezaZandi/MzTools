@@ -32,17 +32,17 @@ namespace PardakhtNovin_PCPOS
 
 
             //Lan port:
-            pcpos.ConnectionType = PCPOS.cnType.LAN;
-            pcpos.Ip = "10.20.30.59";
-            pcpos.Port = 1362;
+            //pcpos.ConnectionType = PCPOS.cnType.LAN;
+            //pcpos.Ip = "10.20.30.59";
+            //pcpos.Port = 1362;
 
 
             //Serial port:
-            //string str = cmb_bdRate.Text;
-            //if (str == "") { MessageBox.Show("Please Select BaudRate!!!"); return; }
-            //pcpos.baudRate = Int32.Parse(str);
-            //pcpos.ConnectionType = PCPOS.cnType.SERIAL;
-            //pcpos.ComPort = cmb_comport.Text;
+            string str = "19200";
+            if (str == "") { MessageBox.Show("Please Select BaudRate!!!"); return; }
+            pcpos.baudRate = Int32.Parse(str);
+            pcpos.ConnectionType = PCPOS.cnType.SERIAL;
+            pcpos.ComPort = "3";
 
 
             Log($"Pos start on {pcpos.Ip}:{pcpos.Port}");
