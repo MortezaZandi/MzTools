@@ -148,6 +148,26 @@ namespace TestPrinter
                 Properties.Settings.Default.Save();
             }
         }
+
+        private void btnDeleteRecord_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var row = dataGridView1.SelectedRows[0];
+                if (!row.IsNewRow)
+                {
+                    dataGridView1.Rows.Remove(row);
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No record selected");
+            }
+        }
     }
 
     internal class UIHelper
