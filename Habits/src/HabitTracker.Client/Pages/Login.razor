@@ -1,0 +1,45 @@
+@page "/login"
+@inject HttpClient Http
+@inject CustomAuthenticationStateProvider AuthStateProvider
+
+<h3>Login</h3>
+
+<EditForm Model="user" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Username:</label>
+        <InputText @bind-Value="user.Username" />
+    </div>
+    <div>
+        <label>Password:</label>
+        <InputText @bind-Value="user.Password" type="password" />
+    </div>
+    <button type="submit">Login</button>
+</EditForm>
+
+@code {
+    private UserLoginDto user = new UserLoginDto();
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PostAsJsonAsync("api/user/login", user);
+        if (response.IsSuccessStatusCode)
+        {
+            var token = await response.Content.ReadAsStringAsync();
+            await AuthStateProvider.Login(token); // Store the token
+            // Redirect to a protected page, e.g., the home page
+        }
+        else
+        {
+            // Handle login error
+        }
+    }
+
+    public class UserLoginDto
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+} 

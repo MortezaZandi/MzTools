@@ -1,0 +1,79 @@
+@page "/manage-categories"
+@inject HttpClient Http
+
+<h3>Manage Categories</h3>
+
+<EditForm Model="newCategory" OnValidSubmit="AddCategory">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Name:</label>
+        <InputText @bind-Value="newCategory.Name" />
+    </div>
+    <div>
+        <label>Description:</label>
+        <InputText @bind-Value="newCategory.Description" />
+    </div>
+    <button type="submit">Add Category</button>
+</EditForm>
+
+<h4>Existing Categories</h4>
+<ul>
+    @foreach (var category in categories)
+    {
+        <li>
+            @category.Name - @category.Description
+            <button @onclick="() => DeleteCategory(category.Id)">Delete</button>
+        </li>
+    }
+</ul>
+
+@code {
+    private List<Category> categories = new List<Category>();
+    private Category newCategory = new Category();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCategories();
+    }
+
+    private async Task LoadCategories()
+    {
+        categories = await Http.GetFromJsonAsync<List<Category>>("api/category");
+    }
+
+    private async Task AddCategory()
+    {
+        var response = await Http.PostAsJsonAsync("api/category", newCategory);
+        if (response.IsSuccessStatusCode)
+        {
+            newCategory = new Category(); // Reset the form
+            await LoadCategories(); // Reload categories
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+
+    private async Task DeleteCategory(int id)
+    {
+        var response = await Http.DeleteAsync($"api/category/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadCategories(); // Reload categories
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+} 

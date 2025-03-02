@@ -1,0 +1,85 @@
+@page "/manage-events"
+@inject HttpClient Http
+
+<h3>Manage Events</h3>
+
+<EditForm Model="newEvent" OnValidSubmit="AddEvent">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Category ID:</label>
+        <InputNumber @bind-Value="newEvent.CategoryId" />
+    </div>
+    <div>
+        <label>Description:</label>
+        <InputText @bind-Value="newEvent.Description" />
+    </div>
+    <div>
+        <label>Event Time:</label>
+        <InputDate @bind-Value="newEvent.EventTime" />
+    </div>
+    <button type="submit">Add Event</button>
+</EditForm>
+
+<h4>Existing Events</h4>
+<ul>
+    @foreach (var eventItem in events)
+    {
+        <li>
+            @eventItem.Description - @eventItem.EventTime.ToString("g")
+            <button @onclick="() => DeleteEvent(eventItem.Id)">Delete</button>
+        </li>
+    }
+</ul>
+
+@code {
+    private List<Event> events = new List<Event>();
+    private Event newEvent = new Event();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEvents();
+    }
+
+    private async Task LoadEvents()
+    {
+        events = await Http.GetFromJsonAsync<List<Event>>("api/event");
+    }
+
+    private async Task AddEvent()
+    {
+        var response = await Http.PostAsJsonAsync("api/event", newEvent);
+        if (response.IsSuccessStatusCode)
+        {
+            newEvent = new Event(); // Reset the form
+            await LoadEvents(); // Reload events
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+
+    private async Task DeleteEvent(int id)
+    {
+        var response = await Http.DeleteAsync($"api/event/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadEvents(); // Reload events
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+
+    public class Event
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; } // You may want to set this based on the logged-in user
+        public int CategoryId { get; set; }
+        public string Description { get; set; }
+        public DateTime EventTime { get; set; }
+    }
+} 

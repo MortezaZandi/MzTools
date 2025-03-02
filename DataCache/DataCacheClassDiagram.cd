@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataCache.DataCache&lt;TModel&gt;" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACAAQAAAAAAAAAAEAAAAABAICAAAIEAAAAI=</HashCode>
+      <FileName>DataCache.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.179" />
+  </Class>
+  <Class Name="DataCache.AutoReloadDataCache&lt;TModel&gt;" Collapsed="true">
+    <Position X="9" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAACBABAAAAACAIAACAAAAAA=</HashCode>
+      <FileName>AutoReloadDataCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataCache.ResultPriceChangeListAutoReloadDataCache" Collapsed="true">
+    <Position X="12" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ResultPriceChangeListAutoReloadDataCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataCache.ResultStockQtyChangeListAutoReloadDataCache" Collapsed="true">
+    <Position X="5" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ResultStockQtyChangeListAutoReloadDataCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataCache.DeactiveItemAutoReloadDataCache" Collapsed="true">
+    <Position X="8.5" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAQAAAAAAAAABAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DeactiveItemAutoReloadDataCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataCache.ManualReloadDataCache&lt;TModel&gt;" Collapsed="true">
+    <Position X="18.25" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManualReloadDataCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataCache.StockPriceManualReloadDataCache" Collapsed="true">
+    <Position X="18.25" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>StockPriceManualReloadDataCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,21 @@
+@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+@code {
+    private bool isAuthorized;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        isAuthorized = authState.User.Identity.IsAuthenticated;
+    }
+}
+
+@if (isAuthorized)
+{
+    @Body
+}
+else
+{
+    <h3>You are not authorized to view this page.</h3>
+} 
